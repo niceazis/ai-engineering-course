@@ -9,10 +9,20 @@
 **이 모듈의 레슨:**
 
 1. [Chain-of-Thought(CoT) Prompting은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-chain-of-thought-prompting-work)
+
+→ [한국어 상세 학습 노트](blogs/module-08/how-does-chain-of-thought-prompting-work.md)
 2. [Prompt Chaining은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-prompt-chaining-work)
+
+→ [한국어 상세 학습 노트](blogs/module-08/how-does-prompt-chaining-work.md)
 3. [Prompt Caching은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-prompt-caching-work)
+
+→ [한국어 상세 학습 노트](blogs/module-08/how-does-prompt-caching-work.md)
 4. [Context Engineering이란?](https://outcomeschool.com/blog/context-engineering)
+
+→ [한국어 상세 학습 노트](blogs/module-08/context-engineering.md)
 5. [Context Compaction은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-context-compaction-work)
+
+→ [한국어 상세 학습 노트](blogs/module-08/how-does-context-compaction-work.md)
 
 ---
 
@@ -33,6 +43,8 @@
 
 시작하기: [Chain-of-Thought Prompting](https://outcomeschool.com/blog/how-does-chain-of-thought-prompting-work)
 
+→ [한국어 상세 학습 노트](blogs/module-08/how-does-chain-of-thought-prompting-work.md)
+
 ### 8.2 Prompt Chaining은 어떻게 동작하는가?
 
 하나의 Prompt 출력을 다음 Prompt 입력으로 넘겨 복잡한 작업을 더 안정적으로 해결하는 방법을 배웁니다.
@@ -49,6 +61,8 @@
 - 사용 시점
 
 시작하기: [Prompt Chaining](https://outcomeschool.com/blog/how-does-prompt-chaining-work)
+
+→ [한국어 상세 학습 노트](blogs/module-08/how-does-prompt-chaining-work.md)
 
 ### 8.3 Prompt Caching은 어떻게 동작하는가?
 
@@ -67,6 +81,8 @@
 
 시작하기: [Prompt Caching](https://outcomeschool.com/blog/how-does-prompt-caching-work)
 
+→ [한국어 상세 학습 노트](blogs/module-08/how-does-prompt-caching-work.md)
+
 ### 8.4 Context Engineering이란?
 
 신뢰할 수 있는 AI 애플리케이션을 만드는 핵심 기술인 Context Engineering을 배웁니다. Prompt Engineering과의 차이, Context 구성 요소, RAG·Few-shot Example·Tool·Memory 같은 대표 패턴을 살펴봅니다.
@@ -82,6 +98,8 @@
 - 빠른 요약
 
 시작하기: [Context Engineering](https://outcomeschool.com/blog/context-engineering)
+
+→ [한국어 상세 학습 노트](blogs/module-08/context-engineering.md)
 
 ### 8.5 Context Compaction은 어떻게 동작하는가?
 
@@ -100,5 +118,7 @@
 - 중요한 이유
 
 시작하기: [Context Compaction](https://outcomeschool.com/blog/how-does-context-compaction-work)
+
+→ [한국어 상세 학습 노트](blogs/module-08/how-does-context-compaction-work.md)
 
 ---
