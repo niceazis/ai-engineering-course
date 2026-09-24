@@ -224,6 +224,8 @@ flowchart TD
 
 한 영상에서 여섯 개념을 모두 익힐 수 있습니다: [AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization](https://www.youtube.com/watch?v=lnfWvX66FUk)
 
+→ [한국어 영상 요약](docs/ko/videos.md#1-ai-engineering-explained-llm-rag-mcp-agent-fine-tuning-quantization)
+
 이제 큰 그림을 알게 되었습니다. 다음 모듈부터 각 개념을 하나씩 깊이 있게 다룹니다.
 
 ---
@@ -237,14 +239,32 @@ flowchart TD
 **이 모듈의 레슨:**
 
 1. [머신러닝이란?](https://outcomeschool.com/blog/machine-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/machine-learning.md)
 2. [지도학습 vs 비지도학습](https://outcomeschool.com/blog/supervised-vs-unsupervised-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/supervised-vs-unsupervised-learning.md)
 3. [선형 회귀 vs 로지스틱 회귀](https://outcomeschool.com/blog/linear-regression-vs-logistic-regression)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/linear-regression-vs-logistic-regression.md)
 4. [머신러닝의 특성 공학(Feature Engineering)이란?](https://outcomeschool.com/blog/feature-engineering)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/feature-engineering.md)
 5. [정밀도(Precision) vs 재현율(Recall)](https://outcomeschool.com/blog/precision-vs-recall)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/precision-vs-recall.md)
 6. [L1·L2 손실 함수란?](https://outcomeschool.com/blog/l1-and-l2-loss-functions)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/l1-and-l2-loss-functions.md)
 7. [머신러닝 정규화란? L1 vs L2](https://outcomeschool.com/blog/regularization-in-machine-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/regularization-in-machine-learning.md)
 8. [강화학습이란?](https://outcomeschool.com/blog/reinforcement-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/reinforcement-learning.md)
 9. [대조 학습(Contrastive Learning)이란? 단계별 동작 원리](https://outcomeschool.com/blog/contrastive-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/contrastive-learning.md)
 
 ---
 
@@ -253,6 +273,8 @@ flowchart TD
 이 글에서는 머신러닝이 무엇인지 배웁니다.
 
 시작하기: [머신러닝이란?](https://outcomeschool.com/blog/machine-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/machine-learning.md)
 
 ### 1.2 지도학습 vs 비지도학습
 
@@ -266,6 +288,8 @@ flowchart TD
 
 시작하기: [지도학습 vs 비지도학습](https://outcomeschool.com/blog/supervised-vs-unsupervised-learning)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/supervised-vs-unsupervised-learning.md)
+
 ### 1.3 선형 회귀 vs 로지스틱 회귀
 
 머신러닝의 선형 회귀와 로지스틱 회귀를 비교합니다.
@@ -278,15 +302,23 @@ flowchart TD
 
 시작하기: [선형 회귀 vs 로지스틱 회귀](https://outcomeschool.com/blog/linear-regression-vs-logistic-regression)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/linear-regression-vs-logistic-regression.md)
+
 ### 1.4 머신러닝의 특성 공학이란?
 
 머신러닝을 위한 특성 공학(Feature Engineering)을 배웁니다.
 
 시작하기: [머신러닝의 특성 공학이란?](https://outcomeschool.com/blog/feature-engineering)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/feature-engineering.md)
+
 영상 보기: [Feature Engineering in Machine Learning](https://www.youtube.com/watch?v=QLlywrWuXag)
 
+→ [한국어 영상 요약](docs/ko/videos.md#2-feature-engineering-in-machine-learning)
+
 영상 보기: [One-hot Encoding in Machine Learning](https://www.youtube.com/watch?v=6AmedU5i9go)
+
+→ [한국어 영상 요약](docs/ko/videos.md#3-one-hot-encoding-in-machine-learning)
 
 ### 1.5 정밀도 vs 재현율
 
@@ -305,6 +337,8 @@ flowchart TD
 
 시작하기: [정밀도 vs 재현율](https://outcomeschool.com/blog/precision-vs-recall)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/precision-vs-recall.md)
+
 ### 1.6 L1·L2 손실 함수란?
 
 L1과 L2 손실 함수를 배웁니다.
@@ -315,6 +349,8 @@ L1과 L2 손실 함수를 배웁니다.
 
 시작하기: [L1·L2 손실 함수란?](https://outcomeschool.com/blog/l1-and-l2-loss-functions)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/l1-and-l2-loss-functions.md)
+
 ### 1.7 머신러닝 정규화란? L1 vs L2
 
 머신러닝의 정규화(Regularization)를 배웁니다.
@@ -324,6 +360,8 @@ L1과 L2 손실 함수를 배웁니다.
 - L2 정규화 또는 Ridge 정규화
 
 시작하기: [머신러닝 정규화란? L1 vs L2](https://outcomeschool.com/blog/regularization-in-machine-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/regularization-in-machine-learning.md)
 
 ### 1.8 강화학습이란?
 
@@ -346,6 +384,8 @@ L1과 L2 손실 함수를 배웁니다.
 
 시작하기: [강화학습이란?](https://outcomeschool.com/blog/reinforcement-learning)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/reinforcement-learning.md)
+
 ### 1.9 대조 학습이란? 단계별 동작 원리
 
 대조 학습(Contrastive Learning)이 무엇인지, 단계별로 어떻게 동작하고 실무에서 어디에 사용되는지 배웁니다.
@@ -363,10 +403,16 @@ L1과 L2 손실 함수를 배웁니다.
 
 시작하기: [대조 학습이란? 단계별 동작 원리](https://outcomeschool.com/blog/contrastive-learning)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/contrastive-learning.md)
+
 **모듈 1 영상 및 추가 자료:**
 
 - [Feature Engineering in Machine Learning](https://www.youtube.com/watch?v=QLlywrWuXag) (영상)
+
+→ [한국어 영상 요약](docs/ko/videos.md#2-feature-engineering-in-machine-learning)
 - [One-hot Encoding in Machine Learning](https://www.youtube.com/watch?v=6AmedU5i9go) (영상)
+
+→ [한국어 영상 요약](docs/ko/videos.md#3-one-hot-encoding-in-machine-learning)
 
 ---
 
@@ -419,6 +465,8 @@ L1과 L2 손실 함수를 배웁니다.
 
 영상 보기: [Epoch, Batch, Batch Size, Iteration](https://www.youtube.com/watch?v=NFLlXE-6vno)
 
+→ [한국어 영상 요약](docs/ko/videos.md#4-epoch-batch-batch-size-iteration)
+
 ### 2.3 역전파는 어떻게 동작하는가? 수학으로 단계별 설명
 
 신경망 역전파의 수학을 배웁니다.
@@ -456,6 +504,8 @@ L1과 L2 손실 함수를 배웁니다.
 시작하기: [Cross-Entropy Loss란?](https://outcomeschool.com/blog/math-behind-cross-entropy-loss)
 
 영상 보기: [Softmax Activation Function in Machine Learning](https://www.youtube.com/watch?v=2Zx6x01WwWM)
+
+→ [한국어 영상 요약](docs/ko/videos.md#5-softmax-activation-function-in-machine-learning)
 
 ### 2.5 신경망의 Dropout이란 무엇이며 어떻게 동작하는가?
 
@@ -542,6 +592,8 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 
 - [Epoch, Batch, Batch Size, Iteration](https://www.youtube.com/watch?v=NFLlXE-6vno) (영상)
 
+→ [한국어 영상 요약](docs/ko/videos.md#4-epoch-batch-batch-size-iteration)
+
 ---
 
 ## 모듈 3: 생성형 AI와 트랜스포머 아키텍처
@@ -624,6 +676,8 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 
 영상 보기: [Tokenization in Large Language Models (LLMs)](https://www.youtube.com/watch?v=sK2s9I84EVI)
 
+→ [한국어 영상 요약](docs/ko/videos.md#6-tokenization-in-large-language-models-llms)
+
 ### 3.4 Embedding이란?
 
 검색, 추천, 챗봇 등 현대 AI의 핵심 개념인 Embedding을 배웁니다. 의미를 숫자로 표현해 비슷한 항목끼리 가까이 배치하는 방식과 거리 측정, 실제 활용을 살펴봅니다.
@@ -643,6 +697,8 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 시작하기: [Embedding이란?](https://outcomeschool.com/blog/what-are-embeddings)
 
 영상 보기: [Embeddings in Machine Learning](https://www.youtube.com/watch?v=LedXW6xl21s)
+
+→ [한국어 영상 요약](docs/ko/videos.md#7-embeddings-in-machine-learning)
 
 ### 3.5 RNN과 Transformer는 어떻게 다른가?
 
@@ -723,6 +779,8 @@ BERT와 GPT 같은 현대 LLM의 핵심인 Self Attention의 개념과 단계별
 시작하기: [Q, K, V의 수학](https://outcomeschool.com/blog/math-behind-attention-qkv)
 
 영상 보기: [Softmax Activation Function in Machine Learning](https://www.youtube.com/watch?v=2Zx6x01WwWM)
+
+→ [한국어 영상 요약](docs/ko/videos.md#5-softmax-activation-function-in-machine-learning)
 
 ### 3.10 왜 Attention을 √dₖ로 스케일링하는가?
 
@@ -818,9 +876,15 @@ Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer
 **모듈 3 영상 및 추가 자료:**
 
 - [Softmax Activation Function in Machine Learning](https://www.youtube.com/watch?v=2Zx6x01WwWM) (영상)
+
+→ [한국어 영상 요약](docs/ko/videos.md#5-softmax-activation-function-in-machine-learning)
 - [Inside ChatGPT: What Happens After You Hit Enter](https://outcomeschool.substack.com/p/inside-chatgpt-what-happens-after) (읽기)
 - [Tokenization in Large Language Models (LLMs)](https://www.youtube.com/watch?v=sK2s9I84EVI) (영상)
+
+→ [한국어 영상 요약](docs/ko/videos.md#6-tokenization-in-large-language-models-llms)
 - [Embeddings in Machine Learning](https://www.youtube.com/watch?v=LedXW6xl21s) (영상)
+
+→ [한국어 영상 요약](docs/ko/videos.md#7-embeddings-in-machine-learning)
 - [Positional Embeddings in LLMs](https://outcomeschool.substack.com/p/positional-embeddings-in-llms) (읽기)
 
 ---
@@ -911,9 +975,13 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 
 영상 보기: [Why is the context window limited in LLMs?](https://www.youtube.com/watch?v=CGIhxIaOg3M)
 
+→ [한국어 영상 요약](docs/ko/videos.md#8-why-is-the-context-window-limited-in-llms)
+
 **모듈 4 영상 및 추가 자료:**
 
 - [Why is the context window limited in LLMs?](https://www.youtube.com/watch?v=CGIhxIaOg3M) (영상)
+
+→ [한국어 영상 요약](docs/ko/videos.md#8-why-is-the-context-window-limited-in-llms)
 
 ---
 
@@ -1721,6 +1789,8 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 
 영상 보기: [Agentic RAG Explained](https://www.youtube.com/watch?v=6nSegpuWJVw)
 
+→ [한국어 영상 요약](docs/ko/videos.md#9-agentic-rag-explained)
+
 ### 9.12 GraphRAG란?
 
 [Vector Search](https://outcomeschool.com/blog/how-does-a-vector-database-work)와 Knowledge Graph를 결합해 검색 품질을 높이는 GraphRAG를 배웁니다.
@@ -1759,7 +1829,11 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 **모듈 9 영상 및 추가 자료:**
 
 - [AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization](https://www.youtube.com/watch?v=lnfWvX66FUk) (영상)
+
+→ [한국어 영상 요약](docs/ko/videos.md#1-ai-engineering-explained-llm-rag-mcp-agent-fine-tuning-quantization)
 - [Agentic RAG Explained](https://www.youtube.com/watch?v=6nSegpuWJVw) (영상)
+
+→ [한국어 영상 요약](docs/ko/videos.md#9-agentic-rag-explained)
 
 ---
 
@@ -1807,6 +1881,8 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 시작하기: [AI Agent](https://outcomeschool.com/blog/ai-agent)
 
 영상 보기: [AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization](https://www.youtube.com/watch?v=lnfWvX66FUk)
+
+→ [한국어 영상 요약](docs/ko/videos.md#1-ai-engineering-explained-llm-rag-mcp-agent-fine-tuning-quantization)
 
 ### 10.2 LLM의 Function Calling은 어떻게 동작하는가?
 
@@ -2280,6 +2356,8 @@ LLM 텍스트 생성과 Attention, KV Cache, 그리고 KV Cache를 줄이기 위
 
 영상 보기: [LLM Inference Optimization](https://www.youtube.com/watch?v=jV2sCj4lHYk)
 
+→ [한국어 영상 요약](docs/ko/videos.md#10-llm-inference-optimization)
+
 ### 12.2 Prefill vs Decode
 
 LLM 추론의 두 단계인 Prefill과 Decode, 그리고 두 단계를 연결하는 KV Cache를 배웁니다.
@@ -2300,6 +2378,8 @@ LLM 추론의 두 단계인 Prefill과 Decode, 그리고 두 단계를 연결하
 시작하기: [Prefill vs Decode](https://outcomeschool.com/blog/prefill-vs-decode-llm-inference-optimization)
 
 영상 보기: [The First-Token Latency Problem in LLMs](https://www.youtube.com/watch?v=XD8DD4cEHu0)
+
+→ [한국어 영상 요약](docs/ko/videos.md#11-the-first-token-latency-problem-in-llms)
 
 ### 12.3 Prefill-Decode Disaggregation이란?
 
@@ -2573,7 +2653,11 @@ NVIDIA GPU에서 가능한 최고 수준의 추론 성능을 목표로 Build-tim
 **모듈 12 영상 및 추가 자료:**
 
 - [LLM Inference Optimization](https://www.youtube.com/watch?v=jV2sCj4lHYk) (영상)
+
+→ [한국어 영상 요약](docs/ko/videos.md#10-llm-inference-optimization)
 - [The First-Token Latency Problem in LLMs](https://www.youtube.com/watch?v=XD8DD4cEHu0) (영상)
+
+→ [한국어 영상 요약](docs/ko/videos.md#11-the-first-token-latency-problem-in-llms)
 - [LLM Inference Engineering (complete series)](https://github.com/amitshekhariitbhu/llm-inference-engineering) (시리즈)
 
 ---
@@ -3157,7 +3241,11 @@ AI가 자신의 능력을 개선하고, 개선된 버전이 다시 자신을 개
 - **[Gradient Descent](https://outcomeschool.com/blog/math-behind-gradient-descent):** Loss가 가장 빠르게 감소하는 기울기 방향으로 Parameter를 갱신하는 최적화 방법입니다.
 - **[Backpropagation](https://outcomeschool.com/blog/math-behind-backpropagation):** 각 Weight가 Error에 얼마나 기여했는지 계산해 Weight를 조정하는 방법입니다.
 - **[Reinforcement Learning](https://outcomeschool.com/blog/reinforcement-learning):** Agent가 Environment와 상호작용하며 장기 Reward를 최대화하도록 의사결정 Sequence를 학습하는 방법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/reinforcement-learning.md)
 - **[Contrastive Learning](https://outcomeschool.com/blog/contrastive-learning):** 비슷한 데이터를 Representation Space에서 가깝게, 다른 데이터를 멀게 배치하도록 학습하는 방법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/contrastive-learning.md)
 - **[Top-p Sampling](https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work):** 누적 확률이 p 이상이 되는 최소 상위 Token 집합에서 무작위로 다음 Token을 선택하는 Decoding 전략입니다.
 - **[Token Streaming](https://outcomeschool.com/blog/how-does-token-streaming-work):** 전체 응답이 끝날 때까지 기다리지 않고 생성되는 Token을 순차적으로 사용자에게 전송하는 기법입니다.
 - **[Lost in the Middle](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms):** 긴 입력의 시작과 끝보다 중간에 있는 정보를 LLM이 덜 활용하는 현상입니다.
