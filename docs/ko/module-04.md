@@ -11,9 +11,17 @@
 **이 모듈의 레슨:**
 
 1. [Temperature는 LLM 출력을 어떻게 제어하는가?](https://outcomeschool.com/blog/how-does-temperature-control-llm-output)
+
+→ [한국어 상세 학습 노트](blogs/module-04/how-does-temperature-control-llm-output.md)
 2. [Top-k와 Top-p Sampling은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work)
+
+→ [한국어 상세 학습 노트](blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
 3. [Token Streaming은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-token-streaming-work)
+
+→ [한국어 상세 학습 노트](blogs/module-04/how-does-token-streaming-work.md)
 4. [LLM의 Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
+
+→ [한국어 상세 학습 노트](blogs/module-04/lost-in-the-middle-problem-in-llms.md)
 
 ---
 
@@ -35,6 +43,8 @@ Temperature가 예측 가능하고 안정적인 답변과 창의적이고 다양
 
 시작하기: [Temperature는 LLM 출력을 어떻게 제어하는가?](https://outcomeschool.com/blog/how-does-temperature-control-llm-output)
 
+→ [한국어 상세 학습 노트](blogs/module-04/how-does-temperature-control-llm-output.md)
+
 ### 4.2 Top-k와 Top-p Sampling은 어떻게 동작하는가?
 
 LLM이 다음 토큰을 선택할 때 사용하는 대표적인 두 샘플링 방식인 Top-k와 Top-p를 배웁니다.
@@ -53,6 +63,8 @@ LLM이 다음 토큰을 선택할 때 사용하는 대표적인 두 샘플링 �
 
 시작하기: [Top-k와 Top-p Sampling](https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work)
 
+→ [한국어 상세 학습 노트](blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
+
 ### 4.3 Token Streaming은 어떻게 동작하는가?
 
 Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신하는지, ChatGPT와 Claude 같은 실제 시스템에서 어떻게 사용되는지 배웁니다.
@@ -70,6 +82,8 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 
 시작하기: [Token Streaming은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-token-streaming-work)
 
+→ [한국어 상세 학습 노트](blogs/module-04/how-does-token-streaming-work.md)
+
 ### 4.4 LLM의 Lost in the Middle 문제와 해결 방법
 
 긴 입력에서 모델이 시작과 끝은 잘 활용하지만 중간 정보를 놓치는 Lost in the Middle 문제를 배웁니다.
@@ -85,6 +99,8 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 - 기억할 핵심 포인트
 
 시작하기: [Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
+
+→ [한국어 상세 학습 노트](blogs/module-04/lost-in-the-middle-problem-in-llms.md)
 
 영상 보기: [Why is the context window limited in LLMs?](https://www.youtube.com/watch?v=CGIhxIaOg3M)
 
