@@ -2575,3 +2575,295 @@ NVIDIA GPU에서 가능한 최고 수준의 추론 성능을 목표로 Build-tim
 - [LLM Inference Engineering (complete series)](https://github.com/amitshekhariitbhu/llm-inference-engineering) (시리즈)
 
 ---
+
+## 모듈 13: 평가와 관측성
+
+이 모듈에서는 LLM과 Agent가 실제로 잘 동작하는지 측정하고, 프로덕션에서 내부 동작을 추적하는 방법을 배웁니다.
+
+**이 모듈의 레슨:**
+
+1. [LLM Evaluation이란?](https://outcomeschool.com/blog/llm-evaluation)
+2. [LLM as a Judge란?](https://outcomeschool.com/blog/llm-as-a-judge)
+3. [AI Agent를 어떻게 평가할까?](https://outcomeschool.com/blog/ai-agent-evaluation)
+4. [AI Agent Observability란?](https://outcomeschool.com/blog/ai-agent-observability)
+
+---
+
+### 13.1 LLM Evaluation이란?
+
+LLM 성능을 측정하기 위한 평가 유형, 자동 지표, Benchmark, 사람 평가, LLM-as-a-Judge, Task-specific·Safety 평가를 배웁니다.
+
+- LLM Evaluation이란?
+- 필요한 이유
+- 평가 유형
+- Automatic Metric
+- Benchmark
+- Human Evaluation
+- LLM as a Judge
+- Task-Specific Evaluation
+- Safety·Red-Teaming Evaluation
+- 주요 과제
+- Best Practice
+- 상황별 방법 선택
+
+시작하기: [LLM Evaluation](https://outcomeschool.com/blog/llm-evaluation)
+
+### 13.2 LLM as a Judge란?
+
+하나의 LLM을 이용해 다른 LLM의 출력을 평가하는 방법을 배웁니다.
+
+- LLM as a Judge란?
+- 필요한 이유
+- 동작 방식
+- 유형
+- Judge 구축 단계
+- Prompt Template
+- Chain-of-Thought Judging(G-Eval)
+- Bias
+- Best Practice
+- 실제 활용
+
+시작하기: [LLM as a Judge](https://outcomeschool.com/blog/llm-as-a-judge)
+
+### 13.3 AI Agent를 어떻게 평가할까?
+
+Agent Evaluation이 일반 LLM 평가와 어떻게 다른지, Outcome·Trajectory·Tool Use·Planning을 어떻게 평가하는지 배웁니다.
+
+- AI Agent란?
+- AI Agent Evaluation
+- 필요한 이유
+- LLM Evaluation과의 차이
+- 평가 유형
+- Outcome Evaluation
+- Trajectory Evaluation
+- Tool Use Evaluation
+- Planning Evaluation
+- 핵심 Metric
+- Agent Benchmark
+- 평가 방법
+- Framework와 Tool
+- 과제
+- Best Practice
+
+시작하기: [AI Agent Evaluation](https://outcomeschool.com/blog/ai-agent-evaluation)
+
+### 13.4 AI Agent Observability란?
+
+Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 문제 원인을 이해하는 Observability를 배웁니다.
+
+- AI Agent
+- Observability
+- AI Agent Observability
+- 필요한 이유
+- 전통적 Observability와의 차이
+- Observability의 세 Pillar
+- Trace와 Span
+- Agent 내부에서 관찰할 것
+- 핵심 Metric
+- 동작 방식
+- Tool과 Framework
+- Observability vs Evaluation
+- 과제
+- Best Practice
+
+시작하기: [AI Agent Observability](https://outcomeschool.com/blog/ai-agent-observability)
+
+---
+
+## 모듈 14: AI 안전과 보안
+
+이 모듈에서는 LLM 애플리케이션을 안전하게 유지하는 방법, 공격자가 시스템을 깨뜨리는 방식, AI 생성 텍스트를 식별하는 방법을 배웁니다.
+
+**이 모듈의 레슨:**
+
+1. [LLM Guardrail은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-llm-guardrails-work)
+2. [LLM의 Prompt Injection이란 무엇이며 어떻게 방어하는가?](https://outcomeschool.com/blog/prompt-injection-in-llms)
+3. [LLM Watermarking은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-llm-watermarking-work)
+
+---
+
+### 14.1 LLM Guardrail은 어떻게 동작하는가?
+
+모델 입력과 출력 주변에서 안전 정책을 검사하는 Guardrail을 배웁니다.
+
+- LLM이란?
+- LLM Guardrail이란?
+- 필요한 이유
+- Input과 Output에서의 위치
+- Guardrail 유형
+- 코드로 보는 간단한 Input Guardrail
+- Output Guardrail
+- 다른 Model을 Guardrail로 사용
+- 요청 하나의 단계별 흐름
+- 한계
+- Best Practice
+
+시작하기: [LLM Guardrail](https://outcomeschool.com/blog/how-do-llm-guardrails-work)
+
+### 14.2 Prompt Injection이란?
+
+외부 데이터나 사용자 입력에 악성 지시를 넣어 모델이 개발자의 의도보다 공격자의 지시를 따르게 만드는 Prompt Injection을 배웁니다.
+
+- LLM과 Prompt
+- System Prompt와 User Prompt
+- Prompt Injection이란?
+- 근본 원인
+- 간단한 예제
+- Direct Prompt Injection
+- Indirect Prompt Injection
+- 실제 공격 흐름
+- 코드 예제
+- Prompt Injection vs Jailbreaking
+- SQL Injection과 다른 이유
+- 공격자가 얻을 수 있는 것
+- 방어 방법
+- Defense Checklist
+- 자체 테스트
+- 아직 완전히 해결되지 않은 이유
+
+시작하기: [Prompt Injection](https://outcomeschool.com/blog/prompt-injection-in-llms)
+
+### 14.3 LLM Watermarking은 어떻게 동작하는가?
+
+모델이 생성한 텍스트에 의미를 크게 훼손하지 않고 통계적 신호를 남겨 나중에 검출하는 Watermarking을 배웁니다.
+
+- Watermark란?
+- 필요한 이유
+- LLM 텍스트 생성
+- 다음 Token 선택
+- Watermarking이 가능한 확률적 여유
+- Secret Key
+- Preferred Token과 기타 Token
+- 확률을 미세하게 조정하는 방법
+- Preferred Set이 계속 바뀌는 이유
+- 한 Token vs 수천 Token
+- Detection
+- AI Text Detector와의 차이
+- 품질을 유지하는 이유
+- 편집된 텍스트
+- 실제 활용
+- 장단점
+
+시작하기: [LLM Watermarking](https://outcomeschool.com/blog/how-does-llm-watermarking-work)
+
+---
+
+## 모듈 15: 멀티모달 AI와 생성 모델
+
+이 모듈에서는 AI가 이미지와 다른 형태의 데이터를 처리하는 방법, Noise에서 이미지를 생성하는 다양한 생성 모델을 배웁니다.
+
+**이 모듈의 레슨:**
+
+1. [Multimodal AI란?](https://outcomeschool.com/blog/multimodal-ai)
+2. [Vision Transformer(ViT)란?](https://outcomeschool.com/blog/decoding-vision-transformer-vit)
+3. [Image Embedding은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-image-embeddings-work)
+4. [Diffusion Model이란?](https://outcomeschool.com/blog/diffusion-models)
+5. [Generative Adversarial Network(GAN)이란?](https://outcomeschool.com/blog/generative-adversarial-networks)
+6. [Variational Autoencoder(VAE)란?](https://outcomeschool.com/blog/variational-autoencoders)
+
+---
+
+### 15.1 Multimodal AI란?
+
+텍스트, 이미지, 음성 등 여러 Modality를 함께 다루는 AI를 배웁니다.
+
+- 큰 그림
+- Modality란?
+- Unimodal vs Multimodal AI
+- Multimodal AI가 필요한 이유
+- 동작 방식
+- 세 가지 대표 유형
+- 실제 사례
+- 사용 사례
+- 흔한 실수
+- 빠른 요약
+
+시작하기: [Multimodal AI](https://outcomeschool.com/blog/multimodal-ai)
+
+### 15.2 Vision Transformer(ViT)란?
+
+이미지를 Patch로 나누고 Token처럼 처리해 Transformer로 분류하는 ViT를 배웁니다.
+
+- 큰 그림
+- Image를 Patch로 분할
+- Patch Embedding
+- CLS Token
+- Position Embedding
+- Transformer Encoder
+- Classification Head
+- 전체 과정
+- ViT vs CNN
+- 빠른 요약
+
+시작하기: [Vision Transformer](https://outcomeschool.com/blog/decoding-vision-transformer-vit)
+
+### 15.3 Image Embedding은 어떻게 동작하는가?
+
+이미지를 Vector로 표현해 Similarity Search와 Recommendation 등에 사용하는 Image Embedding을 배웁니다.
+
+- Embedding이란?
+- Image Embedding이란?
+- 필요한 이유
+- 컴퓨터가 이미지를 보는 방식
+- 생성 방식
+- 수치 예제
+- Embedding 간 Similarity
+- 코드 예제
+- 실제 활용
+- 요약
+
+시작하기: [Image Embedding](https://outcomeschool.com/blog/how-do-image-embeddings-work)
+
+### 15.4 Diffusion Model이란?
+
+Noise를 점차 제거해 이미지를 생성하는 Diffusion Model을 배웁니다.
+
+- Diffusion Model이란?
+- 필요한 이유
+- Forward와 Reverse Process
+- Forward: Noise 추가
+- Reverse: Noise 제거
+- 단계별 예제
+- 학습 방식
+- 간단한 코드 예제
+- Conditional Diffusion(Text-to-Image)
+- 장점
+- 사용처
+
+시작하기: [Diffusion Model](https://outcomeschool.com/blog/diffusion-models)
+
+### 15.5 Generative Adversarial Network(GAN)이란?
+
+Generator와 Discriminator가 경쟁하며 새로운 이미지를 생성하는 GAN을 배웁니다.
+
+- GAN이란?
+- Generator vs Discriminator
+- 위조범 vs 경찰 비유
+- Adversarial Training Loop
+- Loss와 Minimax Game
+- PyTorch 스타일 코드
+- Mode Collapse
+- 학습 안정성
+- DCGAN, Conditional GAN, StyleGAN, CycleGAN
+- 실제 활용
+
+시작하기: [GAN](https://outcomeschool.com/blog/generative-adversarial-networks)
+
+### 15.6 Variational Autoencoder(VAE)란?
+
+매끄럽고 구조화된 Latent Space를 학습해 새로운 데이터를 생성할 수 있는 VAE를 배웁니다.
+
+- Autoencoder란?
+- 일반 Autoencoder의 문제
+- VAE란?
+- Encoder, Latent Space, Decoder
+- Reparameterization Trick
+- VAE Loss
+- 간단한 예제
+- 코드 예제
+- 장점
+- 사용처
+
+시작하기: [VAE](https://outcomeschool.com/blog/variational-autoencoders)
+
+---
