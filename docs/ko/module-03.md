@@ -11,50 +11,50 @@
 **이 모듈의 레슨:**
 
 1. [생성형 AI란?](https://outcomeschool.com/blog/what-is-generative-ai)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/what-is-generative-ai.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/what-is-generative-ai.md)
 2. [Autoregressive Model이란?](https://outcomeschool.com/blog/autoregressive-models)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/autoregressive-models.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/autoregressive-models.md)
 3. [LLM의 Byte Pair Encoding(BPE)이란?](https://outcomeschool.com/blog/bpe-in-llms)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/bpe-in-llms.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/bpe-in-llms.md)
 4. [Embedding이란?](https://outcomeschool.com/blog/what-are-embeddings)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/what-are-embeddings.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/what-are-embeddings.md)
 5. [RNN과 Transformer는 어떻게 다른가?](https://outcomeschool.com/blog/how-do-rnns-and-transformers-differ)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/how-do-rnns-and-transformers-differ.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/how-do-rnns-and-transformers-differ.md)
 6. [Transformer 아키텍처는 어떻게 동작하는가?](https://outcomeschool.com/blog/decoding-transformer-architecture)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/decoding-transformer-architecture.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/decoding-transformer-architecture.md)
 7. [Transformer의 Encoder vs Decoder](https://outcomeschool.com/blog/encoder-vs-decoder-in-transformers)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/encoder-vs-decoder-in-transformers.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/encoder-vs-decoder-in-transformers.md)
 8. [Transformer의 Self Attention이란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/self-attention-in-transformers)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/self-attention-in-transformers.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/self-attention-in-transformers.md)
 9. [Attention은 어떻게 동작하는가? Q, K, V의 수학](https://outcomeschool.com/blog/math-behind-attention-qkv)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/math-behind-attention-qkv.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/math-behind-attention-qkv.md)
 10. [왜 Attention을 √dₖ로 스케일링하는가?](https://outcomeschool.com/blog/scaling-dot-product-attention)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/scaling-dot-product-attention.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/scaling-dot-product-attention.md)
 11. [Attention의 Causal Masking이란 무엇이며 LLM에 왜 필요한가?](https://outcomeschool.com/blog/causal-masking-in-attention)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/causal-masking-in-attention.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/causal-masking-in-attention.md)
 12. [Transformer의 Multi-Head Attention이란?](https://outcomeschool.com/blog/multi-head-attention-in-transformers)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/multi-head-attention-in-transformers.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/multi-head-attention-in-transformers.md)
 13. [Transformer의 Cross Attention이란?](https://outcomeschool.com/blog/cross-attention-in-transformers)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/cross-attention-in-transformers.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/cross-attention-in-transformers.md)
 14. [RoPE(Rotary Position Embedding)란?](https://outcomeschool.com/blog/math-behind-rope-rotary-position-embedding)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/math-behind-rope-rotary-position-embedding.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/math-behind-rope-rotary-position-embedding.md)
 15. [LLM의 Feed-Forward Network란 무엇이며 어떤 역할을 하는가?](https://outcomeschool.com/blog/feed-forward-networks-in-llms)
+   ↳ [한국어 상세 학습 노트](blogs/module-03/feed-forward-networks-in-llms.md)
 
-→ [한국어 상세 학습 노트](blogs/module-03/feed-forward-networks-in-llms.md)
 
 ---
 
@@ -81,6 +81,7 @@
 
 → [한국어 상세 학습 노트](blogs/module-03/what-is-generative-ai.md)
 
+
 ### 3.2 Autoregressive Model이란?
 
 과거의 결과를 바탕으로 다음 단계를 예측하며 한 조각씩 생성하는 Autoregressive Model을 배웁니다.
@@ -101,6 +102,7 @@
 
 → [한국어 상세 학습 노트](blogs/module-03/autoregressive-models.md)
 
+
 ### 3.3 LLM의 Byte Pair Encoding(BPE)이란?
 
 현대 LLM이 텍스트를 처리하기 전에 작은 단위로 나누는 대표적인 토큰화 알고리즘인 **BPE(Byte Pair Encoding)**를 배웁니다.
@@ -115,6 +117,7 @@
 시작하기: [LLM의 BPE란?](https://outcomeschool.com/blog/bpe-in-llms)
 
 → [한국어 상세 학습 노트](blogs/module-03/bpe-in-llms.md)
+
 
 영상 보기: [Tokenization in Large Language Models (LLMs)](https://www.youtube.com/watch?v=sK2s9I84EVI)
 
@@ -138,6 +141,7 @@
 
 → [한국어 상세 학습 노트](blogs/module-03/what-are-embeddings.md)
 
+
 영상 보기: [Embeddings in Machine Learning](https://www.youtube.com/watch?v=LedXW6xl21s)
 
 ### 3.5 RNN과 Transformer는 어떻게 다른가?
@@ -158,6 +162,7 @@
 
 → [한국어 상세 학습 노트](blogs/module-03/how-do-rnns-and-transformers-differ.md)
 
+
 ### 3.6 Transformer 아키텍처는 어떻게 동작하는가?
 
 Transformer 아키텍처를 구성 요소별로 분해해 각 요소의 역할, 상호작용, 현대 LLM의 기반이 된 이유를 이해합니다.
@@ -175,6 +180,7 @@ Transformer 아키텍처를 구성 요소별로 분해해 각 요소의 역할, 
 시작하기: [Transformer 아키텍처는 어떻게 동작하는가?](https://outcomeschool.com/blog/decoding-transformer-architecture)
 
 → [한국어 상세 학습 노트](blogs/module-03/decoding-transformer-architecture.md)
+
 
 ### 3.7 Transformer의 Encoder vs Decoder
 
@@ -194,6 +200,7 @@ Transformer 아키텍처를 구성 요소별로 분해해 각 요소의 역할, 
 
 → [한국어 상세 학습 노트](blogs/module-03/encoder-vs-decoder-in-transformers.md)
 
+
 ### 3.8 Transformer의 Self Attention이란 무엇이며 어떻게 동작하는가?
 
 BERT와 GPT 같은 현대 LLM의 핵심인 Self Attention의 개념과 단계별 동작을 배웁니다.
@@ -211,6 +218,7 @@ BERT와 GPT 같은 현대 LLM의 핵심인 Self Attention의 개념과 단계별
 
 → [한국어 상세 학습 노트](blogs/module-03/self-attention-in-transformers.md)
 
+
 ### 3.9 Attention은 어떻게 동작하는가? Q, K, V의 수학
 
 단계별 수치 예제로 Query(Q), Key(K), Value(V)를 포함한 Attention의 수학을 배웁니다.
@@ -227,6 +235,7 @@ BERT와 GPT 같은 현대 LLM의 핵심인 Self Attention의 개념과 단계별
 시작하기: [Q, K, V의 수학](https://outcomeschool.com/blog/math-behind-attention-qkv)
 
 → [한국어 상세 학습 노트](blogs/module-03/math-behind-attention-qkv.md)
+
 
 영상 보기: [Softmax Activation Function in Machine Learning](https://www.youtube.com/watch?v=2Zx6x01WwWM)
 
@@ -248,6 +257,7 @@ Transformer의 dot-product attention을 √dₖ로 나누는 이유를 수학과
 
 → [한국어 상세 학습 노트](blogs/module-03/scaling-dot-product-attention.md)
 
+
 ### 3.11 Attention의 Causal Masking이란 무엇이며 LLM에 왜 필요한가?
 
 **Causal Masking**의 역할과 구현을 배웁니다.
@@ -260,6 +270,7 @@ Transformer의 dot-product attention을 √dₖ로 나누는 이유를 수학과
 시작하기: [Causal Masking이란?](https://outcomeschool.com/blog/causal-masking-in-attention)
 
 → [한국어 상세 학습 노트](blogs/module-03/causal-masking-in-attention.md)
+
 
 ### 3.12 Transformer의 Multi-Head Attention이란?
 
@@ -277,6 +288,7 @@ Transformer의 dot-product attention을 √dₖ로 나누는 이유를 수학과
 
 → [한국어 상세 학습 노트](blogs/module-03/multi-head-attention-in-transformers.md)
 
+
 ### 3.13 Transformer의 Cross Attention이란?
 
 Cross Attention의 개념과 동작, Self Attention과의 차이, 실제 사용처를 배웁니다.
@@ -293,6 +305,7 @@ Cross Attention의 개념과 동작, Self Attention과의 차이, 실제 사용�
 시작하기: [Cross Attention이란?](https://outcomeschool.com/blog/cross-attention-in-transformers)
 
 → [한국어 상세 학습 노트](blogs/module-03/cross-attention-in-transformers.md)
+
 
 ### 3.14 RoPE(Rotary Position Embedding)란?
 
@@ -313,6 +326,7 @@ Cross Attention의 개념과 동작, Self Attention과의 차이, 실제 사용�
 
 → [한국어 상세 학습 노트](blogs/module-03/math-behind-rope-rotary-position-embedding.md)
 
+
 ### 3.15 LLM의 Feed-Forward Network란 무엇이며 어떤 역할을 하는가?
 
 Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer layer에 왜 필요한지, 모델의 표현력을 어떻게 높이는지 배웁니다.
@@ -332,6 +346,7 @@ Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer
 시작하기: [LLM의 Feed-Forward Network란?](https://outcomeschool.com/blog/feed-forward-networks-in-llms)
 
 → [한국어 상세 학습 노트](blogs/module-03/feed-forward-networks-in-llms.md)
+
 
 **모듈 3 영상 및 추가 자료:**
 
