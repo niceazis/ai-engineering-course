@@ -9,9 +9,17 @@
 **이 모듈의 레슨:**
 
 1. [LLM Evaluation이란?](https://outcomeschool.com/blog/llm-evaluation)
+
+→ [한국어 상세 학습 노트](blogs/module-13/llm-evaluation.md)
 2. [LLM as a Judge란?](https://outcomeschool.com/blog/llm-as-a-judge)
+
+→ [한국어 상세 학습 노트](blogs/module-13/llm-as-a-judge.md)
 3. [AI Agent를 어떻게 평가할까?](https://outcomeschool.com/blog/ai-agent-evaluation)
+
+→ [한국어 상세 학습 노트](blogs/module-13/ai-agent-evaluation.md)
 4. [AI Agent Observability란?](https://outcomeschool.com/blog/ai-agent-observability)
+
+→ [한국어 상세 학습 노트](blogs/module-13/ai-agent-observability.md)
 
 ---
 
@@ -34,6 +42,8 @@ LLM 성능을 측정하기 위한 평가 유형, 자동 지표, Benchmark, 사�
 
 시작하기: [LLM Evaluation](https://outcomeschool.com/blog/llm-evaluation)
 
+→ [한국어 상세 학습 노트](blogs/module-13/llm-evaluation.md)
+
 ### 13.2 LLM as a Judge란?
 
 하나의 LLM을 이용해 다른 LLM의 출력을 평가하는 방법을 배웁니다.
@@ -50,6 +60,8 @@ LLM 성능을 측정하기 위한 평가 유형, 자동 지표, Benchmark, 사�
 - 실제 활용
 
 시작하기: [LLM as a Judge](https://outcomeschool.com/blog/llm-as-a-judge)
+
+→ [한국어 상세 학습 노트](blogs/module-13/llm-as-a-judge.md)
 
 ### 13.3 AI Agent를 어떻게 평가할까?
 
@@ -73,6 +85,8 @@ Agent Evaluation이 일반 LLM 평가와 어떻게 다른지, Outcome·Trajector
 
 시작하기: [AI Agent Evaluation](https://outcomeschool.com/blog/ai-agent-evaluation)
 
+→ [한국어 상세 학습 노트](blogs/module-13/ai-agent-evaluation.md)
+
 ### 13.4 AI Agent Observability란?
 
 Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 문제 원인을 이해하는 Observability를 배웁니다.
@@ -93,5 +107,7 @@ Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 �
 - Best Practice
 
 시작하기: [AI Agent Observability](https://outcomeschool.com/blog/ai-agent-observability)
+
+→ [한국어 상세 학습 노트](blogs/module-13/ai-agent-observability.md)
 
 ---
