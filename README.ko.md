@@ -2867,3 +2867,424 @@ Generator와 Discriminator가 경쟁하며 새로운 이미지를 생성하는 G
 시작하기: [VAE](https://outcomeschool.com/blog/variational-autoencoders)
 
 ---
+
+## 모듈 16: AI 인프라, 배포, 시스템 설계
+
+이 모듈에서는 AI 모델을 실행하는 하드웨어, 모델을 어디에 배포할지, 각 요청을 적절한 모델로 라우팅하는 방법, 그리고 완전한 AI 시스템을 처음부터 끝까지 설계하는 방법을 배웁니다.
+
+**이 모듈의 레슨:**
+
+1. [딥러닝에서 GPU는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-a-gpu-work-for-deep-learning)
+2. [Google TPU는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-a-google-tpu-work)
+3. [LPU는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-an-lpu-work)
+4. [Cloud vs On-device Model Deployment](https://outcomeschool.com/blog/cloud-vs-on-device-model-deployment)
+5. [Android TensorFlow Lite 머신러닝 예제](https://outcomeschool.com/blog/android-tensorflow-lite-machine-learning-example)
+6. [LLM Routing이란?](https://outcomeschool.com/blog/llm-routing)
+7. [실시간 Voice AI Agent 설계](https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent)
+8. [System Design이란?](https://outcomeschool.com/blog/system-design)
+9. [HTTP Request vs Long-Polling vs WebSocket vs SSE](https://outcomeschool.com/blog/http-request-long-polling-websocket-sse)
+10. [Voice/Video Call은 어떻게 동작하는가?](https://outcomeschool.com/blog/voice-and-video-call)
+
+---
+
+### 16.1 딥러닝에서 GPU는 어떻게 동작하는가?
+
+GPU가 대규모 병렬 연산과 높은 메모리 대역폭을 이용해 딥러닝에 적합한 이유를 배웁니다.
+
+- GPU란?
+- 딥러닝에 적합한 이유
+- CPU vs GPU
+- 수학 교수와 수천 명의 학생 비유
+- 딥러닝이 Matrix Multiplication 중심인 이유
+- Serial vs Parallel Work
+- VRAM과 Memory Bandwidth
+- 모델이 VRAM에 들어가야 하는 이유
+- Tensor Core와 FP16/BF16/INT8
+- CUDA와 cuDNN
+- Training vs Inference
+- Multi-GPU
+- NVIDIA GPU가 현대 AI의 중심이 된 이유
+
+시작하기: [GPU와 딥러닝](https://outcomeschool.com/blog/how-does-a-gpu-work-for-deep-learning)
+
+### 16.2 Google TPU는 어떻게 동작하는가?
+
+Google이 머신러닝을 위해 설계한 TPU와 Systolic Array 구조를 배웁니다.
+
+- TPU란?
+- Google이 TPU를 만든 이유
+- CPU와 GPU 복습
+- 가장 중요한 연산
+- Systolic Array
+- TPU 내부 Data Flow
+- 전체 계산 과정
+- 빠르고 전력 효율적인 이유
+- 사용처
+- 한계
+
+시작하기: [Google TPU](https://outcomeschool.com/blog/how-does-a-google-tpu-work)
+
+### 16.3 LPU는 어떻게 동작하는가?
+
+학습이 끝난 LLM을 매우 빠르게 추론하도록 설계된 LPU의 구조와 Memory Bottleneck 해결 방식을 배웁니다.
+
+- LPU란?
+- LLM이 Token을 생성하는 방식
+- 핵심 병목은 Math보다 Memory
+- GPU가 어려움을 겪는 이유
+- Model을 Chip 가까이에 두기
+- On-chip Memory 문제
+- Compiler로 실행을 미리 계획하기
+- 기다리지 않는 Network
+- Assembly Line 구조
+- Prompt 처리 과정
+- 빠른 이유
+- 적합한 사용처
+- 부적합한 사용처
+- LPU vs GPU
+- 선택 기준
+
+시작하기: [LPU](https://outcomeschool.com/blog/how-does-an-lpu-work)
+
+### 16.4 Cloud vs On-device Model Deployment
+
+AI 모델을 Cloud에서 실행하는 방식과 사용자 Device에서 직접 실행하는 방식을 비교합니다.
+
+- Deployment란?
+- Training과 Inference
+- Cloud Deployment
+- On-device Deployment
+- 핵심 차이
+- Round Trip 문제
+- Data 위치
+- Model Size
+- 비용 부담
+- 배포·업데이트 문제
+- Network가 없을 때
+- Hybrid Approach
+- 실제 예제
+- 비교 표
+- 선택 기준
+- 요약
+
+시작하기: [Cloud vs On-device Model Deployment](https://outcomeschool.com/blog/cloud-vs-on-device-model-deployment)
+
+### 16.5 Android TensorFlow Lite 머신러닝 예제
+
+Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 예제를 살펴봅니다.
+
+시작하기: [Android TensorFlow Lite Machine Learning Example](https://outcomeschool.com/blog/android-tensorflow-lite-machine-learning-example)
+
+### 16.6 LLM Routing이란?
+
+비용, Latency, 품질을 고려해 각 사용자 Query를 적절한 LLM으로 보내는 Routing 전략을 배웁니다.
+
+- 큰 그림
+- LLM Routing이란?
+- 필요한 이유
+- LLM Router의 구조
+- Routing Strategy
+- Full Trace 예제
+- LLM Routing vs Mixture of Experts
+- Routing이 가치 있는 경우
+- 흔한 실수와 해결책
+- 빠른 요약
+
+시작하기: [LLM Routing](https://outcomeschool.com/blog/llm-routing)
+
+### 16.7 실시간 Voice AI Agent 설계
+
+사람의 음성을 듣고 이해하고, 필요한 Tool을 호출하고, 자연스러운 음성으로 수백 ms 수준에서 응답하는 실시간 Voice AI Agent를 설계합니다.
+
+- Voice AI Agent란?
+- Real-Time Voice가 어려운 이유
+- Requirements
+- Back-of-the-envelope Estimation
+- High-Level Architecture
+- Audio Transport
+- Voice Activity Detection·Turn Detection
+- Speech-to-Text
+- LLM + Tools
+- Text-to-Speech
+- Cascaded Pipeline(STT → LLM → TTS)
+- Speech-to-Speech Model
+- Hybrid Approach
+- 방식 비교
+- Latency Budget
+- Barge-in
+- Tool Calling
+- Memory와 Context
+- Telephony
+- Scaling
+- Edge Case
+- Observability와 Evaluation
+- Safety, Security, Privacy
+- Cost
+- 면접에서 설계를 설명하는 방법
+
+시작하기: [실시간 Voice AI Agent 설계](https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent)
+
+**AI System Design 보조 레슨:**
+
+### 16.8 System Design이란?
+
+- System Design이란?
+- 왜 필요한가?
+- 필요한 핵심 개념은 무엇인가?
+
+시작하기: [System Design](https://outcomeschool.com/blog/system-design)
+
+### 16.9 HTTP Request vs Long-Polling vs WebSocket vs SSE
+
+서버와 클라이언트가 데이터를 주고받는 주요 방식들을 비교합니다.
+
+- HTTP Request
+- HTTP Polling
+- HTTP Long Polling
+- WebSocket
+- Server-Sent Events(SSE)
+
+시작하기: [HTTP Request vs Long-Polling vs WebSocket vs SSE](https://outcomeschool.com/blog/http-request-long-polling-websocket-sse)
+
+### 16.10 Voice/Video Call은 어떻게 동작하는가?
+
+음성·영상 통화의 High-level 구조를 배웁니다.
+
+- Signaling
+- Peer-to-Peer Connection
+- STUN Server
+- TURN Server
+
+시작하기: [Voice/Video Call](https://outcomeschool.com/blog/voice-and-video-call)
+
+---
+
+## 모듈 17: AI의 프런티어 아이디어
+
+이 모듈에서는 세계의 내부 표현을 학습하는 모델부터 스스로 성능을 개선하는 시스템까지 AI의 미래를 형성하는 아이디어를 배웁니다.
+
+**이 모듈의 레슨:**
+
+1. [JEPA(Joint Embedding Predictive Architecture)란?](https://outcomeschool.com/blog/joint-embedding-predictive-architecture-jepa)
+2. [World Model은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-world-models-work)
+3. [Recursive Self-Improvement(RSI)이란?](https://outcomeschool.com/blog/what-is-recursive-self-improvement-rsi)
+
+---
+
+### 17.1 JEPA란?
+
+Joint Embedding Predictive Architecture(JEPA)의 핵심 아이디어와 I-JEPA, V-JEPA를 배웁니다.
+
+- 인간과 동물이 관찰로 학습하는 방식
+- Yann LeCun의 자율형 Machine Intelligence 비전
+- 직관을 위한 일상 비유
+- JEPA의 의미
+- Embedding/Representation Space
+- Raw Pixel 예측의 문제
+- Contrastive Method의 문제
+- JEPA의 핵심 아이디어
+- Building Block
+- Energy-based View
+- I-JEPA
+- V-JEPA와 World Model 비전
+- JEPA가 중요한 이유
+
+시작하기: [JEPA](https://outcomeschool.com/blog/joint-embedding-predictive-architecture-jepa)
+
+### 17.2 World Model은 어떻게 동작하는가?
+
+환경이 어떻게 변하는지 내부적으로 모델링해 실제 행동 전에 미래를 상상하고 계획하는 World Model을 배웁니다.
+
+- Environment, State, Action
+- World Model이란?
+- 행동하기 전에 상상하는 인간 비유
+- 필요한 이유
+- 다음 State 예측으로 학습
+- Latent State
+- 실제 세계를 건드리지 않고 Future Rollout
+- Dreamer-style Agent
+- 미래 예측
+- 실제 활용
+
+시작하기: [World Model](https://outcomeschool.com/blog/how-do-world-models-work)
+
+### 17.3 Recursive Self-Improvement(RSI)이란?
+
+AI가 자신의 능력을 개선하고, 개선된 버전이 다시 자신을 개선하는 반복적 Self-Improvement 아이디어를 배웁니다.
+
+- RSI란?
+- 중요한 이유
+- 오늘날 AI가 개선되는 방식
+- RSI Loop
+- 수치 예제
+- 두 종류의 Improvement
+- 현재 현실에 존재하는 형태
+- Intelligence Explosion
+- 강점과 실패 지점
+- Human-in-the-loop
+- RSI vs Normal Training
+
+시작하기: [Recursive Self-Improvement](https://outcomeschool.com/blog/what-is-recursive-self-improvement-rsi)
+
+---
+
+## 모듈 18: AI 엔지니어링 면접 준비
+
+머신러닝 기초부터 프로덕션 AI Agent까지 학습했다면 이제 면접을 준비할 차례입니다.
+
+- [AI Engineering Interview Questions and Answers](https://github.com/amitshekhariitbhu/ai-engineering-interview-questions)
+
+더 깊게 배우려면 Outcome School의 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning) 프로그램을 참고하세요.
+
+---
+
+## AI 엔지니어링 핵심 개념 용어집
+
+이 과정에서 다룬 주요 AI 엔지니어링 용어의 빠른 정의입니다. 각 용어의 링크를 누르면 자세한 설명을 볼 수 있습니다.
+
+- **[Generative AI](https://outcomeschool.com/blog/what-is-generative-ai):** 텍스트, 이미지, 오디오, 비디오, 코드처럼 새로운 콘텐츠를 만들어낼 수 있는 AI입니다.
+- **[Language Model](https://outcomeschool.com/blog/small-language-models-slms):** 이전 Token을 바탕으로 다음 Token을 예측하도록 학습된 신경망입니다.
+- **[LLM Architecture](https://outcomeschool.com/blog/evolution-of-llm-architecture):** LLM이 텍스트를 읽고 기억하고 다음 Token을 생성하는 구조를 정의한 설계도입니다.
+- **[Tokenization](https://outcomeschool.com/blog/bpe-in-llms):** 텍스트를 Token이라는 작은 단위로 나누고 숫자로 변환하는 과정입니다.
+- **[BPE](https://outcomeschool.com/blog/bpe-in-llms):** 문자와 단어 사이 크기의 Subword 단위로 텍스트를 나누는 Tokenization 알고리즘입니다.
+- **[Embedding](https://outcomeschool.com/blog/what-are-embeddings):** 의미가 비슷한 항목이 가까운 위치에 놓이도록 의미를 숫자 Vector로 표현한 것입니다.
+- **[Transformer](https://outcomeschool.com/blog/encoder-vs-decoder-in-transformers):** 현대 언어 AI 모델 대부분의 기반이 되는 아키텍처입니다.
+- **[Self Attention](https://outcomeschool.com/blog/self-attention-in-transformers):** 한 Sequence의 각 Token이 같은 Sequence의 다른 Token들을 참고해 Context를 이해하게 하는 메커니즘입니다.
+- **[Multi-Head Attention](https://outcomeschool.com/blog/multi-head-attention-in-transformers):** 여러 Self Attention Head를 병렬 실행하고 결과를 결합해 더 풍부한 표현을 만드는 방식입니다.
+- **[Grouped-Query Attention(GQA)](https://outcomeschool.com/blog/grouped-query-attention):** Query Head를 Group으로 묶어 같은 Group 안에서 Key와 Value를 공유하는 Attention 방식입니다.
+- **[Gradient Descent](https://outcomeschool.com/blog/math-behind-gradient-descent):** Loss가 가장 빠르게 감소하는 기울기 방향으로 Parameter를 갱신하는 최적화 방법입니다.
+- **[Backpropagation](https://outcomeschool.com/blog/math-behind-backpropagation):** 각 Weight가 Error에 얼마나 기여했는지 계산해 Weight를 조정하는 방법입니다.
+- **[Reinforcement Learning](https://outcomeschool.com/blog/reinforcement-learning):** Agent가 Environment와 상호작용하며 장기 Reward를 최대화하도록 의사결정 Sequence를 학습하는 방법입니다.
+- **[Contrastive Learning](https://outcomeschool.com/blog/contrastive-learning):** 비슷한 데이터를 Representation Space에서 가깝게, 다른 데이터를 멀게 배치하도록 학습하는 방법입니다.
+- **[Top-p Sampling](https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work):** 누적 확률이 p 이상이 되는 최소 상위 Token 집합에서 무작위로 다음 Token을 선택하는 Decoding 전략입니다.
+- **[Token Streaming](https://outcomeschool.com/blog/how-does-token-streaming-work):** 전체 응답이 끝날 때까지 기다리지 않고 생성되는 Token을 순차적으로 사용자에게 전송하는 기법입니다.
+- **[Lost in the Middle](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms):** 긴 입력의 시작과 끝보다 중간에 있는 정보를 LLM이 덜 활용하는 현상입니다.
+- **[Large Reasoning Model(LRM)](https://outcomeschool.com/blog/large-reasoning-models):** 답변 전에 더 많은 추론 과정을 수행하도록 학습된 대규모 언어 모델입니다.
+- **[Diffusion Language Model](https://outcomeschool.com/blog/how-do-diffusion-language-models-dlms-work):** Noise에 가까운 텍스트 표현을 반복적으로 정제해 문장을 생성하는 언어 모델 방식입니다.
+- **[Fine-tuning](https://outcomeschool.com/blog/how-does-fine-tuning-work):** 이미 학습된 모델을 특정 Data·Task에 맞게 추가 학습하는 과정입니다.
+- **[LoRA](https://outcomeschool.com/blog/lora-low-rank-adaptation-of-llms):** 원 Weight를 고정하고 작은 Low-Rank Matrix만 학습해 대형 모델을 효율적으로 파인튜닝하는 방법입니다.
+- **[Knowledge Distillation](https://outcomeschool.com/blog/how-does-knowledge-distillation-work):** 큰 Teacher Model의 동작을 작은 Student Model이 모방하도록 학습하는 기법입니다.
+- **[Continual Learning](https://outcomeschool.com/blog/continual-learning-in-llms):** 기존 지식을 잊지 않으면서 새로운 정보를 지속적으로 학습하는 능력입니다.
+- **[RLHF](https://outcomeschool.com/blog/reinforcement-learning-from-human-feedback-rlhf):** 사람의 선호를 Reward Signal로 바꿔 LLM의 응답을 사람의 선호에 맞게 추가 학습하는 기법입니다.
+- **[Chain-of-Thought Prompting](https://outcomeschool.com/blog/how-does-chain-of-thought-prompting-work):** 최종 답변 전에 단계적인 Reasoning을 수행하도록 유도하는 Prompting 기법입니다.
+- **[Prompt Chaining](https://outcomeschool.com/blog/how-does-prompt-chaining-work):** 큰 작업을 여러 Prompt로 나누고 이전 Prompt의 출력을 다음 Prompt 입력으로 연결하는 방식입니다.
+- **[Prompt Caching](https://outcomeschool.com/blog/how-does-prompt-caching-work):** 반복되는 Prompt Prefix 계산을 저장해 다음 요청에서 재사용하는 기법입니다.
+- **[Context Engineering](https://outcomeschool.com/blog/context-engineering):** LLM Context Window에 들어가는 모든 정보를 설계·구성·관리해 작업 신뢰성을 높이는 방법입니다.
+- **[Context Compaction](https://outcomeschool.com/blog/how-does-context-compaction-work):** 오래된 대화를 짧은 Summary로 압축해 중요 정보는 보존하고 Context 공간을 확보하는 기법입니다.
+- **[RAG](https://outcomeschool.com/blog/how-does-hyde-work):** 자체 문서나 외부 Knowledge를 검색해 그 정보를 기반으로 답변을 생성하게 하는 방식입니다.
+- **[Chunk](https://outcomeschool.com/blog/chunking-strategies-for-rag):** 큰 Document에서 잘라낸 작은 Text 단위입니다.
+- **[Hybrid Search](https://outcomeschool.com/blog/how-does-hybrid-search-work):** Keyword Search와 Semantic Search를 결합해 하나의 Ranking 결과를 만드는 기법입니다.
+- **[Reranker](https://outcomeschool.com/blog/how-does-a-reranker-work):** 검색된 Document 목록을 Query와의 Relevant 정도에 따라 다시 정렬하는 모델입니다.
+- **[Semantic Caching](https://outcomeschool.com/blog/how-does-semantic-caching-work):** 정확한 문자열이 아니라 의미 유사성을 기준으로 이전 응답을 재사용하는 Cache입니다.
+- **[Agentic RAG](https://outcomeschool.com/blog/agentic-rag):** AI Agent가 Retrieval 과정을 계획하고 제어하는 RAG 시스템입니다.
+- **[AI Agent](https://outcomeschool.com/blog/ai-agent):** LLM + Instructions + Tools + Memory + 목표 달성까지 반복하는 Loop로 구성된 시스템입니다.
+- **[Function Calling](https://outcomeschool.com/blog/how-does-function-calling-work-in-llms):** LLM이 외부 Tool, API, Function을 선택하고 호출할 수 있도록 연결하는 방식이며 Tool Calling이라고도 합니다.
+- **[ReAct Agent](https://outcomeschool.com/blog/react-agent):** Reasoning + Acting 패턴을 이용해 생각과 Tool 사용을 번갈아 수행하는 AI Agent입니다.
+- **[MCP](https://outcomeschool.com/blog/what-is-mcp-model-context-protocol):** AI Application이 외부 Tool과 Data에 연결되는 공통 방식을 정의한 Open Standard입니다.
+- **[Agent Skill](https://outcomeschool.com/blog/what-are-agent-skills):** 특정 Task에 필요할 때 Agent가 불러오는 Instructions와 선택적 Script·Reference File 묶음입니다.
+- **[OKF](https://outcomeschool.com/blog/what-is-okf-open-knowledge-format):** 조직의 Data와 System에 대한 Knowledge를 Plain Markdown File 묶음으로 표현하는 Open Standard입니다.
+- **[AI SubAgent](https://outcomeschool.com/blog/ai-subagents):** 큰 Task의 특정 부분을 맡도록 Main Agent 아래에서 동작하는 전문화된 작은 Agent입니다.
+- **[AI Orchestration](https://outcomeschool.com/blog/ai-orchestration):** LLM, Tool, Data Source, Agent 등 여러 AI Component가 복잡한 Task를 함께 수행하도록 조정하는 과정입니다.
+- **[Loop Engineering](https://outcomeschool.com/blog/what-is-loop-engineering):** Agent의 반복 실행 Cycle이 실제 진전을 만들고 적절한 시점에 올바른 결과로 종료되도록 설계하는 작업입니다.
+- **[Graph Engineering](https://outcomeschool.com/blog/what-is-graph-engineering):** AI System의 각 Step을 Node, Step 간 Path를 Edge로 표현해 Graph로 설계하는 방법입니다.
+- **[LangChain](https://outcomeschool.com/blog/how-does-langchain-work):** LLM 기반 Application 구축을 돕는 Framework입니다.
+- **[LangGraph](https://outcomeschool.com/blog/how-does-langgraph-work):** LLM Application의 작업 흐름을 Graph 형태로 구성하는 Framework입니다.
+- **[Claude Code](https://outcomeschool.com/blog/how-does-claude-code-work):** Anthropic의 Terminal Coding Agent로, 자연어 Task를 받아 Code 탐색·수정·Command 실행·검증을 수행합니다.
+- **[Prefill](https://outcomeschool.com/blog/prefill-vs-decode-llm-inference-optimization):** 모델이 전체 Input Prompt를 한 번에 처리하고 첫 Output Token을 만들기까지의 단계입니다.
+- **[KV Cache Compression](https://outcomeschool.com/blog/kv-cache-compression):** 출력 품질을 최대한 유지하면서 KV Cache Memory를 줄이는 기법들의 집합입니다.
+- **[Paged Attention](https://outcomeschool.com/blog/paged-attention-in-llms):** KV Cache를 Page라는 고정 크기 Block으로 나눠 Memory를 효율적으로 관리하는 기법입니다.
+- **[Continuous Batching](https://outcomeschool.com/blog/continuous-batching-in-llms):** Batch의 한 Request가 끝나는 즉시 대기 중인 Request를 투입해 GPU를 계속 활용하는 방식입니다.
+- **[Speculative Decoding](https://outcomeschool.com/blog/n-gram-speculation-in-llms):** 다음 여러 Token을 빠르게 추측한 뒤 큰 모델이 한 번의 실행으로 검증해 생성 속도를 높이는 기법입니다.
+- **[Model Quantization](https://outcomeschool.com/blog/how-does-model-quantization-work):** 모델 숫자를 더 낮은 Precision으로 저장·계산해 Memory를 줄이고 실행을 빠르게 만드는 과정입니다.
+- **[GGUF](https://outcomeschool.com/blog/how-does-gguf-work):** Local Inference에 필요한 Model 정보와 Weight를 하나의 Self-contained File로 저장하는 형식입니다.
+- **[vLLM](https://outcomeschool.com/blog/how-does-vllm-work):** KV Cache Memory를 효율적으로 관리해 높은 Throughput으로 LLM을 Serving하는 Engine입니다.
+- **[LLM Evaluation](https://outcomeschool.com/blog/llm-evaluation):** 기대한 Task에서 LLM이 얼마나 잘 수행하는지 측정하는 과정입니다.
+- **[LLM as a Judge](https://outcomeschool.com/blog/llm-as-a-judge):** 한 LLM을 사용해 다른 LLM의 출력을 평가하는 기법입니다.
+- **[AI Agent Observability](https://outcomeschool.com/blog/ai-agent-observability):** Agent 내부 동작을 단계별로 기록·이해해 왜 특정 행동을 했는지 분석할 수 있게 하는 관행입니다.
+- **[LLM Guardrails](https://outcomeschool.com/blog/how-do-llm-guardrails-work):** LLM 입력과 출력 주변에서 Safety Policy를 검사하는 보호 장치입니다.
+- **[Prompt Injection](https://outcomeschool.com/blog/prompt-injection-in-llms):** 공격자가 AI Application이 모델에 보내는 Text 안에 자신의 Instruction을 끼워 넣어 Developer 의도보다 공격자의 지시를 따르게 만드는 공격입니다.
+- **[Diffusion Model](https://outcomeschool.com/blog/diffusion-models):** Random Noise에서 시작해 반복적으로 Noise를 제거하며 Image 같은 새로운 Data를 생성하는 모델입니다.
+- **[Variational Autoencoder(VAE)](https://outcomeschool.com/blog/variational-autoencoders):** 매끄럽고 구조화된 Latent Space를 학습해 임의의 Point에서도 의미 있는 새로운 Data를 생성할 수 있는 Autoencoder 계열 모델입니다.
+- **[LPU](https://outcomeschool.com/blog/how-does-an-lpu-work):** 학습된 LLM을 매우 빠르게 추론하고 텍스트를 생성하는 데 특화된 Chip입니다.
+- **[LLM Routing](https://outcomeschool.com/blog/llm-routing):** 모든 Query를 같은 모델에 보내지 않고 각 Query에 적절한 LLM을 선택하는 방식입니다.
+- **[Voice AI Agent](https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent):** 사람과 전화 통화하듯 음성으로 대화하고 필요한 작업을 수행하는 AI Software입니다.
+- **[World Model](https://outcomeschool.com/blog/how-do-world-models-work):** 현재 State와 Action을 바탕으로 다음에 일어날 일을 예측할 수 있도록 Environment의 내부 근사 모델을 학습한 AI입니다.
+- **[Recursive Self-Improvement](https://outcomeschool.com/blog/what-is-recursive-self-improvement-rsi):** AI System이 자신의 능력을 개선하고, 개선된 버전이 다시 자신을 개선하는 Cycle을 반복하는 과정입니다.
+
+---
+
+## AI 엔지니어링 코스 FAQ
+
+### AI 엔지니어링을 배우는 가장 좋은 방법은?
+
+올바른 순서의 구조화된 학습 경로를 따르는 것이 좋습니다. 머신러닝 기초 → 딥러닝 → Transformer → LLM → Fine-tuning → RAG → AI Agent → LLM Inference → Evaluation → AI System Design 순으로 학습하세요. 이 과정은 바로 그 순서를 따르며 각 레슨에서 하나의 개념을 쉬운 말로 상세히 설명합니다.
+
+### 이 AI 엔지니어링 코스는 무료인가요?
+
+네. 완전히 무료입니다. 모든 레슨은 무료 블로그이며 회원가입이나 유료벽이 없습니다.
+
+### 머신러닝 배경지식이 필요한가요?
+
+아닙니다. 머신러닝의 가장 기초부터 시작합니다. 기본적인 프로그래밍 지식, 가능하면 Python, 그리고 고등학교 수준의 수학이면 충분합니다.
+
+### 전체 코스를 완료하는 데 얼마나 걸리나요?
+
+학습 속도에 따라 다릅니다. 매일 한두 개 레슨을 읽고 노트를 작성한다면 약 3~4개월에 전체 코스를 마칠 수 있습니다. 빠르게 끝내는 것보다 각 개념을 깊이 이해하는 것이 더 중요합니다.
+
+### AI Engineer와 Machine Learning Engineer의 차이는?
+
+Machine Learning Engineer는 주로 모델 학습, 튜닝, 배포에 집중합니다. AI Engineer는 특히 LLM을 기반으로 Prompt Engineering, Context Engineering, RAG, AI Agent, Fine-tuning, Inference Optimization 등을 이용해 실제 Product와 System을 구축하는 데 더 집중합니다. 두 역할은 상당히 겹치며 이 코스는 양쪽의 기초를 모두 다룹니다.
+
+### AI Engineer에게 필요한 기술은?
+
+Transformer, Attention, Tokenization 같은 LLM 내부 동작, Prompting·Context Engineering·Fine-tuning·LoRA 같은 모델 적응, RAG·Vector Search 같은 Knowledge 연결, AI Agent·Function Calling·MCP 같은 Action 수행, KV Cache·Quantization·vLLM 같은 효율적 추론, Evaluation·Observability, Guardrail과 Prompt Injection 방어 등을 이해해야 합니다. 이 과정에서 모두 다룹니다.
+
+### AI Agent와 Agentic AI를 다루나요?
+
+네. 모듈 10과 11에서 Agent Loop, Function Calling, ReAct, Plan-and-Execute, Reflection, Agent Memory, MCP, Agent Skills, Multi-Agent System, SubAgent, Orchestration, Computer-Use Agent, Harness/Loop/Graph Engineering, LangChain, LangGraph, Claude Code, Cursor를 다룹니다.
+
+### RAG를 다루나요?
+
+네. 모듈 9에서 Vector Database, ANN, Semantic Search, Hybrid Search, Reranker, ColBERT, Chunking, HyDE, Embedding Cache, Semantic Caching, Agentic RAG, GraphRAG, Vectorless RAG까지 다룹니다.
+
+### LLM Inference Optimization을 다루나요?
+
+네. 모듈 12에서 Prefill vs Decode, Prefill-Decode Disaggregation, KV Cache, Compression, Paged Attention, Continuous Batching, Speculative Decoding, Medusa, EAGLE, Quantization, GGUF, llama.cpp, vLLM, SGLang, TensorRT-LLM을 다룹니다.
+
+### AI Engineer 면접 준비에 도움이 되나요?
+
+네. AI Engineer, Gen AI Engineer, LLM Engineer, Machine Learning Engineer 면접에서 자주 다루는 개념을 포함합니다. 과정을 마친 뒤 [AI Engineering Interview Questions and Answers](https://github.com/amitshekhariitbhu/ai-engineering-interview-questions)로 연습할 수 있습니다.
+
+### 이 코스는 정기적으로 업데이트되나요?
+
+네. AI 기술 변화에 맞춰 새로운 레슨, 블로그, 영상을 계속 추가합니다.
+
+### 이 코스를 만든 사람은 누구인가요?
+
+[Outcome School](https://outcomeschool.com) 창립자 Amit Shekhar가 작성하고 관리합니다. 그는 많은 개발자를 가르치고 멘토링했으며, 다양한 기술 회사의 문제 해결을 지원하고 여러 오픈소스 라이브러리를 만들었습니다.
+
+---
+
+이 AI 엔지니어링 코스가 도움이 되었다면 Star ⭐를 누르고 AI 엔지니어링을 배우고 싶은 친구·동료에게 공유해 주세요.
+
+더 깊게 배우려면 Outcome School의 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning) 프로그램을 참고하세요.
+
+## 라이선스
+
+원본 저작권 및 Apache License 2.0 고지는 그대로 유지합니다.
+
+```
+   Copyright (C) 2026 Outcome School
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+```
