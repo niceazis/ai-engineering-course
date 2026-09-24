@@ -13,31 +13,51 @@
 1. [인공신경망의 Bias란?](https://outcomeschool.com/blog/bias-in-artificial-neural-network)
 
 → [한국어 상세 학습 노트](blogs/module-02/bias-in-artificial-neural-network.md)
+
+→ [한국어 상세 학습 노트](blogs/module-02/bias-in-artificial-neural-network.md)
 2. [경사하강법은 어떻게 동작하는가?](https://outcomeschool.com/blog/math-behind-gradient-descent)
+
+→ [한국어 상세 학습 노트](blogs/module-02/math-behind-gradient-descent.md)
 
 → [한국어 상세 학습 노트](blogs/module-02/math-behind-gradient-descent.md)
 3. [역전파는 어떻게 동작하는가? 수학으로 단계별 설명](https://outcomeschool.com/blog/math-behind-backpropagation)
 
 → [한국어 상세 학습 노트](blogs/module-02/math-behind-backpropagation.md)
+
+→ [한국어 상세 학습 노트](blogs/module-02/math-behind-backpropagation.md)
 4. [Cross-Entropy Loss란?](https://outcomeschool.com/blog/math-behind-cross-entropy-loss)
+
+→ [한국어 상세 학습 노트](blogs/module-02/math-behind-cross-entropy-loss.md)
 
 → [한국어 상세 학습 노트](blogs/module-02/math-behind-cross-entropy-loss.md)
 5. [신경망의 Dropout이란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/dropout-in-neural-networks)
 
 → [한국어 상세 학습 노트](blogs/module-02/dropout-in-neural-networks.md)
+
+→ [한국어 상세 학습 노트](blogs/module-02/dropout-in-neural-networks.md)
 6. [Batch Normalization vs Layer Normalization](https://outcomeschool.com/blog/batch-normalization-vs-layer-normalization)
+
+→ [한국어 상세 학습 노트](blogs/module-02/batch-normalization-vs-layer-normalization.md)
 
 → [한국어 상세 학습 노트](blogs/module-02/batch-normalization-vs-layer-normalization.md)
 7. [RMSNorm이란? Root Mean Square Layer Normalization 설명](https://outcomeschool.com/blog/rmsnorm-root-mean-square-layer-normalization)
 
 → [한국어 상세 학습 노트](blogs/module-02/rmsnorm-root-mean-square-layer-normalization.md)
+
+→ [한국어 상세 학습 노트](blogs/module-02/rmsnorm-root-mean-square-layer-normalization.md)
 8. [순환 신경망(RNN)이란?](https://outcomeschool.com/blog/recurrent-neural-network)
+
+→ [한국어 상세 학습 노트](blogs/module-02/recurrent-neural-network.md)
 
 → [한국어 상세 학습 노트](blogs/module-02/recurrent-neural-network.md)
 9. [PyTorch는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-pytorch-work)
 
 → [한국어 상세 학습 노트](blogs/module-02/how-does-pytorch-work.md)
+
+→ [한국어 상세 학습 노트](blogs/module-02/how-does-pytorch-work.md)
 10. [머신러닝 라이브러리 TensorFlow는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-the-machine-learning-library-tensorflow-work)
+
+→ [한국어 상세 학습 노트](blogs/module-02/how-does-the-machine-learning-library-tensorflow-work.md)
 
 → [한국어 상세 학습 노트](blogs/module-02/how-does-the-machine-learning-library-tensorflow-work.md)
 
@@ -48,6 +68,8 @@
 이 글에서는 인공신경망의 Bias가 무엇인지 배웁니다.
 
 시작하기: [인공신경망의 Bias란?](https://outcomeschool.com/blog/bias-in-artificial-neural-network)
+
+→ [한국어 상세 학습 노트](blogs/module-02/bias-in-artificial-neural-network.md)
 
 → [한국어 상세 학습 노트](blogs/module-02/bias-in-artificial-neural-network.md)
 
@@ -73,6 +95,8 @@
 
 → [한국어 상세 학습 노트](blogs/module-02/math-behind-gradient-descent.md)
 
+→ [한국어 상세 학습 노트](blogs/module-02/math-behind-gradient-descent.md)
+
 영상 보기: [Epoch, Batch, Batch Size, Iteration](https://www.youtube.com/watch?v=NFLlXE-6vno)
 
 ### 2.3 역전파는 어떻게 동작하는가? 수학으로 단계별 설명
@@ -94,6 +118,8 @@
 
 → [한국어 상세 학습 노트](blogs/module-02/math-behind-backpropagation.md)
 
+→ [한국어 상세 학습 노트](blogs/module-02/math-behind-backpropagation.md)
+
 ### 2.4 Cross-Entropy Loss란?
 
 단계별 수치 예제를 이용해 Cross-Entropy Loss의 수학을 배웁니다.
@@ -112,6 +138,8 @@
 - 빠른 요약
 
 시작하기: [Cross-Entropy Loss란?](https://outcomeschool.com/blog/math-behind-cross-entropy-loss)
+
+→ [한국어 상세 학습 노트](blogs/module-02/math-behind-cross-entropy-loss.md)
 
 → [한국어 상세 학습 노트](blogs/module-02/math-behind-cross-entropy-loss.md)
 
@@ -138,6 +166,8 @@
 
 → [한국어 상세 학습 노트](blogs/module-02/dropout-in-neural-networks.md)
 
+→ [한국어 상세 학습 노트](blogs/module-02/dropout-in-neural-networks.md)
+
 ### 2.6 Batch Normalization vs Layer Normalization
 
 Batch Normalization과 Layer Normalization을 배우고, 둘의 차이와 각각 언제 사용하는지 살펴봅니다.
@@ -155,9 +185,13 @@ Batch Normalization과 Layer Normalization을 배우고, 둘의 차이와 각각
 
 → [한국어 상세 학습 노트](blogs/module-02/batch-normalization-vs-layer-normalization.md)
 
+→ [한국어 상세 학습 노트](blogs/module-02/batch-normalization-vs-layer-normalization.md)
+
 ### 2.7 RMSNorm이란? Root Mean Square Layer Normalization 설명
 
 [L​​ayer Normalization](https://outcomeschool.com/blog/batch-normalization-vs-layer-normalization)보다 빠르고 단순한 대안이며 Llama, Mistral, Gemma, Qwen, PaLM, DeepSeek 등 많은 현대 LLM에서 사용하는 RMSNorm을 배웁니다.
+
+→ [한국어 상세 학습 노트](blogs/module-02/batch-normalization-vs-layer-normalization.md)
 
 → [한국어 상세 학습 노트](blogs/module-02/batch-normalization-vs-layer-normalization.md)
 
@@ -177,11 +211,15 @@ Batch Normalization과 Layer Normalization을 배우고, 둘의 차이와 각각
 
 → [한국어 상세 학습 노트](blogs/module-02/rmsnorm-root-mean-square-layer-normalization.md)
 
+→ [한국어 상세 학습 노트](blogs/module-02/rmsnorm-root-mean-square-layer-normalization.md)
+
 ### 2.8 순환 신경망(RNN)이란?
 
 순환 신경망(Recurrent Neural Network)을 배웁니다.
 
 시작하기: [순환 신경망(RNN)이란?](https://outcomeschool.com/blog/recurrent-neural-network)
+
+→ [한국어 상세 학습 노트](blogs/module-02/recurrent-neural-network.md)
 
 → [한국어 상세 학습 노트](blogs/module-02/recurrent-neural-network.md)
 
@@ -204,11 +242,15 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 
 → [한국어 상세 학습 노트](blogs/module-02/how-does-pytorch-work.md)
 
+→ [한국어 상세 학습 노트](blogs/module-02/how-does-pytorch-work.md)
+
 ### 2.10 머신러닝 라이브러리 TensorFlow는 어떻게 동작하는가?
 
 머신러닝 라이브러리 TensorFlow의 동작 방식을 배웁니다.
 
 시작하기: [머신러닝 라이브러리 TensorFlow는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-the-machine-learning-library-tensorflow-work)
+
+→ [한국어 상세 학습 노트](blogs/module-02/how-does-the-machine-learning-library-tensorflow-work.md)
 
 → [한국어 상세 학습 노트](blogs/module-02/how-does-the-machine-learning-library-tensorflow-work.md)
 
