@@ -11,44 +11,44 @@
 **이 모듈의 레슨:**
 
 1. [Vector Database는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-a-vector-database-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/how-does-a-vector-database-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/how-does-a-vector-database-work.md)
 2. [Approximate Nearest Neighbor(ANN) 검색은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-approximate-nearest-neighbor-ann-search-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/how-does-approximate-nearest-neighbor-ann-search-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/how-does-approximate-nearest-neighbor-ann-search-work.md)
 3. [Semantic Search는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-semantic-search-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/how-does-semantic-search-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/how-does-semantic-search-work.md)
 4. [Hybrid Search는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-hybrid-search-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/how-does-hybrid-search-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/how-does-hybrid-search-work.md)
 5. [Reranker는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-a-reranker-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/how-does-a-reranker-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/how-does-a-reranker-work.md)
 6. [ColBERT란? Late Interaction Retrieval](https://outcomeschool.com/blog/decoding-colbert)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/decoding-colbert.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/decoding-colbert.md)
 7. [RAG 문서를 어떻게 Chunking할까?](https://outcomeschool.com/blog/chunking-strategies-for-rag)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/chunking-strategies-for-rag.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/chunking-strategies-for-rag.md)
 8. [HyDE는 RAG에서 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-hyde-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/how-does-hyde-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/how-does-hyde-work.md)
 9. [Embedding Cache는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-an-embedding-cache-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/how-does-an-embedding-cache-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/how-does-an-embedding-cache-work.md)
 10. [Semantic Caching은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-semantic-caching-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/how-does-semantic-caching-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/how-does-semantic-caching-work.md)
 11. [Agentic RAG란?](https://outcomeschool.com/blog/agentic-rag)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/agentic-rag.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/agentic-rag.md)
 12. [GraphRAG란? Knowledge Graph가 RAG를 개선하는 방법](https://outcomeschool.com/blog/graphrag)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/graphrag.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/graphrag.md)
 13. [Vectorless RAG란? Embedding과 Vector DB 없는 RAG](https://outcomeschool.com/blog/vectorless-rag)
+   ↳ [한국어 상세 학습 노트](blogs/module-09/vectorless-rag.md)
 
-→ [한국어 상세 학습 노트](blogs/module-09/vectorless-rag.md)
 
 ---
 
@@ -77,6 +77,7 @@
 
 → [한국어 상세 학습 노트](blogs/module-09/how-does-a-vector-database-work.md)
 
+
 ### 9.2 Approximate Nearest Neighbor(ANN) 검색은 어떻게 동작하는가?
 
 거대한 데이터 집합에서 “비슷한 것”을 매우 빠르게 찾는 ANN 검색을 배웁니다.
@@ -99,6 +100,7 @@
 
 → [한국어 상세 학습 노트](blogs/module-09/how-does-approximate-nearest-neighbor-ann-search-work.md)
 
+
 ### 9.3 Semantic Search는 어떻게 동작하는가?
 
 키워드가 아니라 의미를 기준으로 검색하는 Semantic Search의 전체 흐름을 배웁니다.
@@ -117,6 +119,7 @@
 시작하기: [Semantic Search](https://outcomeschool.com/blog/how-does-semantic-search-work)
 
 → [한국어 상세 학습 노트](blogs/module-09/how-does-semantic-search-work.md)
+
 
 ### 9.4 Hybrid Search는 어떻게 동작하는가?
 
@@ -137,6 +140,7 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 
 → [한국어 상세 학습 노트](blogs/module-09/how-does-hybrid-search-work.md)
 
+
 ### 9.5 Reranker는 어떻게 동작하는가?
 
 검색·RAG 파이프라인에서 1차 검색 결과를 더 정밀하게 재정렬하는 Reranker를 배웁니다.
@@ -155,6 +159,7 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 시작하기: [Reranker](https://outcomeschool.com/blog/how-does-a-reranker-work)
 
 → [한국어 상세 학습 노트](blogs/module-09/how-does-a-reranker-work.md)
+
 
 ### 9.6 ColBERT란? Late Interaction Retrieval
 
@@ -180,6 +185,7 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 시작하기: [ColBERT](https://outcomeschool.com/blog/decoding-colbert)
 
 → [한국어 상세 학습 노트](blogs/module-09/decoding-colbert.md)
+
 
 ### 9.7 RAG 문서를 어떻게 Chunking할까?
 
@@ -208,6 +214,7 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 
 → [한국어 상세 학습 노트](blogs/module-09/chunking-strategies-for-rag.md)
 
+
 ### 9.8 HyDE는 RAG에서 어떻게 동작하는가?
 
 질문 자체 대신 LLM이 만든 가상의 답변을 이용해 더 잘 검색하는 HyDE(Hypothetical Document Embeddings)를 배웁니다.
@@ -229,6 +236,7 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 
 → [한국어 상세 학습 노트](blogs/module-09/how-does-hyde-work.md)
 
+
 ### 9.9 Embedding Cache는 어떻게 동작하는가?
 
 동일한 텍스트의 Embedding을 반복 계산하지 않고 재사용해 비용과 시간을 줄이는 Embedding Cache를 배웁니다.
@@ -249,6 +257,7 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 
 → [한국어 상세 학습 노트](blogs/module-09/how-does-an-embedding-cache-work.md)
 
+
 ### 9.10 Semantic Caching은 어떻게 동작하는가?
 
 문자열이 정확히 같지 않아도 의미가 비슷한 요청에 과거 답변을 재사용하는 Semantic Caching을 배웁니다.
@@ -267,6 +276,7 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 시작하기: [Semantic Caching](https://outcomeschool.com/blog/how-does-semantic-caching-work)
 
 → [한국어 상세 학습 노트](blogs/module-09/how-does-semantic-caching-work.md)
+
 
 ### 9.11 Agentic RAG란?
 
@@ -290,6 +300,7 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 
 → [한국어 상세 학습 노트](blogs/module-09/agentic-rag.md)
 
+
 영상 보기: [Agentic RAG Explained](https://www.youtube.com/watch?v=6nSegpuWJVw)
 
 ### 9.12 GraphRAG란?
@@ -297,6 +308,7 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 [Vector Search](https://outcomeschool.com/blog/how-does-a-vector-database-work)와 Knowledge Graph를 결합해 검색 품질을 높이는 GraphRAG를 배웁니다.
 
 → [한국어 상세 학습 노트](blogs/module-09/how-does-a-vector-database-work.md)
+
 
 - GraphRAG란?
 - 일반 RAG가 충분하지 않은 이유
@@ -311,6 +323,7 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 시작하기: [GraphRAG](https://outcomeschool.com/blog/graphrag)
 
 → [한국어 상세 학습 노트](blogs/module-09/graphrag.md)
+
 
 ### 9.13 Vectorless RAG란?
 
@@ -332,6 +345,7 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 시작하기: [Vectorless RAG](https://outcomeschool.com/blog/vectorless-rag)
 
 → [한국어 상세 학습 노트](blogs/module-09/vectorless-rag.md)
+
 
 **모듈 9 영상 및 추가 자료:**
 

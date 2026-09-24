@@ -9,29 +9,29 @@
 **이 모듈의 레슨:**
 
 1. [Harness Engineering이란?](https://outcomeschool.com/blog/harness-engineering-in-ai)
+   ↳ [한국어 상세 학습 노트](blogs/module-11/harness-engineering-in-ai.md)
 
-→ [한국어 상세 학습 노트](blogs/module-11/harness-engineering-in-ai.md)
 2. [Loop Engineering이란?](https://outcomeschool.com/blog/what-is-loop-engineering)
+   ↳ [한국어 상세 학습 노트](blogs/module-11/what-is-loop-engineering.md)
 
-→ [한국어 상세 학습 노트](blogs/module-11/what-is-loop-engineering.md)
 3. [Graph Engineering이란?](https://outcomeschool.com/blog/what-is-graph-engineering)
+   ↳ [한국어 상세 학습 노트](blogs/module-11/what-is-graph-engineering.md)
 
-→ [한국어 상세 학습 노트](blogs/module-11/what-is-graph-engineering.md)
 4. [AI의 품질은 Definition of Done의 품질을 넘을 수 없다](https://outcomeschool.com/blog/ai-is-only-as-good-as-our-definition-of-done)
+   ↳ [한국어 상세 학습 노트](blogs/module-11/ai-is-only-as-good-as-our-definition-of-done.md)
 
-→ [한국어 상세 학습 노트](blogs/module-11/ai-is-only-as-good-as-our-definition-of-done.md)
 5. [LangChain은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-langchain-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-11/how-does-langchain-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-11/how-does-langchain-work.md)
 6. [LangGraph는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-langgraph-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-11/how-does-langgraph-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-11/how-does-langgraph-work.md)
 7. [Claude Code는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-claude-code-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-11/how-does-claude-code-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-11/how-does-claude-code-work.md)
 8. [Cursor는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-cursor-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-11/how-does-cursor-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-11/how-does-cursor-work.md)
 
 ---
 
@@ -50,6 +50,7 @@ AI Agent와 평가 시스템을 안정적으로 감싸고 제어하는 Harness�
 시작하기: [Harness Engineering](https://outcomeschool.com/blog/harness-engineering-in-ai)
 
 → [한국어 상세 학습 노트](blogs/module-11/harness-engineering-in-ai.md)
+
 
 ### 11.2 Loop Engineering이란?
 
@@ -70,6 +71,7 @@ Agent가 작업을 완료할 때까지 반복 실행하는 Loop를 설계하고 
 시작하기: [Loop Engineering](https://outcomeschool.com/blog/what-is-loop-engineering)
 
 → [한국어 상세 학습 노트](blogs/module-11/what-is-loop-engineering.md)
+
 
 ### 11.3 Graph Engineering이란?
 
@@ -97,6 +99,7 @@ Agent가 작업을 완료할 때까지 반복 실행하는 Loop를 설계하고 
 
 → [한국어 상세 학습 노트](blogs/module-11/what-is-graph-engineering.md)
 
+
 ### 11.4 AI의 품질은 Definition of Done의 품질을 넘을 수 없다
 
 작업이 끝났는지 기계적으로 판정할 수 있는 명확한 완료 기준이 AI 시스템의 신뢰성을 어떻게 높이는지 배웁니다.
@@ -110,6 +113,7 @@ Agent가 작업을 완료할 때까지 반복 실행하는 Loop를 설계하고 
 시작하기: [AI Is Only as Good as Our Definition of Done](https://outcomeschool.com/blog/ai-is-only-as-good-as-our-definition-of-done)
 
 → [한국어 상세 학습 노트](blogs/module-11/ai-is-only-as-good-as-our-definition-of-done.md)
+
 
 ### 11.5 LangChain은 어떻게 동작하는가?
 
@@ -129,6 +133,7 @@ Prompt, Chain, Memory, Output Parser, Retrieval, Agent를 조합해 LLM 애플�
 시작하기: [LangChain](https://outcomeschool.com/blog/how-does-langchain-work)
 
 → [한국어 상세 학습 노트](blogs/module-11/how-does-langchain-work.md)
+
 
 ### 11.6 LangGraph는 어떻게 동작하는가?
 
@@ -150,6 +155,7 @@ State, Node, Edge로 Agent Workflow를 Graph로 구성하는 LangGraph를 배웁
 
 → [한국어 상세 학습 노트](blogs/module-11/how-does-langgraph-work.md)
 
+
 ### 11.7 Claude Code는 어떻게 동작하는가?
 
 일반 챗봇과 달리 코드베이스를 탐색하고 Tool을 사용하며 작업을 검증하는 Claude Code의 Agent Loop를 배웁니다.
@@ -169,6 +175,7 @@ State, Node, Edge로 Agent Workflow를 Graph로 구성하는 LangGraph를 배웁
 시작하기: [Claude Code](https://outcomeschool.com/blog/how-does-claude-code-work)
 
 → [한국어 상세 학습 노트](blogs/module-11/how-does-claude-code-work.md)
+
 
 ### 11.8 Cursor는 어떻게 동작하는가?
 
@@ -190,5 +197,6 @@ State, Node, Edge로 Agent Workflow를 Graph로 구성하는 LangGraph를 배웁
 시작하기: [Cursor](https://outcomeschool.com/blog/how-does-cursor-work)
 
 → [한국어 상세 학습 노트](blogs/module-11/how-does-cursor-work.md)
+
 
 ---

@@ -9,53 +9,53 @@
 **이 모듈의 레슨:**
 
 1. [AI Agent란? 어떻게 동작하는가](https://outcomeschool.com/blog/ai-agent)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/ai-agent.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/ai-agent.md)
 2. [LLM의 Function Calling은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-function-calling-work-in-llms)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/how-does-function-calling-work-in-llms.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/how-does-function-calling-work-in-llms.md)
 3. [AI Agent Loop란?](https://outcomeschool.com/blog/ai-agent-loop)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/ai-agent-loop.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/ai-agent-loop.md)
 4. [ReAct Agent란?](https://outcomeschool.com/blog/react-agent)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/react-agent.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/react-agent.md)
 5. [Plan-and-Execute Agent란?](https://outcomeschool.com/blog/plan-and-execute-agent)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/plan-and-execute-agent.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/plan-and-execute-agent.md)
 6. [Reflection Agent란?](https://outcomeschool.com/blog/reflection-agent)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/reflection-agent.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/reflection-agent.md)
 7. [AI Agent Memory는 어떻게 동작하는가?](https://outcomeschool.com/blog/ai-agent-memory)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/ai-agent-memory.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/ai-agent-memory.md)
 8. [MCP(Model Context Protocol)란?](https://outcomeschool.com/blog/what-is-mcp-model-context-protocol)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/what-is-mcp-model-context-protocol.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/what-is-mcp-model-context-protocol.md)
 9. [Agent Skills란?](https://outcomeschool.com/blog/what-are-agent-skills)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/what-are-agent-skills.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/what-are-agent-skills.md)
 10. [OKF(Open Knowledge Format)란?](https://outcomeschool.com/blog/what-is-okf-open-knowledge-format)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/what-is-okf-open-knowledge-format.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/what-is-okf-open-knowledge-format.md)
 11. [Multi-Agent System이란?](https://outcomeschool.com/blog/multi-agent-systems)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/multi-agent-systems.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/multi-agent-systems.md)
 12. [AI SubAgent란?](https://outcomeschool.com/blog/ai-subagents)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/ai-subagents.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/ai-subagents.md)
 13. [AI Agent는 어떻게 통신하는가?](https://outcomeschool.com/blog/how-ai-agents-communicate)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/how-ai-agents-communicate.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/how-ai-agents-communicate.md)
 14. [AI Orchestration이란?](https://outcomeschool.com/blog/ai-orchestration)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/ai-orchestration.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/ai-orchestration.md)
 15. [Sakana Fugu란?](https://outcomeschool.com/blog/decoding-sakana-fugu)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/decoding-sakana-fugu.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/decoding-sakana-fugu.md)
 16. [Computer-Use Agent는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-computer-use-agents-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-10/how-do-computer-use-agents-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-10/how-do-computer-use-agents-work.md)
 
 ---
 
@@ -79,6 +79,7 @@
 
 → [한국어 상세 학습 노트](blogs/module-10/ai-agent.md)
 
+
 영상 보기: [AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization](https://www.youtube.com/watch?v=lnfWvX66FUk)
 
 ### 10.2 LLM의 Function Calling은 어떻게 동작하는가?
@@ -100,6 +101,7 @@ LLM이 외부 함수를 선택하고 인자를 만들지만 직접 함수를 실
 
 → [한국어 상세 학습 노트](blogs/module-10/how-does-function-calling-work-in-llms.md)
 
+
 ### 10.3 AI Agent Loop란?
 
 Agent를 움직이는 Think-Act-Observe 사이클과 종료 조건, 흔한 실패 유형을 배웁니다.
@@ -119,6 +121,7 @@ Agent를 움직이는 Think-Act-Observe 사이클과 종료 조건, 흔한 실�
 
 → [한국어 상세 학습 노트](blogs/module-10/ai-agent-loop.md)
 
+
 ### 10.4 ReAct Agent란?
 
 Reasoning과 Acting을 번갈아 수행하는 ReAct Agent의 구조와 동작, 구현과 실패 대응을 배웁니다.
@@ -137,6 +140,7 @@ Reasoning과 Acting을 번갈아 수행하는 ReAct Agent의 구조와 동작, �
 
 → [한국어 상세 학습 노트](blogs/module-10/react-agent.md)
 
+
 ### 10.5 Plan-and-Execute Agent란?
 
 먼저 계획을 만들고 각 단계를 실행하는 Agent 패턴을 배웁니다.
@@ -153,6 +157,7 @@ Reasoning과 Acting을 번갈아 수행하는 ReAct Agent의 구조와 동작, �
 시작하기: [Plan-and-Execute Agent](https://outcomeschool.com/blog/plan-and-execute-agent)
 
 → [한국어 상세 학습 노트](blogs/module-10/plan-and-execute-agent.md)
+
 
 ### 10.6 Reflection Agent란?
 
@@ -171,6 +176,7 @@ Reasoning과 Acting을 번갈아 수행하는 ReAct Agent의 구조와 동작, �
 
 → [한국어 상세 학습 노트](blogs/module-10/reflection-agent.md)
 
+
 ### 10.7 AI Agent Memory는 어떻게 동작하는가?
 
 Agent Memory가 필요한 이유, Memory Stack, Write·Read·Update·Forget 네 가지 핵심 연산과 런타임 흐름을 배웁니다.
@@ -187,6 +193,7 @@ Agent Memory가 필요한 이유, Memory Stack, Write·Read·Update·Forget 네 
 시작하기: [AI Agent Memory](https://outcomeschool.com/blog/ai-agent-memory)
 
 → [한국어 상세 학습 노트](blogs/module-10/ai-agent-memory.md)
+
 
 ### 10.8 MCP(Model Context Protocol)란?
 
@@ -208,6 +215,7 @@ AI 모델과 외부 Tool·Data Source를 표준화된 방식으로 연결하는 
 시작하기: [MCP](https://outcomeschool.com/blog/what-is-mcp-model-context-protocol)
 
 → [한국어 상세 학습 노트](blogs/module-10/what-is-mcp-model-context-protocol.md)
+
 
 ### 10.9 Agent Skills란?
 
@@ -231,6 +239,7 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 
 → [한국어 상세 학습 노트](blogs/module-10/what-are-agent-skills.md)
 
+
 ### 10.10 OKF(Open Knowledge Format)란?
 
 흩어진 데이터 지식을 AI Agent와 Tool이 읽을 수 있는 평문 Markdown 폴더 형태로 정리하는 Open Knowledge Format을 배웁니다.
@@ -251,6 +260,7 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 
 → [한국어 상세 학습 노트](blogs/module-10/what-is-okf-open-knowledge-format.md)
 
+
 ### 10.11 Multi-Agent System이란?
 
 여러 Agent가 역할을 나눠 협업하는 시스템의 구성 원리와 trade-off를 배웁니다.
@@ -270,6 +280,7 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 
 → [한국어 상세 학습 노트](blogs/module-10/multi-agent-systems.md)
 
+
 ### 10.12 AI SubAgent란?
 
 큰 작업을 분해해 전문화된 하위 Agent에 맡기는 SubAgent 구조를 배웁니다.
@@ -286,6 +297,7 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 시작하기: [AI SubAgent](https://outcomeschool.com/blog/ai-subagents)
 
 → [한국어 상세 학습 노트](blogs/module-10/ai-subagents.md)
+
 
 ### 10.13 AI Agent는 어떻게 통신하는가?
 
@@ -309,6 +321,7 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 
 → [한국어 상세 학습 노트](blogs/module-10/how-ai-agents-communicate.md)
 
+
 ### 10.14 AI Orchestration이란?
 
 여러 LLM, Tool, Step을 조율해 실제 AI 제품을 구성하는 Orchestration을 배웁니다.
@@ -330,6 +343,7 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 시작하기: [AI Orchestration](https://outcomeschool.com/blog/ai-orchestration)
 
 → [한국어 상세 학습 노트](blogs/module-10/ai-orchestration.md)
+
 
 ### 10.15 Sakana Fugu란?
 
@@ -354,6 +368,7 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 
 → [한국어 상세 학습 노트](blogs/module-10/decoding-sakana-fugu.md)
 
+
 ### 10.16 Computer-Use Agent는 어떻게 동작하는가?
 
 화면을 보고 판단해 마우스·키보드 같은 컴퓨터 조작을 수행하는 Agent를 배웁니다.
@@ -373,5 +388,6 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 시작하기: [Computer-Use Agent](https://outcomeschool.com/blog/how-do-computer-use-agents-work)
 
 → [한국어 상세 학습 노트](blogs/module-10/how-do-computer-use-agents-work.md)
+
 
 ---
