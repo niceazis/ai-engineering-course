@@ -243,22 +243,40 @@ flowchart TD
 **이 모듈의 레슨:**
 
 1. [머신러닝이란?](https://outcomeschool.com/blog/machine-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/machine-learning.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-01/machine-learning.md)
 2. [지도학습 vs 비지도학습](https://outcomeschool.com/blog/supervised-vs-unsupervised-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/supervised-vs-unsupervised-learning.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-01/supervised-vs-unsupervised-learning.md)
 3. [선형 회귀 vs 로지스틱 회귀](https://outcomeschool.com/blog/linear-regression-vs-logistic-regression)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/linear-regression-vs-logistic-regression.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-01/linear-regression-vs-logistic-regression.md)
 4. [머신러닝의 특성 공학(Feature Engineering)이란?](https://outcomeschool.com/blog/feature-engineering)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/feature-engineering.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-01/feature-engineering.md)
 5. [정밀도(Precision) vs 재현율(Recall)](https://outcomeschool.com/blog/precision-vs-recall)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/precision-vs-recall.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-01/precision-vs-recall.md)
 6. [L1·L2 손실 함수란?](https://outcomeschool.com/blog/l1-and-l2-loss-functions)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/l1-and-l2-loss-functions.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-01/l1-and-l2-loss-functions.md)
 7. [머신러닝 정규화란? L1 vs L2](https://outcomeschool.com/blog/regularization-in-machine-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/regularization-in-machine-learning.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-01/regularization-in-machine-learning.md)
 8. [강화학습이란?](https://outcomeschool.com/blog/reinforcement-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/reinforcement-learning.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-01/reinforcement-learning.md)
 9. [대조 학습(Contrastive Learning)이란? 단계별 동작 원리](https://outcomeschool.com/blog/contrastive-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/contrastive-learning.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-01/contrastive-learning.md)
 
 ---
@@ -268,6 +286,8 @@ flowchart TD
 이 글에서는 머신러닝이 무엇인지 배웁니다.
 
 시작하기: [머신러닝이란?](https://outcomeschool.com/blog/machine-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/machine-learning.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-01/machine-learning.md)
 
@@ -289,6 +309,8 @@ flowchart TD
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-01/supervised-vs-unsupervised-learning.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/supervised-vs-unsupervised-learning.md)
+
 ### 1.3 선형 회귀 vs 로지스틱 회귀
 
 머신러닝의 선형 회귀와 로지스틱 회귀를 비교합니다.
@@ -305,11 +327,15 @@ flowchart TD
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-01/linear-regression-vs-logistic-regression.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/linear-regression-vs-logistic-regression.md)
+
 ### 1.4 머신러닝의 특성 공학이란?
 
 머신러닝을 위한 특성 공학(Feature Engineering)을 배웁니다.
 
 시작하기: [머신러닝의 특성 공학이란?](https://outcomeschool.com/blog/feature-engineering)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/feature-engineering.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-01/feature-engineering.md)
 
@@ -344,6 +370,8 @@ flowchart TD
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-01/precision-vs-recall.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/precision-vs-recall.md)
+
 ### 1.6 L1·L2 손실 함수란?
 
 L1과 L2 손실 함수를 배웁니다.
@@ -358,6 +386,8 @@ L1과 L2 손실 함수를 배웁니다.
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-01/l1-and-l2-loss-functions.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/l1-and-l2-loss-functions.md)
+
 ### 1.7 머신러닝 정규화란? L1 vs L2
 
 머신러닝의 정규화(Regularization)를 배웁니다.
@@ -367,6 +397,8 @@ L1과 L2 손실 함수를 배웁니다.
 - L2 정규화 또는 Ridge 정규화
 
 시작하기: [머신러닝 정규화란? L1 vs L2](https://outcomeschool.com/blog/regularization-in-machine-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/regularization-in-machine-learning.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-01/regularization-in-machine-learning.md)
 
@@ -397,6 +429,8 @@ L1과 L2 손실 함수를 배웁니다.
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-01/reinforcement-learning.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/reinforcement-learning.md)
+
 ### 1.9 대조 학습이란? 단계별 동작 원리
 
 대조 학습(Contrastive Learning)이 무엇인지, 단계별로 어떻게 동작하고 실무에서 어디에 사용되는지 배웁니다.
@@ -413,6 +447,8 @@ L1과 L2 손실 함수를 배웁니다.
 - 실제 사용 사례
 
 시작하기: [대조 학습이란? 단계별 동작 원리](https://outcomeschool.com/blog/contrastive-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/contrastive-learning.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-01/contrastive-learning.md)
 
@@ -438,24 +474,44 @@ L1과 L2 손실 함수를 배웁니다.
 **이 모듈의 레슨:**
 
 1. [인공신경망의 Bias란?](https://outcomeschool.com/blog/bias-in-artificial-neural-network)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/bias-in-artificial-neural-network.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/bias-in-artificial-neural-network.md)
 2. [경사하강법은 어떻게 동작하는가?](https://outcomeschool.com/blog/math-behind-gradient-descent)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-gradient-descent.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-gradient-descent.md)
 3. [역전파는 어떻게 동작하는가? 수학으로 단계별 설명](https://outcomeschool.com/blog/math-behind-backpropagation)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-backpropagation.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-backpropagation.md)
 4. [Cross-Entropy Loss란?](https://outcomeschool.com/blog/math-behind-cross-entropy-loss)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-cross-entropy-loss.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-cross-entropy-loss.md)
 5. [신경망의 Dropout이란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/dropout-in-neural-networks)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/dropout-in-neural-networks.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/dropout-in-neural-networks.md)
 6. [Batch Normalization vs Layer Normalization](https://outcomeschool.com/blog/batch-normalization-vs-layer-normalization)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/batch-normalization-vs-layer-normalization.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/batch-normalization-vs-layer-normalization.md)
 7. [RMSNorm이란? Root Mean Square Layer Normalization 설명](https://outcomeschool.com/blog/rmsnorm-root-mean-square-layer-normalization)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/rmsnorm-root-mean-square-layer-normalization.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/rmsnorm-root-mean-square-layer-normalization.md)
 8. [순환 신경망(RNN)이란?](https://outcomeschool.com/blog/recurrent-neural-network)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/recurrent-neural-network.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/recurrent-neural-network.md)
 9. [PyTorch는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-pytorch-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/how-does-pytorch-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/how-does-pytorch-work.md)
 10. [머신러닝 라이브러리 TensorFlow는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-the-machine-learning-library-tensorflow-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/how-does-the-machine-learning-library-tensorflow-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/how-does-the-machine-learning-library-tensorflow-work.md)
 
 ---
@@ -465,6 +521,8 @@ L1과 L2 손실 함수를 배웁니다.
 이 글에서는 인공신경망의 Bias가 무엇인지 배웁니다.
 
 시작하기: [인공신경망의 Bias란?](https://outcomeschool.com/blog/bias-in-artificial-neural-network)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/bias-in-artificial-neural-network.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-02/bias-in-artificial-neural-network.md)
 
@@ -487,6 +545,8 @@ L1과 L2 손실 함수를 배웁니다.
 - 전체 흐름 연결하기
 
 시작하기: [경사하강법은 어떻게 동작하는가?](https://outcomeschool.com/blog/math-behind-gradient-descent)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-gradient-descent.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-gradient-descent.md)
 
@@ -513,6 +573,8 @@ L1과 L2 손실 함수를 배웁니다.
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-backpropagation.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-backpropagation.md)
+
 ### 2.4 Cross-Entropy Loss란?
 
 단계별 수치 예제를 이용해 Cross-Entropy Loss의 수학을 배웁니다.
@@ -531,6 +593,8 @@ L1과 L2 손실 함수를 배웁니다.
 - 빠른 요약
 
 시작하기: [Cross-Entropy Loss란?](https://outcomeschool.com/blog/math-behind-cross-entropy-loss)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-cross-entropy-loss.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-cross-entropy-loss.md)
 
@@ -559,6 +623,8 @@ L1과 L2 손실 함수를 배웁니다.
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-02/dropout-in-neural-networks.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/dropout-in-neural-networks.md)
+
 ### 2.6 Batch Normalization vs Layer Normalization
 
 Batch Normalization과 Layer Normalization을 배우고, 둘의 차이와 각각 언제 사용하는지 살펴봅니다.
@@ -576,9 +642,13 @@ Batch Normalization과 Layer Normalization을 배우고, 둘의 차이와 각각
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-02/batch-normalization-vs-layer-normalization.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/batch-normalization-vs-layer-normalization.md)
+
 ### 2.7 RMSNorm이란? Root Mean Square Layer Normalization 설명
 
 [L​​ayer Normalization](https://outcomeschool.com/blog/batch-normalization-vs-layer-normalization)보다 빠르고 단순한 대안이며 Llama, Mistral, Gemma, Qwen, PaLM, DeepSeek 등 많은 현대 LLM에서 사용하는 RMSNorm을 배웁니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/batch-normalization-vs-layer-normalization.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-02/batch-normalization-vs-layer-normalization.md)
 
@@ -598,11 +668,15 @@ Batch Normalization과 Layer Normalization을 배우고, 둘의 차이와 각각
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-02/rmsnorm-root-mean-square-layer-normalization.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/rmsnorm-root-mean-square-layer-normalization.md)
+
 ### 2.8 순환 신경망(RNN)이란?
 
 순환 신경망(Recurrent Neural Network)을 배웁니다.
 
 시작하기: [순환 신경망(RNN)이란?](https://outcomeschool.com/blog/recurrent-neural-network)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/recurrent-neural-network.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-02/recurrent-neural-network.md)
 
@@ -625,11 +699,15 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-02/how-does-pytorch-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/how-does-pytorch-work.md)
+
 ### 2.10 머신러닝 라이브러리 TensorFlow는 어떻게 동작하는가?
 
 머신러닝 라이브러리 TensorFlow의 동작 방식을 배웁니다.
 
 시작하기: [머신러닝 라이브러리 TensorFlow는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-the-machine-learning-library-tensorflow-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/how-does-the-machine-learning-library-tensorflow-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-02/how-does-the-machine-learning-library-tensorflow-work.md)
 
@@ -651,34 +729,64 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 **이 모듈의 레슨:**
 
 1. [생성형 AI란?](https://outcomeschool.com/blog/what-is-generative-ai)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-is-generative-ai.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-is-generative-ai.md)
 2. [Autoregressive Model이란?](https://outcomeschool.com/blog/autoregressive-models)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/autoregressive-models.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/autoregressive-models.md)
 3. [LLM의 Byte Pair Encoding(BPE)이란?](https://outcomeschool.com/blog/bpe-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/bpe-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/bpe-in-llms.md)
 4. [Embedding이란?](https://outcomeschool.com/blog/what-are-embeddings)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-are-embeddings.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-are-embeddings.md)
 5. [RNN과 Transformer는 어떻게 다른가?](https://outcomeschool.com/blog/how-do-rnns-and-transformers-differ)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/how-do-rnns-and-transformers-differ.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/how-do-rnns-and-transformers-differ.md)
 6. [Transformer 아키텍처는 어떻게 동작하는가?](https://outcomeschool.com/blog/decoding-transformer-architecture)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/decoding-transformer-architecture.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/decoding-transformer-architecture.md)
 7. [Transformer의 Encoder vs Decoder](https://outcomeschool.com/blog/encoder-vs-decoder-in-transformers)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/encoder-vs-decoder-in-transformers.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/encoder-vs-decoder-in-transformers.md)
 8. [Transformer의 Self Attention이란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/self-attention-in-transformers)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/self-attention-in-transformers.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/self-attention-in-transformers.md)
 9. [Attention은 어떻게 동작하는가? Q, K, V의 수학](https://outcomeschool.com/blog/math-behind-attention-qkv)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/math-behind-attention-qkv.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/math-behind-attention-qkv.md)
 10. [왜 Attention을 √dₖ로 스케일링하는가?](https://outcomeschool.com/blog/scaling-dot-product-attention)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/scaling-dot-product-attention.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/scaling-dot-product-attention.md)
 11. [Attention의 Causal Masking이란 무엇이며 LLM에 왜 필요한가?](https://outcomeschool.com/blog/causal-masking-in-attention)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/causal-masking-in-attention.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/causal-masking-in-attention.md)
 12. [Transformer의 Multi-Head Attention이란?](https://outcomeschool.com/blog/multi-head-attention-in-transformers)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/multi-head-attention-in-transformers.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/multi-head-attention-in-transformers.md)
 13. [Transformer의 Cross Attention이란?](https://outcomeschool.com/blog/cross-attention-in-transformers)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/cross-attention-in-transformers.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/cross-attention-in-transformers.md)
 14. [RoPE(Rotary Position Embedding)란?](https://outcomeschool.com/blog/math-behind-rope-rotary-position-embedding)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/math-behind-rope-rotary-position-embedding.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/math-behind-rope-rotary-position-embedding.md)
 15. [LLM의 Feed-Forward Network란 무엇이며 어떤 역할을 하는가?](https://outcomeschool.com/blog/feed-forward-networks-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/feed-forward-networks-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/feed-forward-networks-in-llms.md)
 
 ---
@@ -706,6 +814,8 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-is-generative-ai.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-is-generative-ai.md)
+
 ### 3.2 Autoregressive Model이란?
 
 과거의 결과를 바탕으로 다음 단계를 예측하며 한 조각씩 생성하는 Autoregressive Model을 배웁니다.
@@ -726,6 +836,8 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/autoregressive-models.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/autoregressive-models.md)
+
 ### 3.3 LLM의 Byte Pair Encoding(BPE)이란?
 
 현대 LLM이 텍스트를 처리하기 전에 작은 단위로 나누는 대표적인 토큰화 알고리즘인 **BPE(Byte Pair Encoding)**를 배웁니다.
@@ -738,6 +850,8 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 - 현대 LLM이 BPE를 사용하는 이유
 
 시작하기: [LLM의 BPE란?](https://outcomeschool.com/blog/bpe-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/bpe-in-llms.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/bpe-in-llms.md)
 
@@ -765,6 +879,8 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-are-embeddings.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-are-embeddings.md)
+
 영상 보기: [Embeddings in Machine Learning](https://www.youtube.com/watch?v=LedXW6xl21s)
 
 → [한국어 영상 요약](docs/ko/videos.md#7-embeddings-in-machine-learning)
@@ -787,6 +903,8 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/how-do-rnns-and-transformers-differ.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/how-do-rnns-and-transformers-differ.md)
+
 ### 3.6 Transformer 아키텍처는 어떻게 동작하는가?
 
 Transformer 아키텍처를 구성 요소별로 분해해 각 요소의 역할, 상호작용, 현대 LLM의 기반이 된 이유를 이해합니다.
@@ -802,6 +920,8 @@ Transformer 아키텍처를 구성 요소별로 분해해 각 요소의 역할, 
 - Transformer가 강력한 이유
 
 시작하기: [Transformer 아키텍처는 어떻게 동작하는가?](https://outcomeschool.com/blog/decoding-transformer-architecture)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/decoding-transformer-architecture.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/decoding-transformer-architecture.md)
 
@@ -823,6 +943,8 @@ Transformer 아키텍처를 구성 요소별로 분해해 각 요소의 역할, 
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/encoder-vs-decoder-in-transformers.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/encoder-vs-decoder-in-transformers.md)
+
 ### 3.8 Transformer의 Self Attention이란 무엇이며 어떻게 동작하는가?
 
 BERT와 GPT 같은 현대 LLM의 핵심인 Self Attention의 개념과 단계별 동작을 배웁니다.
@@ -840,6 +962,8 @@ BERT와 GPT 같은 현대 LLM의 핵심인 Self Attention의 개념과 단계별
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/self-attention-in-transformers.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/self-attention-in-transformers.md)
+
 ### 3.9 Attention은 어떻게 동작하는가? Q, K, V의 수학
 
 단계별 수치 예제로 Query(Q), Key(K), Value(V)를 포함한 Attention의 수학을 배웁니다.
@@ -854,6 +978,8 @@ BERT와 GPT 같은 현대 LLM의 핵심인 Self Attention의 개념과 단계별
 - 전체 과정 연결
 
 시작하기: [Q, K, V의 수학](https://outcomeschool.com/blog/math-behind-attention-qkv)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/math-behind-attention-qkv.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/math-behind-attention-qkv.md)
 
@@ -879,6 +1005,8 @@ Transformer의 dot-product attention을 √dₖ로 나누는 이유를 수학과
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/scaling-dot-product-attention.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/scaling-dot-product-attention.md)
+
 ### 3.11 Attention의 Causal Masking이란 무엇이며 LLM에 왜 필요한가?
 
 **Causal Masking**의 역할과 구현을 배웁니다.
@@ -889,6 +1017,8 @@ Transformer의 dot-product attention을 √dₖ로 나누는 이유를 수학과
 - Causal Mask Matrix
 
 시작하기: [Causal Masking이란?](https://outcomeschool.com/blog/causal-masking-in-attention)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/causal-masking-in-attention.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/causal-masking-in-attention.md)
 
@@ -908,6 +1038,8 @@ Transformer의 dot-product attention을 √dₖ로 나누는 이유를 수학과
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/multi-head-attention-in-transformers.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/multi-head-attention-in-transformers.md)
+
 ### 3.13 Transformer의 Cross Attention이란?
 
 Cross Attention의 개념과 동작, Self Attention과의 차이, 실제 사용처를 배웁니다.
@@ -922,6 +1054,8 @@ Cross Attention의 개념과 동작, Self Attention과의 차이, 실제 사용�
 - 중요성
 
 시작하기: [Cross Attention이란?](https://outcomeschool.com/blog/cross-attention-in-transformers)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/cross-attention-in-transformers.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/cross-attention-in-transformers.md)
 
@@ -944,6 +1078,8 @@ Cross Attention의 개념과 동작, Self Attention과의 차이, 실제 사용�
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/math-behind-rope-rotary-position-embedding.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/math-behind-rope-rotary-position-embedding.md)
+
 ### 3.15 LLM의 Feed-Forward Network란 무엇이며 어떤 역할을 하는가?
 
 Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer layer에 왜 필요한지, 모델의 표현력을 어떻게 높이는지 배웁니다.
@@ -961,6 +1097,8 @@ Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer
 - FFN이 중요한 이유
 
 시작하기: [LLM의 Feed-Forward Network란?](https://outcomeschool.com/blog/feed-forward-networks-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/feed-forward-networks-in-llms.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-03/feed-forward-networks-in-llms.md)
 
@@ -988,12 +1126,20 @@ Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer
 **이 모듈의 레슨:**
 
 1. [Temperature는 LLM 출력을 어떻게 제어하는가?](https://outcomeschool.com/blog/how-does-temperature-control-llm-output)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-temperature-control-llm-output.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-temperature-control-llm-output.md)
 2. [Top-k와 Top-p Sampling은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
 3. [Token Streaming은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-token-streaming-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-token-streaming-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-token-streaming-work.md)
 4. [LLM의 Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/lost-in-the-middle-problem-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/lost-in-the-middle-problem-in-llms.md)
 
 ---
@@ -1018,6 +1164,8 @@ Temperature가 예측 가능하고 안정적인 답변과 창의적이고 다양
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-temperature-control-llm-output.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-temperature-control-llm-output.md)
+
 ### 4.2 Top-k와 Top-p Sampling은 어떻게 동작하는가?
 
 LLM이 다음 토큰을 선택할 때 사용하는 대표적인 두 샘플링 방식인 Top-k와 Top-p를 배웁니다.
@@ -1035,6 +1183,8 @@ LLM이 다음 토큰을 선택할 때 사용하는 대표적인 두 샘플링 �
 - 언제 무엇을 사용할까?
 
 시작하기: [Top-k와 Top-p Sampling](https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
 
@@ -1057,6 +1207,8 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-token-streaming-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-token-streaming-work.md)
+
 ### 4.4 LLM의 Lost in the Middle 문제와 해결 방법
 
 긴 입력에서 모델이 시작과 끝은 잘 활용하지만 중간 정보를 놓치는 Lost in the Middle 문제를 배웁니다.
@@ -1072,6 +1224,8 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 - 기억할 핵심 포인트
 
 시작하기: [Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/lost-in-the-middle-problem-in-llms.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-04/lost-in-the-middle-problem-in-llms.md)
 
@@ -1095,18 +1249,32 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 **이 모듈의 레슨:**
 
 1. [LLM 아키텍처의 진화](https://outcomeschool.com/blog/evolution-of-llm-architecture)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/evolution-of-llm-architecture.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-05/evolution-of-llm-architecture.md)
 2. [Mixture of Experts(MoE)란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/mixture-of-experts)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/mixture-of-experts.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-05/mixture-of-experts.md)
 3. [Grouped Query Attention(GQA)이란 무엇이며 LLM은 왜 사용하는가?](https://outcomeschool.com/blog/grouped-query-attention)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/grouped-query-attention.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-05/grouped-query-attention.md)
 4. [Sliding Window Attention은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-sliding-window-attention-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/how-does-sliding-window-attention-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-05/how-does-sliding-window-attention-work.md)
 5. [Attention Sink는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-attention-sinks-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/how-do-attention-sinks-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-05/how-do-attention-sinks-work.md)
 6. [Flash Attention이란 무엇이며 왜 빠른가?](https://outcomeschool.com/blog/decoding-flash-attention)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/decoding-flash-attention.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-05/decoding-flash-attention.md)
 7. [DeepSeek-V4란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/decoding-deepseek-v4)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/decoding-deepseek-v4.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-05/decoding-deepseek-v4.md)
 
 ---
@@ -1128,6 +1296,8 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-05/evolution-of-llm-architecture.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/evolution-of-llm-architecture.md)
+
 ### 5.2 Mixture of Experts(MoE)란 무엇이며 어떻게 동작하는가?
 
 Expert의 의미, Router가 Expert를 선택하는 방식, MoE가 대형 모델을 더 빠르고 저렴하게 실행하게 하는 이유를 배웁니다.
@@ -1142,6 +1312,8 @@ Expert의 의미, Router가 Expert를 선택하는 방식, MoE가 대형 모델�
 - 현대 LLM에서 널리 쓰이는 이유
 
 시작하기: [Mixture of Experts(MoE)](https://outcomeschool.com/blog/mixture-of-experts)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/mixture-of-experts.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-05/mixture-of-experts.md)
 
@@ -1166,6 +1338,8 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-05/grouped-query-attention.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/grouped-query-attention.md)
+
 ### 5.4 Sliding Window Attention은 어떻게 동작하는가?
 
 긴 텍스트에서 일반 Attention의 계산 비용이 커지는 문제와 Sliding Window Attention이 이를 줄이는 방식을 배웁니다.
@@ -1180,6 +1354,8 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 - 장점과 trade-off
 
 시작하기: [Sliding Window Attention](https://outcomeschool.com/blog/how-does-sliding-window-attention-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/how-does-sliding-window-attention-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-05/how-does-sliding-window-attention-work.md)
 
@@ -1202,6 +1378,8 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-05/how-do-attention-sinks-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/how-do-attention-sinks-work.md)
+
 ### 5.6 Flash Attention이란 무엇이며 왜 빠른가?
 
 표준 Attention이 느린 이유와 GPU 메모리를 효율적으로 이용하는 Flash Attention의 핵심 아이디어를 배웁니다.
@@ -1218,6 +1396,8 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 - 장점과 영향
 
 시작하기: [Flash Attention](https://outcomeschool.com/blog/decoding-flash-attention)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/decoding-flash-attention.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-05/decoding-flash-attention.md)
 
@@ -1241,6 +1421,8 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-05/decoding-deepseek-v4.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/decoding-deepseek-v4.md)
+
 ---
 
 ## 모듈 6: 언어 모델의 종류
@@ -1252,14 +1434,24 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 **이 모듈의 레슨:**
 
 1. [Small Language Model(SLM)이란 무엇이며 언제 사용해야 하는가?](https://outcomeschool.com/blog/small-language-models-slms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/small-language-models-slms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-06/small-language-models-slms.md)
 2. [Large Reasoning Model(LRM)이란 무엇이며 LLM과 어떻게 다른가?](https://outcomeschool.com/blog/large-reasoning-models)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/large-reasoning-models.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-06/large-reasoning-models.md)
 3. [Recursive Language Model(RLM)이란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/recursive-language-models)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/recursive-language-models.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-06/recursive-language-models.md)
 4. [Diffusion Language Model(DLM)은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-diffusion-language-models-dlms-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/how-do-diffusion-language-models-dlms-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-06/how-do-diffusion-language-models-dlms-work.md)
 5. [Jev와 System One Model](https://outcomeschool.com/blog/jev-and-system-one-models-explained)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/jev-and-system-one-models-explained.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-06/jev-and-system-one-models-explained.md)
 
 ---
@@ -1285,6 +1477,8 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-06/small-language-models-slms.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/small-language-models-slms.md)
+
 ### 6.2 Large Reasoning Model(LRM)이란?
 
 표준 LLM과 달리 답변 전에 더 많은 추론을 수행하는 LRM의 동작 방식과 학습, 사용 시점을 배웁니다.
@@ -1302,6 +1496,8 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 - 빠른 요약
 
 시작하기: [Large Reasoning Model(LRM)](https://outcomeschool.com/blog/large-reasoning-models)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/large-reasoning-models.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-06/large-reasoning-models.md)
 
@@ -1323,6 +1519,8 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 - 실제 사례
 
 시작하기: [Recursive Language Model(RLM)](https://outcomeschool.com/blog/recursive-language-models)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/recursive-language-models.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-06/recursive-language-models.md)
 
@@ -1348,6 +1546,8 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-06/how-do-diffusion-language-models-dlms-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/how-do-diffusion-language-models-dlms-work.md)
+
 ### 6.5 Jev와 System One Model
 
 텍스트를 생성하지 않고 소프트웨어가 바로 사용할 수 있는 빠른 판단만 수행하는 모델을 살펴봅니다.
@@ -1368,6 +1568,8 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-06/jev-and-system-one-models-explained.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/jev-and-system-one-models-explained.md)
+
 ---
 
 ## 모듈 7: 학습, 파인튜닝, 정렬
@@ -1381,26 +1583,48 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 **이 모듈의 레슨:**
 
 1. [파인튜닝은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-fine-tuning-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-fine-tuning-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-fine-tuning-work.md)
 2. [LoRA(Low-Rank Adaptation)란 무엇이며 LLM을 어떻게 파인튜닝하는가?](https://outcomeschool.com/blog/lora-low-rank-adaptation-of-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/lora-low-rank-adaptation-of-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/lora-low-rank-adaptation-of-llms.md)
 3. [Prefix Tuning은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-prefix-tuning-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-prefix-tuning-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-prefix-tuning-work.md)
 4. [Knowledge Distillation은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-knowledge-distillation-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-knowledge-distillation-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-knowledge-distillation-work.md)
 5. [LLM의 Continual Learning이란? Catastrophic Forgetting 해결](https://outcomeschool.com/blog/continual-learning-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/continual-learning-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/continual-learning-in-llms.md)
 6. [Deep RL from Human Preferences란? RLHF의 시작이 된 논문](https://outcomeschool.com/blog/decoding-deep-rl-from-human-preferences)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/decoding-deep-rl-from-human-preferences.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/decoding-deep-rl-from-human-preferences.md)
 7. [InstructGPT란? GPT-3가 지시를 따르게 된 방법](https://outcomeschool.com/blog/decoding-instructgpt)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/decoding-instructgpt.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/decoding-instructgpt.md)
 8. [RLHF란? 인간 피드백을 이용한 강화학습](https://outcomeschool.com/blog/reinforcement-learning-from-human-feedback-rlhf)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/reinforcement-learning-from-human-feedback-rlhf.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/reinforcement-learning-from-human-feedback-rlhf.md)
 9. [Proximal Policy Optimization(PPO)이란?](https://outcomeschool.com/blog/proximal-policy-optimization-ppo)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/proximal-policy-optimization-ppo.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/proximal-policy-optimization-ppo.md)
 10. [Direct Preference Optimization(DPO)이란?](https://outcomeschool.com/blog/direct-preference-optimization-dpo)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/direct-preference-optimization-dpo.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/direct-preference-optimization-dpo.md)
 11. [Group Relative Policy Optimization(GRPO)이란?](https://outcomeschool.com/blog/group-relative-policy-optimization-grpo)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/group-relative-policy-optimization-grpo.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/group-relative-policy-optimization-grpo.md)
 
 ---
@@ -1422,6 +1646,8 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-fine-tuning-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-fine-tuning-work.md)
+
 ### 7.2 LoRA란 무엇이며 LLM을 어떻게 파인튜닝하는가?
 
 대규모 언어 모델을 저비용으로 적응시키는 LoRA(Low-Rank Adaptation)를 배웁니다.
@@ -1437,6 +1663,8 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 - 빠른 요약
 
 시작하기: [LoRA](https://outcomeschool.com/blog/lora-low-rank-adaptation-of-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/lora-low-rank-adaptation-of-llms.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/lora-low-rank-adaptation-of-llms.md)
 
@@ -1464,6 +1692,8 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-prefix-tuning-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-prefix-tuning-work.md)
+
 ### 7.4 Knowledge Distillation은 어떻게 동작하는가?
 
 큰 모델의 지식을 작은 모델로 전달해 모바일·엣지 장치나 저비용 환경에서도 강력한 모델을 사용할 수 있게 하는 Knowledge Distillation을 배웁니다.
@@ -1483,6 +1713,8 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-knowledge-distillation-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-knowledge-distillation-work.md)
+
 ### 7.5 LLM의 Continual Learning이란?
 
 새로운 지식을 계속 학습하면서 기존 지식을 잃는 Catastrophic Forgetting 문제와 이를 해결하는 Continual Learning 접근법을 배웁니다.
@@ -1495,6 +1727,8 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 - 실제 사용 사례
 
 시작하기: [Continual Learning](https://outcomeschool.com/blog/continual-learning-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/continual-learning-in-llms.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/continual-learning-in-llms.md)
 
@@ -1520,6 +1754,8 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/decoding-deep-rl-from-human-preferences.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/decoding-deep-rl-from-human-preferences.md)
+
 ### 7.7 InstructGPT란?
 
 GPT-3가 사람의 지시를 실제로 따르도록 만든 InstructGPT와 ChatGPT로 이어진 학습 방법을 배웁니다.
@@ -1539,6 +1775,8 @@ GPT-3가 사람의 지시를 실제로 따르도록 만든 InstructGPT와 ChatGP
 - 빠른 요약
 
 시작하기: [InstructGPT](https://outcomeschool.com/blog/decoding-instructgpt)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/decoding-instructgpt.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/decoding-instructgpt.md)
 
@@ -1563,6 +1801,8 @@ GPT-3가 사람의 지시를 실제로 따르도록 만든 InstructGPT와 ChatGP
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/reinforcement-learning-from-human-feedback-rlhf.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/reinforcement-learning-from-human-feedback-rlhf.md)
+
 ### 7.9 Proximal Policy Optimization(PPO)이란?
 
 PPO의 동작 원리와 LLM RLHF 학습에서의 사용법을 배웁니다.
@@ -1579,6 +1819,8 @@ PPO의 동작 원리와 LLM RLHF 학습에서의 사용법을 배웁니다.
 - 단점
 
 시작하기: [PPO](https://outcomeschool.com/blog/proximal-policy-optimization-ppo)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/proximal-policy-optimization-ppo.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/proximal-policy-optimization-ppo.md)
 
@@ -1601,6 +1843,8 @@ DPO의 단계별 동작과 RLHF(PPO)와의 차이를 배웁니다.
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/direct-preference-optimization-dpo.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/direct-preference-optimization-dpo.md)
+
 ### 7.11 Group Relative Policy Optimization(GRPO)이란?
 
 GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과 사용 시점을 배웁니다.
@@ -1620,6 +1864,8 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/group-relative-policy-optimization-grpo.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/group-relative-policy-optimization-grpo.md)
+
 ---
 
 ## 모듈 8: 프롬프트 엔지니어링과 컨텍스트 엔지니어링
@@ -1631,14 +1877,24 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 **이 모듈의 레슨:**
 
 1. [Chain-of-Thought(CoT) Prompting은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-chain-of-thought-prompting-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-chain-of-thought-prompting-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-chain-of-thought-prompting-work.md)
 2. [Prompt Chaining은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-prompt-chaining-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-chaining-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-chaining-work.md)
 3. [Prompt Caching은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-prompt-caching-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-caching-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-caching-work.md)
 4. [Context Engineering이란?](https://outcomeschool.com/blog/context-engineering)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/context-engineering.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-08/context-engineering.md)
 5. [Context Compaction은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-context-compaction-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-context-compaction-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-context-compaction-work.md)
 
 ---
@@ -1662,6 +1918,8 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-chain-of-thought-prompting-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-chain-of-thought-prompting-work.md)
+
 ### 8.2 Prompt Chaining은 어떻게 동작하는가?
 
 하나의 Prompt 출력을 다음 Prompt 입력으로 넘겨 복잡한 작업을 더 안정적으로 해결하는 방법을 배웁니다.
@@ -1678,6 +1936,8 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 - 사용 시점
 
 시작하기: [Prompt Chaining](https://outcomeschool.com/blog/how-does-prompt-chaining-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-chaining-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-chaining-work.md)
 
@@ -1700,6 +1960,8 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-caching-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-caching-work.md)
+
 ### 8.4 Context Engineering이란?
 
 신뢰할 수 있는 AI 애플리케이션을 만드는 핵심 기술인 Context Engineering을 배웁니다. Prompt Engineering과의 차이, Context 구성 요소, RAG·Few-shot Example·Tool·Memory 같은 대표 패턴을 살펴봅니다.
@@ -1715,6 +1977,8 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 - 빠른 요약
 
 시작하기: [Context Engineering](https://outcomeschool.com/blog/context-engineering)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/context-engineering.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-08/context-engineering.md)
 
@@ -1738,6 +2002,8 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-context-compaction-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-context-compaction-work.md)
+
 ---
 
 ## 모듈 9: 벡터 검색과 검색 증강 생성(RAG)
@@ -1751,30 +2017,56 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 **이 모듈의 레슨:**
 
 1. [Vector Database는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-a-vector-database-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-vector-database-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-vector-database-work.md)
 2. [Approximate Nearest Neighbor(ANN) 검색은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-approximate-nearest-neighbor-ann-search-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-approximate-nearest-neighbor-ann-search-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-approximate-nearest-neighbor-ann-search-work.md)
 3. [Semantic Search는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-semantic-search-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-semantic-search-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-semantic-search-work.md)
 4. [Hybrid Search는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-hybrid-search-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hybrid-search-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hybrid-search-work.md)
 5. [Reranker는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-a-reranker-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-reranker-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-reranker-work.md)
 6. [ColBERT란? Late Interaction Retrieval](https://outcomeschool.com/blog/decoding-colbert)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/decoding-colbert.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/decoding-colbert.md)
 7. [RAG 문서를 어떻게 Chunking할까?](https://outcomeschool.com/blog/chunking-strategies-for-rag)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/chunking-strategies-for-rag.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/chunking-strategies-for-rag.md)
 8. [HyDE는 RAG에서 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-hyde-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hyde-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hyde-work.md)
 9. [Embedding Cache는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-an-embedding-cache-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-an-embedding-cache-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-an-embedding-cache-work.md)
 10. [Semantic Caching은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-semantic-caching-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-semantic-caching-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-semantic-caching-work.md)
 11. [Agentic RAG란?](https://outcomeschool.com/blog/agentic-rag)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/agentic-rag.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/agentic-rag.md)
 12. [GraphRAG란? Knowledge Graph가 RAG를 개선하는 방법](https://outcomeschool.com/blog/graphrag)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/graphrag.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/graphrag.md)
 13. [Vectorless RAG란? Embedding과 Vector DB 없는 RAG](https://outcomeschool.com/blog/vectorless-rag)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/vectorless-rag.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/vectorless-rag.md)
 
 ---
@@ -1804,6 +2096,8 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-vector-database-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-vector-database-work.md)
+
 ### 9.2 Approximate Nearest Neighbor(ANN) 검색은 어떻게 동작하는가?
 
 거대한 데이터 집합에서 “비슷한 것”을 매우 빠르게 찾는 ANN 검색을 배웁니다.
@@ -1826,6 +2120,8 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-approximate-nearest-neighbor-ann-search-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-approximate-nearest-neighbor-ann-search-work.md)
+
 ### 9.3 Semantic Search는 어떻게 동작하는가?
 
 키워드가 아니라 의미를 기준으로 검색하는 Semantic Search의 전체 흐름을 배웁니다.
@@ -1842,6 +2138,8 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 - 실제 활용
 
 시작하기: [Semantic Search](https://outcomeschool.com/blog/how-does-semantic-search-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-semantic-search-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-semantic-search-work.md)
 
@@ -1864,6 +2162,8 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hybrid-search-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hybrid-search-work.md)
+
 ### 9.5 Reranker는 어떻게 동작하는가?
 
 검색·RAG 파이프라인에서 1차 검색 결과를 더 정밀하게 재정렬하는 Reranker를 배웁니다.
@@ -1880,6 +2180,8 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 - RAG에서 중요한 이유
 
 시작하기: [Reranker](https://outcomeschool.com/blog/how-does-a-reranker-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-reranker-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-reranker-work.md)
 
@@ -1905,6 +2207,8 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 - 빠른 요약
 
 시작하기: [ColBERT](https://outcomeschool.com/blog/decoding-colbert)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/decoding-colbert.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/decoding-colbert.md)
 
@@ -1935,6 +2239,8 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/chunking-strategies-for-rag.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/chunking-strategies-for-rag.md)
+
 ### 9.8 HyDE는 RAG에서 어떻게 동작하는가?
 
 질문 자체 대신 LLM이 만든 가상의 답변을 이용해 더 잘 검색하는 HyDE(Hypothetical Document Embeddings)를 배웁니다.
@@ -1953,6 +2259,8 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 - 요약
 
 시작하기: [HyDE](https://outcomeschool.com/blog/how-does-hyde-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hyde-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hyde-work.md)
 
@@ -1976,6 +2284,8 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-an-embedding-cache-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-an-embedding-cache-work.md)
+
 ### 9.10 Semantic Caching은 어떻게 동작하는가?
 
 문자열이 정확히 같지 않아도 의미가 비슷한 요청에 과거 답변을 재사용하는 Semantic Caching을 배웁니다.
@@ -1992,6 +2302,8 @@ Keyword Search와 Semantic Search를 결합해 각각의 약점을 보완하는 
 - 주의할 점
 
 시작하기: [Semantic Caching](https://outcomeschool.com/blog/how-does-semantic-caching-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-semantic-caching-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-semantic-caching-work.md)
 
@@ -2017,6 +2329,8 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/agentic-rag.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/agentic-rag.md)
+
 영상 보기: [Agentic RAG Explained](https://www.youtube.com/watch?v=6nSegpuWJVw)
 
 → [한국어 영상 요약](docs/ko/videos.md#9-agentic-rag-explained)
@@ -2024,6 +2338,8 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 ### 9.12 GraphRAG란?
 
 [Vector Search](https://outcomeschool.com/blog/how-does-a-vector-database-work)와 Knowledge Graph를 결합해 검색 품질을 높이는 GraphRAG를 배웁니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-vector-database-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-vector-database-work.md)
 
@@ -2038,6 +2354,8 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 - 빠른 요약
 
 시작하기: [GraphRAG](https://outcomeschool.com/blog/graphrag)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/graphrag.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/graphrag.md)
 
@@ -2062,6 +2380,8 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-09/vectorless-rag.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/vectorless-rag.md)
+
 **모듈 9 영상 및 추가 자료:**
 
 - [AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization](https://www.youtube.com/watch?v=lnfWvX66FUk) (영상)
@@ -2080,36 +2400,68 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 **이 모듈의 레슨:**
 
 1. [AI Agent란? 어떻게 동작하는가](https://outcomeschool.com/blog/ai-agent)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent.md)
 2. [LLM의 Function Calling은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-function-calling-work-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-does-function-calling-work-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-does-function-calling-work-in-llms.md)
 3. [AI Agent Loop란?](https://outcomeschool.com/blog/ai-agent-loop)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent-loop.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent-loop.md)
 4. [ReAct Agent란?](https://outcomeschool.com/blog/react-agent)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/react-agent.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/react-agent.md)
 5. [Plan-and-Execute Agent란?](https://outcomeschool.com/blog/plan-and-execute-agent)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/plan-and-execute-agent.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/plan-and-execute-agent.md)
 6. [Reflection Agent란?](https://outcomeschool.com/blog/reflection-agent)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/reflection-agent.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/reflection-agent.md)
 7. [AI Agent Memory는 어떻게 동작하는가?](https://outcomeschool.com/blog/ai-agent-memory)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent-memory.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent-memory.md)
 8. [MCP(Model Context Protocol)란?](https://outcomeschool.com/blog/what-is-mcp-model-context-protocol)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-mcp-model-context-protocol.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-mcp-model-context-protocol.md)
 9. [Agent Skills란?](https://outcomeschool.com/blog/what-are-agent-skills)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-are-agent-skills.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-are-agent-skills.md)
 10. [OKF(Open Knowledge Format)란?](https://outcomeschool.com/blog/what-is-okf-open-knowledge-format)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-okf-open-knowledge-format.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-okf-open-knowledge-format.md)
 11. [Multi-Agent System이란?](https://outcomeschool.com/blog/multi-agent-systems)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/multi-agent-systems.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/multi-agent-systems.md)
 12. [AI SubAgent란?](https://outcomeschool.com/blog/ai-subagents)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-subagents.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-subagents.md)
 13. [AI Agent는 어떻게 통신하는가?](https://outcomeschool.com/blog/how-ai-agents-communicate)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-ai-agents-communicate.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-ai-agents-communicate.md)
 14. [AI Orchestration이란?](https://outcomeschool.com/blog/ai-orchestration)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-orchestration.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-orchestration.md)
 15. [Sakana Fugu란?](https://outcomeschool.com/blog/decoding-sakana-fugu)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/decoding-sakana-fugu.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/decoding-sakana-fugu.md)
 16. [Computer-Use Agent는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-computer-use-agents-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-do-computer-use-agents-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-do-computer-use-agents-work.md)
 
 ---
@@ -2131,6 +2483,8 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 - 빠른 요약
 
 시작하기: [AI Agent](https://outcomeschool.com/blog/ai-agent)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent.md)
 
@@ -2157,6 +2511,8 @@ LLM이 외부 함수를 선택하고 인자를 만들지만 직접 함수를 실
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-does-function-calling-work-in-llms.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-does-function-calling-work-in-llms.md)
+
 ### 10.3 AI Agent Loop란?
 
 Agent를 움직이는 Think-Act-Observe 사이클과 종료 조건, 흔한 실패 유형을 배웁니다.
@@ -2173,6 +2529,8 @@ Agent를 움직이는 Think-Act-Observe 사이클과 종료 조건, 흔한 실�
 - 빠른 요약
 
 시작하기: [AI Agent Loop](https://outcomeschool.com/blog/ai-agent-loop)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent-loop.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent-loop.md)
 
@@ -2194,6 +2552,8 @@ Reasoning과 Acting을 번갈아 수행하는 ReAct Agent의 구조와 동작, �
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/react-agent.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/react-agent.md)
+
 ### 10.5 Plan-and-Execute Agent란?
 
 먼저 계획을 만들고 각 단계를 실행하는 Agent 패턴을 배웁니다.
@@ -2208,6 +2568,8 @@ Reasoning과 Acting을 번갈아 수행하는 ReAct Agent의 구조와 동작, �
 - 빠른 요약
 
 시작하기: [Plan-and-Execute Agent](https://outcomeschool.com/blog/plan-and-execute-agent)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/plan-and-execute-agent.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/plan-and-execute-agent.md)
 
@@ -2228,6 +2590,8 @@ Reasoning과 Acting을 번갈아 수행하는 ReAct Agent의 구조와 동작, �
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/reflection-agent.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/reflection-agent.md)
+
 ### 10.7 AI Agent Memory는 어떻게 동작하는가?
 
 Agent Memory가 필요한 이유, Memory Stack, Write·Read·Update·Forget 네 가지 핵심 연산과 런타임 흐름을 배웁니다.
@@ -2242,6 +2606,8 @@ Agent Memory가 필요한 이유, Memory Stack, Write·Read·Update·Forget 네 
 - 빠른 요약
 
 시작하기: [AI Agent Memory](https://outcomeschool.com/blog/ai-agent-memory)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent-memory.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent-memory.md)
 
@@ -2263,6 +2629,8 @@ AI 모델과 외부 Tool·Data Source를 표준화된 방식으로 연결하는 
 - 요약
 
 시작하기: [MCP](https://outcomeschool.com/blog/what-is-mcp-model-context-protocol)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-mcp-model-context-protocol.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-mcp-model-context-protocol.md)
 
@@ -2288,6 +2656,8 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-are-agent-skills.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-are-agent-skills.md)
+
 ### 10.10 OKF(Open Knowledge Format)란?
 
 흩어진 데이터 지식을 AI Agent와 Tool이 읽을 수 있는 평문 Markdown 폴더 형태로 정리하는 Open Knowledge Format을 배웁니다.
@@ -2305,6 +2675,8 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 - 요약
 
 시작하기: [OKF](https://outcomeschool.com/blog/what-is-okf-open-knowledge-format)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-okf-open-knowledge-format.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-okf-open-knowledge-format.md)
 
@@ -2327,6 +2699,8 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/multi-agent-systems.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/multi-agent-systems.md)
+
 ### 10.12 AI SubAgent란?
 
 큰 작업을 분해해 전문화된 하위 Agent에 맡기는 SubAgent 구조를 배웁니다.
@@ -2341,6 +2715,8 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 - Best Practice
 
 시작하기: [AI SubAgent](https://outcomeschool.com/blog/ai-subagents)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-subagents.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-subagents.md)
 
@@ -2366,6 +2742,8 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-ai-agents-communicate.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-ai-agents-communicate.md)
+
 ### 10.14 AI Orchestration이란?
 
 여러 LLM, Tool, Step을 조율해 실제 AI 제품을 구성하는 Orchestration을 배웁니다.
@@ -2385,6 +2763,8 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 - Best Practice
 
 시작하기: [AI Orchestration](https://outcomeschool.com/blog/ai-orchestration)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-orchestration.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-orchestration.md)
 
@@ -2411,6 +2791,8 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/decoding-sakana-fugu.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/decoding-sakana-fugu.md)
+
 ### 10.16 Computer-Use Agent는 어떻게 동작하는가?
 
 화면을 보고 판단해 마우스·키보드 같은 컴퓨터 조작을 수행하는 Agent를 배웁니다.
@@ -2431,6 +2813,8 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-do-computer-use-agents-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-do-computer-use-agents-work.md)
+
 ---
 
 ## 모듈 11: 에이전틱 엔지니어링과 에이전트 프레임워크
@@ -2442,20 +2826,36 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 **이 모듈의 레슨:**
 
 1. [Harness Engineering이란?](https://outcomeschool.com/blog/harness-engineering-in-ai)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/harness-engineering-in-ai.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/harness-engineering-in-ai.md)
 2. [Loop Engineering이란?](https://outcomeschool.com/blog/what-is-loop-engineering)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-loop-engineering.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-loop-engineering.md)
 3. [Graph Engineering이란?](https://outcomeschool.com/blog/what-is-graph-engineering)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-graph-engineering.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-graph-engineering.md)
 4. [AI의 품질은 Definition of Done의 품질을 넘을 수 없다](https://outcomeschool.com/blog/ai-is-only-as-good-as-our-definition-of-done)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/ai-is-only-as-good-as-our-definition-of-done.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/ai-is-only-as-good-as-our-definition-of-done.md)
 5. [LangChain은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-langchain-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langchain-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langchain-work.md)
 6. [LangGraph는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-langgraph-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langgraph-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langgraph-work.md)
 7. [Claude Code는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-claude-code-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-claude-code-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-claude-code-work.md)
 8. [Cursor는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-cursor-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-cursor-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-cursor-work.md)
 
 ---
@@ -2476,6 +2876,8 @@ AI Agent와 평가 시스템을 안정적으로 감싸고 제어하는 Harness�
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-11/harness-engineering-in-ai.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/harness-engineering-in-ai.md)
+
 ### 11.2 Loop Engineering이란?
 
 Agent가 작업을 완료할 때까지 반복 실행하는 Loop를 설계하고 제어하는 방법을 배웁니다.
@@ -2493,6 +2895,8 @@ Agent가 작업을 완료할 때까지 반복 실행하는 Loop를 설계하고 
 - 잘 동작하는 영역과 실패하는 영역
 
 시작하기: [Loop Engineering](https://outcomeschool.com/blog/what-is-loop-engineering)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-loop-engineering.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-loop-engineering.md)
 
@@ -2522,6 +2926,8 @@ Agent가 작업을 완료할 때까지 반복 실행하는 Loop를 설계하고 
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-graph-engineering.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-graph-engineering.md)
+
 ### 11.4 AI의 품질은 Definition of Done의 품질을 넘을 수 없다
 
 작업이 끝났는지 기계적으로 판정할 수 있는 명확한 완료 기준이 AI 시스템의 신뢰성을 어떻게 높이는지 배웁니다.
@@ -2533,6 +2939,8 @@ Agent가 작업을 완료할 때까지 반복 실행하는 Loop를 설계하고 
 - 더 좋은 Definition of Done 작성법
 
 시작하기: [AI Is Only as Good as Our Definition of Done](https://outcomeschool.com/blog/ai-is-only-as-good-as-our-definition-of-done)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/ai-is-only-as-good-as-our-definition-of-done.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-11/ai-is-only-as-good-as-our-definition-of-done.md)
 
@@ -2552,6 +2960,8 @@ Prompt, Chain, Memory, Output Parser, Retrieval, Agent를 조합해 LLM 애플�
 - 전체 동작 흐름
 
 시작하기: [LangChain](https://outcomeschool.com/blog/how-does-langchain-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langchain-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langchain-work.md)
 
@@ -2575,6 +2985,8 @@ State, Node, Edge로 Agent Workflow를 Graph로 구성하는 LangGraph를 배웁
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langgraph-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langgraph-work.md)
+
 ### 11.7 Claude Code는 어떻게 동작하는가?
 
 일반 챗봇과 달리 코드베이스를 탐색하고 Tool을 사용하며 작업을 검증하는 Claude Code의 Agent Loop를 배웁니다.
@@ -2592,6 +3004,8 @@ State, Node, Edge로 Agent Workflow를 Graph로 구성하는 LangGraph를 배웁
 - 전체 구조
 
 시작하기: [Claude Code](https://outcomeschool.com/blog/how-does-claude-code-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-claude-code-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-claude-code-work.md)
 
@@ -2616,6 +3030,8 @@ State, Node, Edge로 Agent Workflow를 Graph로 구성하는 LangGraph를 배웁
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-cursor-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-cursor-work.md)
+
 ---
 
 ## 모듈 12: LLM 추론 엔지니어링
@@ -2629,38 +3045,72 @@ State, Node, Edge로 Agent Workflow를 Graph로 구성하는 LangGraph를 배웁
 **이 모듈의 레슨:**
 
 1. [LLM Inference Optimization](https://outcomeschool.com/blog/llm-inference-optimization)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/llm-inference-optimization.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/llm-inference-optimization.md)
 2. [Prefill vs Decode](https://outcomeschool.com/blog/prefill-vs-decode-llm-inference-optimization)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/prefill-vs-decode-llm-inference-optimization.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/prefill-vs-decode-llm-inference-optimization.md)
 3. [Prefill-Decode Disaggregation이란?](https://outcomeschool.com/blog/prefill-decode-disaggregation)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/prefill-decode-disaggregation.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/prefill-decode-disaggregation.md)
 4. [LLM의 KV Cache](https://outcomeschool.com/blog/kv-cache-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/kv-cache-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/kv-cache-in-llms.md)
 5. [KV Cache Compression이란?](https://outcomeschool.com/blog/kv-cache-compression)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/kv-cache-compression.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/kv-cache-compression.md)
 6. [Paged Attention이란?](https://outcomeschool.com/blog/paged-attention-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/paged-attention-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/paged-attention-in-llms.md)
 7. [Continuous Batching이란?](https://outcomeschool.com/blog/continuous-batching-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/continuous-batching-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/continuous-batching-in-llms.md)
 8. [Speculative Decoding이란?](https://outcomeschool.com/blog/speculative-decoding)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/speculative-decoding.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/speculative-decoding.md)
 9. [N-gram Speculation이란?](https://outcomeschool.com/blog/n-gram-speculation-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/n-gram-speculation-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/n-gram-speculation-in-llms.md)
 10. [Medusa란?](https://outcomeschool.com/blog/decoding-medusa)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/decoding-medusa.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/decoding-medusa.md)
 11. [EAGLE이란?](https://outcomeschool.com/blog/decoding-eagle)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/decoding-eagle.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/decoding-eagle.md)
 12. [Model Quantization은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-model-quantization-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-model-quantization-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-model-quantization-work.md)
 13. [GGUF는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-gguf-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-gguf-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-gguf-work.md)
 14. [llama.cpp는 일반 하드웨어에서 LLM을 어떻게 실행하는가?](https://outcomeschool.com/blog/how-does-llama-cpp-run-llms-on-everyday-hardware)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-llama-cpp-run-llms-on-everyday-hardware.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-llama-cpp-run-llms-on-everyday-hardware.md)
 15. [vLLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-vllm-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-vllm-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-vllm-work.md)
 16. [SGLang은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-sglang-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-sglang-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-sglang-work.md)
 17. [TensorRT-LLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-tensorrt-llm-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-tensorrt-llm-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-tensorrt-llm-work.md)
 
 ---
@@ -2682,6 +3132,8 @@ LLM 텍스트 생성과 Attention, KV Cache, 그리고 KV Cache를 줄이기 위
 - 선택 기준
 
 시작하기: [LLM Inference Optimization](https://outcomeschool.com/blog/llm-inference-optimization)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/llm-inference-optimization.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/llm-inference-optimization.md)
 
@@ -2707,6 +3159,8 @@ LLM 추론의 두 단계인 Prefill과 Decode, 그리고 두 단계를 연결하
 - 결론
 
 시작하기: [Prefill vs Decode](https://outcomeschool.com/blog/prefill-vs-decode-llm-inference-optimization)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/prefill-vs-decode-llm-inference-optimization.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/prefill-vs-decode-llm-inference-optimization.md)
 
@@ -2736,6 +3190,8 @@ Prompt를 읽는 Prefill과 답을 생성하는 Decode를 별도 Machine/GPU로 
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/prefill-decode-disaggregation.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/prefill-decode-disaggregation.md)
+
 ### 12.4 LLM의 KV Cache
 
 이전 Token의 Key와 Value를 재사용해 반복 계산을 줄이는 KV Cache를 배웁니다.
@@ -2749,6 +3205,8 @@ Prompt를 읽는 Prefill과 답을 생성하는 Decode를 별도 Machine/GPU로 
 - Speed vs Memory Trade-off
 
 시작하기: [KV Cache](https://outcomeschool.com/blog/kv-cache-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/kv-cache-in-llms.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/kv-cache-in-llms.md)
 
@@ -2771,6 +3229,8 @@ Prompt를 읽는 Prefill과 답을 생성하는 Decode를 별도 Machine/GPU로 
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/kv-cache-compression.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/kv-cache-compression.md)
+
 ### 12.6 Paged Attention이란?
 
 KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리할 수 있게 하는 Paged Attention을 배웁니다.
@@ -2783,6 +3243,8 @@ KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리�
 - Request 간 Memory Sharing
 
 시작하기: [Paged Attention](https://outcomeschool.com/blog/paged-attention-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/paged-attention-in-llms.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/paged-attention-in-llms.md)
 
@@ -2808,6 +3270,8 @@ KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리�
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/continuous-batching-in-llms.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/continuous-batching-in-llms.md)
+
 ### 12.8 Speculative Decoding이란?
 
 작은 Draft Model이 여러 Token을 미리 제안하고 큰 Target Model이 한 번에 검증해 생성 속도를 높이는 Speculative Decoding을 배웁니다.
@@ -2824,6 +3288,8 @@ KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리�
 - 빠른 요약
 
 시작하기: [Speculative Decoding](https://outcomeschool.com/blog/speculative-decoding)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/speculative-decoding.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/speculative-decoding.md)
 
@@ -2846,6 +3312,8 @@ KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리�
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/n-gram-speculation-in-llms.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/n-gram-speculation-in-llms.md)
+
 ### 12.10 Medusa란?
 
 하나의 모델에 여러 추가 Head를 붙여 여러 미래 Token을 동시에 예측하고 검증하는 Medusa를 배웁니다.
@@ -2865,6 +3333,8 @@ KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리�
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/decoding-medusa.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/decoding-medusa.md)
+
 ### 12.11 EAGLE이란?
 
 Token Level이 아니라 Feature Level에서 Draft를 수행해 Speculative Decoding 성능을 높이는 EAGLE을 배웁니다.
@@ -2880,6 +3350,8 @@ Token Level이 아니라 Feature Level에서 Draft를 수행해 Speculative Deco
 - 빠른 요약
 
 시작하기: [EAGLE](https://outcomeschool.com/blog/decoding-eagle)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/decoding-eagle.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/decoding-eagle.md)
 
@@ -2904,6 +3376,8 @@ Token Level이 아니라 Feature Level에서 Draft를 수행해 Speculative Deco
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-model-quantization-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-model-quantization-work.md)
+
 ### 12.13 GGUF는 어떻게 동작하는가?
 
 Local Inference에 필요한 Model Weight와 Metadata를 하나의 효율적인 파일 형식으로 담는 GGUF를 배웁니다.
@@ -2920,6 +3394,8 @@ Local Inference에 필요한 Model Weight와 Metadata를 하나의 효율적인 
 - 실제 활용
 
 시작하기: [GGUF](https://outcomeschool.com/blog/how-does-gguf-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-gguf-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-gguf-work.md)
 
@@ -2944,6 +3420,8 @@ Quantization, GGUF, Memory Mapping, CPU/GPU 분할을 이용해 일반 PC에서 
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-llama-cpp-run-llms-on-everyday-hardware.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-llama-cpp-run-llms-on-everyday-hardware.md)
+
 ### 12.15 vLLM은 어떻게 동작하는가?
 
 PagedAttention과 Continuous Batching을 중심으로 많은 사용자에게 LLM을 효율적으로 Serving하는 vLLM을 배웁니다.
@@ -2961,6 +3439,8 @@ PagedAttention과 Continuous Batching을 중심으로 많은 사용자에게 LLM
 - 실제 활용
 
 시작하기: [vLLM](https://outcomeschool.com/blog/how-does-vllm-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-vllm-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-vllm-work.md)
 
@@ -2982,6 +3462,8 @@ RadixAttention을 이용한 Prefix Reuse와 Runtime 최적화로 LLM Serving 성
 - vLLM과 비교
 
 시작하기: [SGLang](https://outcomeschool.com/blog/how-does-sglang-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-sglang-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-sglang-work.md)
 
@@ -3013,6 +3495,8 @@ NVIDIA GPU에서 가능한 최고 수준의 추론 성능을 목표로 Build-tim
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-tensorrt-llm-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-tensorrt-llm-work.md)
+
 **모듈 12 영상 및 추가 자료:**
 
 - [LLM Inference Optimization](https://www.youtube.com/watch?v=jV2sCj4lHYk) (영상)
@@ -3032,12 +3516,20 @@ NVIDIA GPU에서 가능한 최고 수준의 추론 성능을 목표로 Build-tim
 **이 모듈의 레슨:**
 
 1. [LLM Evaluation이란?](https://outcomeschool.com/blog/llm-evaluation)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-evaluation.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-evaluation.md)
 2. [LLM as a Judge란?](https://outcomeschool.com/blog/llm-as-a-judge)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-as-a-judge.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-as-a-judge.md)
 3. [AI Agent를 어떻게 평가할까?](https://outcomeschool.com/blog/ai-agent-evaluation)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-13/ai-agent-evaluation.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-13/ai-agent-evaluation.md)
 4. [AI Agent Observability란?](https://outcomeschool.com/blog/ai-agent-observability)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-13/ai-agent-observability.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-13/ai-agent-observability.md)
 
 ---
@@ -3063,6 +3555,8 @@ LLM 성능을 측정하기 위한 평가 유형, 자동 지표, Benchmark, 사�
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-evaluation.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-evaluation.md)
+
 ### 13.2 LLM as a Judge란?
 
 하나의 LLM을 이용해 다른 LLM의 출력을 평가하는 방법을 배웁니다.
@@ -3079,6 +3573,8 @@ LLM 성능을 측정하기 위한 평가 유형, 자동 지표, Benchmark, 사�
 - 실제 활용
 
 시작하기: [LLM as a Judge](https://outcomeschool.com/blog/llm-as-a-judge)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-as-a-judge.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-as-a-judge.md)
 
@@ -3106,6 +3602,8 @@ Agent Evaluation이 일반 LLM 평가와 어떻게 다른지, Outcome·Trajector
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-13/ai-agent-evaluation.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-13/ai-agent-evaluation.md)
+
 ### 13.4 AI Agent Observability란?
 
 Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 문제 원인을 이해하는 Observability를 배웁니다.
@@ -3129,6 +3627,8 @@ Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 �
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-13/ai-agent-observability.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-13/ai-agent-observability.md)
+
 ---
 
 ## 모듈 14: AI 안전과 보안
@@ -3140,10 +3640,16 @@ Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 �
 **이 모듈의 레슨:**
 
 1. [LLM Guardrail은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-llm-guardrails-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-14/how-do-llm-guardrails-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-14/how-do-llm-guardrails-work.md)
 2. [LLM의 Prompt Injection이란 무엇이며 어떻게 방어하는가?](https://outcomeschool.com/blog/prompt-injection-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-14/prompt-injection-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-14/prompt-injection-in-llms.md)
 3. [LLM Watermarking은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-llm-watermarking-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-14/how-does-llm-watermarking-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-14/how-does-llm-watermarking-work.md)
 
 ---
@@ -3165,6 +3671,8 @@ Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 �
 - Best Practice
 
 시작하기: [LLM Guardrail](https://outcomeschool.com/blog/how-do-llm-guardrails-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-14/how-do-llm-guardrails-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-14/how-do-llm-guardrails-work.md)
 
@@ -3193,6 +3701,8 @@ Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 �
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-14/prompt-injection-in-llms.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-14/prompt-injection-in-llms.md)
+
 ### 14.3 LLM Watermarking은 어떻게 동작하는가?
 
 모델이 생성한 텍스트에 의미를 크게 훼손하지 않고 통계적 신호를 남겨 나중에 검출하는 Watermarking을 배웁니다.
@@ -3218,6 +3728,8 @@ Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 �
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-14/how-does-llm-watermarking-work.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-14/how-does-llm-watermarking-work.md)
+
 ---
 
 ## 모듈 15: 멀티모달 AI와 생성 모델
@@ -3229,16 +3741,28 @@ Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 �
 **이 모듈의 레슨:**
 
 1. [Multimodal AI란?](https://outcomeschool.com/blog/multimodal-ai)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/multimodal-ai.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-15/multimodal-ai.md)
 2. [Vision Transformer(ViT)란?](https://outcomeschool.com/blog/decoding-vision-transformer-vit)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/decoding-vision-transformer-vit.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-15/decoding-vision-transformer-vit.md)
 3. [Image Embedding은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-image-embeddings-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/how-do-image-embeddings-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-15/how-do-image-embeddings-work.md)
 4. [Diffusion Model이란?](https://outcomeschool.com/blog/diffusion-models)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/diffusion-models.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-15/diffusion-models.md)
 5. [Generative Adversarial Network(GAN)이란?](https://outcomeschool.com/blog/generative-adversarial-networks)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/generative-adversarial-networks.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-15/generative-adversarial-networks.md)
 6. [Variational Autoencoder(VAE)란?](https://outcomeschool.com/blog/variational-autoencoders)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/variational-autoencoders.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-15/variational-autoencoders.md)
 
 ---
@@ -3262,6 +3786,8 @@ Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 �
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-15/multimodal-ai.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/multimodal-ai.md)
+
 ### 15.2 Vision Transformer(ViT)란?
 
 이미지를 Patch로 나누고 Token처럼 처리해 Transformer로 분류하는 ViT를 배웁니다.
@@ -3281,6 +3807,8 @@ Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 �
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-15/decoding-vision-transformer-vit.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/decoding-vision-transformer-vit.md)
+
 ### 15.3 Image Embedding은 어떻게 동작하는가?
 
 이미지를 Vector로 표현해 Similarity Search와 Recommendation 등에 사용하는 Image Embedding을 배웁니다.
@@ -3297,6 +3825,8 @@ Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 �
 - 요약
 
 시작하기: [Image Embedding](https://outcomeschool.com/blog/how-do-image-embeddings-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/how-do-image-embeddings-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-15/how-do-image-embeddings-work.md)
 
@@ -3320,6 +3850,8 @@ Noise를 점차 제거해 이미지를 생성하는 Diffusion Model을 배웁니
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-15/diffusion-models.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/diffusion-models.md)
+
 ### 15.5 Generative Adversarial Network(GAN)이란?
 
 Generator와 Discriminator가 경쟁하며 새로운 이미지를 생성하는 GAN을 배웁니다.
@@ -3336,6 +3868,8 @@ Generator와 Discriminator가 경쟁하며 새로운 이미지를 생성하는 G
 - 실제 활용
 
 시작하기: [GAN](https://outcomeschool.com/blog/generative-adversarial-networks)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/generative-adversarial-networks.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-15/generative-adversarial-networks.md)
 
@@ -3358,6 +3892,8 @@ Generator와 Discriminator가 경쟁하며 새로운 이미지를 생성하는 G
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-15/variational-autoencoders.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/variational-autoencoders.md)
+
 ---
 
 ## 모듈 16: AI 인프라, 배포, 시스템 설계
@@ -3369,24 +3905,44 @@ Generator와 Discriminator가 경쟁하며 새로운 이미지를 생성하는 G
 **이 모듈의 레슨:**
 
 1. [딥러닝에서 GPU는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-a-gpu-work-for-deep-learning)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-gpu-work-for-deep-learning.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-gpu-work-for-deep-learning.md)
 2. [Google TPU는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-a-google-tpu-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-google-tpu-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-google-tpu-work.md)
 3. [LPU는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-an-lpu-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-an-lpu-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-an-lpu-work.md)
 4. [Cloud vs On-device Model Deployment](https://outcomeschool.com/blog/cloud-vs-on-device-model-deployment)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/cloud-vs-on-device-model-deployment.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/cloud-vs-on-device-model-deployment.md)
 5. [Android TensorFlow Lite 머신러닝 예제](https://outcomeschool.com/blog/android-tensorflow-lite-machine-learning-example)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/android-tensorflow-lite-machine-learning-example.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/android-tensorflow-lite-machine-learning-example.md)
 6. [LLM Routing이란?](https://outcomeschool.com/blog/llm-routing)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/llm-routing.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/llm-routing.md)
 7. [실시간 Voice AI Agent 설계](https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/design-a-real-time-voice-ai-agent.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/design-a-real-time-voice-ai-agent.md)
 8. [System Design이란?](https://outcomeschool.com/blog/system-design)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/system-design.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/system-design.md)
 9. [HTTP Request vs Long-Polling vs WebSocket vs SSE](https://outcomeschool.com/blog/http-request-long-polling-websocket-sse)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/http-request-long-polling-websocket-sse.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/http-request-long-polling-websocket-sse.md)
 10. [Voice/Video Call은 어떻게 동작하는가?](https://outcomeschool.com/blog/voice-and-video-call)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/voice-and-video-call.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/voice-and-video-call.md)
 
 ---
@@ -3413,6 +3969,8 @@ GPU가 대규모 병렬 연산과 높은 메모리 대역폭을 이용해 딥러
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-gpu-work-for-deep-learning.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-gpu-work-for-deep-learning.md)
+
 ### 16.2 Google TPU는 어떻게 동작하는가?
 
 Google이 머신러닝을 위해 설계한 TPU와 Systolic Array 구조를 배웁니다.
@@ -3429,6 +3987,8 @@ Google이 머신러닝을 위해 설계한 TPU와 Systolic Array 구조를 배�
 - 한계
 
 시작하기: [Google TPU](https://outcomeschool.com/blog/how-does-a-google-tpu-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-google-tpu-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-google-tpu-work.md)
 
@@ -3453,6 +4013,8 @@ Google이 머신러닝을 위해 설계한 TPU와 Systolic Array 구조를 배�
 - 선택 기준
 
 시작하기: [LPU](https://outcomeschool.com/blog/how-does-an-lpu-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-an-lpu-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-an-lpu-work.md)
 
@@ -3481,11 +4043,15 @@ AI 모델을 Cloud에서 실행하는 방식과 사용자 Device에서 직접 �
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/cloud-vs-on-device-model-deployment.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/cloud-vs-on-device-model-deployment.md)
+
 ### 16.5 Android TensorFlow Lite 머신러닝 예제
 
 Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 예제를 살펴봅니다.
 
 시작하기: [Android TensorFlow Lite Machine Learning Example](https://outcomeschool.com/blog/android-tensorflow-lite-machine-learning-example)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/android-tensorflow-lite-machine-learning-example.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/android-tensorflow-lite-machine-learning-example.md)
 
@@ -3505,6 +4071,8 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 - 빠른 요약
 
 시작하기: [LLM Routing](https://outcomeschool.com/blog/llm-routing)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/llm-routing.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/llm-routing.md)
 
@@ -3542,6 +4110,8 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/design-a-real-time-voice-ai-agent.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/design-a-real-time-voice-ai-agent.md)
+
 **AI System Design 보조 레슨:**
 
 ### 16.8 System Design이란?
@@ -3551,6 +4121,8 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 - 필요한 핵심 개념은 무엇인가?
 
 시작하기: [System Design](https://outcomeschool.com/blog/system-design)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/system-design.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/system-design.md)
 
@@ -3568,6 +4140,8 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/http-request-long-polling-websocket-sse.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/http-request-long-polling-websocket-sse.md)
+
 ### 16.10 Voice/Video Call은 어떻게 동작하는가?
 
 음성·영상 통화의 High-level 구조를 배웁니다.
@@ -3578,6 +4152,8 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 - TURN Server
 
 시작하기: [Voice/Video Call](https://outcomeschool.com/blog/voice-and-video-call)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/voice-and-video-call.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/voice-and-video-call.md)
 
@@ -3592,10 +4168,16 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 **이 모듈의 레슨:**
 
 1. [JEPA(Joint Embedding Predictive Architecture)란?](https://outcomeschool.com/blog/joint-embedding-predictive-architecture-jepa)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-17/joint-embedding-predictive-architecture-jepa.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-17/joint-embedding-predictive-architecture-jepa.md)
 2. [World Model은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-world-models-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-17/how-do-world-models-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-17/how-do-world-models-work.md)
 3. [Recursive Self-Improvement(RSI)이란?](https://outcomeschool.com/blog/what-is-recursive-self-improvement-rsi)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-17/what-is-recursive-self-improvement-rsi.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-17/what-is-recursive-self-improvement-rsi.md)
 
 ---
@@ -3622,6 +4204,8 @@ Joint Embedding Predictive Architecture(JEPA)의 핵심 아이디어와 I-JEPA, 
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-17/joint-embedding-predictive-architecture-jepa.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-17/joint-embedding-predictive-architecture-jepa.md)
+
 ### 17.2 World Model은 어떻게 동작하는가?
 
 환경이 어떻게 변하는지 내부적으로 모델링해 실제 행동 전에 미래를 상상하고 계획하는 World Model을 배웁니다.
@@ -3638,6 +4222,8 @@ Joint Embedding Predictive Architecture(JEPA)의 핵심 아이디어와 I-JEPA, 
 - 실제 활용
 
 시작하기: [World Model](https://outcomeschool.com/blog/how-do-world-models-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-17/how-do-world-models-work.md)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-17/how-do-world-models-work.md)
 
@@ -3661,6 +4247,8 @@ AI가 자신의 능력을 개선하고, 개선된 버전이 다시 자신을 개
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-17/what-is-recursive-self-improvement-rsi.md)
 
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-17/what-is-recursive-self-improvement-rsi.md)
+
 ---
 
 ## 모듈 18: AI 엔지니어링 면접 준비
@@ -3680,140 +4268,276 @@ AI가 자신의 능력을 개선하고, 개선된 버전이 다시 자신을 개
 이 과정에서 다룬 주요 AI 엔지니어링 용어의 빠른 정의입니다. 각 용어의 링크를 누르면 자세한 설명을 볼 수 있습니다.
 
 - **[Generative AI](https://outcomeschool.com/blog/what-is-generative-ai):** 텍스트, 이미지, 오디오, 비디오, 코드처럼 새로운 콘텐츠를 만들어낼 수 있는 AI입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-is-generative-ai.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-is-generative-ai.md)
 - **[Language Model](https://outcomeschool.com/blog/small-language-models-slms):** 이전 Token을 바탕으로 다음 Token을 예측하도록 학습된 신경망입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/small-language-models-slms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-06/small-language-models-slms.md)
 - **[LLM Architecture](https://outcomeschool.com/blog/evolution-of-llm-architecture):** LLM이 텍스트를 읽고 기억하고 다음 Token을 생성하는 구조를 정의한 설계도입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/evolution-of-llm-architecture.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-05/evolution-of-llm-architecture.md)
 - **[Tokenization](https://outcomeschool.com/blog/bpe-in-llms):** 텍스트를 Token이라는 작은 단위로 나누고 숫자로 변환하는 과정입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/bpe-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/bpe-in-llms.md)
 - **[BPE](https://outcomeschool.com/blog/bpe-in-llms):** 문자와 단어 사이 크기의 Subword 단위로 텍스트를 나누는 Tokenization 알고리즘입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/bpe-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/bpe-in-llms.md)
 - **[Embedding](https://outcomeschool.com/blog/what-are-embeddings):** 의미가 비슷한 항목이 가까운 위치에 놓이도록 의미를 숫자 Vector로 표현한 것입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-are-embeddings.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/what-are-embeddings.md)
 - **[Transformer](https://outcomeschool.com/blog/encoder-vs-decoder-in-transformers):** 현대 언어 AI 모델 대부분의 기반이 되는 아키텍처입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/encoder-vs-decoder-in-transformers.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/encoder-vs-decoder-in-transformers.md)
 - **[Self Attention](https://outcomeschool.com/blog/self-attention-in-transformers):** 한 Sequence의 각 Token이 같은 Sequence의 다른 Token들을 참고해 Context를 이해하게 하는 메커니즘입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/self-attention-in-transformers.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/self-attention-in-transformers.md)
 - **[Multi-Head Attention](https://outcomeschool.com/blog/multi-head-attention-in-transformers):** 여러 Self Attention Head를 병렬 실행하고 결과를 결합해 더 풍부한 표현을 만드는 방식입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-03/multi-head-attention-in-transformers.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-03/multi-head-attention-in-transformers.md)
 - **[Grouped-Query Attention(GQA)](https://outcomeschool.com/blog/grouped-query-attention):** Query Head를 Group으로 묶어 같은 Group 안에서 Key와 Value를 공유하는 Attention 방식입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-05/grouped-query-attention.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-05/grouped-query-attention.md)
 - **[Gradient Descent](https://outcomeschool.com/blog/math-behind-gradient-descent):** Loss가 가장 빠르게 감소하는 기울기 방향으로 Parameter를 갱신하는 최적화 방법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-gradient-descent.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-gradient-descent.md)
 - **[Backpropagation](https://outcomeschool.com/blog/math-behind-backpropagation):** 각 Weight가 Error에 얼마나 기여했는지 계산해 Weight를 조정하는 방법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-backpropagation.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-02/math-behind-backpropagation.md)
 - **[Reinforcement Learning](https://outcomeschool.com/blog/reinforcement-learning):** Agent가 Environment와 상호작용하며 장기 Reward를 최대화하도록 의사결정 Sequence를 학습하는 방법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/reinforcement-learning.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-01/reinforcement-learning.md)
 - **[Contrastive Learning](https://outcomeschool.com/blog/contrastive-learning):** 비슷한 데이터를 Representation Space에서 가깝게, 다른 데이터를 멀게 배치하도록 학습하는 방법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-01/contrastive-learning.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-01/contrastive-learning.md)
 - **[Top-p Sampling](https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work):** 누적 확률이 p 이상이 되는 최소 상위 Token 집합에서 무작위로 다음 Token을 선택하는 Decoding 전략입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
 - **[Token Streaming](https://outcomeschool.com/blog/how-does-token-streaming-work):** 전체 응답이 끝날 때까지 기다리지 않고 생성되는 Token을 순차적으로 사용자에게 전송하는 기법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-token-streaming-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-token-streaming-work.md)
 - **[Lost in the Middle](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms):** 긴 입력의 시작과 끝보다 중간에 있는 정보를 LLM이 덜 활용하는 현상입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/lost-in-the-middle-problem-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/lost-in-the-middle-problem-in-llms.md)
 - **[Large Reasoning Model(LRM)](https://outcomeschool.com/blog/large-reasoning-models):** 답변 전에 더 많은 추론 과정을 수행하도록 학습된 대규모 언어 모델입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/large-reasoning-models.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-06/large-reasoning-models.md)
 - **[Diffusion Language Model](https://outcomeschool.com/blog/how-do-diffusion-language-models-dlms-work):** Noise에 가까운 텍스트 표현을 반복적으로 정제해 문장을 생성하는 언어 모델 방식입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-06/how-do-diffusion-language-models-dlms-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-06/how-do-diffusion-language-models-dlms-work.md)
 - **[Fine-tuning](https://outcomeschool.com/blog/how-does-fine-tuning-work):** 이미 학습된 모델을 특정 Data·Task에 맞게 추가 학습하는 과정입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-fine-tuning-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-fine-tuning-work.md)
 - **[LoRA](https://outcomeschool.com/blog/lora-low-rank-adaptation-of-llms):** 원 Weight를 고정하고 작은 Low-Rank Matrix만 학습해 대형 모델을 효율적으로 파인튜닝하는 방법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/lora-low-rank-adaptation-of-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/lora-low-rank-adaptation-of-llms.md)
 - **[Knowledge Distillation](https://outcomeschool.com/blog/how-does-knowledge-distillation-work):** 큰 Teacher Model의 동작을 작은 Student Model이 모방하도록 학습하는 기법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-knowledge-distillation-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/how-does-knowledge-distillation-work.md)
 - **[Continual Learning](https://outcomeschool.com/blog/continual-learning-in-llms):** 기존 지식을 잊지 않으면서 새로운 정보를 지속적으로 학습하는 능력입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/continual-learning-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/continual-learning-in-llms.md)
 - **[RLHF](https://outcomeschool.com/blog/reinforcement-learning-from-human-feedback-rlhf):** 사람의 선호를 Reward Signal로 바꿔 LLM의 응답을 사람의 선호에 맞게 추가 학습하는 기법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-07/reinforcement-learning-from-human-feedback-rlhf.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-07/reinforcement-learning-from-human-feedback-rlhf.md)
 - **[Chain-of-Thought Prompting](https://outcomeschool.com/blog/how-does-chain-of-thought-prompting-work):** 최종 답변 전에 단계적인 Reasoning을 수행하도록 유도하는 Prompting 기법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-chain-of-thought-prompting-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-chain-of-thought-prompting-work.md)
 - **[Prompt Chaining](https://outcomeschool.com/blog/how-does-prompt-chaining-work):** 큰 작업을 여러 Prompt로 나누고 이전 Prompt의 출력을 다음 Prompt 입력으로 연결하는 방식입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-chaining-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-chaining-work.md)
 - **[Prompt Caching](https://outcomeschool.com/blog/how-does-prompt-caching-work):** 반복되는 Prompt Prefix 계산을 저장해 다음 요청에서 재사용하는 기법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-caching-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-prompt-caching-work.md)
 - **[Context Engineering](https://outcomeschool.com/blog/context-engineering):** LLM Context Window에 들어가는 모든 정보를 설계·구성·관리해 작업 신뢰성을 높이는 방법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/context-engineering.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-08/context-engineering.md)
 - **[Context Compaction](https://outcomeschool.com/blog/how-does-context-compaction-work):** 오래된 대화를 짧은 Summary로 압축해 중요 정보는 보존하고 Context 공간을 확보하는 기법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-context-compaction-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-08/how-does-context-compaction-work.md)
 - **[RAG](https://outcomeschool.com/blog/how-does-hyde-work):** 자체 문서나 외부 Knowledge를 검색해 그 정보를 기반으로 답변을 생성하게 하는 방식입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hyde-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hyde-work.md)
 - **[Chunk](https://outcomeschool.com/blog/chunking-strategies-for-rag):** 큰 Document에서 잘라낸 작은 Text 단위입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/chunking-strategies-for-rag.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/chunking-strategies-for-rag.md)
 - **[Hybrid Search](https://outcomeschool.com/blog/how-does-hybrid-search-work):** Keyword Search와 Semantic Search를 결합해 하나의 Ranking 결과를 만드는 기법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hybrid-search-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-hybrid-search-work.md)
 - **[Reranker](https://outcomeschool.com/blog/how-does-a-reranker-work):** 검색된 Document 목록을 Query와의 Relevant 정도에 따라 다시 정렬하는 모델입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-reranker-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-a-reranker-work.md)
 - **[Semantic Caching](https://outcomeschool.com/blog/how-does-semantic-caching-work):** 정확한 문자열이 아니라 의미 유사성을 기준으로 이전 응답을 재사용하는 Cache입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-semantic-caching-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/how-does-semantic-caching-work.md)
 - **[Agentic RAG](https://outcomeschool.com/blog/agentic-rag):** AI Agent가 Retrieval 과정을 계획하고 제어하는 RAG 시스템입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-09/agentic-rag.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-09/agentic-rag.md)
 - **[AI Agent](https://outcomeschool.com/blog/ai-agent):** LLM + Instructions + Tools + Memory + 목표 달성까지 반복하는 Loop로 구성된 시스템입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-agent.md)
 - **[Function Calling](https://outcomeschool.com/blog/how-does-function-calling-work-in-llms):** LLM이 외부 Tool, API, Function을 선택하고 호출할 수 있도록 연결하는 방식이며 Tool Calling이라고도 합니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-does-function-calling-work-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/how-does-function-calling-work-in-llms.md)
 - **[ReAct Agent](https://outcomeschool.com/blog/react-agent):** Reasoning + Acting 패턴을 이용해 생각과 Tool 사용을 번갈아 수행하는 AI Agent입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/react-agent.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/react-agent.md)
 - **[MCP](https://outcomeschool.com/blog/what-is-mcp-model-context-protocol):** AI Application이 외부 Tool과 Data에 연결되는 공통 방식을 정의한 Open Standard입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-mcp-model-context-protocol.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-mcp-model-context-protocol.md)
 - **[Agent Skill](https://outcomeschool.com/blog/what-are-agent-skills):** 특정 Task에 필요할 때 Agent가 불러오는 Instructions와 선택적 Script·Reference File 묶음입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-are-agent-skills.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-are-agent-skills.md)
 - **[OKF](https://outcomeschool.com/blog/what-is-okf-open-knowledge-format):** 조직의 Data와 System에 대한 Knowledge를 Plain Markdown File 묶음으로 표현하는 Open Standard입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-okf-open-knowledge-format.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/what-is-okf-open-knowledge-format.md)
 - **[AI SubAgent](https://outcomeschool.com/blog/ai-subagents):** 큰 Task의 특정 부분을 맡도록 Main Agent 아래에서 동작하는 전문화된 작은 Agent입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-subagents.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-subagents.md)
 - **[AI Orchestration](https://outcomeschool.com/blog/ai-orchestration):** LLM, Tool, Data Source, Agent 등 여러 AI Component가 복잡한 Task를 함께 수행하도록 조정하는 과정입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-orchestration.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-10/ai-orchestration.md)
 - **[Loop Engineering](https://outcomeschool.com/blog/what-is-loop-engineering):** Agent의 반복 실행 Cycle이 실제 진전을 만들고 적절한 시점에 올바른 결과로 종료되도록 설계하는 작업입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-loop-engineering.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-loop-engineering.md)
 - **[Graph Engineering](https://outcomeschool.com/blog/what-is-graph-engineering):** AI System의 각 Step을 Node, Step 간 Path를 Edge로 표현해 Graph로 설계하는 방법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-graph-engineering.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/what-is-graph-engineering.md)
 - **[LangChain](https://outcomeschool.com/blog/how-does-langchain-work):** LLM 기반 Application 구축을 돕는 Framework입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langchain-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langchain-work.md)
 - **[LangGraph](https://outcomeschool.com/blog/how-does-langgraph-work):** LLM Application의 작업 흐름을 Graph 형태로 구성하는 Framework입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langgraph-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-langgraph-work.md)
 - **[Claude Code](https://outcomeschool.com/blog/how-does-claude-code-work):** Anthropic의 Terminal Coding Agent로, 자연어 Task를 받아 Code 탐색·수정·Command 실행·검증을 수행합니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-claude-code-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-claude-code-work.md)
 - **[Prefill](https://outcomeschool.com/blog/prefill-vs-decode-llm-inference-optimization):** 모델이 전체 Input Prompt를 한 번에 처리하고 첫 Output Token을 만들기까지의 단계입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/prefill-vs-decode-llm-inference-optimization.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/prefill-vs-decode-llm-inference-optimization.md)
 - **[KV Cache Compression](https://outcomeschool.com/blog/kv-cache-compression):** 출력 품질을 최대한 유지하면서 KV Cache Memory를 줄이는 기법들의 집합입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/kv-cache-compression.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/kv-cache-compression.md)
 - **[Paged Attention](https://outcomeschool.com/blog/paged-attention-in-llms):** KV Cache를 Page라는 고정 크기 Block으로 나눠 Memory를 효율적으로 관리하는 기법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/paged-attention-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/paged-attention-in-llms.md)
 - **[Continuous Batching](https://outcomeschool.com/blog/continuous-batching-in-llms):** Batch의 한 Request가 끝나는 즉시 대기 중인 Request를 투입해 GPU를 계속 활용하는 방식입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/continuous-batching-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/continuous-batching-in-llms.md)
 - **[Speculative Decoding](https://outcomeschool.com/blog/n-gram-speculation-in-llms):** 다음 여러 Token을 빠르게 추측한 뒤 큰 모델이 한 번의 실행으로 검증해 생성 속도를 높이는 기법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/n-gram-speculation-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/n-gram-speculation-in-llms.md)
 - **[Model Quantization](https://outcomeschool.com/blog/how-does-model-quantization-work):** 모델 숫자를 더 낮은 Precision으로 저장·계산해 Memory를 줄이고 실행을 빠르게 만드는 과정입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-model-quantization-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-model-quantization-work.md)
 - **[GGUF](https://outcomeschool.com/blog/how-does-gguf-work):** Local Inference에 필요한 Model 정보와 Weight를 하나의 Self-contained File로 저장하는 형식입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-gguf-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-gguf-work.md)
 - **[vLLM](https://outcomeschool.com/blog/how-does-vllm-work):** KV Cache Memory를 효율적으로 관리해 높은 Throughput으로 LLM을 Serving하는 Engine입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-vllm-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-vllm-work.md)
 - **[LLM Evaluation](https://outcomeschool.com/blog/llm-evaluation):** 기대한 Task에서 LLM이 얼마나 잘 수행하는지 측정하는 과정입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-evaluation.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-evaluation.md)
 - **[LLM as a Judge](https://outcomeschool.com/blog/llm-as-a-judge):** 한 LLM을 사용해 다른 LLM의 출력을 평가하는 기법입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-as-a-judge.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-13/llm-as-a-judge.md)
 - **[AI Agent Observability](https://outcomeschool.com/blog/ai-agent-observability):** Agent 내부 동작을 단계별로 기록·이해해 왜 특정 행동을 했는지 분석할 수 있게 하는 관행입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-13/ai-agent-observability.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-13/ai-agent-observability.md)
 - **[LLM Guardrails](https://outcomeschool.com/blog/how-do-llm-guardrails-work):** LLM 입력과 출력 주변에서 Safety Policy를 검사하는 보호 장치입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-14/how-do-llm-guardrails-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-14/how-do-llm-guardrails-work.md)
 - **[Prompt Injection](https://outcomeschool.com/blog/prompt-injection-in-llms):** 공격자가 AI Application이 모델에 보내는 Text 안에 자신의 Instruction을 끼워 넣어 Developer 의도보다 공격자의 지시를 따르게 만드는 공격입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-14/prompt-injection-in-llms.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-14/prompt-injection-in-llms.md)
 - **[Diffusion Model](https://outcomeschool.com/blog/diffusion-models):** Random Noise에서 시작해 반복적으로 Noise를 제거하며 Image 같은 새로운 Data를 생성하는 모델입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/diffusion-models.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-15/diffusion-models.md)
 - **[Variational Autoencoder(VAE)](https://outcomeschool.com/blog/variational-autoencoders):** 매끄럽고 구조화된 Latent Space를 학습해 임의의 Point에서도 의미 있는 새로운 Data를 생성할 수 있는 Autoencoder 계열 모델입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-15/variational-autoencoders.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-15/variational-autoencoders.md)
 - **[LPU](https://outcomeschool.com/blog/how-does-an-lpu-work):** 학습된 LLM을 매우 빠르게 추론하고 텍스트를 생성하는 데 특화된 Chip입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-an-lpu-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-an-lpu-work.md)
 - **[LLM Routing](https://outcomeschool.com/blog/llm-routing):** 모든 Query를 같은 모델에 보내지 않고 각 Query에 적절한 LLM을 선택하는 방식입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/llm-routing.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/llm-routing.md)
 - **[Voice AI Agent](https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent):** 사람과 전화 통화하듯 음성으로 대화하고 필요한 작업을 수행하는 AI Software입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/design-a-real-time-voice-ai-agent.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/design-a-real-time-voice-ai-agent.md)
 - **[World Model](https://outcomeschool.com/blog/how-do-world-models-work):** 현재 State와 Action을 바탕으로 다음에 일어날 일을 예측할 수 있도록 Environment의 내부 근사 모델을 학습한 AI입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-17/how-do-world-models-work.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-17/how-do-world-models-work.md)
 - **[Recursive Self-Improvement](https://outcomeschool.com/blog/what-is-recursive-self-improvement-rsi):** AI System이 자신의 능력을 개선하고, 개선된 버전이 다시 자신을 개선하는 Cycle을 반복하는 과정입니다.
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-17/what-is-recursive-self-improvement-rsi.md)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-17/what-is-recursive-self-improvement-rsi.md)
 
 ---
