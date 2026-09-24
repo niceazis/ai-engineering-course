@@ -822,3 +822,339 @@ Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer
 - [Positional Embeddings in LLMs](https://outcomeschool.substack.com/p/positional-embeddings-in-llms) (읽기)
 
 ---
+
+## 모듈 4: LLM이 텍스트를 생성하는 방식
+
+이 모듈에서는 LLM이 다음 토큰을 선택하는 방식, 창의성을 조절하는 방법, 출력이 토큰 단위로 사용자에게 전달되는 과정, 그리고 컨텍스트 윈도우가 실패하는 지점을 배웁니다.
+
+모듈을 마치면 프롬프트 입력부터 최종 응답까지 무슨 일이 일어나는지, 어떤 설정이 출력에 영향을 주는지 이해할 수 있습니다.
+
+**이 모듈의 레슨:**
+
+1. [Temperature는 LLM 출력을 어떻게 제어하는가?](https://outcomeschool.com/blog/how-does-temperature-control-llm-output)
+2. [Top-k와 Top-p Sampling은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work)
+3. [Token Streaming은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-token-streaming-work)
+4. [LLM의 Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
+
+---
+
+### 4.1 Temperature는 LLM 출력을 어떻게 제어하는가?
+
+Temperature가 예측 가능하고 안정적인 답변과 창의적이고 다양한 답변 사이를 어떻게 조절하는지 배웁니다. LLM이 다음 토큰을 하나씩 고르는 과정과 점수가 확률로 바뀌는 과정, Temperature가 확률을 어떻게 바꾸는지 살펴봅니다.
+
+- LLM에서 Temperature란?
+- LLM이 다음 토큰을 고르는 방식
+- Score에서 Probability로
+- Temperature가 개입하는 지점
+- 수치 예제
+- 낮은 Temperature
+- 높은 Temperature
+- Temperature = 1과 0
+- 왜 Temperature라고 부르는가?
+- 사용 사례별 적절한 값
+- 흔한 실수
+
+시작하기: [Temperature는 LLM 출력을 어떻게 제어하는가?](https://outcomeschool.com/blog/how-does-temperature-control-llm-output)
+
+### 4.2 Top-k와 Top-p Sampling은 어떻게 동작하는가?
+
+LLM이 다음 토큰을 선택할 때 사용하는 대표적인 두 샘플링 방식인 Top-k와 Top-p를 배웁니다.
+
+- 다음 토큰 선택 과정
+- 항상 최고 확률 토큰만 고를 때의 문제
+- 모든 토큰에서 무작위 선택할 때의 문제
+- Top-k Sampling이란?
+- 단계별 Top-k 예제
+- Top-k의 한계
+- Top-p Sampling이란?
+- 단계별 Top-p 예제
+- Top-k vs Top-p
+- Temperature와 함께 사용하는 방법
+- 언제 무엇을 사용할까?
+
+시작하기: [Top-k와 Top-p Sampling](https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work)
+
+### 4.3 Token Streaming은 어떻게 동작하는가?
+
+Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신하는지, ChatGPT와 Claude 같은 실제 시스템에서 어떻게 사용되는지 배웁니다.
+
+- Token Streaming이란?
+- LLM 텍스트 생성 복습
+- Streaming이 필요한 이유
+- SSE란?
+- HTTP 연결을 열어두는 방식
+- Streaming 메시지 형식
+- 서버에서 화면까지 전체 흐름
+- 스트림을 끝내는 [DONE] 마커
+- SSE vs WebSocket
+- 실제 Token Streaming
+
+시작하기: [Token Streaming은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-token-streaming-work)
+
+### 4.4 LLM의 Lost in the Middle 문제와 해결 방법
+
+긴 입력에서 모델이 시작과 끝은 잘 활용하지만 중간 정보를 놓치는 Lost in the Middle 문제를 배웁니다.
+
+- Context Window란?
+- Lost in the Middle 문제
+- 예제로 이해하기
+- U자형 성능 곡선
+- 발생 원인
+- 실제 시스템에 미치는 영향
+- 직접 테스트하는 방법
+- 해결 방법
+- 기억할 핵심 포인트
+
+시작하기: [Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
+
+영상 보기: [Why is the context window limited in LLMs?](https://www.youtube.com/watch?v=CGIhxIaOg3M)
+
+**모듈 4 영상 및 추가 자료:**
+
+- [Why is the context window limited in LLMs?](https://www.youtube.com/watch?v=CGIhxIaOg3M) (영상)
+
+---
+
+## 모듈 5: 현대 LLM 아키텍처
+
+이 모듈에서는 기본 Transformer 위에 현대 LLM이 추가한 개선 사항을 배웁니다. 모델을 더 크게 만들면서도 더 빠르게 실행하고 더 긴 입력을 처리하는 방법을 살펴보고, 마지막에는 실제 모델에서 이러한 아이디어가 어떻게 결합되는지 확인합니다.
+
+**이 모듈의 레슨:**
+
+1. [LLM 아키텍처의 진화](https://outcomeschool.com/blog/evolution-of-llm-architecture)
+2. [Mixture of Experts(MoE)란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/mixture-of-experts)
+3. [Grouped Query Attention(GQA)이란 무엇이며 LLM은 왜 사용하는가?](https://outcomeschool.com/blog/grouped-query-attention)
+4. [Sliding Window Attention은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-sliding-window-attention-work)
+5. [Attention Sink는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-attention-sinks-work)
+6. [Flash Attention이란 무엇이며 왜 빠른가?](https://outcomeschool.com/blog/decoding-flash-attention)
+7. [DeepSeek-V4란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/decoding-deepseek-v4)
+
+---
+
+### 5.1 LLM 아키텍처의 진화
+
+대규모 언어 모델의 설계가 단순한 순차 처리 모델에서 오늘날의 거대한 AI 모델까지 어떻게 발전했는지 단계별로 배웁니다.
+
+- LLM 아키텍처란?
+- 1단계: 한 단어씩 읽기(RNN)
+- 2단계: Attention
+- 3단계: Transformer
+- 4단계: Scaling
+- 5단계: Mixture of Experts(MoE)
+- 6단계: 새로운 방향
+- 진화 과정 요약
+
+시작하기: [LLM 아키텍처의 진화](https://outcomeschool.com/blog/evolution-of-llm-architecture)
+
+### 5.2 Mixture of Experts(MoE)란 무엇이며 어떻게 동작하는가?
+
+Expert의 의미, Router가 Expert를 선택하는 방식, MoE가 대형 모델을 더 빠르고 저렴하게 실행하게 하는 이유를 배웁니다.
+
+- MoE가 필요했던 이유
+- “Expert”의 실제 의미
+- Router와 Expert 선택
+- Transformer 안에서 MoE의 위치
+- Sparse Activation과 계산량 절감
+- Expert 간 Load Balancing
+- MoE의 장점과 과제
+- 현대 LLM에서 널리 쓰이는 이유
+
+시작하기: [Mixture of Experts(MoE)](https://outcomeschool.com/blog/mixture-of-experts)
+
+### 5.3 Grouped Query Attention(GQA)이란?
+
+GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
+
+- 큰 그림
+- MHA 복습
+- MHA의 문제
+- Multi-Query Attention(MQA)이란?
+- Grouped-Query Attention(GQA)이란?
+- GQA 동작 방식
+- MHA와 MQA를 일반화한 GQA
+- GQA vs MHA vs MQA
+- 실제 사용 사례
+- 용어 정리
+- Uptraining: MHA를 GQA로 변환
+- 빠른 요약
+
+시작하기: [Grouped Query Attention(GQA)](https://outcomeschool.com/blog/grouped-query-attention)
+
+### 5.4 Sliding Window Attention은 어떻게 동작하는가?
+
+긴 텍스트에서 일반 Attention의 계산 비용이 커지는 문제와 Sliding Window Attention이 이를 줄이는 방식을 배웁니다.
+
+- Attention 복습
+- 일반 Attention의 문제
+- Sliding Window Attention이란?
+- 단계별 예제
+- 먼 거리 정보가 전달되는 방법
+- 일반 Attention과 비교
+- 사용처
+- 장점과 trade-off
+
+시작하기: [Sliding Window Attention](https://outcomeschool.com/blog/how-does-sliding-window-attention-work)
+
+### 5.5 Attention Sink는 어떻게 동작하는가?
+
+긴 대화를 streaming할 때 생기는 문제, 첫 토큰들이 Attention Sink가 되는 이유, StreamingLLM이 이를 이용하는 방식을 배웁니다.
+
+- LLM이란?
+- Attention이란?
+- 긴 대화 Streaming의 문제
+- 단순한 해결책이 실패하는 이유
+- Attention Sink란?
+- 첫 토큰이 Sink가 되는 이유
+- 단계별 수치 예제
+- 코드 수준의 해결 방식
+- StreamingLLM과 현대 Attention Sink
+- 중요성
+
+시작하기: [Attention Sink](https://outcomeschool.com/blog/how-do-attention-sinks-work)
+
+### 5.6 Flash Attention이란 무엇이며 왜 빠른가?
+
+표준 Attention이 느린 이유와 GPU 메모리를 효율적으로 이용하는 Flash Attention의 핵심 아이디어를 배웁니다.
+
+- 표준 Attention 복습
+- 표준 Attention이 느린 이유
+- GPU 메모리 구조(HBM vs SRAM)
+- Flash Attention의 핵심 아이디어
+- Tiling
+- 전체 행렬 없이 Softmax를 계산하는 Online Softmax
+- Backward Pass의 Recomputation
+- Flash Attention 2
+- Flash Attention 3
+- 장점과 영향
+
+시작하기: [Flash Attention](https://outcomeschool.com/blog/decoding-flash-attention)
+
+### 5.7 DeepSeek-V4란 무엇이며 어떻게 동작하는가?
+
+백만 토큰 컨텍스트를 기본 지원하면서 추론 비용을 크게 낮추는 오픈 MoE 언어 모델 계열인 DeepSeek-V4의 아키텍처를 살펴봅니다.
+
+- 큰 그림
+- DeepSeek-V4-Pro와 DeepSeek-V4-Flash
+- CSA와 HCA를 이용한 Hybrid Attention
+- Manifold-Constrained Hyper-Connections(mHC)
+- Muon Optimizer
+- FP4 Quantization-Aware Training
+- Pre-Training
+- Post-Training: Specialist Training과 On-Policy Distillation
+- Reasoning Mode
+- 전체 구조 연결
+- 빠른 요약
+
+시작하기: [DeepSeek-V4 아키텍처](https://outcomeschool.com/blog/decoding-deepseek-v4)
+
+---
+
+## 모듈 6: 언어 모델의 종류
+
+모든 언어 모델이 거대한 텍스트 생성 LLM인 것은 아닙니다. 더 작은 모델, 추론 특화 모델, 재귀형 모델, diffusion 기반 모델, 의사결정 전용 모델을 살펴보고 언제 무엇을 선택할지 배웁니다.
+
+**이 모듈의 레슨:**
+
+1. [Small Language Model(SLM)이란 무엇이며 언제 사용해야 하는가?](https://outcomeschool.com/blog/small-language-models-slms)
+2. [Large Reasoning Model(LRM)이란 무엇이며 LLM과 어떻게 다른가?](https://outcomeschool.com/blog/large-reasoning-models)
+3. [Recursive Language Model(RLM)이란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/recursive-language-models)
+4. [Diffusion Language Model(DLM)은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-diffusion-language-models-dlms-work)
+5. [Jev와 System One Model](https://outcomeschool.com/blog/jev-and-system-one-models-explained)
+
+---
+
+### 6.1 Small Language Model(SLM)이란?
+
+작은 언어 모델의 기준, 중요성, 강점과 trade-off를 배웁니다.
+
+- SLM = Small + Language Model
+- Language Model이란?
+- 어느 정도가 “Small”인가?
+- 대표적인 SLM
+- 작은 크기에서도 성능을 유지하는 방법
+- SLM이 중요한 이유
+- SLM vs LLM
+- 모델 크기의 스펙트럼
+- SLM이 강한 사용 사례
+- Trade-off
+- SLM을 선택해야 할 때
+- 빠른 요약
+
+시작하기: [Small Language Model(SLM)](https://outcomeschool.com/blog/small-language-models-slms)
+
+### 6.2 Large Reasoning Model(LRM)이란?
+
+표준 LLM과 달리 답변 전에 더 많은 추론을 수행하는 LRM의 동작 방식과 학습, 사용 시점을 배웁니다.
+
+- 큰 그림
+- LRM이란?
+- LLM vs LRM
+- LRM이 “생각”하는 방식
+- Test-time Compute
+- LRM 학습 방식
+- 학습 단계와 예측 단계의 입출력
+- LRM과 일반 LLM의 선택 기준
+- 대표적인 LRM
+- 흔한 실수
+- 빠른 요약
+
+시작하기: [Large Reasoning Model(LRM)](https://outcomeschool.com/blog/large-reasoning-models)
+
+### 6.3 Recursive Language Model(RLM)이란?
+
+모델의 컨텍스트 윈도우를 넘는 매우 큰 입력을 처리하기 위한 Recursive Language Model을 배웁니다.
+
+- RLM이란?
+- RLM이 필요한 이유
+- 동작 방식
+- 모델이 코드를 작성하고 실행하는 방식
+- RLM이 더 잘 동작하는 이유
+- RLM 내부의 Recursion
+- 단순 Chunking과의 차이
+- 장점
+- 한계
+- 사용 시점
+- RLM vs RAG
+- 실제 사례
+
+시작하기: [Recursive Language Model(RLM)](https://outcomeschool.com/blog/recursive-language-models)
+
+### 6.4 Diffusion Language Model(DLM)은 어떻게 동작하는가?
+
+기존 autoregressive LLM과 다른 방식으로 텍스트를 생성하는 Diffusion Language Model을 배웁니다.
+
+- DLM이란?
+- 오늘날 언어 모델의 텍스트 생성 방식
+- 기존 접근의 문제
+- Diffusion 아이디어의 출발점
+- 텍스트에서 “Noise”란?
+- Forward와 Reverse 두 단계
+- 단계별 텍스트 생성 과정
+- 작은 end-to-end 예제
+- 코드 형태의 설명
+- DLM vs 일반 언어 모델
+- 장점
+- 한계
+- 현재 기술 수준
+
+시작하기: [Diffusion Language Model(DLM)](https://outcomeschool.com/blog/how-do-diffusion-language-models-dlms-work)
+
+### 6.5 Jev와 System One Model
+
+텍스트를 생성하지 않고 소프트웨어가 바로 사용할 수 있는 빠른 판단만 수행하는 모델을 살펴봅니다.
+
+- System One Model이란?
+- System One vs System Two 사고
+- 작은 판단에 일반 LLM을 사용할 때의 문제
+- Jev란?
+- Jev 동작 방식
+- Typed Answer: Choice, Score, Yes/No
+- Calibration과 RLCD
+- Jev가 hallucination을 만들 수 없는 이유
+- Jev vs LLM
+- 강점과 실패 영역
+- 어떤 모델을 언제 사용할까?
+
+시작하기: [Jev와 System One Model](https://outcomeschool.com/blog/jev-and-system-one-models-explained)
+
+---
