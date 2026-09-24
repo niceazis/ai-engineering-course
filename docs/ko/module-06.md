@@ -9,10 +9,20 @@
 **이 모듈의 레슨:**
 
 1. [Small Language Model(SLM)이란 무엇이며 언제 사용해야 하는가?](https://outcomeschool.com/blog/small-language-models-slms)
+
+→ [한국어 상세 학습 노트](blogs/module-06/small-language-models-slms.md)
 2. [Large Reasoning Model(LRM)이란 무엇이며 LLM과 어떻게 다른가?](https://outcomeschool.com/blog/large-reasoning-models)
+
+→ [한국어 상세 학습 노트](blogs/module-06/large-reasoning-models.md)
 3. [Recursive Language Model(RLM)이란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/recursive-language-models)
+
+→ [한국어 상세 학습 노트](blogs/module-06/recursive-language-models.md)
 4. [Diffusion Language Model(DLM)은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-diffusion-language-models-dlms-work)
+
+→ [한국어 상세 학습 노트](blogs/module-06/how-do-diffusion-language-models-dlms-work.md)
 5. [Jev와 System One Model](https://outcomeschool.com/blog/jev-and-system-one-models-explained)
+
+→ [한국어 상세 학습 노트](blogs/module-06/jev-and-system-one-models-explained.md)
 
 ---
 
@@ -35,6 +45,8 @@
 
 시작하기: [Small Language Model(SLM)](https://outcomeschool.com/blog/small-language-models-slms)
 
+→ [한국어 상세 학습 노트](blogs/module-06/small-language-models-slms.md)
+
 ### 6.2 Large Reasoning Model(LRM)이란?
 
 표준 LLM과 달리 답변 전에 더 많은 추론을 수행하는 LRM의 동작 방식과 학습, 사용 시점을 배웁니다.
@@ -52,6 +64,8 @@
 - 빠른 요약
 
 시작하기: [Large Reasoning Model(LRM)](https://outcomeschool.com/blog/large-reasoning-models)
+
+→ [한국어 상세 학습 노트](blogs/module-06/large-reasoning-models.md)
 
 ### 6.3 Recursive Language Model(RLM)이란?
 
@@ -71,6 +85,8 @@
 - 실제 사례
 
 시작하기: [Recursive Language Model(RLM)](https://outcomeschool.com/blog/recursive-language-models)
+
+→ [한국어 상세 학습 노트](blogs/module-06/recursive-language-models.md)
 
 ### 6.4 Diffusion Language Model(DLM)은 어떻게 동작하는가?
 
@@ -92,6 +108,8 @@
 
 시작하기: [Diffusion Language Model(DLM)](https://outcomeschool.com/blog/how-do-diffusion-language-models-dlms-work)
 
+→ [한국어 상세 학습 노트](blogs/module-06/how-do-diffusion-language-models-dlms-work.md)
+
 ### 6.5 Jev와 System One Model
 
 텍스트를 생성하지 않고 소프트웨어가 바로 사용할 수 있는 빠른 판단만 수행하는 모델을 살펴봅니다.
@@ -109,5 +127,7 @@
 - 어떤 모델을 언제 사용할까?
 
 시작하기: [Jev와 System One Model](https://outcomeschool.com/blog/jev-and-system-one-models-explained)
+
+→ [한국어 상세 학습 노트](blogs/module-06/jev-and-system-one-models-explained.md)
 
 ---
