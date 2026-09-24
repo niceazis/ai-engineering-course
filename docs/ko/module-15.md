@@ -9,23 +9,23 @@
 **이 모듈의 레슨:**
 
 1. [Multimodal AI란?](https://outcomeschool.com/blog/multimodal-ai)
+   ↳ [한국어 상세 학습 노트](blogs/module-15/multimodal-ai.md)
 
-→ [한국어 상세 학습 노트](blogs/module-15/multimodal-ai.md)
 2. [Vision Transformer(ViT)란?](https://outcomeschool.com/blog/decoding-vision-transformer-vit)
+   ↳ [한국어 상세 학습 노트](blogs/module-15/decoding-vision-transformer-vit.md)
 
-→ [한국어 상세 학습 노트](blogs/module-15/decoding-vision-transformer-vit.md)
 3. [Image Embedding은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-image-embeddings-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-15/how-do-image-embeddings-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-15/how-do-image-embeddings-work.md)
 4. [Diffusion Model이란?](https://outcomeschool.com/blog/diffusion-models)
+   ↳ [한국어 상세 학습 노트](blogs/module-15/diffusion-models.md)
 
-→ [한국어 상세 학습 노트](blogs/module-15/diffusion-models.md)
 5. [Generative Adversarial Network(GAN)이란?](https://outcomeschool.com/blog/generative-adversarial-networks)
+   ↳ [한국어 상세 학습 노트](blogs/module-15/generative-adversarial-networks.md)
 
-→ [한국어 상세 학습 노트](blogs/module-15/generative-adversarial-networks.md)
 6. [Variational Autoencoder(VAE)란?](https://outcomeschool.com/blog/variational-autoencoders)
+   ↳ [한국어 상세 학습 노트](blogs/module-15/variational-autoencoders.md)
 
-→ [한국어 상세 학습 노트](blogs/module-15/variational-autoencoders.md)
 
 ---
 
@@ -48,6 +48,7 @@
 
 → [한국어 상세 학습 노트](blogs/module-15/multimodal-ai.md)
 
+
 ### 15.2 Vision Transformer(ViT)란?
 
 이미지를 Patch로 나누고 Token처럼 처리해 Transformer로 분류하는 ViT를 배웁니다.
@@ -67,6 +68,7 @@
 
 → [한국어 상세 학습 노트](blogs/module-15/decoding-vision-transformer-vit.md)
 
+
 ### 15.3 Image Embedding은 어떻게 동작하는가?
 
 이미지를 Vector로 표현해 Similarity Search와 Recommendation 등에 사용하는 Image Embedding을 배웁니다.
@@ -85,6 +87,7 @@
 시작하기: [Image Embedding](https://outcomeschool.com/blog/how-do-image-embeddings-work)
 
 → [한국어 상세 학습 노트](blogs/module-15/how-do-image-embeddings-work.md)
+
 
 ### 15.4 Diffusion Model이란?
 
@@ -106,6 +109,7 @@ Noise를 점차 제거해 이미지를 생성하는 Diffusion Model을 배웁니
 
 → [한국어 상세 학습 노트](blogs/module-15/diffusion-models.md)
 
+
 ### 15.5 Generative Adversarial Network(GAN)이란?
 
 Generator와 Discriminator가 경쟁하며 새로운 이미지를 생성하는 GAN을 배웁니다.
@@ -125,6 +129,7 @@ Generator와 Discriminator가 경쟁하며 새로운 이미지를 생성하는 G
 
 → [한국어 상세 학습 노트](blogs/module-15/generative-adversarial-networks.md)
 
+
 ### 15.6 Variational Autoencoder(VAE)란?
 
 매끄럽고 구조화된 Latent Space를 학습해 새로운 데이터를 생성할 수 있는 VAE를 배웁니다.
@@ -143,5 +148,6 @@ Generator와 Discriminator가 경쟁하며 새로운 이미지를 생성하는 G
 시작하기: [VAE](https://outcomeschool.com/blog/variational-autoencoders)
 
 → [한국어 상세 학습 노트](blogs/module-15/variational-autoencoders.md)
+
 
 ---

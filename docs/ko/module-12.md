@@ -11,56 +11,56 @@
 **이 모듈의 레슨:**
 
 1. [LLM Inference Optimization](https://outcomeschool.com/blog/llm-inference-optimization)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/llm-inference-optimization.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/llm-inference-optimization.md)
 2. [Prefill vs Decode](https://outcomeschool.com/blog/prefill-vs-decode-llm-inference-optimization)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/prefill-vs-decode-llm-inference-optimization.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/prefill-vs-decode-llm-inference-optimization.md)
 3. [Prefill-Decode Disaggregation이란?](https://outcomeschool.com/blog/prefill-decode-disaggregation)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/prefill-decode-disaggregation.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/prefill-decode-disaggregation.md)
 4. [LLM의 KV Cache](https://outcomeschool.com/blog/kv-cache-in-llms)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/kv-cache-in-llms.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/kv-cache-in-llms.md)
 5. [KV Cache Compression이란?](https://outcomeschool.com/blog/kv-cache-compression)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/kv-cache-compression.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/kv-cache-compression.md)
 6. [Paged Attention이란?](https://outcomeschool.com/blog/paged-attention-in-llms)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/paged-attention-in-llms.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/paged-attention-in-llms.md)
 7. [Continuous Batching이란?](https://outcomeschool.com/blog/continuous-batching-in-llms)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/continuous-batching-in-llms.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/continuous-batching-in-llms.md)
 8. [Speculative Decoding이란?](https://outcomeschool.com/blog/speculative-decoding)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/speculative-decoding.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/speculative-decoding.md)
 9. [N-gram Speculation이란?](https://outcomeschool.com/blog/n-gram-speculation-in-llms)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/n-gram-speculation-in-llms.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/n-gram-speculation-in-llms.md)
 10. [Medusa란?](https://outcomeschool.com/blog/decoding-medusa)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/decoding-medusa.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/decoding-medusa.md)
 11. [EAGLE이란?](https://outcomeschool.com/blog/decoding-eagle)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/decoding-eagle.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/decoding-eagle.md)
 12. [Model Quantization은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-model-quantization-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/how-does-model-quantization-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/how-does-model-quantization-work.md)
 13. [GGUF는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-gguf-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/how-does-gguf-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/how-does-gguf-work.md)
 14. [llama.cpp는 일반 하드웨어에서 LLM을 어떻게 실행하는가?](https://outcomeschool.com/blog/how-does-llama-cpp-run-llms-on-everyday-hardware)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/how-does-llama-cpp-run-llms-on-everyday-hardware.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/how-does-llama-cpp-run-llms-on-everyday-hardware.md)
 15. [vLLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-vllm-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/how-does-vllm-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/how-does-vllm-work.md)
 16. [SGLang은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-sglang-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/how-does-sglang-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/how-does-sglang-work.md)
 17. [TensorRT-LLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-tensorrt-llm-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/how-does-tensorrt-llm-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-12/how-does-tensorrt-llm-work.md)
 
 ---
 
@@ -84,6 +84,7 @@ LLM 텍스트 생성과 Attention, KV Cache, 그리고 KV Cache를 줄이기 위
 
 → [한국어 상세 학습 노트](blogs/module-12/llm-inference-optimization.md)
 
+
 영상 보기: [LLM Inference Optimization](https://www.youtube.com/watch?v=jV2sCj4lHYk)
 
 ### 12.2 Prefill vs Decode
@@ -106,6 +107,7 @@ LLM 추론의 두 단계인 Prefill과 Decode, 그리고 두 단계를 연결하
 시작하기: [Prefill vs Decode](https://outcomeschool.com/blog/prefill-vs-decode-llm-inference-optimization)
 
 → [한국어 상세 학습 노트](blogs/module-12/prefill-vs-decode-llm-inference-optimization.md)
+
 
 영상 보기: [The First-Token Latency Problem in LLMs](https://www.youtube.com/watch?v=XD8DD4cEHu0)
 
@@ -131,6 +133,7 @@ Prompt를 읽는 Prefill과 답을 생성하는 Decode를 별도 Machine/GPU로 
 
 → [한국어 상세 학습 노트](blogs/module-12/prefill-decode-disaggregation.md)
 
+
 ### 12.4 LLM의 KV Cache
 
 이전 Token의 Key와 Value를 재사용해 반복 계산을 줄이는 KV Cache를 배웁니다.
@@ -146,6 +149,7 @@ Prompt를 읽는 Prefill과 답을 생성하는 Decode를 별도 Machine/GPU로 
 시작하기: [KV Cache](https://outcomeschool.com/blog/kv-cache-in-llms)
 
 → [한국어 상세 학습 노트](blogs/module-12/kv-cache-in-llms.md)
+
 
 ### 12.5 KV Cache Compression이란?
 
@@ -166,6 +170,7 @@ Prompt를 읽는 Prefill과 답을 생성하는 Decode를 별도 Machine/GPU로 
 
 → [한국어 상세 학습 노트](blogs/module-12/kv-cache-compression.md)
 
+
 ### 12.6 Paged Attention이란?
 
 KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리할 수 있게 하는 Paged Attention을 배웁니다.
@@ -180,6 +185,7 @@ KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리�
 시작하기: [Paged Attention](https://outcomeschool.com/blog/paged-attention-in-llms)
 
 → [한국어 상세 학습 노트](blogs/module-12/paged-attention-in-llms.md)
+
 
 ### 12.7 Continuous Batching이란?
 
@@ -203,6 +209,7 @@ KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리�
 
 → [한국어 상세 학습 노트](blogs/module-12/continuous-batching-in-llms.md)
 
+
 ### 12.8 Speculative Decoding이란?
 
 작은 Draft Model이 여러 Token을 미리 제안하고 큰 Target Model이 한 번에 검증해 생성 속도를 높이는 Speculative Decoding을 배웁니다.
@@ -221,6 +228,7 @@ KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리�
 시작하기: [Speculative Decoding](https://outcomeschool.com/blog/speculative-decoding)
 
 → [한국어 상세 학습 노트](blogs/module-12/speculative-decoding.md)
+
 
 ### 12.9 N-gram Speculation이란?
 
@@ -241,6 +249,7 @@ KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리�
 
 → [한국어 상세 학습 노트](blogs/module-12/n-gram-speculation-in-llms.md)
 
+
 ### 12.10 Medusa란?
 
 하나의 모델에 여러 추가 Head를 붙여 여러 미래 Token을 동시에 예측하고 검증하는 Medusa를 배웁니다.
@@ -260,6 +269,7 @@ KV Cache의 메모리 낭비를 줄여 더 많은 사용자를 동시에 처리�
 
 → [한국어 상세 학습 노트](blogs/module-12/decoding-medusa.md)
 
+
 ### 12.11 EAGLE이란?
 
 Token Level이 아니라 Feature Level에서 Draft를 수행해 Speculative Decoding 성능을 높이는 EAGLE을 배웁니다.
@@ -277,6 +287,7 @@ Token Level이 아니라 Feature Level에서 Draft를 수행해 Speculative Deco
 시작하기: [EAGLE](https://outcomeschool.com/blog/decoding-eagle)
 
 → [한국어 상세 학습 노트](blogs/module-12/decoding-eagle.md)
+
 
 ### 12.12 Model Quantization은 어떻게 동작하는가?
 
@@ -299,6 +310,7 @@ Token Level이 아니라 Feature Level에서 Draft를 수행해 Speculative Deco
 
 → [한국어 상세 학습 노트](blogs/module-12/how-does-model-quantization-work.md)
 
+
 ### 12.13 GGUF는 어떻게 동작하는가?
 
 Local Inference에 필요한 Model Weight와 Metadata를 하나의 효율적인 파일 형식으로 담는 GGUF를 배웁니다.
@@ -317,6 +329,7 @@ Local Inference에 필요한 Model Weight와 Metadata를 하나의 효율적인 
 시작하기: [GGUF](https://outcomeschool.com/blog/how-does-gguf-work)
 
 → [한국어 상세 학습 노트](blogs/module-12/how-does-gguf-work.md)
+
 
 ### 12.14 llama.cpp는 일반 하드웨어에서 LLM을 어떻게 실행하는가?
 
@@ -339,6 +352,7 @@ Quantization, GGUF, Memory Mapping, CPU/GPU 분할을 이용해 일반 PC에서 
 
 → [한국어 상세 학습 노트](blogs/module-12/how-does-llama-cpp-run-llms-on-everyday-hardware.md)
 
+
 ### 12.15 vLLM은 어떻게 동작하는가?
 
 PagedAttention과 Continuous Batching을 중심으로 많은 사용자에게 LLM을 효율적으로 Serving하는 vLLM을 배웁니다.
@@ -358,6 +372,7 @@ PagedAttention과 Continuous Batching을 중심으로 많은 사용자에게 LLM
 시작하기: [vLLM](https://outcomeschool.com/blog/how-does-vllm-work)
 
 → [한국어 상세 학습 노트](blogs/module-12/how-does-vllm-work.md)
+
 
 ### 12.16 SGLang은 어떻게 동작하는가?
 
@@ -379,6 +394,7 @@ RadixAttention을 이용한 Prefix Reuse와 Runtime 최적화로 LLM Serving 성
 시작하기: [SGLang](https://outcomeschool.com/blog/how-does-sglang-work)
 
 → [한국어 상세 학습 노트](blogs/module-12/how-does-sglang-work.md)
+
 
 ### 12.17 TensorRT-LLM은 어떻게 동작하는가?
 
@@ -407,6 +423,7 @@ NVIDIA GPU에서 가능한 최고 수준의 추론 성능을 목표로 Build-tim
 시작하기: [TensorRT-LLM](https://outcomeschool.com/blog/how-does-tensorrt-llm-work)
 
 → [한국어 상세 학습 노트](blogs/module-12/how-does-tensorrt-llm-work.md)
+
 
 **모듈 12 영상 및 추가 자료:**
 
