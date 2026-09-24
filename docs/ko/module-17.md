@@ -9,14 +9,14 @@
 **이 모듈의 레슨:**
 
 1. [JEPA(Joint Embedding Predictive Architecture)란?](https://outcomeschool.com/blog/joint-embedding-predictive-architecture-jepa)
+   ↳ [한국어 상세 학습 노트](blogs/module-17/joint-embedding-predictive-architecture-jepa.md)
 
-→ [한국어 상세 학습 노트](blogs/module-17/joint-embedding-predictive-architecture-jepa.md)
 2. [World Model은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-world-models-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-17/how-do-world-models-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-17/how-do-world-models-work.md)
 3. [Recursive Self-Improvement(RSI)이란?](https://outcomeschool.com/blog/what-is-recursive-self-improvement-rsi)
+   ↳ [한국어 상세 학습 노트](blogs/module-17/what-is-recursive-self-improvement-rsi.md)
 
-→ [한국어 상세 학습 노트](blogs/module-17/what-is-recursive-self-improvement-rsi.md)
 
 ---
 
@@ -42,6 +42,7 @@ Joint Embedding Predictive Architecture(JEPA)의 핵심 아이디어와 I-JEPA, 
 
 → [한국어 상세 학습 노트](blogs/module-17/joint-embedding-predictive-architecture-jepa.md)
 
+
 ### 17.2 World Model은 어떻게 동작하는가?
 
 환경이 어떻게 변하는지 내부적으로 모델링해 실제 행동 전에 미래를 상상하고 계획하는 World Model을 배웁니다.
@@ -60,6 +61,7 @@ Joint Embedding Predictive Architecture(JEPA)의 핵심 아이디어와 I-JEPA, 
 시작하기: [World Model](https://outcomeschool.com/blog/how-do-world-models-work)
 
 → [한국어 상세 학습 노트](blogs/module-17/how-do-world-models-work.md)
+
 
 ### 17.3 Recursive Self-Improvement(RSI)이란?
 
@@ -80,5 +82,6 @@ AI가 자신의 능력을 개선하고, 개선된 버전이 다시 자신을 개
 시작하기: [Recursive Self-Improvement](https://outcomeschool.com/blog/what-is-recursive-self-improvement-rsi)
 
 → [한국어 상세 학습 노트](blogs/module-17/what-is-recursive-self-improvement-rsi.md)
+
 
 ---
