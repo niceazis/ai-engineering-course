@@ -1,67 +1,87 @@
 # LLM의 KV Cache — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/kv-cache-in-llms
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/kv-cache-in-llms  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 autoregressive repeated computation과 K/V만 cache하는 이유를 독립적으로 정리했습니다.
 
-## 핵심 해설
+## 1. 반복 계산 문제
 
-이전 Token의 Key와 Value를 재사용해 반복 계산을 줄이는 KV Cache를 배웁니다.
+Prompt:
 
-## 핵심 학습 항목
+    I love AI
 
-- LLM 텍스트 생성
-- 모델 내부 동작
-- 반복 계산 문제
-- KV Cache
-- Query가 아니라 Key·Value만 Cache하는 이유
-- 속도 향상
-- Speed vs Memory Trade-off
+에서 새 token을 하나 만들고 다시 다음 token을 생성할 때 과거 token의 K/V는 변하지 않습니다.
 
-## 단계별 학습 가이드
+Cache가 없으면 과거 K/V projection을 매 step 다시 계산합니다.
 
-### 1. LLM 텍스트 생성
+## 2. KV Cache
 
-**LLM 텍스트 생성**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+각 layer에서 이미 계산한:
 
-### 2. 모델 내부 동작
+    K_past
+    V_past
 
-**모델 내부 동작**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+를 저장합니다.
 
-### 3. 반복 계산 문제
+새 token에서는:
 
-**반복 계산 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Q_new
+    K_new
+    V_new
 
-### 4. KV Cache
+만 계산하고 K/V를 cache 뒤에 append합니다.
 
-**KV Cache**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. 왜 Q는 Cache하지 않는가
 
-### 5. Query가 아니라 Key·Value만 Cache하는 이유
+현재 decode step의 query는 **새 token 위치가 과거 K/V를 조회하는 데 사용**됩니다.
 
-**Query가 아니라 Key·Value만 Cache하는 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+과거 query는 다음 step에서 다시 필요하지 않습니다.
 
-### 6. 속도 향상
+반면 과거 K/V는 새 query가 계속 참조하므로 저장합니다.
 
-**속도 향상**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. 속도 효과
 
-### 7. Speed vs Memory Trade-off
+Without cache:
 
-**Speed vs Memory Trade-off**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    step t
+      → past 1..t의 K/V 재계산
 
-## 실무 연결
+With cache:
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+    step t
+      → token t의 K/V만 계산
+      → 과거 cache read
 
-## 점검 질문
+Projection 재계산을 크게 줄입니다.
 
-1. LLM의 KV Cache을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+## 5. Memory Cost
+
+대략:
+
+    bytes
+      ≈ layers
+        × tokens
+        × kv_heads
+        × head_dim
+        × 2(K,V)
+        × bytes_per_element
+
+Batch/concurrency가 늘면 request마다 cache가 필요합니다.
+
+## 6. Trade-off
+
+KV Cache는 decode compute를 memory로 바꾸는 최적화입니다.
+
+따라서 long-context serving에서는 cache memory가 병목이 됩니다.
+
+이 문제를 GQA, quantization, eviction, PagedAttention이 해결합니다.
+
+## 핵심 정리
+
+- KV Cache는 과거 token의 Key/Value를 재사용합니다.
+- Query는 현재 token마다 새로 필요하지만 과거 Query는 재사용하지 않습니다.
+- Decode 속도는 크게 좋아지지만 memory는 context length와 batch에 따라 증가합니다.
+- 현대 serving 최적화 대부분이 KV Cache 관리와 연결됩니다.
 
 ## 원문
 
