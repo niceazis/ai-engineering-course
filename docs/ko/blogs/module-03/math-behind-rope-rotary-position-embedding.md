@@ -42,28 +42,28 @@ x_2
 end{bmatrix}
 ]
 
-를 각도 (	heta)만큼 회전하면:
+를 각도 (\theta)만큼 회전하면:
 
 [
-R(	heta)=
+R(\theta)=
 egin{bmatrix}
-cos	heta&-sin	heta\
-sin	heta&cos	heta
+cos\theta&-sin\theta\
+sin\theta&cos\theta
 end{bmatrix}
 ]
 
 [
-x'=R(	heta)x
+x'=R(\theta)x
 ]
 
 component로 쓰면:
 
 [
-x'_1=x_1cos	heta-x_2sin	heta
+x'_1=x_1cos\theta-x_2sin\theta
 ]
 
 [
-x'_2=x_1sin	heta+x_2cos	heta
+x'_2=x_1sin\theta+x_2cos\theta
 ]
 
 RoPE는 이 회전을 고차원 Q/K의 component pair마다 적용합니다.
@@ -82,13 +82,13 @@ RoPE는 이 회전을 고차원 Q/K의 component pair마다 적용합니다.
 원문의 일반적인 frequency 형태:
 
 [
-	heta_i=10000^{-2(i-1)/d}
+\theta_i=10000^{-2(i-1)/d}
 ]
 
 position (m)에서는 회전각이:
 
 [
-m	heta_i
+m\theta_i
 ]
 
 가 됩니다.
@@ -170,7 +170,7 @@ Q=[1,0]
 기본 frequency를 단순화해:
 
 [
-	heta=pi/4
+\theta=pi/4
 ]
 
 라고 합시다.
@@ -195,7 +195,7 @@ K=[1,0]
 이고 position (n=2)라면 회전각은:
 
 [
-2	heta=pi/2
+2\theta=pi/2
 ]
 
 따라서:
