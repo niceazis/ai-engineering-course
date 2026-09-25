@@ -78,7 +78,7 @@ Cross-attention이 decoder와 encoder 사이의 다리 역할을 합니다.
 Cross-attention score matrix는:
 
 [
-n_{target}	imes n_{source}
+n_{target}\times n_{source}
 ]
 
 크기가 됩니다.
