@@ -1,92 +1,96 @@
 # llama.cpp는 일반 하드웨어에서 LLM을 어떻게 실행하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-llama-cpp-run-llms-on-everyday-hardware
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-llama-cpp-run-llms-on-everyday-hardware  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 GGUF, quantization, mmap, SIMD와 CPU/GPU layer offload 흐름을 보존하면서 독립적으로 다시 쓴 한국어 상세 해설입니다.
 
-## 핵심 해설
+## 1. llama.cpp의 목표
 
-Quantization, GGUF, Memory Mapping, CPU/GPU 분할을 이용해 일반 PC에서 LLM을 실행하는 llama.cpp를 배웁니다.
+거대한 LLM을 datacenter GPU만이 아니라 laptop CPU, Apple Silicon, consumer GPU, mixed CPU/GPU에서 실행할 수 있게 highly optimized native runtime을 제공합니다.
 
-## 핵심 학습 항목
+## 2. Quantization
 
-- llama.cpp란?
-- 필요한 이유
-- LLM 복습
-- 모델이 너무 큰 문제
-- Quantization
-- Q4_K_M 같은 이름
-- GGUF
-- Memory Mapping
-- CPU 최적화
-- GPU와 작업 분담
-- Prompt 실행의 전체 과정
-- 사용처
+FP16/FP32 weight를 Q4/Q5/Q8로 줄여 RAM/VRAM requirement와 memory bandwidth를 낮춥니다.
 
-## 단계별 학습 가이드
+Local inference에서는 compute보다 weight memory 이동이 bottleneck인 경우가 많아 low-bit의 효과가 큽니다.
 
-### 1. llama.cpp란?
+## 3. GGUF
 
-**llama.cpp란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+llama.cpp는 GGUF에서 architecture metadata, tokenizer, quantized tensors를 읽습니다.
 
-### 2. 필요한 이유
+Single file로 model을 배포하기 쉽습니다.
 
-**필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. 원문의 mmap 설명
 
-### 3. LLM 복습
+Normal loading:
 
-**LLM 복습**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    disk full model
+      → copy all
+      → RAM
+      → start
 
-### 4. 모델이 너무 큰 문제
+mmap:
 
-**모델이 너무 큰 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    file mapped into virtual memory
+      → needed pages loaded on demand
 
-### 5. Quantization
+원문은 이 방식이 startup을 빠르게 하고 같은 model을 여러 process가 읽을 때 OS page sharing 이점도 준다고 설명합니다.
 
-**Quantization**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. SIMD
 
-### 6. Q4_K_M 같은 이름
+CPU에서 동일 연산을 여러 값에 한 번에 적용합니다.
 
-**Q4_K_M 같은 이름**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Platform에 따라 AVX, NEON 등 최적화 kernel이 사용될 수 있습니다.
 
-### 7. GGUF
+정확한 지원은 build/runtime에 따라 다릅니다.
 
-**GGUF**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 6. GPU Offload
 
-### 8. Memory Mapping
+모든 layer가 VRAM에 안 들어가면 일부 layer만 GPU에 올리고 나머지는 CPU에서 계산할 수 있습니다.
 
-**Memory Mapping**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    selected layers → GPU
+    remaining       → CPU
 
-### 9. CPU 최적화
+PCIe/Unified Memory architecture에 따라 optimal split이 달라집니다.
 
-**CPU 최적화**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Apple Silicon은 CPU/GPU가 unified memory를 공유하는 점이 별도 특성입니다.
 
-### 10. GPU와 작업 분담
+## 7. 전체 Prompt 흐름
 
-**GPU와 작업 분담**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문 순서:
 
-### 11. Prompt 실행의 전체 과정
+1. GGUF open + mmap
+2. prompt tokenization
+3. token이 Transformer layers 통과
+4. quantized weight로 matrix ops
+5. CPU/GPU가 workload 분담
+6. logits 계산
+7. sampling
+8. token을 text로 decode
+9. streaming 출력
 
-**Prompt 실행의 전체 과정**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 8. Local Serving의 Trade-off
 
-### 12. 사용처
+장점:
 
-**사용처**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- privacy
+- offline
+- API cost 없음
+- commodity hardware
 
-## 실무 연결
+한계:
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+- frontier model quality/size 제한
+- long-context KV memory
+- lower throughput than datacenter GPU
+- manual model/quantization choice
 
-## 점검 질문
+## 핵심 정리
 
-1. llama.cpp는 일반 하드웨어에서 LLM을 어떻게 실행하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+- llama.cpp는 quantization+GGUF+mmap+SIMD+GPU offload를 조합해 local inference를 가능하게 합니다.
+- 원문은 mmap이 full upfront copy 없이 필요한 page를 on-demand load한다고 설명합니다.
+- CPU-only뿐 아니라 partial/full GPU offload도 가능합니다.
+- Local performance는 model size, quantization, context, hardware memory bandwidth에 크게 좌우됩니다.
 
 ## 원문
 
