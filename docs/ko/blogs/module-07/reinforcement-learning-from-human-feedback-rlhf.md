@@ -1,92 +1,251 @@
-# RLHF란? — 한국어 상세 학습 노트
+# RLHF란? 인간 피드백을 이용한 강화학습 — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/reinforcement-learning-from-human-feedback-rlhf
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/reinforcement-learning-from-human-feedback-rlhf  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 원문을 직접 확인해 SFT→Preference→Reward Model→PPO, KL penalty 수치 예, reward hacking과 best practice를 보존하면서 독립적으로 다시 쓴 한국어 상세 해설입니다.
 
-## 핵심 해설
+## 1. RLHF의 목적
 
-사람의 선호를 학습해 사전학습 LLM을 더 유용하고 정직하며 안전한 Assistant로 만드는 Reinforcement Learning from Human Feedback을 배웁니다.
+RLHF(Reinforcement Learning from Human Feedback)는 인간이 선호하는 response를 reward signal로 바꿔 language model을 정렬하는 방법입니다.
 
-## 핵심 학습 항목
+문제:
 
-- RLHF란?
-- 필요한 이유
-- 큰 그림
-- 1단계: Supervised Fine-Tuning(SFT)
-- 2단계: Reward Model 학습
-- 3단계: PPO를 이용한 RL Fine-Tuning
-- KL Penalty
-- 전체 과정 연결
-- Reward Hacking
-- 흔한 실수
-- Best Practice
-- 빠른 요약
+    next-token likelihood가 높다
+    ≠ human이 좋은 답이라고 생각한다
 
-## 단계별 학습 가이드
+RLHF는 human preference를 optimization target에 넣습니다.
 
-### 1. RLHF란?
+## 2. 전체 Pipeline
 
-**RLHF란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문의 큰 흐름:
 
-### 2. 필요한 이유
+    pretrained base model
+      → supervised fine-tuning
+      → preference data
+      → reward model
+      → RL fine-tuning(PPO)
+      → aligned model
 
-**필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+각 단계가 다른 문제를 해결합니다.
 
-### 3. 큰 그림
+## 3. Stage 1 — SFT
 
-**큰 그림**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+High-quality prompt/response demonstration을 모읍니다.
 
-### 4. 1단계: Supervised Fine-Tuning(SFT)
+Model이:
 
-**1단계: Supervised Fine-Tuning(SFT)**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- 질문에 답하는 format
+- instruction following
+- 기본 tone
 
-### 5. 2단계: Reward Model 학습
+을 imitation learning으로 익힙니다.
 
-**2단계: Reward Model 학습**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+SFT를 생략하고 base model에 바로 RL을 걸면 exploration이 너무 넓고 reward hacking 가능성이 커집니다.
 
-### 6. 3단계: PPO를 이용한 RL Fine-Tuning
+## 4. Stage 2 — Preference Collection
 
-**3단계: PPO를 이용한 RL Fine-Tuning**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+한 prompt에 여러 response를 생성하고 human이 ranking합니다.
 
-### 7. KL Penalty
+예:
 
-**KL Penalty**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Response A: chosen
+    Response B: rejected
 
-### 8. 전체 과정 연결
+Human이 직접 절대 reward를 쓰는 것이 아니라 상대 preference를 제공합니다.
 
-**전체 과정 연결**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. Reward Model
 
-### 9. Reward Hacking
+Reward Model:
 
-**Reward Hacking**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    RM(prompt, response) → scalar
 
-### 10. 흔한 실수
+Pairwise loss는 chosen의 reward가 rejected보다 높아지게 합니다.
 
-**흔한 실수**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    P(chosen > rejected)
+      = sigmoid(r_chosen - r_rejected)
 
-### 11. Best Practice
+Reward model은 human preference의 proxy입니다.
 
-**Best Practice**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 6. Stage 3 — RL Fine-Tuning
 
-### 12. 빠른 요약
+Policy model이 response를 생성합니다.
 
-**빠른 요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Reward model이 score를 줍니다.
 
-## 실무 연결
+PPO가 policy를 조금씩 update합니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+반복:
 
-## 점검 질문
+    prompt
+      → response
+      → RM score
+      → advantage
+      → PPO update
 
-1. RLHF란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+## 7. 왜 PPO인가
+
+RL update를 너무 크게 하면 language model이 쉽게 무너집니다.
+
+PPO는 old policy와 new policy의 probability ratio를 clipping해 큰 update를 제한합니다.
+
+그래서 대규모 language policy optimization에 널리 사용됐습니다.
+
+## 8. KL Penalty
+
+원문 objective:
+
+    Objective
+      = Reward(response)
+      - beta * KL(LLM, SFT_model)
+
+KL divergence는 current policy와 SFT/reference policy의 distribution 차이를 측정합니다.
+
+Model이 reward를 올리더라도 reference에서 너무 멀어지면 penalty를 받습니다.
+
+## 9. 원문의 KL 수치 예
+
+가정:
+
+    reward = 3.0
+    KL = 4.0
+    beta = 0.1
+
+최종 objective:
+
+    3.0 - 0.1 * 4.0
+    = 2.6
+
+만약 drift가 커져:
+
+    KL = 20
+
+이면:
+
+    3.0 - 0.1 * 20
+    = 1.0
+
+Raw reward는 같아도 reference에서 지나치게 멀어지면 가치가 크게 떨어집니다.
+
+원문은 beta의 illustrative range로 약 0.01~0.2를 제시합니다.
+
+## 10. Per-Token KL
+
+실제 구현에서는 whole response 끝에 KL 한 번만 계산하기보다 generation token마다 KL penalty를 reward shaping에 반영하는 경우가 많습니다.
+
+개념:
+
+    r_t'
+      = r_t
+      - beta * KL_t
+
+Response 마지막에 RM reward가 들어가고 token-level KL이 cumulative return에 포함될 수 있습니다.
+
+## 11. Reward Hacking
+
+Policy가 Reward Model의 weakness를 찾아 높은 score를 받지만 실제 human preference에는 나쁜 response를 만들 수 있습니다.
+
+예:
+
+- 지나치게 장황하면 reward가 높게 측정
+- 특정 phrase 반복
+- scorer가 좋아하는 형식만 과도하게 사용
+
+이를 reward hacking이라고 합니다.
+
+## 12. Reward Model은 Ground Truth가 아니다
+
+Reward Model은 finite preference dataset으로 학습된 approximation입니다.
+
+따라서:
+
+- annotator disagreement
+- distribution shift
+- bias
+- calibration error
+
+가 있습니다.
+
+RM score가 높다고 실제 user value가 항상 높은 것은 아닙니다.
+
+## 13. Preference Data Quality
+
+좋은 preference dataset은 단순히 data 수가 많은 것이 아니라:
+
+- difficult comparison 포함
+- instruction distribution 다양
+- label guideline 일관
+- ambiguous sample 처리
+- annotator quality 관리
+
+가 필요합니다.
+
+## 14. RLHF의 비용
+
+여러 model을 동시에 사용합니다.
+
+- policy
+- reference
+- reward model
+- value/critic(PPO)
+
+큰 LLM에서는 memory/compute가 매우 큽니다.
+
+이 복잡성이 DPO, GRPO 같은 대안이 등장한 배경입니다.
+
+## 15. Common Mistakes
+
+원문 핵심:
+
+### SFT 생략
+
+초기 policy가 너무 불안정.
+
+### 약한 Reward Model
+
+Wrong reward를 최적화.
+
+### KL 무시
+
+Policy가 scorer에 맞춰 이상한 distribution으로 drift.
+
+### RM을 Truth로 간주
+
+Human preference proxy임을 잊음.
+
+## 16. Best Practice
+
+- SFT baseline을 먼저 강하게 만들기
+- holdout preference eval
+- RM accuracy와 calibration 별도 측정
+- KL/reward curve 모니터링
+- policy output human audit
+- reward hacking test
+- task별 regression suite
+
+## 17. RLHF vs DPO
+
+RLHF/PPO:
+
+    preference data
+      → reward model
+      → online generation
+      → PPO
+
+DPO:
+
+    preference pair
+      → direct supervised-style objective
+
+DPO가 단순하지만 online exploration/reward shaping이 필요한 경우 RL이 더 유연할 수 있습니다.
+
+## 핵심 정리
+
+- RLHF는 human preference를 learned reward로 바꿔 policy를 강화학습합니다.
+- SFT, Reward Model, PPO 세 단계가 핵심입니다.
+- KL penalty가 reference model에서 과도하게 drift하는 것을 막습니다.
+- 원문 예에서 reward 3, KL 4, beta 0.1이면 objective 2.6입니다.
+- Reward Model은 human preference proxy이지 ground truth가 아닙니다.
+- RLHF의 높은 system complexity가 DPO/GRPO 같은 단순화 방법을 촉진했습니다.
 
 ## 원문
 
