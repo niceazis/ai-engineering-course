@@ -428,7 +428,9 @@ NVIDIA GPU에서 가능한 최고 수준의 추론 성능을 목표로 Build-tim
 **모듈 12 영상 및 추가 자료:**
 
 - [LLM Inference Optimization](https://www.youtube.com/watch?v=jV2sCj4lHYk) (영상)
+  ↳ [한국어 상세 영상 학습 노트](videos/module-12/llm-inference-optimization.md)
 - [The First-Token Latency Problem in LLMs](https://www.youtube.com/watch?v=XD8DD4cEHu0) (영상)
+  ↳ [한국어 상세 영상 학습 노트](videos/module-12/first-token-latency-problem.md)
 - [LLM Inference Engineering (complete series)](https://github.com/amitshekhariitbhu/llm-inference-engineering) (시리즈)
 
 ---
