@@ -1,92 +1,96 @@
 # SGLang은 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-sglang-work
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-sglang-work  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 RadixAttention, prefix reuse, frontend/runtime, continuous batching과 structured output을 보존하면서 독립적으로 다시 쓴 한국어 상세 해설입니다.
 
-## 핵심 해설
+## 1. SGLang의 중심 문제
 
-RadixAttention을 이용한 Prefix Reuse와 Runtime 최적화로 LLM Serving 성능을 높이는 SGLang을 배웁니다.
+Agent, few-shot, multi-turn workload는 긴 prefix를 반복합니다.
 
-## 핵심 학습 항목
+    "You are a helpful assistant..."
+    + same tools/examples
+    + changing suffix
 
-- SGLang이란?
-- LLM 생성 복습
-- 해결하는 문제
-- RadixAttention
-- 과거 계산 재사용
-- Frontend Language
-- Runtime과 Frontend 협업
-- Continuous Batching
-- Structured Output과 빠른 Decoding
-- End-to-End 흐름
-- 고급 기능
-- vLLM과 비교
+매번 같은 prefix prefill을 다시 계산하는 것은 낭비입니다.
 
-## 단계별 학습 가이드
+## 2. RadixAttention
 
-### 1. SGLang이란?
+원문의 핵심:
 
-**SGLang이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Radix tree
+      + KV Cache
+      = RadixAttention
 
-### 2. LLM 생성 복습
+Request text의 shared prefix를 radix tree node로 관리하고 해당 prefix의 KV Cache를 재사용합니다.
 
-**LLM 생성 복습**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. 원문의 예
 
-### 3. 해결하는 문제
+Request A:
 
-**해결하는 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    You are a helpful assistant.
+    What is the capital of France?
 
-### 4. RadixAttention
+Request B:
 
-**RadixAttention**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    You are a helpful assistant.
+    What is the capital of Japan?
 
-### 5. 과거 계산 재사용
+공유 부분의 KV를 한 번만 계산하고 France/Japan suffix부터 분기합니다.
 
-**과거 계산 재사용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. 새 Request
 
-### 6. Frontend Language
+Italy query가 오면:
 
-**Frontend Language**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+1. radix tree에서 longest prefix match
+2. 해당 KV reuse
+3. "Italy?" 부분만 새 prefill
+4. 새로운 branch를 tree에 추가
+5. decode
 
-### 7. Runtime과 Frontend 협업
+## 5. 왜 PagedAttention과 다른가
 
-**Runtime과 Frontend 협업**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+PagedAttention은 **fixed-size KV block memory allocation**이 핵심입니다.
 
-### 8. Continuous Batching
+RadixAttention은 **text prefix identity를 tree로 추적해 computation reuse**하는 것이 핵심입니다.
 
-**Continuous Batching**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+둘 다 serving cache 최적화지만 focus가 다릅니다.
 
-### 9. Structured Output과 빠른 Decoding
+## 6. Continuous Batching
 
-**Structured Output과 빠른 Decoding**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+SGLang도 dynamic batching을 사용합니다.
 
-### 10. End-to-End 흐름
+원문은 RadixAttention이 repeated work를 줄이고 continuous batching이 GPU utilization을 유지하는 조합을 강조합니다.
 
-**End-to-End 흐름**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 7. Frontend Language
 
-### 11. 고급 기능
+SGLang은 generation program에서 generation, branching, parallelism, structured output 같은 high-level operation을 표현하고 runtime이 scheduling/cache를 최적화하는 구조를 제공합니다.
 
-**고급 기능**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+API 세부는 버전별로 바뀔 수 있습니다.
 
-### 12. vLLM과 비교
+## 8. Structured Output
 
-**vLLM과 비교**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+JSON/regex/grammar constraint를 runtime decoding에 적용하면 invalid token을 미리 막을 수 있습니다.
 
-## 실무 연결
+Post-hoc retry보다 효율적일 수 있습니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+## 9. Distributed Prefix Reuse
 
-## 점검 질문
+원문은 multi-machine에서 cache-aware load balancing으로 shared prefix가 이미 cache된 worker에 request를 보내 reuse를 유지하는 방향도 설명합니다.
 
-1. SGLang은 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+## 10. vLLM과 비교
+
+둘 다 continuous batching, KV optimization, serving API를 제공할 수 있습니다.
+
+원문에서 SGLang을 구별하는 핵심은 RadixAttention 기반 prefix reuse입니다.
+
+## 핵심 정리
+
+- SGLang의 대표 아이디어는 radix tree로 shared text prefix의 KV Cache를 재사용하는 RadixAttention입니다.
+- 새 request는 longest cached prefix를 찾고 unique suffix만 계산합니다.
+- Continuous Batching과 결합해 compute utilization도 높입니다.
+- Repeated long-prefix agent/workflow에서 특히 유리합니다.
+- 실제 기능/성능은 최신 release별 benchmark가 필요합니다.
 
 ## 원문
 
