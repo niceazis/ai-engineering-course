@@ -1,72 +1,168 @@
 # AI Agent Memory는 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/ai-agent-memory
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/ai-agent-memory  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 memory stack과 Write·Read·Update·Forget 네 연산을 중심으로 독립적으로 정리했습니다.
 
-## 핵심 해설
+## 1. 왜 Memory가 필요한가
 
-Agent Memory가 필요한 이유, Memory Stack, Write·Read·Update·Forget 네 가지 핵심 연산과 런타임 흐름을 배웁니다.
+LLM API call은 기본적으로 stateless합니다.
 
-## 핵심 학습 항목
+Agent가 장기 task를 수행하려면:
 
-- 큰 그림
-- Memory가 필요한 이유
-- Memory Stack
-- 네 가지 핵심 연산
-- Runtime Memory Flow
-- 저장할 것과 저장하지 말아야 할 것
-- 흔한 실수와 해결책
-- 빠른 요약
+- 무엇을 이미 했는지
+- user preference
+- 중요한 decision
+- tool 결과
+- 진행 상태
 
-## 단계별 학습 가이드
+를 외부에 보존해야 합니다.
 
-### 1. 큰 그림
+## 2. Memory Stack
 
-**큰 그림**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+실용적으로 세 층으로 나눌 수 있습니다.
 
-### 2. Memory가 필요한 이유
+### Working / Short-Term
 
-**Memory가 필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+현재 run의 conversation, tool trace, active plan.
 
-### 3. Memory Stack
+### Episodic
 
-**Memory Stack**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+과거 session에서 있었던 사건/결과.
 
-### 4. 네 가지 핵심 연산
+### Semantic / Profile
 
-**네 가지 핵심 연산**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+장기적으로 유효한 user/project facts.
 
-### 5. Runtime Memory Flow
+모든 것을 한 저장소에 넣기보다 lifespan과 retrieval 방식에 따라 분리하는 것이 좋습니다.
 
-**Runtime Memory Flow**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. 네 핵심 Operation
 
-### 6. 저장할 것과 저장하지 말아야 할 것
+### Write
 
-**저장할 것과 저장하지 말아야 할 것**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+무엇을 memory에 저장할지 결정.
 
-### 7. 흔한 실수와 해결책
+### Read
 
-**흔한 실수와 해결책**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+현재 task에 relevant한 memory를 검색.
 
-### 8. 빠른 요약
+### Update
 
-**빠른 요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+기존 fact가 바뀌었을 때 최신 상태로 수정.
 
-## 실무 연결
+### Forget
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+오래되거나 잘못되거나 더 이상 필요하지 않은 memory를 제거.
 
-## 점검 질문
+저장만 하고 갱신/삭제가 없으면 stale context가 누적됩니다.
 
-1. AI Agent Memory는 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+## 4. Write Policy
+
+저장 가치가 높은 것:
+
+- explicit preference
+- durable project constraint
+- confirmed decision
+- recurring workflow state
+
+저장하면 안 되는 것:
+
+- transient tool noise
+- unverified inference
+- 쉽게 재계산 가능한 중간 token
+- sensitive information without need/permission
+
+## 5. Read Policy
+
+모든 memory를 context에 넣으면 context stuffing이 됩니다.
+
+    current task
+      → retrieve relevant memory
+      → freshness/permission filter
+      → context
+
+Relevance뿐 아니라 access scope와 timestamp를 봐야 합니다.
+
+## 6. Update와 Conflict
+
+같은 field가 바뀌면 append-only로 둘 경우 모순이 생깁니다.
+
+예:
+
+    preferred_city = Seoul
+    later = Busan
+
+Memory system은 version/current-state semantics가 필요합니다.
+
+## 7. Forgetting
+
+Forget은 storage 최적화만이 아닙니다.
+
+- stale info 제거
+- privacy request
+- outdated constraint
+- noise suppression
+
+에 필요합니다.
+
+## 8. Vector Memory
+
+Free-form episode를 embedding해 semantic search할 수 있습니다.
+
+하지만 exact state:
+
+    account_id
+    selected_plan
+    deadline
+
+같은 것은 structured DB가 더 안전합니다.
+
+Vector DB 하나로 모든 memory를 처리할 필요는 없습니다.
+
+## 9. Runtime Flow
+
+    observe event
+      → memory write decision
+      → store
+
+    new task
+      → memory query
+      → retrieve
+      → filter
+      → context
+      → agent decision
+
+Task 끝에는 summary/state consolidation을 할 수 있습니다.
+
+## 10. Context Compaction과 차이
+
+Compaction:
+
+    현재 session의 긴 context 압축
+
+Long-term memory:
+
+    session을 넘어 필요한 state 유지
+
+둘을 같이 쓰지만 목적은 다릅니다.
+
+## 11. Failure Mode
+
+- every-message memory → noise
+- stale fact → wrong action
+- unverified inference 저장 → 오류 고착
+- cross-user memory leak
+- duplicate/conflicting memory
+
+따라서 provenance와 user/tenant isolation이 중요합니다.
+
+## 핵심 정리
+
+- Agent memory는 model parameter가 아니라 외부 runtime state입니다.
+- Working/episodic/semantic layer로 나눌 수 있습니다.
+- Write, Read, Update, Forget 네 연산을 모두 설계해야 합니다.
+- Free-form 기억은 vector search, exact state는 structured store가 적합합니다.
+- Relevance·freshness·permission filter 없이 memory를 context에 넣으면 오히려 agent 품질이 나빠집니다.
 
 ## 원문
 
