@@ -1,82 +1,106 @@
 # Medusa란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/decoding-medusa
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/decoding-medusa  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 현재 Outcome School 원문 본문은 웹 캐시에서 직접 열리지 않았습니다. 공식 Module 12 목차와 Medusa 원 논문/PMLR 공개 내용을 교차검증해 작성하며, 원문 고유 설명과 논문 수치를 구분합니다.
 
-## 핵심 해설
+## 1. Draft Model 없는 Speculation
 
-하나의 모델에 여러 추가 Head를 붙여 여러 미래 Token을 동시에 예측하고 검증하는 Medusa를 배웁니다.
+일반 speculative decoding:
 
-## 핵심 학습 항목
+    separate draft model
+      → target model verification
 
-- Medusa란?
-- 텍스트 생성이 느린 이유
-- Speculative Decoding 복습
-- Draft Model이 필요한 문제
-- 하나의 모델에 여러 Head
-- Tree Attention
-- 작은 수치로 보는 Speedup
-- 결과
-- 이후 발전
-- 빠른 요약
+Medusa:
 
-## 단계별 학습 가이드
+    target backbone
+      + extra decoding heads
 
-### 1. Medusa란?
+하나의 backbone hidden state에서 여러 미래 위치의 token을 예측합니다.
 
-**Medusa란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 2. Multiple Decoding Heads
 
-### 2. 텍스트 생성이 느린 이유
+기본 LM head는 next token을 예측합니다.
 
-**텍스트 생성이 느린 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Medusa는 추가 head를 붙여:
 
-### 3. Speculative Decoding 복습
+    head 1 → t+1
+    head 2 → t+2
+    head 3 → t+3
+    ...
 
-**Speculative Decoding 복습**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+처럼 미래 token 후보를 동시에 만듭니다.
 
-### 4. Draft Model이 필요한 문제
+실제 각 head는 여러 top candidate를 제안할 수 있습니다.
 
-**Draft Model이 필요한 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Candidate Tree
 
-### 5. 하나의 모델에 여러 Head
+각 head의 후보를 조합하면 여러 continuation path가 생깁니다.
 
-**하나의 모델에 여러 Head**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    token A
+      ├─ B
+      │  ├─ C
+      │  └─ D
+      └─ E ...
 
-### 6. Tree Attention
+모든 조합을 독립 forward하면 비싸므로 Tree Attention으로 여러 branch를 한 번에 검증합니다.
 
-**Tree Attention**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. Tree Attention
 
-### 7. 작은 수치로 보는 Speedup
+Candidate token들이 서로 다른 branch의 미래 정보를 보지 않도록 custom causal mask를 사용하면서 target backbone을 병렬 실행합니다.
 
-**작은 수치로 보는 Speedup**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+그 뒤 가장 긴 acceptable prefix를 선택합니다.
 
-### 8. 결과
+## 5. Medusa-1
 
-**결과**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원 논문:
 
-### 9. 이후 발전
+- backbone frozen
+- extra Medusa heads만 학습
+- 기존 model capability 유지에 유리
+- 별도 draft model 불필요
 
-**이후 발전**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+PMLR 공개 결과는 **2.2× 이상 speedup**을 보고합니다.
 
-### 10. 빠른 요약
+## 6. Medusa-2
 
-**빠른 요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Backbone도 함께 fine-tune해 Medusa head의 future prediction 능력을 높입니다.
 
-## 실무 연결
+더 높은 speedup을 얻을 수 있지만 original capability 보존을 위한 training recipe가 필요합니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+공개 논문은 약 2.3~2.8× 수준의 결과를 보고합니다(버전/평가표에 따라 수치 표기가 다를 수 있음).
 
-## 점검 질문
+## 7. Speculative Decoding과 비교
 
-1. Medusa란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+| 항목 | Draft Model | Medusa |
+| --- | --- | --- |
+| Drafter | 별도 model | extra heads |
+| Memory | second model | head overhead |
+| Training | matching draft 필요 | heads fine-tune |
+| Verification | target | same backbone/tree |
+| Distribution | exact scheme 가능 | acceptance scheme에 따라 |
+
+## 8. 장점
+
+- 별도 draft model 관리 없음
+- parameter-efficient adaptation 가능
+- single-model serving stack에 통합 쉬움
+- batch=1/local serving에서도 유용
+
+## 9. 한계
+
+- extra head training 필요
+- candidate tree size 증가 시 verify cost 증가
+- sampling acceptance 설계
+- 모든 model/runtime에서 자동 지원되는 것은 아님
+
+## 핵심 정리
+
+- Medusa는 target LLM에 여러 future-token head를 붙여 draft model을 대체합니다.
+- Candidate continuation을 tree로 만들고 Tree Attention으로 한 번에 검증합니다.
+- Medusa-1은 backbone freeze, Medusa-2는 backbone까지 함께 fine-tune합니다.
+- 공개 원 논문은 2× 이상 inference speedup을 보고합니다.
+- Outcome School 원문 본문은 직접 확인하지 못해 논문 기반 수치는 명시적으로 구분했습니다.
 
 ## 원문
 
