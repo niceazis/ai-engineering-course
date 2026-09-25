@@ -748,7 +748,7 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 
 영상 보기: [Tokenization in Large Language Models (LLMs)](https://www.youtube.com/watch?v=sK2s9I84EVI)
 
-→ [한국어 영상 요약](docs/ko/videos.md#6-tokenization-in-large-language-models-llms)
+→ [한국어 상세 영상 학습 노트](docs/ko/videos/module-03/tokenization-in-large-language-models.md)
 
 ### 3.4 Embedding이란?
 
@@ -773,7 +773,7 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 
 영상 보기: [Embeddings in Machine Learning](https://www.youtube.com/watch?v=LedXW6xl21s)
 
-→ [한국어 영상 요약](docs/ko/videos.md#7-embeddings-in-machine-learning)
+→ [한국어 상세 영상 학습 노트](docs/ko/videos/module-03/embeddings-in-machine-learning.md)
 
 ### 3.5 RNN과 Transformer는 어떻게 다른가?
 
@@ -870,7 +870,7 @@ BERT와 GPT 같은 현대 LLM의 핵심인 Self Attention의 개념과 단계별
 
 영상 보기: [Softmax Activation Function in Machine Learning](https://www.youtube.com/watch?v=2Zx6x01WwWM)
 
-→ [한국어 상세 영상 학습 노트](docs/ko/videos/module-02/softmax-activation-function-in-machine-learning.md)
+→ [한국어 상세 영상 학습 노트](docs/ko/videos/module-03/softmax-activation-function-in-machine-learning.md)
 
 ### 3.10 왜 Attention을 √dₖ로 스케일링하는가?
 
@@ -984,12 +984,12 @@ Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer
 **모듈 3 영상 및 추가 자료:**
 
 - [Softmax Activation Function in Machine Learning](https://www.youtube.com/watch?v=2Zx6x01WwWM) (영상)
-   ↳ [한국어 상세 영상 학습 노트](docs/ko/videos/module-02/softmax-activation-function-in-machine-learning.md)
+   ↳ [한국어 상세 영상 학습 노트](docs/ko/videos/module-03/softmax-activation-function-in-machine-learning.md)
 - [Inside ChatGPT: What Happens After You Hit Enter](https://outcomeschool.substack.com/p/inside-chatgpt-what-happens-after) (읽기)
 - [Tokenization in Large Language Models (LLMs)](https://www.youtube.com/watch?v=sK2s9I84EVI) (영상)
-   ↳ [한국어 영상 요약](docs/ko/videos.md#6-tokenization-in-large-language-models-llms)
+   ↳ [한국어 상세 영상 학습 노트](docs/ko/videos/module-03/tokenization-in-large-language-models.md)
 - [Embeddings in Machine Learning](https://www.youtube.com/watch?v=LedXW6xl21s) (영상)
-   ↳ [한국어 영상 요약](docs/ko/videos.md#7-embeddings-in-machine-learning)
+   ↳ [한국어 상세 영상 학습 노트](docs/ko/videos/module-03/embeddings-in-machine-learning.md)
 - [Positional Embeddings in LLMs](https://outcomeschool.substack.com/p/positional-embeddings-in-llms) (읽기)
 
 ---

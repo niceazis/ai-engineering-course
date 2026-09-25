@@ -37,10 +37,14 @@ Epoch·Batch·Batch Size·Iteration의 정확한 관계를 수치 예제로 연�
 
 → [한국어 상세 영상 학습 노트](videos/module-02/softmax-activation-function-in-machine-learning.md)
 
+→ [모듈 3용 상세 영상 학습 노트](videos/module-03/softmax-activation-function-in-machine-learning.md)
+
 Logit을 확률 분포로 바꾸는 수식, Outcome School의 [2,3,1] 예제, Cross-Entropy와의 연결, numerical stability까지 단계별로 설명합니다.
 
 ## 6. Tokenization in Large Language Models (LLMs)
 원본: https://www.youtube.com/watch?v=sK2s9I84EVI
+
+→ [한국어 상세 영상 학습 노트](videos/module-03/tokenization-in-large-language-models.md)
 
 - LLM이 문자열을 그대로 읽지 않고 **Token**이라는 작은 단위로 분해해 처리하는 이유와 방식을 설명합니다.
 - Token은 단어 전체일 수도 있고, 단어 일부나 문자·기호 조각일 수도 있습니다.
@@ -49,6 +53,8 @@ Logit을 확률 분포로 바꾸는 수식, Outcome School의 [2,3,1] 예제, Cr
 
 ## 7. Embeddings in Machine Learning
 원본: https://www.youtube.com/watch?v=LedXW6xl21s
+
+→ [한국어 상세 영상 학습 노트](videos/module-03/embeddings-in-machine-learning.md)
 
 - **Embedding**은 단어·문장·이미지 같은 대상을 의미를 반영하는 숫자 벡터로 표현하는 방법입니다.
 - 의미가 비슷한 항목은 벡터 공간에서 가까워지도록 학습됩니다.
