@@ -64,6 +64,8 @@ Logit을 확률 분포로 바꾸는 수식, Outcome School의 [2,3,1] 예제, Cr
 ## 8. Why is the context window limited in LLMs?
 원본: https://www.youtube.com/watch?v=CGIhxIaOg3M
 
+→ [한국어 상세 영상 학습 노트](videos/module-04/why-context-window-limited-in-llms.md)
+
 - **Context Window**는 한 번의 추론에서 모델이 참고할 수 있는 Token 범위입니다.
 - 입력 길이가 늘수록 Attention 계산량과 KV Cache 메모리 사용량이 증가해 비용과 Latency가 커집니다.
 - 단순히 최대 길이를 늘리는 것만으로는 모든 위치의 정보를 동일하게 잘 활용한다는 보장이 없습니다.
