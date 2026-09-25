@@ -1,159 +1,299 @@
 # 실시간 Voice AI Agent 설계 — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 원문 URL은 현재 직접 열리지 않았습니다. Outcome School 공식 홈페이지의 2026-09-16 게시 설명, 공식 AI Agents tutorial index, 공개 원문 캐시에서 확인 가능한 transport/AEC 세부사항을 교차검증해 독립적으로 재구성했습니다. 자막/원문 전체를 확인하지 못한 세부 수치는 원문 내용으로 단정하지 않습니다.
 
-## 핵심 해설
+## 1. Voice AI Agent란?
 
-사람의 음성을 듣고 이해하고, 필요한 Tool을 호출하고, 자연스러운 음성으로 수백 ms 수준에서 응답하는 실시간 Voice AI Agent를 설계합니다.
+실시간 voice agent는:
 
-**AI System Design 보조 레슨:**
+    listen
+      → understand
+      → reason/tool use
+      → speak
 
-## 핵심 학습 항목
+를 사람이 대화한다고 느낄 정도로 짧은 latency 안에 반복하는 system입니다.
 
-- Voice AI Agent란?
-- Real-Time Voice가 어려운 이유
-- Requirements
-- Back-of-the-envelope Estimation
-- High-Level Architecture
-- Audio Transport
-- Voice Activity Detection·Turn Detection
-- Speech-to-Text
-- LLM + Tools
-- Text-to-Speech
-- Cascaded Pipeline(STT → LLM → TTS)
-- Speech-to-Speech Model
-- Hybrid Approach
-- 방식 비교
-- Latency Budget
-- Barge-in
-- Tool Calling
-- Memory와 Context
-- Telephony
-- Scaling
-- Edge Case
-- Observability와 Evaluation
-- Safety, Security, Privacy
-- Cost
-- 면접에서 설계를 설명하는 방법
+Text chatbot보다 훨씬 어렵습니다.
 
-## 단계별 학습 가이드
+이유:
 
-### 1. Voice AI Agent란?
+- continuous audio
+- turn detection
+- interruption
+- acoustic noise
+- STT/TTS latency
+- tool latency
+- telephony/network jitter
 
-**Voice AI Agent란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+가 동시에 존재하기 때문입니다.
 
-### 2. Real-Time Voice가 어려운 이유
+## 2. 요구사항
 
-**Real-Time Voice가 어려운 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+대표적인 success criteria:
 
-### 3. Requirements
+- 자연스러운 turn-taking
+- 낮은 first-response latency
+- interruption 즉시 반응
+- tool call 가능
+- session context 유지
+- thousands of concurrent sessions
+- privacy/security
+- observable and evaluable
 
-**Requirements**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. High-Level Architecture
 
-### 4. Back-of-the-envelope Estimation
+Cascaded architecture:
 
-**Back-of-the-envelope Estimation**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    microphone
+      → audio transport
+      → VAD / turn detection
+      → STT
+      → LLM + tools
+      → TTS
+      → audio stream
 
-### 5. High-Level Architecture
+Speech-to-speech architecture:
 
-**High-Level Architecture**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    audio
+      → multimodal speech model
+      → audio
 
-### 6. Audio Transport
+Hybrid는 두 방식을 상황에 따라 조합합니다.
 
-**Audio Transport**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. Audio Transport
 
-### 7. Voice Activity Detection·Turn Detection
+Browser/mobile에서 real-time media transport에는 WebRTC가 잘 맞습니다.
 
-**Voice Activity Detection·Turn Detection**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+공개 원문 캐시는 audio가 약 20ms chunk 단위로 server에 stream되는 예를 설명합니다.
 
-### 8. Speech-to-Text
+WebRTC 장점:
 
-**Speech-to-Text**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- low-latency media
+- jitter handling
+- NAT traversal ecosystem
+- encryption
+- AEC support
 
-### 9. LLM + Tools
+## 5. Acoustic Echo Cancellation
 
-**LLM + Tools**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Agent speaker output이 사용자의 microphone에 다시 들어가면 system이 자기 목소리를 user speech로 오인할 수 있습니다.
 
-### 10. Text-to-Speech
+AEC는:
 
-**Text-to-Speech**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    microphone signal
+      - known speaker output
+      → user voice
 
-### 11. Cascaded Pipeline(STT → LLM → TTS)
+를 얻는 방향으로 echo를 줄입니다.
 
-**Cascaded Pipeline(STT → LLM → TTS)**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Barge-in이 제대로 동작하려면 매우 중요합니다.
 
-### 12. Speech-to-Speech Model
+## 6. Voice Activity Detection
 
-**Speech-to-Speech Model**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+VAD는 현재 audio에 speech가 있는지 판단합니다.
 
-### 13. Hybrid Approach
+Device에서 작은 VAD를 돌리면:
 
-**Hybrid Approach**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- silent audio 전송 감소
+- privacy/traffic 개선
+- 빠른 interruption detection
 
-### 14. 방식 비교
+에 도움이 됩니다.
 
-**방식 비교**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 7. Turn Detection
 
-### 15. Latency Budget
+VAD만으로는 사용자가 잠깐 쉬는 것인지 발화를 끝낸 것인지 구분하기 어렵습니다.
 
-**Latency Budget**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Turn detection은:
 
-### 16. Barge-in
+- silence duration
+- prosody
+- semantic completeness
+- model prediction
 
-**Barge-in**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+을 조합할 수 있습니다.
 
-### 17. Tool Calling
+너무 빨리 끊으면 user를 interrupt하고, 너무 늦으면 대화가 답답해집니다.
 
-**Tool Calling**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 8. Speech-to-Text
 
-### 18. Memory와 Context
+Cascaded pipeline에서는 streaming STT가 partial transcript를 지속적으로 냅니다.
 
-**Memory와 Context**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+예:
 
-### 19. Telephony
+    "I want to book..."
+      → partial transcript
+      → final transcript
 
-**Telephony**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+LLM을 final transcript까지 무조건 기다리지 않고 partial context를 활용하는 최적화도 가능합니다.
 
-### 20. Scaling
+## 9. LLM + Tools
 
-**Scaling**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+LLM은 단순 답변뿐 아니라 tool call을 결정합니다.
 
-### 21. Edge Case
+예:
 
-**Edge Case**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    "내일 오후 3시에 예약해줘"
+      → calendar availability
+      → booking tool
+      → confirmation
 
-### 22. Observability와 Evaluation
+Tool latency가 voice UX 전체에 직접 영향을 줍니다.
 
-**Observability와 Evaluation**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 10. Text-to-Speech
 
-### 23. Safety, Security, Privacy
+TTS는 전체 문장이 완성될 때까지 기다리지 않고 streaming synthesis를 할 수 있습니다.
 
-**Safety, Security, Privacy**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    LLM token stream
+      → phrase chunk
+      → TTS
+      → audio
 
-### 24. Cost
+이렇게 하면 perceived latency를 줄일 수 있습니다.
 
-**Cost**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 11. Cascaded Pipeline
 
-### 25. 면접에서 설계를 설명하는 방법
+    STT → LLM → TTS
 
-**면접에서 설계를 설명하는 방법**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+장점:
 
-## 실무 연결
+- 각 component 교체 쉬움
+- text transcript와 tool integration 쉬움
+- observability 좋음
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+단점:
 
-## 점검 질문
+- 각 stage latency가 누적
+- prosody/emotion 정보 손실 가능
 
-1. 실시간 Voice AI Agent 설계을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+## 12. Speech-to-Speech
+
+Audio를 직접 이해하고 audio로 응답합니다.
+
+장점:
+
+- 낮은 latency 가능
+- emotion/prosody 보존
+- 자연스러운 interruption
+
+단점:
+
+- tool/control integration이 더 복잡할 수 있음
+- debugging과 audit가 어려울 수 있음
+
+## 13. Hybrid
+
+예:
+
+- normal conversation → speech-to-speech
+- transaction/tool call → text reasoning/tool pipeline
+
+처럼 역할을 나눌 수 있습니다.
+
+## 14. Latency Budget
+
+Total response latency:
+
+    network
+    + turn detection
+    + STT
+    + LLM first token
+    + tool call
+    + TTS first audio
+
+의 합입니다.
+
+한 stage만 빠르게 해서는 충분하지 않습니다.
+
+p50뿐 아니라 p95/p99를 봐야 합니다.
+
+## 15. Barge-in
+
+사용자가 agent가 말하는 중간에 말을 시작하면:
+
+1. user speech 감지
+2. current TTS playback 중지
+3. queued audio 폐기
+4. new user turn 시작
+5. context에 interrupted state 반영
+
+해야 합니다.
+
+## 16. Telephony
+
+일반 전화망은:
+
+- PSTN
+- SIP: call setup/control
+- RTP: audio transport
+
+를 사용해 provider가 voice stream을 software backend로 전달할 수 있습니다.
+
+## 17. Scaling
+
+Session마다:
+
+- audio stream
+- STT state
+- LLM context
+- TTS stream
+- tool state
+
+가 필요합니다.
+
+Stateless HTTP request보다 connection/session resource 관리가 어렵습니다.
+
+## 18. Edge Cases
+
+- background noise
+- overlapping speech
+- echo
+- silence
+- user changes mind
+- network packet loss
+- STT misrecognition
+- tool timeout
+- TTS failure
+
+을 별도 test case로 만들어야 합니다.
+
+## 19. Observability
+
+Trace에 최소:
+
+- audio connection
+- VAD/turn timing
+- STT partial/final
+- LLM latency
+- tool calls
+- TTS first-byte/first-audio
+- interruption event
+- total turn latency
+
+를 기록합니다.
+
+## 20. Safety와 Privacy
+
+Voice data는 민감할 수 있습니다.
+
+필수 고려:
+
+- encryption
+- retention
+- PII redaction
+- tool authorization
+- call recording consent
+- prompt injection from audio/transcript
+
+## 핵심 정리
+
+- Real-time voice agent는 audio transport, VAD/turn detection, STT, LLM+tools, TTS를 하나의 low-latency loop로 묶습니다.
+- Cascaded, speech-to-speech, hybrid 세 architecture를 비교해야 합니다.
+- Barge-in과 AEC가 자연스러운 대화의 핵심입니다.
+- Total latency는 한 model이 아니라 모든 stage의 합입니다.
+- 원문 URL 전체를 직접 열지 못한 부분은 Outcome School 공식 게시 설명과 공개된 기술 자료로만 보완했습니다.
 
 ## 원문
 
