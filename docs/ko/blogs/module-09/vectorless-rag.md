@@ -1,92 +1,174 @@
-# Vectorless RAG란? — 한국어 상세 학습 노트
+# Vectorless RAG란? Embedding과 Vector DB 없는 RAG — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/vectorless-rag
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/vectorless-rag  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 현재 원문 URL은 웹 도구에서 직접 열리지 않았습니다. Outcome School 공식 Module 9 레슨 구조를 기준으로 embedding/vector DB 없이 후보를 찾는 대표 retrieval 접근을 독립적으로 설명하며 원문 고유 수치는 단정하지 않습니다.
 
-## 핵심 해설
+## 1. Vector RAG 복습
 
-문서를 Vector로 변환하거나 Vector Database를 사용하지 않고 자체 문서에서 답을 찾는 Vectorless RAG를 배웁니다.
+일반 RAG:
 
-## 핵심 학습 항목
+    documents
+      → chunks
+      → embeddings
+      → vector DB
 
-- LLM이란?
-- RAG란?
-- 일반 Vector RAG의 동작
-- Vector RAG의 문제
-- Vectorless RAG란?
-- 동작 방식
-- 예제
-- 다른 Vectorless 접근
-- 장점
-- 단점
-- Vector RAG vs Vectorless RAG
-- 선택 기준
+    query
+      → embedding
+      → vector search
+      → chunks
+      → LLM
 
-## 단계별 학습 가이드
+이 방식은 강력하지만 ingestion pipeline과 vector index 운영이 필요합니다.
 
-### 1. LLM이란?
+## 2. Vectorless RAG의 정의
 
-**LLM이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Vectorless RAG는 **embedding/vector database를 필수 구성 요소로 쓰지 않고 문서에서 관련 context를 찾는 RAG**를 넓게 부르는 표현입니다.
 
-### 2. RAG란?
+가능한 retrieval source:
 
-**RAG란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- BM25 / full-text search
+- SQL
+- metadata/filter
+- file tree
+- LLM-based scan/routing
+- hierarchical summaries
+- grep/code search
 
-### 3. 일반 Vector RAG의 동작
+## 3. 왜 선택하는가
 
-**일반 Vector RAG의 동작**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+다음에서는 vector DB가 과할 수 있습니다.
 
-### 4. Vector RAG의 문제
+- 문서가 소수
+- 정확한 keyword/ID가 중요
+- source가 이미 SQL/search engine에 잘 index됨
+- corpus가 자주 바뀜
+- embedding 비용/운영을 피하고 싶음
 
-**Vector RAG의 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. BM25 기반
 
-### 5. Vectorless RAG란?
+기존 search engine:
 
-**Vectorless RAG란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    query
+      → BM25
+      → top documents
+      → LLM
 
-### 6. 동작 방식
+장점:
 
-**동작 방식**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- mature infra
+- exact term 강함
+- 설명 가능
 
-### 7. 예제
+약점:
 
-**예제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- paraphrase/semantic mismatch
 
-### 8. 다른 Vectorless 접근
+## 5. SQL/Structured Retrieval
 
-**다른 Vectorless 접근**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+질문이 structured data에 관한 것이라면:
 
-### 9. 장점
+    "지난달 서울 매출 top 5"
 
-**장점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+vector search보다 SQL이 정확합니다.
 
-### 10. 단점
+    natural language
+      → query plan / SQL
+      → database
+      → rows
+      → LLM explanation
 
-**단점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+RAG의 핵심은 vector가 아니라 **외부 evidence를 generation 전에 가져오는 것**입니다.
 
-### 11. Vector RAG vs Vectorless RAG
+## 6. Hierarchical Retrieval
 
-**Vector RAG vs Vectorless RAG**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Document tree를 유지합니다.
 
-### 12. 선택 기준
+    corpus
+      → document summaries
+      → section summaries
+      → raw paragraphs
 
-**선택 기준**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Model/keyword search가 상위 summary에서 relevant branch를 선택하고 아래로 내려갑니다.
 
-## 실무 연결
+Embedding 없이도 큰 corpus를 단계적으로 줄일 수 있습니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+## 7. LLM-Based Filtering
 
-## 점검 질문
+작은 candidate set이라면 LLM이 각 title/summary를 읽고 relevant 여부를 판단할 수 있습니다.
 
-1. Vectorless RAG란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+장점:
+
+- semantic flexibility
+
+단점:
+
+- corpus가 커지면 LLM call 폭증
+- nondeterminism/cost
+
+따라서 first-stage lexical/metadata filter와 결합하는 것이 좋습니다.
+
+## 8. File/Code Search
+
+Codebase나 local files에서는:
+
+- path
+- symbol
+- grep
+- AST index
+
+가 embedding보다 더 정확한 경우가 많습니다.
+
+예:
+
+    exact function name
+    config key
+    error string
+
+이런 query는 lexical retrieval가 강합니다.
+
+## 9. Vector RAG vs Vectorless
+
+| 항목 | Vector RAG | Vectorless |
+| --- | --- | --- |
+| Semantic paraphrase | 강함 | 방법에 따라 약함 |
+| Exact term | 보완 필요 | lexical은 강함 |
+| Ingestion | embedding/index | 기존 search 활용 가능 |
+| 운영 | vector DB 필요 | search/DB 재사용 |
+| 업데이트 | re-embedding 필요 가능 | 즉시 index 가능 |
+| 비용 | embedding + vector infra | query 방식에 따라 |
+
+## 10. Hybrid가 더 현실적
+
+실전에서는 "vector냐 아니냐"를 종교처럼 선택할 필요가 없습니다.
+
+    query
+      → router
+         ├─ exact ID → BM25/SQL
+         ├─ semantic QA → vector
+         └─ relational → graph/SQL
+
+처럼 데이터와 질문 유형에 맞춰 retrieval tool을 선택하는 편이 효율적입니다.
+
+## 11. Evaluation
+
+Vectorless를 선택할 때도 같은 labeled retrieval set에서:
+
+- Recall@k
+- latency
+- update freshness
+- infra cost
+- final answer correctness
+
+를 비교해야 합니다.
+
+## 핵심 정리
+
+- Vectorless RAG는 embedding/vector DB를 필수로 하지 않는 retrieval-augmented generation입니다.
+- BM25, SQL, metadata, hierarchy, file/code search가 대표 대안입니다.
+- Exact query나 structured source에서는 vector보다 더 단순하고 정확할 수 있습니다.
+- Semantic paraphrase에는 vector retrieval가 유리할 수 있어 hybrid routing이 현실적입니다.
+- 원문 본문을 직접 확인하지 못한 내용은 일반 retrieval 원리로만 보완했습니다.
 
 ## 원문
 
