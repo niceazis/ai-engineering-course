@@ -1,87 +1,158 @@
 # Embedding Cache는 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-an-embedding-cache-work
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-an-embedding-cache-work  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 2026-06-21 공개 원문을 직접 확인해 text+model hash key, hit/miss, 1,000-query 예, LRU/TTL과 memory/disk 비교를 보존하면서 독립적으로 다시 쓴 한국어 해설입니다.
 
-## 핵심 해설
+## 1. 핵심 아이디어
 
-동일한 텍스트의 Embedding을 반복 계산하지 않고 재사용해 비용과 시간을 줄이는 Embedding Cache를 배웁니다.
+Embedding 계산은 API 비용과 compute latency가 듭니다.
 
-## 핵심 학습 항목
+같은 text를 같은 embedding model에 여러 번 보낸다면 결과도 같으므로 다시 계산할 필요가 없습니다.
 
-- Embedding이란?
-- Embedding 생성 복습
-- Embedding Cache란?
-- 필요한 이유
-- 핵심 아이디어
-- Text + Model Hash로 만드는 Cache Key
-- Cache Hit/Miss 흐름
-- Eviction, LRU, TTL
-- Memory vs Disk
-- 장점
-- 실제 RAG·Semantic Search 활용
+    text
+      → cache lookup
+         ├─ HIT  → saved vector
+         └─ MISS → embedding model
+                  → save
+                  → vector
 
-## 단계별 학습 가이드
+## 2. 원문의 반복 Query 예
 
-### 1. Embedding이란?
+인기 query가 하루 1,000번 들어온다고 합시다.
 
-**Embedding이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Cache 없음:
 
-### 2. Embedding 생성 복습
+    embedding calls = 1,000
 
-**Embedding 생성 복습**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Cache 있음:
 
-### 3. Embedding Cache란?
+    first = compute 1
+    remaining = reuse 999
 
-**Embedding Cache란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+즉 999번의 중복 계산을 제거합니다.
 
-### 4. 필요한 이유
+## 3. Re-Ingestion에서도 유용
 
-**필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Document chunk 5개 중 1개만 수정됐다고 합시다.
 
-### 5. 핵심 아이디어
+    chunk1 unchanged → reuse
+    chunk2 unchanged → reuse
+    chunk3 changed   → recompute
+    chunk4 unchanged → reuse
+    chunk5 unchanged → reuse
 
-**핵심 아이디어**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+전체 corpus를 다시 embedding하지 않고 바뀐 chunk만 계산할 수 있습니다.
 
-### 6. Text + Model Hash로 만드는 Cache Key
+## 4. Cache Key
 
-**Text + Model Hash로 만드는 Cache Key**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Raw text만 key로 쓰면 model version이 바뀌었을 때 잘못된 vector를 재사용할 수 있습니다.
 
-### 7. Cache Hit/Miss 흐름
+원문 원칙:
 
-**Cache Hit/Miss 흐름**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    key = hash(text + model_name/version)
 
-### 8. Eviction, LRU, TTL
+예:
 
-**Eviction, LRU, TTL**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    "return policy"
+    + "text-embedding-v3"
+      → hash
+      → a3f9c1...b27
 
-### 9. Memory vs Disk
+Embedding dimension/preprocessing config도 결과에 영향을 준다면 version key에 포함하는 편이 안전합니다.
 
-**Memory vs Disk**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. Hit / Miss
 
-### 10. 장점
+### Cache Hit
 
-**장점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Key 존재:
 
-### 11. 실제 RAG·Semantic Search 활용
+    return saved embedding
 
-**실제 RAG·Semantic Search 활용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Cache Miss
 
-## 실무 연결
+Key 없음:
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+    call embedding model
+    → store vector
+    → return vector
 
-## 점검 질문
+Miss 결과를 저장하므로 다음 동일 request는 hit가 됩니다.
 
-1. Embedding Cache는 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+## 6. LRU
+
+Cache 공간이 찼을 때 가장 오래 사용하지 않은 item을 제거합니다.
+
+원문 예:
+
+    A last used 1 min
+    B last used 2 min
+    C last used 30 min → evict
+
+Popular item을 유지하는 정책입니다.
+
+## 7. TTL
+
+Time To Live는 일정 시간이 지나면 item을 만료시킵니다.
+
+예:
+
+    TTL = 1 hour
+
+Model/version/data freshness 때문에 오래된 cache를 자동 정리할 때 유용합니다.
+
+LRU와 TTL을 함께 쓸 수 있습니다.
+
+## 8. In-Memory vs Disk
+
+### Redis/Memory
+
+- 매우 빠름
+- 용량 제한
+- live query cache에 적합
+
+### Disk/Persistent Store
+
+- 느림
+- 큰 용량
+- restart 후 유지
+- 대규모 ingestion artifact에 적합
+
+실전은 L1 memory + L2 persistent cache 계층을 둘 수 있습니다.
+
+## 9. Cache Invalidation
+
+Embedding model을 바꾸면 기존 vector space와 호환되지 않을 수 있습니다.
+
+따라서:
+
+    model version change
+      → new cache namespace/key
+
+가 필요합니다.
+
+Text normalization rule도 key의 일부로 일관되게 적용해야 합니다.
+
+## 10. Embedding Cache vs Semantic Cache
+
+Embedding Cache:
+
+    같은 input text → 같은 vector 재사용
+
+Semantic Cache:
+
+    의미가 비슷한 query → 과거 answer 재사용
+
+Embedding cache는 correctness risk가 상대적으로 작습니다. 동일 model/input이면 결과 자체가 재계산 결과와 같습니다.
+
+## 핵심 정리
+
+- Embedding Cache는 동일 text/model의 embedding을 한 번만 계산합니다.
+- 원문 예에서 1,000번 반복 query는 1 compute + 999 reuse가 됩니다.
+- Key에 text와 model/version을 함께 넣어 vector-space collision을 막습니다.
+- LRU는 공간, TTL은 freshness를 관리합니다.
+- Query path는 memory, ingestion은 persistent disk cache가 적합할 수 있습니다.
+- Semantic Cache와 달리 answer를 재사용하는 것이 아니라 embedding 계산만 재사용합니다.
 
 ## 원문
 
