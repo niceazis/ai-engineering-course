@@ -2079,7 +2079,7 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 
 영상 보기: [Agentic RAG Explained](https://www.youtube.com/watch?v=6nSegpuWJVw)
 
-→ [한국어 영상 요약](docs/ko/videos.md#9-agentic-rag-explained)
+→ [한국어 영상 요약](docs/ko/videos/module-09/agentic-rag-explained.md)
 
 ### 9.12 GraphRAG란?
 
@@ -2128,9 +2128,10 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 **모듈 9 영상 및 추가 자료:**
 
 - [AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization](https://www.youtube.com/watch?v=lnfWvX66FUk) (영상)
+   ↳ [한국어 상세 영상 학습 노트](docs/ko/videos/module-09/ai-engineering-explained-rag-overview.md)
    ↳ [한국어 영상 요약](docs/ko/videos.md#1-ai-engineering-explained-llm-rag-mcp-agent-fine-tuning-quantization)
 - [Agentic RAG Explained](https://www.youtube.com/watch?v=6nSegpuWJVw) (영상)
-   ↳ [한국어 영상 요약](docs/ko/videos.md#9-agentic-rag-explained)
+   ↳ [한국어 영상 요약](docs/ko/videos/module-09/agentic-rag-explained.md)
 
 ---
 
