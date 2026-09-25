@@ -88,6 +88,8 @@ Logit을 확률 분포로 바꾸는 수식, Outcome School의 [2,3,1] 예제, Cr
 ## 10. LLM Inference Optimization
 원본: https://www.youtube.com/watch?v=jV2sCj4lHYk
 
+→ [한국어 상세 영상 학습 노트](videos/module-12/llm-inference-optimization.md)
+
 - LLM Serving에서 속도와 비용을 좌우하는 주요 병목을 정리하는 영상입니다.
 - Prefill과 Decode의 특성이 다르며, KV Cache는 이전 Token의 Key/Value 계산을 재사용해 생성 속도를 높입니다.
 - Quantization, Paged Attention, Continuous Batching, Speculative Decoding 같은 기법은 각각 Memory, Throughput, Latency 병목을 줄이는 데 사용됩니다.
@@ -95,6 +97,8 @@ Logit을 확률 분포로 바꾸는 수식, Outcome School의 [2,3,1] 예제, Cr
 
 ## 11. The First-Token Latency Problem in LLMs
 원본: https://www.youtube.com/watch?v=XD8DD4cEHu0
+
+→ [한국어 상세 영상 학습 노트](videos/module-12/first-token-latency-problem.md)
 
 - 사용자가 요청한 뒤 **첫 Token이 나오기까지의 시간(TTFT)**이 왜 길어질 수 있는지를 설명하는 주제입니다.
 - 긴 Prompt를 한 번에 처리하는 Prefill 단계는 계산 집약적이어서 TTFT에 큰 영향을 줍니다.
