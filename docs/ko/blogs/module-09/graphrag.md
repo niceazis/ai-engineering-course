@@ -1,77 +1,170 @@
-# GraphRAG란? — 한국어 상세 학습 노트
+# GraphRAG란? Knowledge Graph가 RAG를 개선하는 방법 — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/graphrag
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/graphrag  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 2026-05-05 공개 원문을 직접 확인해 graph indexing, entity/relation extraction, community summary, Local/Global Search를 보존하면서 독립적으로 다시 쓴 한국어 상세 해설입니다.
 
-## 핵심 해설
+## 1. 일반 RAG가 약한 질문
 
-[Vector Search](https://outcomeschool.com/blog/how-does-a-vector-database-work)와 Knowledge Graph를 결합해 검색 품질을 높이는 GraphRAG를 배웁니다.
+Vector RAG는 query와 비슷한 chunk를 찾는 데 강합니다.
 
-## 핵심 학습 항목
+하지만:
 
-- GraphRAG란?
-- 일반 RAG가 충분하지 않은 이유
-- 큰 그림
-- Knowledge Graph 구축 방법
-- 질문에 답하는 과정
-- Local Search vs Global Search
-- 사용 시점
-- Trade-off
-- 빠른 요약
+    "Person A가 과거 프로젝트를 통해 Company X와 어떻게 연결되는가?"
 
-## 단계별 학습 가이드
+처럼 여러 entity/relation을 따라가야 하는 질문은 한두 chunk의 similarity만으로 풀기 어렵습니다.
 
-### 1. GraphRAG란?
+이런 질문은 multi-hop relation이 필요합니다.
 
-**GraphRAG란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 2. GraphRAG
 
-### 2. 일반 RAG가 충분하지 않은 이유
+    GraphRAG
+      = Knowledge Graph + RAG
 
-**일반 RAG가 충분하지 않은 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+문서에서:
 
-### 3. 큰 그림
+- Entity → node
+- Relation → edge
 
-**큰 그림**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+를 추출해 연결 구조를 만듭니다.
 
-### 4. Knowledge Graph 구축 방법
+Query 때 관련 node와 edge를 따라 evidence를 모읍니다.
 
-**Knowledge Graph 구축 방법**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Indexing Phase
 
-### 5. 질문에 답하는 과정
+원문 흐름:
 
-**질문에 답하는 과정**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Documents
+      → Chunks
+      → Entity + Relation extraction
+      → Knowledge Graph
+      → Community detection
+      → Community summaries
+      → Graph + embeddings + summaries 저장
 
-### 6. Local Search vs Global Search
+초기 indexing이 일반 vector RAG보다 훨씬 무겁습니다.
 
-**Local Search vs Global Search**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. 예시
 
-### 7. 사용 시점
+Text:
 
-**사용 시점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    "Alice worked at Acme as an engineer.
+     Acme was acquired by Globex in 2020.
+     Bob was the CEO of Globex."
 
-### 8. Trade-off
+Graph:
 
-**Trade-off**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Alice --worked_at--> Acme
+    Acme --acquired_by--> Globex
+    Bob --CEO_of--> Globex
 
-### 9. 빠른 요약
+이제 Alice와 Globex의 관계를 edge traversal로 연결할 수 있습니다.
 
-**빠른 요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. Entity Resolution
 
-## 실무 연결
+여러 chunk에 등장한 "Globex"가 같은 entity라면 하나의 node로 합쳐야 합니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+실전 난점:
 
-## 점검 질문
+- 약어
+- 동명이인
+- company rename
+- aliases
 
-1. GraphRAG란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+잘못 merge하면 graph 자체가 오류를 전파합니다.
+
+## 6. Query Phase
+
+1. Query에서 entity/intent 파악
+2. embedding 또는 entity lookup으로 starting nodes 선택
+3. graph neighborhood/traversal
+4. 연결된 source chunks 수집
+5. 필요 시 community summary
+6. LLM context 구성
+7. 답 생성
+
+Graph는 evidence를 연결하는 retrieval structure입니다.
+
+## 7. Local Search
+
+원문 예:
+
+    "Alice의 Acme에서 역할은?"
+
+특정 entity 주변 작은 subgraph와 관련 chunks를 수집합니다.
+
+특정 사람/회사/프로젝트에 대한 질문에 적합합니다.
+
+## 8. Global Search
+
+원문 예:
+
+    "회사 문서 전체에서 주요 theme은?"
+
+한 subgraph로 답할 수 없습니다.
+
+GraphRAG는 indexing 시 만든 community summaries를 활용합니다.
+
+원문 흐름:
+
+    Map:
+      각 community summary에서 partial answer + relevance score
+
+    Reduce:
+      high-score partial answers를 최종 답으로 합침
+
+대규모 dataset을 context window에 통째로 넣지 않고 global question을 처리합니다.
+
+## 9. Vector RAG와 함께 쓰기
+
+GraphRAG가 vector search를 대체해야 하는 것은 아닙니다.
+
+실전 hybrid:
+
+    query
+      ├─ vector chunks
+      ├─ graph neighborhood
+      └─ community summaries
+          → rerank/context assemble
+
+Simple factual query는 vector search가 더 싸고 빠릅니다.
+
+## 10. Cost
+
+Indexing 비용:
+
+- LLM entity extraction
+- relation extraction
+- graph build
+- community detection
+- summary generation
+
+Query도 traversal과 context assembly가 추가됩니다.
+
+따라서 모든 knowledge base에 GraphRAG를 적용할 필요는 없습니다.
+
+## 11. 잘 맞는 경우
+
+- 조직/사람/프로젝트 관계
+- 사건 연결
+- research literature
+- fraud/network
+- 전체 corpus theme analysis
+
+## 12. 덜 맞는 경우
+
+- 단순 FAQ
+- exact document lookup
+- relation이 거의 없는 독립 chunk corpus
+- document가 자주 바뀌어 graph reindex cost가 큰 경우
+
+## 핵심 정리
+
+- GraphRAG는 entity와 relation을 knowledge graph로 만들고 RAG retrieval에 사용합니다.
+- 일반 vector similarity가 놓치는 multi-hop 연결을 명시적으로 추적할 수 있습니다.
+- 원문은 indexing에서 community summaries까지 만들고 Local/Global Search를 구분합니다.
+- Global Search는 community별 map → relevance → reduce 구조를 사용합니다.
+- 강력하지만 indexing 비용과 entity-resolution complexity가 큽니다.
 
 ## 원문
 
