@@ -47,7 +47,9 @@ def markdown_issues(path: Path, text: str) -> list[str]:
 
 def relative_link_issues(path: Path, text: str) -> list[str]:
     issues = []
-    for match in LINK_RE.finditer(text):
+    scan_text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
+    scan_text = re.sub(r"`[^`\\n]*`", "", scan_text)
+    for match in LINK_RE.finditer(scan_text):
         raw = match.group(1).strip()
         if not raw or raw.startswith(("#", "http://", "https://", "mailto:", "tel:")):
             continue
@@ -109,21 +111,27 @@ def main() -> int:
 
             elif kind == "video" and number not in VIDEO_NOTE_EXEMPT_MODULES:
                 expected_video_notes += 1
-                pos = module_text.find(url)
-                if pos < 0:
-                    pos = module_text.find(url + "/")
-                nearby = module_text[max(0, pos - 300):pos + 1000] if pos >= 0 else ""
-                match = VIDEO_LINK_RE.search(nearby)
-                if not match:
-                    errors.append(f"Module {number:02d}: detailed Korean video note is not linked near {url}")
-                else:
-                    note = ROOT / "docs/ko" / match.group(1)
-                    if not note.exists():
-                        errors.append(f"Module {number:02d}: missing Korean video note: {note.relative_to(ROOT)}")
-                    else:
+                video_dir = ROOT / f"docs/ko/videos/module-{number:02d}"
+                matching_notes = []
+                if video_dir.exists():
+                    for note in sorted(video_dir.glob("*.md")):
                         note_text = note.read_text(encoding="utf-8")
-                        if url not in note_text:
-                            errors.append(f"{note.relative_to(ROOT)}: original video URL not recorded")
+                        if url in note_text or url + "/" in note_text:
+                            matching_notes.append(note)
+
+                if not matching_notes:
+                    errors.append(
+                        f"Module {number:02d}: no detailed Korean video note records source URL: {url}"
+                    )
+                else:
+                    linked = any(
+                        note.relative_to(ROOT / "docs/ko").as_posix() in module_text
+                        for note in matching_notes
+                    )
+                    if not linked:
+                        errors.append(
+                            f"Module {number:02d}: video note exists but is not linked from module index: {url}"
+                        )
 
     markdown_files = [README_KO]
     markdown_files.extend(sorted((ROOT / "docs/ko").rglob("*.md")))
