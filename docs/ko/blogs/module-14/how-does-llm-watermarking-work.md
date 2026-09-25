@@ -1,112 +1,157 @@
 # LLM Watermarking은 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-llm-watermarking-work
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-llm-watermarking-work  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 현재 Outcome School 원문 본문은 웹 캐시에서 직접 열리지 않았습니다. 공식 Module 14 목차가 제시하는 Secret Key·Preferred Token Set·probability bias·statistical detection 흐름과 공개 LLM watermarking 연구의 일반 원리를 기준으로 독립적으로 설명하며, 원문 고유 수치는 단정하지 않습니다.
 
-## 핵심 해설
+## 1. Watermarking의 목표
 
-모델이 생성한 텍스트에 의미를 크게 훼손하지 않고 통계적 신호를 남겨 나중에 검출하는 Watermarking을 배웁니다.
+LLM 생성 text에 사람이 읽기에는 거의 차이가 없지만 **통계적으로 검출 가능한 signal**을 넣습니다.
 
-## 핵심 학습 항목
+목적:
 
-- Watermark란?
-- 필요한 이유
-- LLM 텍스트 생성
-- 다음 Token 선택
-- Watermarking이 가능한 확률적 여유
-- Secret Key
-- Preferred Token과 기타 Token
-- 확률을 미세하게 조정하는 방법
-- Preferred Set이 계속 바뀌는 이유
-- 한 Token vs 수천 Token
-- Detection
-- AI Text Detector와의 차이
-- 품질을 유지하는 이유
-- 편집된 텍스트
-- 실제 활용
-- 장단점
+- model-generated text detection
+- provenance
+- platform abuse investigation
 
-## 단계별 학습 가이드
+일반 AI-text classifier와 달리 생성 model이 watermark를 의도적으로 삽입합니다.
 
-### 1. Watermark란?
+## 2. Next-Token Sampling의 여유
 
-**Watermark란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+LLM은 다음 token 후보에 확률을 줍니다.
 
-### 2. 필요한 이유
+예:
 
-**필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    good      0.25
+    useful    0.20
+    clear     0.15
+    ...
 
-### 3. LLM 텍스트 생성
+여러 자연스러운 후보가 있을 때 특정 subset을 아주 조금 더 선호해도 text quality가 크게 변하지 않을 수 있습니다.
 
-**LLM 텍스트 생성**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Watermark는 이 확률적 여유를 이용합니다.
 
-### 4. 다음 Token 선택
+## 3. Secret Key
 
-**다음 Token 선택**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Secret key와 이전 token/context를 hash해 vocabulary를 매 step 두 집합으로 나눌 수 있습니다.
 
-### 5. Watermarking이 가능한 확률적 여유
+예:
 
-**Watermarking이 가능한 확률적 여유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    preferred / green list
+    other / red list
 
-### 6. Secret Key
+어떤 token이 preferred인지 외부에서는 key 없이는 예측하기 어렵습니다.
 
-**Secret Key**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. Probability Bias
 
-### 7. Preferred Token과 기타 Token
+생성 시 preferred token의 logit에 작은 bias를 더합니다.
 
-**Preferred Token과 기타 Token**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    z'_i =
+      z_i + delta   if preferred
+      z_i           otherwise
 
-### 8. 확률을 미세하게 조정하는 방법
+그 뒤 softmax/sampling합니다.
 
-**확률을 미세하게 조정하는 방법**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Preferred token이 **반드시** 선택되는 것이 아니라 probability가 조금 올라갑니다.
 
-### 9. Preferred Set이 계속 바뀌는 이유
+## 5. Preferred Set이 계속 바뀌는 이유
 
-**Preferred Set이 계속 바뀌는 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+같은 token만 계속 선호하면 pattern이 쉽게 드러나고 문장 품질이 나빠집니다.
 
-### 10. 한 Token vs 수천 Token
+Context/key 기반으로 매 position의 preferred set을 바꿔 자연스러운 distribution을 유지합니다.
 
-**한 Token vs 수천 Token**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 6. 한 Token으로는 판별 못 한다
 
-### 11. Detection
+Watermark는 개별 token이 아니라 긴 sequence의 통계적 편향을 봅니다.
 
-**Detection**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    expected preferred count
+      vs
+    observed preferred count
 
-### 12. AI Text Detector와의 차이
+관찰된 preferred-token 비율이 우연으로 보기 어려울 정도로 높으면 watermark signal로 판단합니다.
 
-**AI Text Detector와의 차이**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 7. Detection
 
-### 13. 품질을 유지하는 이유
+Detector는 같은 secret key를 사용해 text 각 위치의 preferred set을 재구성합니다.
 
-**품질을 유지하는 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+그 뒤 z-score 같은 통계량을 계산할 수 있습니다.
 
-### 14. 편집된 텍스트
+개념:
 
-**편집된 텍스트**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    z =
+      (observed_green - expected_green)
+      / standard_deviation
 
-### 15. 실제 활용
+Threshold를 넘으면 watermark 가능성이 높다고 판단합니다.
 
-**실제 활용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 8. 품질 Trade-off
 
-### 16. 장단점
+Bias delta가 너무 작으면:
 
-**장단점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- detection 약함
 
-## 실무 연결
+너무 크면:
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+- text distribution 왜곡
+- quality 저하
 
-## 점검 질문
+즉 detectability와 generation quality 사이 trade-off가 있습니다.
 
-1. LLM Watermarking은 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+## 9. Editing Robustness
+
+다음 편집은 signal을 약화시킬 수 있습니다.
+
+- paraphrase
+- translation
+- heavy rewrite
+- token deletion/insertion
+
+부분 편집에는 signal이 일부 남을 수 있지만 강한 transformation은 watermark를 제거할 수 있습니다.
+
+따라서 watermark는 cryptographic proof가 아닙니다.
+
+## 10. AI Text Detector와 차이
+
+AI classifier:
+
+    text style/statistics를 보고 추정
+
+Watermark detector:
+
+    generator가 넣은 secret-key-controlled signal을 확인
+
+Watermark는 생성 단계 control이 필요하지만 provenance signal이 더 명시적일 수 있습니다.
+
+## 11. False Positive / False Negative
+
+Statistical detector이므로 threshold에 따라:
+
+- false positive
+- false negative
+
+가 존재합니다.
+
+짧은 text일수록 sample 수가 적어 신뢰도가 낮습니다.
+
+## 12. 실제 활용 시 고려
+
+- key management
+- multiple model/version keys
+- language/tokenizer
+- text length
+- adversarial editing
+- legal/policy interpretation
+
+Detector 결과만으로 중요한 제재 결정을 자동화하는 것은 위험할 수 있습니다.
+
+## 핵심 정리
+
+- LLM watermark는 next-token probability를 secret-key 기반 preferred set 쪽으로 약하게 bias합니다.
+- 긴 text에서 preferred-token 빈도가 비정상적으로 높다는 통계 signal을 검출합니다.
+- 개별 token은 watermark를 드러내지 않습니다.
+- Detectability와 quality 사이 trade-off가 있습니다.
+- Paraphrase/translation 같은 변환으로 signal이 약해질 수 있어 절대적 증명 수단은 아닙니다.
+- Outcome School 원문 본문을 직접 확인하지 못해 특정 수치를 원문 내용으로 단정하지 않았습니다.
 
 ## 원문
 

@@ -1,87 +1,199 @@
 # LLM Guardrail은 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-do-llm-guardrails-work
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-do-llm-guardrails-work  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 2026-08-10 공개 원문을 직접 확인해 input/output guardrail, word-list/regex 예제, guard model과 limitation/best practice를 보존하면서 독립적으로 다시 쓴 한국어 상세 해설입니다.
 
-## 핵심 해설
+## 1. Guardrail이란?
 
-모델 입력과 출력 주변에서 안전 정책을 검사하는 Guardrail을 배웁니다.
+LLM Guardrail은 main LLM 자체가 아니라 **LLM 앞뒤에 배치하는 별도 검사 layer**입니다.
 
-## 핵심 학습 항목
+    User
+      → Input Guardrail
+      → Main LLM
+      → Output Guardrail
+      → User
 
-- LLM이란?
-- LLM Guardrail이란?
-- 필요한 이유
-- Input과 Output에서의 위치
-- Guardrail 유형
-- 코드로 보는 간단한 Input Guardrail
-- Output Guardrail
-- 다른 Model을 Guardrail로 사용
-- 요청 하나의 단계별 흐름
-- 한계
-- Best Practice
+원문은 이를 문 앞의 security guard에 비유합니다.
 
-## 단계별 학습 가이드
+## 2. 왜 필요한가
 
-### 1. LLM이란?
+LLM은 다음 token을 예측하는 모델이므로:
 
-**LLM이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- unsafe request
+- off-topic request
+- private data
+- hallucinated answer
+- brand/tone violation
 
-### 2. LLM Guardrail이란?
+을 application 정책대로 항상 처리한다는 보장이 없습니다.
 
-**LLM Guardrail이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+따라서 policy enforcement를 model 내부 성향에만 맡기지 않고 외부 layer로 둡니다.
 
-### 3. 필요한 이유
+## 3. Input Guardrail
 
-**필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+User message가 main LLM에 도달하기 전에 검사합니다.
 
-### 4. Input과 Output에서의 위치
+예:
 
-**Input과 Output에서의 위치**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- harmful intent
+- policy violation
+- prompt injection signal
+- PII
+- unsupported topic
 
-### 5. Guardrail 유형
+Fail이면 main LLM을 아예 호출하지 않고 refusal 또는 safe workflow로 route할 수 있습니다.
 
-**Guardrail 유형**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. Output Guardrail
 
-### 6. 코드로 보는 간단한 Input Guardrail
+LLM response가 사용자에게 가기 전에 검사합니다.
 
-**코드로 보는 간단한 Input Guardrail**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+예:
 
-### 7. Output Guardrail
+- PII leakage
+- unsafe content
+- schema violation
+- unsupported claim
+- restricted data
 
-**Output Guardrail**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Input과 output 둘 다 사용하는 defense-in-depth가 좋습니다.
 
-### 8. 다른 Model을 Guardrail로 사용
+## 5. Guardrail 유형
 
-**다른 Model을 Guardrail로 사용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문 분류:
 
-### 9. 요청 하나의 단계별 흐름
+### Topic Guardrail
 
-**요청 하나의 단계별 흐름**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Domain 밖 질문 차단.
 
-### 10. 한계
+### Safety Guardrail
 
-**한계**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+위험한 content/action 차단.
 
-### 11. Best Practice
+### Privacy Guardrail
 
-**Best Practice**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+전화번호·카드번호·개인정보 보호.
 
-## 실무 연결
+### Format Guardrail
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+JSON/table/list 등 required output shape 검증.
 
-## 점검 질문
+### Factual Guardrail
 
-1. LLM Guardrail은 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+Source/evidence와 비교해 unsupported claim을 줄입니다.
+
+## 6. 원문의 단순 Input 예
+
+교육용 word-list:
+
+    banned_words = ["hack", "bomb", "steal password"]
+
+    message.lower()
+      → banned word 포함?
+         yes → blocked
+         no  → allowed
+
+이 방식은 쉽게 우회될 수 있습니다.
+
+예:
+
+- spacing
+- spelling variation
+- paraphrase
+
+따라서 exact keyword rule은 첫 layer일 뿐입니다.
+
+## 7. 원문의 Output Regex 예
+
+10-digit number를 숨기는 예:
+
+    re.sub(r"\d{10}", "[hidden]", answer)
+
+원문 example:
+
+    "You can call our agent at 9876543210"
+      → "You can call our agent at [hidden]"
+
+실전에서는 국가별 번호·email·identifier 등 훨씬 정교한 PII detector가 필요합니다.
+
+## 8. Guard Model
+
+작은 classifier/model이:
+
+    safe / unsafe
+
+처럼 semantic classification을 할 수 있습니다.
+
+Flow:
+
+    safety_check(input)
+      → safe?
+         no → refuse
+         yes → main LLM
+
+    safety_check(output)
+      → safe?
+         no → replace/refuse
+         yes → return
+
+## 9. Rule + Model + Deterministic Validation
+
+가장 실용적인 구조:
+
+- regex/schema: deterministic
+- policy classifier: semantic safety
+- retrieval/evidence checker: factuality
+- permission system: actual action authorization
+
+한 guard model에 모든 것을 맡기지 않습니다.
+
+## 10. False Positive / False Negative
+
+Guardrail은 완벽하지 않습니다.
+
+False Positive:
+
+    safe request를 막음
+
+False Negative:
+
+    unsafe request를 통과시킴
+
+Risk가 큰 domain에서는 recall을 높이는 대신 user friction이 증가할 수 있습니다.
+
+Threshold를 실제 traffic으로 calibration해야 합니다.
+
+## 11. Latency와 Cost
+
+Guard model을 input/output에 모두 호출하면:
+
+- latency 증가
+- cost 증가
+
+가 생깁니다.
+
+Rule-based fast path와 model-based slow path를 cascade로 구성할 수 있습니다.
+
+## 12. Best Practice
+
+원문 핵심:
+
+- input + output 양쪽 사용
+- layered defense
+- blocked event logging
+- good/bad sample test
+- policy 지속 업데이트
+- 한 guardrail만 신뢰하지 않기
+
+추가로 production에서는 destructive tool action을 별도 permission layer로 막아야 합니다.
+
+## 핵심 정리
+
+- Guardrail은 main LLM 주변의 별도 safety/control layer입니다.
+- Input과 Output 양쪽에 둘 수 있습니다.
+- Rule, regex, classifier, evidence checker, permission을 조합하는 것이 좋습니다.
+- Guardrail은 false positive/negative가 있으므로 평가와 지속 업데이트가 필요합니다.
+- Safety policy와 actual tool authorization은 분리해야 합니다.
 
 ## 원문
 
