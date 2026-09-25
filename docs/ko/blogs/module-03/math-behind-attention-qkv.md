@@ -50,7 +50,7 @@ X=
 end{bmatrix}
 ]
 
-shape은 (3 	imes 4)입니다.
+shape은 (3 \times 4)입니다.
 
 - 3: token 수
 - 4: embedding dimension
@@ -89,7 +89,7 @@ W_V=
 end{bmatrix}
 ]
 
-각각 shape은 (4 	imes 3)입니다.
+각각 shape은 (4 \times 3)입니다.
 
 실제 모델에서는 이 값들이 학습되지만, 원문 예제에서는 계산 과정을 보여 주기 위해 고정 숫자를 사용합니다.
 
