@@ -14,18 +14,16 @@
 ## 2. Feature Engineering in Machine Learning
 원본: https://www.youtube.com/watch?v=QLlywrWuXag
 
-- **Feature Engineering**은 원시 데이터를 모델이 학습하기 좋은 입력 특성으로 바꾸는 과정입니다.
-- 어떤 특성을 선택하고, 변환하고, 조합하느냐에 따라 같은 알고리즘도 성능이 크게 달라질 수 있습니다.
-- 숫자 스케일링, 범주형 변수 인코딩, 불필요한 특성 제거, 도메인 지식을 이용한 새 특성 생성 등이 대표적인 작업입니다.
-- 핵심은 “더 복잡한 모델”보다 “문제를 잘 표현하는 입력”이 성능에 큰 영향을 줄 수 있다는 점입니다.
+→ [한국어 상세 영상 학습 노트](videos/module-01/feature-engineering-in-machine-learning.md)
+
+Date-Time→Hour 추출, 위치 feature 결합, bucketization, feature 제거 등 실제 예제를 따라가며 Feature Engineering이 모델 입력 표현을 어떻게 개선하는지 상세히 설명합니다.
 
 ## 3. One-hot Encoding in Machine Learning
 원본: https://www.youtube.com/watch?v=6AmedU5i9go
 
-- 범주형 값을 모델이 사용할 수 있는 숫자 형태로 바꾸는 대표 방법인 **One-hot Encoding**을 설명합니다.
-- 예를 들어 색상 값이 red/green/blue라면 각 범주를 별도 0/1 열로 변환합니다.
-- 범주 사이에 존재하지 않는 순서 관계를 숫자 1,2,3처럼 잘못 부여하는 문제를 피할 수 있습니다.
-- 범주 수가 매우 많으면 차원이 크게 늘어나는 단점이 있어 다른 인코딩이나 임베딩을 고려해야 합니다.
+→ [한국어 상세 영상 학습 노트](videos/module-01/one-hot-encoding-in-machine-learning.md)
+
+범주형 값을 1,2,3으로 단순 치환할 때 생기는 가짜 순서 문제부터 one-hot vector, high cardinality, unknown category, ordinal encoding·embedding과의 차이까지 단계별로 설명합니다.
 
 ## 4. Epoch, Batch, Batch Size, Iteration
 원본: https://www.youtube.com/watch?v=NFLlXE-6vno
