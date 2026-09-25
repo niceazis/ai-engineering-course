@@ -88,7 +88,7 @@ Format이 단순해 knowledge가 특정 vendor에 묶이지 않는 것이 목적
 
 Ordinary Markdown link:
 
-    [Orders](../tables/orders.md)
+    `[Orders](../tables/orders.md)`
 
 를 사용하면 concept 간 relationship을 표현할 수 있습니다.
 

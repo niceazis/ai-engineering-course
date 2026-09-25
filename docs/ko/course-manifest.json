@@ -1,0 +1,949 @@
+{
+  "schema_version": 1,
+  "source_repository": "amitshekhariitbhu/ai-engineering-course",
+  "source_branch": "main",
+  "source_commit": "7d4c877683029b038c839d8a45cc1de022b88745",
+  "source_commit_date": "2026-09-23T08:26:55Z",
+  "generated_on": "2026-09-25",
+  "modules": [
+    {
+      "number": 0,
+      "title": "Must Know",
+      "lessons": [
+        {
+          "type": "video",
+          "title": "AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization",
+          "url": "https://www.youtube.com/watch?v=lnfWvX66FUk"
+        }
+      ]
+    },
+    {
+      "number": 1,
+      "title": "Machine Learning Foundations",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "What is Machine Learning?",
+          "url": "https://outcomeschool.com/blog/machine-learning"
+        },
+        {
+          "type": "blog",
+          "title": "Supervised vs Unsupervised Learning",
+          "url": "https://outcomeschool.com/blog/supervised-vs-unsupervised-learning"
+        },
+        {
+          "type": "blog",
+          "title": "Linear Regression vs Logistic Regression",
+          "url": "https://outcomeschool.com/blog/linear-regression-vs-logistic-regression"
+        },
+        {
+          "type": "blog",
+          "title": "What is Feature Engineering in Machine Learning?",
+          "url": "https://outcomeschool.com/blog/feature-engineering"
+        },
+        {
+          "type": "blog",
+          "title": "Precision vs Recall",
+          "url": "https://outcomeschool.com/blog/precision-vs-recall"
+        },
+        {
+          "type": "blog",
+          "title": "What Are L1 and L2 Loss Functions?",
+          "url": "https://outcomeschool.com/blog/l1-and-l2-loss-functions"
+        },
+        {
+          "type": "blog",
+          "title": "What is Regularization in Machine Learning? L1 vs L2 Explained",
+          "url": "https://outcomeschool.com/blog/regularization-in-machine-learning"
+        },
+        {
+          "type": "blog",
+          "title": "What is Reinforcement Learning?",
+          "url": "https://outcomeschool.com/blog/reinforcement-learning"
+        },
+        {
+          "type": "blog",
+          "title": "What is Contrastive Learning? How It Works Step by Step",
+          "url": "https://outcomeschool.com/blog/contrastive-learning"
+        },
+        {
+          "type": "video",
+          "title": "Feature Engineering in Machine Learning",
+          "url": "https://www.youtube.com/watch?v=QLlywrWuXag"
+        },
+        {
+          "type": "video",
+          "title": "One-hot Encoding in Machine Learning",
+          "url": "https://www.youtube.com/watch?v=6AmedU5i9go"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Deep Learning and Neural Networks",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "What is Bias In Artificial Neural Network?",
+          "url": "https://outcomeschool.com/blog/bias-in-artificial-neural-network"
+        },
+        {
+          "type": "blog",
+          "title": "How Does Gradient Descent Work?",
+          "url": "https://outcomeschool.com/blog/math-behind-gradient-descent"
+        },
+        {
+          "type": "blog",
+          "title": "How Does Backpropagation Work? The Math Explained Step by Step",
+          "url": "https://outcomeschool.com/blog/math-behind-backpropagation"
+        },
+        {
+          "type": "blog",
+          "title": "What is Cross-Entropy Loss?",
+          "url": "https://outcomeschool.com/blog/math-behind-cross-entropy-loss"
+        },
+        {
+          "type": "blog",
+          "title": "What is Dropout in Neural Networks and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/dropout-in-neural-networks"
+        },
+        {
+          "type": "blog",
+          "title": "Batch Normalization vs Layer Normalization",
+          "url": "https://outcomeschool.com/blog/batch-normalization-vs-layer-normalization"
+        },
+        {
+          "type": "blog",
+          "title": "What is RMSNorm? Root Mean Square Layer Normalization Explained",
+          "url": "https://outcomeschool.com/blog/rmsnorm-root-mean-square-layer-normalization"
+        },
+        {
+          "type": "blog",
+          "title": "What is a Recurrent Neural Network (RNN)?",
+          "url": "https://outcomeschool.com/blog/recurrent-neural-network"
+        },
+        {
+          "type": "blog",
+          "title": "How does PyTorch work?",
+          "url": "https://outcomeschool.com/blog/how-does-pytorch-work"
+        },
+        {
+          "type": "blog",
+          "title": "How Does The Machine Learning Library TensorFlow Work?",
+          "url": "https://outcomeschool.com/blog/how-does-the-machine-learning-library-tensorflow-work"
+        },
+        {
+          "type": "video",
+          "title": "Epoch, Batch, Batch Size, Iteration",
+          "url": "https://www.youtube.com/watch?v=NFLlXE-6vno"
+        },
+        {
+          "type": "video",
+          "title": "Softmax Activation Function in Machine Learning",
+          "url": "https://www.youtube.com/watch?v=2Zx6x01WwWM"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Generative AI and the Transformer Architecture",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "What is Generative AI?",
+          "url": "https://outcomeschool.com/blog/what-is-generative-ai"
+        },
+        {
+          "type": "blog",
+          "title": "What are Autoregressive Models?",
+          "url": "https://outcomeschool.com/blog/autoregressive-models"
+        },
+        {
+          "type": "blog",
+          "title": "What is Byte Pair Encoding (BPE) in LLMs?",
+          "url": "https://outcomeschool.com/blog/bpe-in-llms"
+        },
+        {
+          "type": "blog",
+          "title": "What are Embeddings?",
+          "url": "https://outcomeschool.com/blog/what-are-embeddings"
+        },
+        {
+          "type": "blog",
+          "title": "How do RNNs and Transformers differ?",
+          "url": "https://outcomeschool.com/blog/how-do-rnns-and-transformers-differ"
+        },
+        {
+          "type": "blog",
+          "title": "How Does the Transformer Architecture Work?",
+          "url": "https://outcomeschool.com/blog/decoding-transformer-architecture"
+        },
+        {
+          "type": "blog",
+          "title": "Encoder vs Decoder in Transformers",
+          "url": "https://outcomeschool.com/blog/encoder-vs-decoder-in-transformers"
+        },
+        {
+          "type": "blog",
+          "title": "What is Self Attention in Transformers and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/self-attention-in-transformers"
+        },
+        {
+          "type": "blog",
+          "title": "How Does Attention Work? The Math Behind Q, K, and V Step by Step",
+          "url": "https://outcomeschool.com/blog/math-behind-attention-qkv"
+        },
+        {
+          "type": "blog",
+          "title": "Why Do We Scale Attention by √dₖ? The Math Behind the Scaling Factor",
+          "url": "https://outcomeschool.com/blog/scaling-dot-product-attention"
+        },
+        {
+          "type": "blog",
+          "title": "What is Causal Masking in Attention and Why Do LLMs Need It?",
+          "url": "https://outcomeschool.com/blog/causal-masking-in-attention"
+        },
+        {
+          "type": "blog",
+          "title": "What is Multi-Head Attention in Transformers and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/multi-head-attention-in-transformers"
+        },
+        {
+          "type": "blog",
+          "title": "What is Cross Attention in Transformers and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/cross-attention-in-transformers"
+        },
+        {
+          "type": "blog",
+          "title": "What is RoPE (Rotary Position Embedding)? The Math Behind It",
+          "url": "https://outcomeschool.com/blog/math-behind-rope-rotary-position-embedding"
+        },
+        {
+          "type": "blog",
+          "title": "What is the Feed-Forward Network in LLMs and What Does It Do?",
+          "url": "https://outcomeschool.com/blog/feed-forward-networks-in-llms"
+        },
+        {
+          "type": "video",
+          "title": "Tokenization in Large Language Models (LLMs)",
+          "url": "https://www.youtube.com/watch?v=sK2s9I84EVI"
+        },
+        {
+          "type": "video",
+          "title": "Embeddings in Machine Learning",
+          "url": "https://www.youtube.com/watch?v=LedXW6xl21s"
+        },
+        {
+          "type": "video",
+          "title": "Softmax Activation Function in Machine Learning",
+          "url": "https://www.youtube.com/watch?v=2Zx6x01WwWM"
+        },
+        {
+          "type": "external",
+          "title": "Inside ChatGPT: What Happens After You Hit Enter",
+          "url": "https://outcomeschool.substack.com/p/inside-chatgpt-what-happens-after"
+        },
+        {
+          "type": "external",
+          "title": "Positional Embeddings in LLMs",
+          "url": "https://outcomeschool.substack.com/p/positional-embeddings-in-llms"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "How LLMs Generate Text",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "How does Temperature control LLM output?",
+          "url": "https://outcomeschool.com/blog/how-does-temperature-control-llm-output"
+        },
+        {
+          "type": "blog",
+          "title": "How do Top-k and Top-p Sampling work?",
+          "url": "https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does Token Streaming work?",
+          "url": "https://outcomeschool.com/blog/how-does-token-streaming-work"
+        },
+        {
+          "type": "blog",
+          "title": "What is the Lost in the Middle Problem in LLMs and How to Fix It?",
+          "url": "https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms"
+        },
+        {
+          "type": "video",
+          "title": "Why is the context window limited in LLMs?",
+          "url": "https://www.youtube.com/watch?v=CGIhxIaOg3M"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Modern LLM Architecture",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "Evolution of LLM Architecture",
+          "url": "https://outcomeschool.com/blog/evolution-of-llm-architecture"
+        },
+        {
+          "type": "blog",
+          "title": "What is Mixture of Experts (MoE) and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/mixture-of-experts"
+        },
+        {
+          "type": "blog",
+          "title": "What is Grouped Query Attention (GQA) and Why Do LLMs Use It?",
+          "url": "https://outcomeschool.com/blog/grouped-query-attention"
+        },
+        {
+          "type": "blog",
+          "title": "How does Sliding Window Attention work?",
+          "url": "https://outcomeschool.com/blog/how-does-sliding-window-attention-work"
+        },
+        {
+          "type": "blog",
+          "title": "How do Attention Sinks work?",
+          "url": "https://outcomeschool.com/blog/how-do-attention-sinks-work"
+        },
+        {
+          "type": "blog",
+          "title": "What is Flash Attention and Why Is It So Fast?",
+          "url": "https://outcomeschool.com/blog/decoding-flash-attention"
+        },
+        {
+          "type": "blog",
+          "title": "What is DeepSeek-V4 and How Does It Work? Architecture Explained",
+          "url": "https://outcomeschool.com/blog/decoding-deepseek-v4"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Types of Language Models",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "What are Small Language Models (SLMs) and When Should We Use Them?",
+          "url": "https://outcomeschool.com/blog/small-language-models-slms"
+        },
+        {
+          "type": "blog",
+          "title": "What are Large Reasoning Models (LRMs) and How Are They Different from LLMs?",
+          "url": "https://outcomeschool.com/blog/large-reasoning-models"
+        },
+        {
+          "type": "blog",
+          "title": "What are Recursive Language Models (RLMs) and How Do They Work?",
+          "url": "https://outcomeschool.com/blog/recursive-language-models"
+        },
+        {
+          "type": "blog",
+          "title": "How do Diffusion Language Models (DLMs) work?",
+          "url": "https://outcomeschool.com/blog/how-do-diffusion-language-models-dlms-work"
+        },
+        {
+          "type": "blog",
+          "title": "Jev and System One Models Explained",
+          "url": "https://outcomeschool.com/blog/jev-and-system-one-models-explained"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Training, Fine-Tuning, and Alignment",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "How does fine-tuning work?",
+          "url": "https://outcomeschool.com/blog/how-does-fine-tuning-work"
+        },
+        {
+          "type": "blog",
+          "title": "What is LoRA (Low-Rank Adaptation) and How Does It Fine-Tune LLMs?",
+          "url": "https://outcomeschool.com/blog/lora-low-rank-adaptation-of-llms"
+        },
+        {
+          "type": "blog",
+          "title": "How does Prefix Tuning work?",
+          "url": "https://outcomeschool.com/blog/how-does-prefix-tuning-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does Knowledge Distillation work?",
+          "url": "https://outcomeschool.com/blog/how-does-knowledge-distillation-work"
+        },
+        {
+          "type": "blog",
+          "title": "What is Continual Learning in LLMs? Solving Catastrophic Forgetting",
+          "url": "https://outcomeschool.com/blog/continual-learning-in-llms"
+        },
+        {
+          "type": "blog",
+          "title": "What is Deep RL from Human Preferences? The Paper That Started RLHF",
+          "url": "https://outcomeschool.com/blog/decoding-deep-rl-from-human-preferences"
+        },
+        {
+          "type": "blog",
+          "title": "What is InstructGPT? How GPT-3 Learned to Follow Instructions",
+          "url": "https://outcomeschool.com/blog/decoding-instructgpt"
+        },
+        {
+          "type": "blog",
+          "title": "What is RLHF? Reinforcement Learning from Human Feedback Explained",
+          "url": "https://outcomeschool.com/blog/reinforcement-learning-from-human-feedback-rlhf"
+        },
+        {
+          "type": "blog",
+          "title": "What is Proximal Policy Optimization (PPO) and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/proximal-policy-optimization-ppo"
+        },
+        {
+          "type": "blog",
+          "title": "What is Direct Preference Optimization (DPO) and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/direct-preference-optimization-dpo"
+        },
+        {
+          "type": "blog",
+          "title": "What is Group Relative Policy Optimization (GRPO) and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/group-relative-policy-optimization-grpo"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Prompt Engineering and Context Engineering",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "How does Chain-of-Thought (CoT) Prompting work?",
+          "url": "https://outcomeschool.com/blog/how-does-chain-of-thought-prompting-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does Prompt Chaining work?",
+          "url": "https://outcomeschool.com/blog/how-does-prompt-chaining-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does Prompt Caching work?",
+          "url": "https://outcomeschool.com/blog/how-does-prompt-caching-work"
+        },
+        {
+          "type": "blog",
+          "title": "What is Context Engineering?",
+          "url": "https://outcomeschool.com/blog/context-engineering"
+        },
+        {
+          "type": "blog",
+          "title": "How does context compaction work?",
+          "url": "https://outcomeschool.com/blog/how-does-context-compaction-work"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Vector Search and Retrieval-Augmented Generation (RAG)",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "How does a Vector Database work?",
+          "url": "https://outcomeschool.com/blog/how-does-a-vector-database-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does Approximate Nearest Neighbor (ANN) search work?",
+          "url": "https://outcomeschool.com/blog/how-does-approximate-nearest-neighbor-ann-search-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does Semantic Search work?",
+          "url": "https://outcomeschool.com/blog/how-does-semantic-search-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does Hybrid Search work?",
+          "url": "https://outcomeschool.com/blog/how-does-hybrid-search-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does a Reranker work?",
+          "url": "https://outcomeschool.com/blog/how-does-a-reranker-work"
+        },
+        {
+          "type": "blog",
+          "title": "What is ColBERT? Late Interaction Retrieval Explained",
+          "url": "https://outcomeschool.com/blog/decoding-colbert"
+        },
+        {
+          "type": "blog",
+          "title": "How to Chunk Documents for RAG? Chunking Strategies Explained",
+          "url": "https://outcomeschool.com/blog/chunking-strategies-for-rag"
+        },
+        {
+          "type": "blog",
+          "title": "How does HyDE work in RAG?",
+          "url": "https://outcomeschool.com/blog/how-does-hyde-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does an Embedding Cache work?",
+          "url": "https://outcomeschool.com/blog/how-does-an-embedding-cache-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does Semantic Caching work?",
+          "url": "https://outcomeschool.com/blog/how-does-semantic-caching-work"
+        },
+        {
+          "type": "blog",
+          "title": "What is Agentic RAG? How It Works and When to Use It",
+          "url": "https://outcomeschool.com/blog/agentic-rag"
+        },
+        {
+          "type": "blog",
+          "title": "What is GraphRAG? How Knowledge Graphs Improve RAG",
+          "url": "https://outcomeschool.com/blog/graphrag"
+        },
+        {
+          "type": "blog",
+          "title": "What is Vectorless RAG? RAG Without Embeddings or a Vector Database",
+          "url": "https://outcomeschool.com/blog/vectorless-rag"
+        },
+        {
+          "type": "video",
+          "title": "Agentic RAG Explained",
+          "url": "https://www.youtube.com/watch?v=6nSegpuWJVw"
+        },
+        {
+          "type": "video",
+          "title": "AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization",
+          "url": "https://www.youtube.com/watch?v=lnfWvX66FUk"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "AI Agents and Agentic Systems",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "What is an AI Agent? How It Works",
+          "url": "https://outcomeschool.com/blog/ai-agent"
+        },
+        {
+          "type": "blog",
+          "title": "How does Function Calling work in LLMs?",
+          "url": "https://outcomeschool.com/blog/how-does-function-calling-work-in-llms"
+        },
+        {
+          "type": "blog",
+          "title": "What is an AI Agent Loop?",
+          "url": "https://outcomeschool.com/blog/ai-agent-loop"
+        },
+        {
+          "type": "blog",
+          "title": "What is a ReAct Agent? How It Thinks and Acts, Explained",
+          "url": "https://outcomeschool.com/blog/react-agent"
+        },
+        {
+          "type": "blog",
+          "title": "What is a Plan-and-Execute Agent and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/plan-and-execute-agent"
+        },
+        {
+          "type": "blog",
+          "title": "What is a Reflection Agent? How It Generates, Critiques, and Revises",
+          "url": "https://outcomeschool.com/blog/reflection-agent"
+        },
+        {
+          "type": "blog",
+          "title": "How Does AI Agent Memory Work? The Memory Stack Explained",
+          "url": "https://outcomeschool.com/blog/ai-agent-memory"
+        },
+        {
+          "type": "blog",
+          "title": "What is MCP (Model Context Protocol)?",
+          "url": "https://outcomeschool.com/blog/what-is-mcp-model-context-protocol"
+        },
+        {
+          "type": "blog",
+          "title": "What are Agent Skills?",
+          "url": "https://outcomeschool.com/blog/what-are-agent-skills"
+        },
+        {
+          "type": "blog",
+          "title": "What is OKF (Open Knowledge Format)?",
+          "url": "https://outcomeschool.com/blog/what-is-okf-open-knowledge-format"
+        },
+        {
+          "type": "blog",
+          "title": "What are Multi-Agent Systems and When Should We Use Them?",
+          "url": "https://outcomeschool.com/blog/multi-agent-systems"
+        },
+        {
+          "type": "blog",
+          "title": "What are AI SubAgents? Why We Need Them and How They Work",
+          "url": "https://outcomeschool.com/blog/ai-subagents"
+        },
+        {
+          "type": "blog",
+          "title": "How AI Agents Communicate",
+          "url": "https://outcomeschool.com/blog/how-ai-agents-communicate"
+        },
+        {
+          "type": "blog",
+          "title": "What is AI Orchestration? How It Works and the Common Patterns",
+          "url": "https://outcomeschool.com/blog/ai-orchestration"
+        },
+        {
+          "type": "blog",
+          "title": "What is Sakana Fugu? The Technical Report Explained",
+          "url": "https://outcomeschool.com/blog/decoding-sakana-fugu"
+        },
+        {
+          "type": "blog",
+          "title": "How do Computer-Use Agents work?",
+          "url": "https://outcomeschool.com/blog/how-do-computer-use-agents-work"
+        },
+        {
+          "type": "video",
+          "title": "AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization",
+          "url": "https://www.youtube.com/watch?v=lnfWvX66FUk"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Agentic Engineering and Agent Frameworks",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "What is Harness Engineering?",
+          "url": "https://outcomeschool.com/blog/harness-engineering-in-ai"
+        },
+        {
+          "type": "blog",
+          "title": "What is Loop Engineering?",
+          "url": "https://outcomeschool.com/blog/what-is-loop-engineering"
+        },
+        {
+          "type": "blog",
+          "title": "What is Graph Engineering?",
+          "url": "https://outcomeschool.com/blog/what-is-graph-engineering"
+        },
+        {
+          "type": "blog",
+          "title": "AI Is Only as Good as Our Definition of Done",
+          "url": "https://outcomeschool.com/blog/ai-is-only-as-good-as-our-definition-of-done"
+        },
+        {
+          "type": "blog",
+          "title": "How does LangChain work?",
+          "url": "https://outcomeschool.com/blog/how-does-langchain-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does LangGraph work?",
+          "url": "https://outcomeschool.com/blog/how-does-langgraph-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does Claude Code work?",
+          "url": "https://outcomeschool.com/blog/how-does-claude-code-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does Cursor work?",
+          "url": "https://outcomeschool.com/blog/how-does-cursor-work"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "LLM Inference Engineering",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "LLM Inference Optimization",
+          "url": "https://outcomeschool.com/blog/llm-inference-optimization"
+        },
+        {
+          "type": "blog",
+          "title": "Prefill vs Decode: LLM Inference Optimization",
+          "url": "https://outcomeschool.com/blog/prefill-vs-decode-llm-inference-optimization"
+        },
+        {
+          "type": "blog",
+          "title": "What is Prefill-Decode Disaggregation in LLM Inference?",
+          "url": "https://outcomeschool.com/blog/prefill-decode-disaggregation"
+        },
+        {
+          "type": "blog",
+          "title": "KV Cache in LLMs",
+          "url": "https://outcomeschool.com/blog/kv-cache-in-llms"
+        },
+        {
+          "type": "blog",
+          "title": "What is KV Cache Compression?",
+          "url": "https://outcomeschool.com/blog/kv-cache-compression"
+        },
+        {
+          "type": "blog",
+          "title": "What is Paged Attention in LLMs and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/paged-attention-in-llms"
+        },
+        {
+          "type": "blog",
+          "title": "What is Continuous Batching in LLMs and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/continuous-batching-in-llms"
+        },
+        {
+          "type": "blog",
+          "title": "What is Speculative Decoding and How Does It Make LLMs Faster?",
+          "url": "https://outcomeschool.com/blog/speculative-decoding"
+        },
+        {
+          "type": "blog",
+          "title": "What is N-gram Speculation in LLMs and How Does It Speed Up Generation?",
+          "url": "https://outcomeschool.com/blog/n-gram-speculation-in-llms"
+        },
+        {
+          "type": "blog",
+          "title": "What is Medusa? Multi-Head Speculative Decoding Explained",
+          "url": "https://outcomeschool.com/blog/decoding-medusa"
+        },
+        {
+          "type": "blog",
+          "title": "What is EAGLE? Feature-Level Speculative Decoding Explained",
+          "url": "https://outcomeschool.com/blog/decoding-eagle"
+        },
+        {
+          "type": "blog",
+          "title": "How does Model Quantization work?",
+          "url": "https://outcomeschool.com/blog/how-does-model-quantization-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does GGUF work?",
+          "url": "https://outcomeschool.com/blog/how-does-gguf-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does llama.cpp run LLMs on everyday hardware?",
+          "url": "https://outcomeschool.com/blog/how-does-llama-cpp-run-llms-on-everyday-hardware"
+        },
+        {
+          "type": "blog",
+          "title": "How does vLLM work?",
+          "url": "https://outcomeschool.com/blog/how-does-vllm-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does SGLang work?",
+          "url": "https://outcomeschool.com/blog/how-does-sglang-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does TensorRT-LLM work?",
+          "url": "https://outcomeschool.com/blog/how-does-tensorrt-llm-work"
+        },
+        {
+          "type": "video",
+          "title": "LLM Inference Optimization",
+          "url": "https://www.youtube.com/watch?v=jV2sCj4lHYk"
+        },
+        {
+          "type": "video",
+          "title": "The First-Token Latency Problem in LLMs",
+          "url": "https://www.youtube.com/watch?v=XD8DD4cEHu0"
+        },
+        {
+          "type": "external",
+          "title": "LLM Inference Engineering (complete series)",
+          "url": "https://github.com/amitshekhariitbhu/llm-inference-engineering"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Evaluation and Observability",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "What is LLM Evaluation? Metrics, Benchmarks, and Methods Explained",
+          "url": "https://outcomeschool.com/blog/llm-evaluation"
+        },
+        {
+          "type": "blog",
+          "title": "What is LLM as a Judge? How to Use an LLM to Evaluate LLM Outputs",
+          "url": "https://outcomeschool.com/blog/llm-as-a-judge"
+        },
+        {
+          "type": "blog",
+          "title": "How to Evaluate AI Agents? Metrics, Methods, and Best Practices",
+          "url": "https://outcomeschool.com/blog/ai-agent-evaluation"
+        },
+        {
+          "type": "blog",
+          "title": "What is AI Agent Observability? Traces, Spans, and Metrics Explained",
+          "url": "https://outcomeschool.com/blog/ai-agent-observability"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "AI Safety and Security",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "How do LLM guardrails work?",
+          "url": "https://outcomeschool.com/blog/how-do-llm-guardrails-work"
+        },
+        {
+          "type": "blog",
+          "title": "What is Prompt Injection in LLMs and How Do We Defend Against It?",
+          "url": "https://outcomeschool.com/blog/prompt-injection-in-llms"
+        },
+        {
+          "type": "blog",
+          "title": "How Does LLM Watermarking Work?",
+          "url": "https://outcomeschool.com/blog/how-does-llm-watermarking-work"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Multimodal AI and Generative Models",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "What is Multimodal AI? How It Works and Where It Is Used",
+          "url": "https://outcomeschool.com/blog/multimodal-ai"
+        },
+        {
+          "type": "blog",
+          "title": "What is a Vision Transformer (ViT) and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/decoding-vision-transformer-vit"
+        },
+        {
+          "type": "blog",
+          "title": "How do Image Embeddings work?",
+          "url": "https://outcomeschool.com/blog/how-do-image-embeddings-work"
+        },
+        {
+          "type": "blog",
+          "title": "What are Diffusion Models and How Do They Generate Images?",
+          "url": "https://outcomeschool.com/blog/diffusion-models"
+        },
+        {
+          "type": "blog",
+          "title": "What are Generative Adversarial Networks (GANs) and How Do They Work?",
+          "url": "https://outcomeschool.com/blog/generative-adversarial-networks"
+        },
+        {
+          "type": "blog",
+          "title": "What are Variational Autoencoders (VAEs) and How Do They Work?",
+          "url": "https://outcomeschool.com/blog/variational-autoencoders"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "AI Infrastructure, Deployment, and System Design",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "How does a GPU work for Deep Learning?",
+          "url": "https://outcomeschool.com/blog/how-does-a-gpu-work-for-deep-learning"
+        },
+        {
+          "type": "blog",
+          "title": "How does a Google TPU work?",
+          "url": "https://outcomeschool.com/blog/how-does-a-google-tpu-work"
+        },
+        {
+          "type": "blog",
+          "title": "How does an LPU work?",
+          "url": "https://outcomeschool.com/blog/how-does-an-lpu-work"
+        },
+        {
+          "type": "blog",
+          "title": "Cloud vs On-device Model Deployment",
+          "url": "https://outcomeschool.com/blog/cloud-vs-on-device-model-deployment"
+        },
+        {
+          "type": "blog",
+          "title": "Android TensorFlow Lite Machine Learning Example",
+          "url": "https://outcomeschool.com/blog/android-tensorflow-lite-machine-learning-example"
+        },
+        {
+          "type": "blog",
+          "title": "What is LLM Routing? How to Send Each Query to the Right LLM",
+          "url": "https://outcomeschool.com/blog/llm-routing"
+        },
+        {
+          "type": "blog",
+          "title": "Design a Real-Time Voice AI Agent",
+          "url": "https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent"
+        },
+        {
+          "type": "blog",
+          "title": "What is System Design?",
+          "url": "https://outcomeschool.com/blog/system-design"
+        },
+        {
+          "type": "blog",
+          "title": "HTTP Request vs HTTP Long-Polling vs WebSocket vs Server-Sent Events",
+          "url": "https://outcomeschool.com/blog/http-request-long-polling-websocket-sse"
+        },
+        {
+          "type": "blog",
+          "title": "How do Voice And Video Call Work?",
+          "url": "https://outcomeschool.com/blog/voice-and-video-call"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Frontier Ideas in AI",
+      "lessons": [
+        {
+          "type": "blog",
+          "title": "What is Joint Embedding Predictive Architecture (JEPA) and How Does It Work?",
+          "url": "https://outcomeschool.com/blog/joint-embedding-predictive-architecture-jepa"
+        },
+        {
+          "type": "blog",
+          "title": "How do World Models work?",
+          "url": "https://outcomeschool.com/blog/how-do-world-models-work"
+        },
+        {
+          "type": "blog",
+          "title": "What is Recursive Self-Improvement (RSI)?",
+          "url": "https://outcomeschool.com/blog/what-is-recursive-self-improvement-rsi"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "Prepare for AI Engineering Interviews",
+      "lessons": [
+        {
+          "type": "external",
+          "title": "AI Engineering Interview Questions and Answers",
+          "url": "https://github.com/amitshekhariitbhu/ai-engineering-interview-questions"
+        },
+        {
+          "type": "external",
+          "title": "AI and Machine Learning",
+          "url": "https://outcomeschool.com/program/ai-and-machine-learning"
+        }
+      ]
+    }
+  ]
+}
