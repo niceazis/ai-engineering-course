@@ -1,82 +1,203 @@
 # Proximal Policy Optimization(PPO)이란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/proximal-policy-optimization-ppo
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/proximal-policy-optimization-ppo  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 원문을 직접 확인해 policy ratio, clipping, RLHF 구조와 장단점을 보존하면서 독립적으로 다시 쓴 한국어 상세 해설입니다.
 
-## 핵심 해설
+## 1. PPO가 해결하는 문제
 
-PPO의 동작 원리와 LLM RLHF 학습에서의 사용법을 배웁니다.
+Reinforcement Learning에서 policy를 reward가 높아지는 방향으로 업데이트합니다.
 
-## 핵심 학습 항목
+문제는 update가 너무 크면 기존에 잘하던 behavior가 한 번에 무너질 수 있다는 것입니다.
 
-- Reinforcement Learning이란?
-- Policy란?
-- 단순 Policy Update의 문제
-- PPO란?
-- 핵심 아이디어: Clipping
-- PPO Objective를 쉽게 이해하기
-- 단계별 동작
-- LLM RLHF의 PPO
-- 장점
-- 단점
+PPO의 핵심 철학:
 
-## 단계별 학습 가이드
+> 한 번에 큰 도약 대신 작은 안전한 update를 반복한다.
 
-### 1. Reinforcement Learning이란?
+## 2. Policy란?
 
-**Reinforcement Learning이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Policy:
 
-### 2. Policy란?
+    pi(a | s)
 
-**Policy란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+현재 state s에서 action a를 선택할 probability distribution입니다.
 
-### 3. 단순 Policy Update의 문제
+LLM에서는:
 
-**단순 Policy Update의 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    state = prompt + generated prefix
+    action = next token
 
-### 4. PPO란?
+으로 볼 수 있습니다.
 
-**PPO란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Old Policy와 New Policy
 
-### 5. 핵심 아이디어: Clipping
+Training data는 old policy로 sample합니다.
 
-**핵심 아이디어: Clipping**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+그 뒤 new parameter를 update하려고 할 때 같은 action의 probability가 얼마나 변했는지 ratio를 봅니다.
 
-### 6. PPO Objective를 쉽게 이해하기
+    r_t(theta)
+      = pi_theta(a_t|s_t)
+        / pi_old(a_t|s_t)
 
-**PPO Objective를 쉽게 이해하기**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. Ratio 해석
 
-### 7. 단계별 동작
+    ratio = 1.0
 
-**단계별 동작**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+→ probability 변화 없음.
 
-### 8. LLM RLHF의 PPO
+    ratio = 1.2
 
-**LLM RLHF의 PPO**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+→ selected action이 20% 더 likely.
 
-### 9. 장점
+    ratio = 0.8
 
-**장점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+→ 20% 덜 likely.
 
-### 10. 단점
+PPO는 이 ratio가 너무 멀리 움직이지 않게 합니다.
 
-**단점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. Advantage
 
-## 실무 연결
+Advantage A_t는 action이 예상보다 얼마나 좋았는지 나타냅니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+    A_t > 0
+    → 더 likely하게
 
-## 점검 질문
+    A_t < 0
+    → 덜 likely하게
 
-1. Proximal Policy Optimization(PPO)이란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+LLM RLHF에서 reward model과 value model을 사용해 advantage를 추정합니다.
+
+## 6. Naive Policy Gradient 문제
+
+Objective:
+
+    ratio * advantage
+
+만 최대화하면 advantage가 positive일 때 ratio를 무한히 크게 만들려는 pressure가 생길 수 있습니다.
+
+Large neural policy에서 unstable update를 만들 수 있습니다.
+
+## 7. PPO Clipping
+
+원문 핵심은 clipping입니다.
+
+보통 epsilon=0.2 예를 사용하면 ratio 허용 범위:
+
+    [0.8, 1.2]
+
+Clipped objective:
+
+    min(
+      r_t A_t,
+      clip(r_t, 1-eps, 1+eps) A_t
+    )
+
+큰 update에서 추가 이익을 제한합니다.
+
+## 8. Positive Advantage 예
+
+    A = +1
+    ratio = 1.5
+    eps = 0.2
+
+Unclipped:
+
+    1.5
+
+Clipped:
+
+    1.2
+
+min:
+
+    1.2
+
+즉 좋은 action probability를 올리되 한 step에 50%까지 급격히 올리는 incentive는 잘립니다.
+
+## 9. Negative Advantage 예
+
+A가 음수일 때도 clipping이 지나친 probability 감소를 제한하는 방향으로 작동합니다.
+
+핵심은 sign에 따라 min 구조가 trust-region 같은 효과를 낸다는 것입니다.
+
+## 10. PPO Training Loop
+
+1. Old policy로 trajectories 생성
+2. Reward 계산
+3. Return/advantage 추정
+4. Policy ratio 계산
+5. Clipped policy loss
+6. Value loss
+7. Entropy bonus 등을 결합
+8. 몇 epoch update
+9. Old policy를 갱신
+10. 반복
+
+## 11. LLM RLHF에서 필요한 Model
+
+Classic PPO RLHF에서는 보통:
+
+- policy model
+- reference model
+- reward model
+- value/critic model
+
+이 필요합니다.
+
+Policy와 value가 큰 경우 memory overhead가 큽니다.
+
+## 12. Reference KL과 PPO Clipping은 다른 역할
+
+PPO clipping:
+
+    current update vs old policy
+
+를 제한합니다.
+
+KL penalty:
+
+    current policy vs fixed SFT/reference
+
+drift를 제한합니다.
+
+둘은 유사해 보여도 다른 기준입니다.
+
+## 13. 장점
+
+- vanilla policy gradient보다 안정적
+- 구현이 TRPO보다 단순
+- 큰 neural policy에서도 잘 작동
+- RLHF에서 검증된 역사
+
+## 14. 단점
+
+- value model 필요
+- on-policy sample generation 비용
+- reward model exploitation 가능
+- hyperparameter 민감
+- 큰 LLM에서 memory/throughput 부담 큼
+
+## 15. PPO vs GRPO
+
+PPO:
+
+    value model로 baseline/advantage 추정
+
+GRPO:
+
+    같은 prompt의 response group reward를 baseline으로 사용
+    → value model 제거
+
+Reasoning task에서 GRPO가 인기를 얻은 이유입니다.
+
+## 핵심 정리
+
+- PPO는 policy update를 작은 안전한 step으로 제한하는 RL algorithm입니다.
+- 핵심은 old/new probability ratio와 clipping입니다.
+- eps=0.2라면 ratio를 0.8~1.2 범위로 제한하는 직관을 사용합니다.
+- Advantage가 좋은 action을 강화하고 나쁜 action을 약화시킵니다.
+- LLM RLHF에서는 reward model, value model, reference model과 함께 사용됩니다.
+- 안정적이지만 on-policy generation과 critic 때문에 비용이 큽니다.
 
 ## 원문
 
