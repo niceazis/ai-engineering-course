@@ -1,92 +1,113 @@
 # Prefill vs Decode — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/prefill-vs-decode-llm-inference-optimization
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/prefill-vs-decode-llm-inference-optimization  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 두 inference phase, KV Cache bridge, TTFT/TPOT와 compute-bound vs memory-bound를 독립적으로 설명합니다.
 
-## 핵심 해설
+## 1. 두 단계
 
-LLM 추론의 두 단계인 Prefill과 Decode, 그리고 두 단계를 연결하는 KV Cache를 배웁니다.
+LLM request:
 
-## 핵심 학습 항목
+    prompt
+      → Prefill
+      → first token
+      → Decode
+      → token2
+      → token3 ...
 
-- LLM Inference란?
-- Prefill과 Decode
-- Prefill 설명
-- Decode 설명
-- 두 단계와 KV Cache 흐름
-- KV Cache의 역할
-- Decode 단계별 예제
-- Prefill vs Decode
-- Compute-bound vs Memory-bound
-- TTFT, TPOT, Throughput, End-to-End Latency
-- 단계별 최적화 기법
-- 결론
+## 2. Prefill
 
-## 단계별 학습 가이드
+Prompt의 모든 token을 한 번에 Transformer에 통과시킵니다.
 
-### 1. LLM Inference란?
+특징:
 
-**LLM Inference란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- 큰 matrix multiplication
+- GPU parallelism 활용
+- prompt length에 민감
+- TTFT에 큰 영향
 
-### 2. Prefill과 Decode
+Prefill 결과로 각 layer의 prompt K/V가 cache에 저장됩니다.
 
-**Prefill과 Decode**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Decode
 
-### 3. Prefill 설명
+새 token 하나를 생성합니다.
 
-**Prefill 설명**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+각 step:
 
-### 4. Decode 설명
+1. 새 token의 Q/K/V 계산
+2. 과거 cached K/V와 attention
+3. logits
+4. next token 선택
+5. 새 K/V cache append
 
-**Decode 설명**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+출력 길이만큼 반복됩니다.
 
-### 5. 두 단계와 KV Cache 흐름
+## 4. KV Cache가 Bridge
 
-**두 단계와 KV Cache 흐름**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Prefill에서 만든 prompt K/V를 Decode가 그대로 사용합니다.
 
-### 6. KV Cache의 역할
+Cache가 없다면 decode step마다 prompt 전체를 다시 계산해야 합니다.
 
-**KV Cache의 역할**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. Compute-Bound vs Memory-Bound
 
-### 7. Decode 단계별 예제
+Prefill:
 
-**Decode 단계별 예제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- 큰 GEMM
+- compute utilization이 핵심
 
-### 8. Prefill vs Decode
+Decode:
 
-**Prefill vs Decode**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- 작은 batch/token 연산
+- 매 step 큰 weight/KV를 읽음
+- memory bandwidth 영향을 크게 받음
 
-### 9. Compute-bound vs Memory-bound
+그래서 같은 GPU 최적화가 두 단계에 똑같이 효과적이지 않습니다.
 
-**Compute-bound vs Memory-bound**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 6. 주요 Metric
 
-### 10. TTFT, TPOT, Throughput, End-to-End Latency
+### TTFT
 
-**TTFT, TPOT, Throughput, End-to-End Latency**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+request → first token.
 
-### 11. 단계별 최적화 기법
+Prefill, queueing, scheduling 영향.
 
-**단계별 최적화 기법**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### TPOT
 
-### 12. 결론
+출력 token 사이 평균 시간.
 
-**결론**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Decode 성능.
 
-## 실무 연결
+### Throughput
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+시간당 처리 token/request.
 
-## 점검 질문
+### End-to-End Latency
 
-1. Prefill vs Decode을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+TTFT + 전체 decode 시간.
+
+## 7. 최적화 Mapping
+
+Prefill:
+
+- FlashAttention
+- prompt/prefix caching
+- chunked prefill
+- faster compute GPU
+
+Decode:
+
+- KV Cache
+- GQA
+- continuous batching
+- speculative decoding
+- quantization
+
+## 핵심 정리
+
+- Prefill은 prompt 전체를 처리하고 KV Cache를 만드는 단계입니다.
+- Decode는 KV Cache를 읽으며 token-by-token 생성합니다.
+- Prefill은 상대적으로 compute-bound, Decode는 memory-bound 성격이 강합니다.
+- TTFT는 Prefill, TPOT는 Decode 문제를 진단하는 핵심 지표입니다.
 
 ## 원문
 
