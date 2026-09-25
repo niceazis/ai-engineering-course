@@ -1,117 +1,150 @@
 # Graph Engineering이란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/what-is-graph-engineering
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/what-is-graph-engineering  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 현재 원문 본문 캐시를 직접 열지 못했습니다. Outcome School 공식 Module 11의 Node·Edge·State·Conditional Edge·Cycle·Parallel·Checkpoint·HITL 구조를 기준으로 독립적으로 설명합니다.
 
-## 핵심 해설
+## 1. Graph Engineering의 핵심
 
-하나의 거대한 Prompt나 끝없는 Loop 대신 작은 단계와 명확한 경로로 AI 시스템을 Graph 형태로 구성하는 방법을 배웁니다.
+복잡한 AI workflow를 하나의 거대한 prompt나 자유로운 loop로 두지 않고 **명시적인 node와 edge를 가진 graph**로 설계합니다.
 
-## 핵심 학습 항목
+    Graph = Nodes + Edges + State
 
-- Graph Engineering이란?
-- Graph = Node + Edge
-- 필요한 이유
-- Node, Edge, State
-- 첫 Graph 만들기
-- Conditional Edge
-- Cycle
-- 한 번의 전체 실행
-- Parallel Branch
-- Checkpoint
-- Human in the Loop
-- Graph 내부 오류 처리
-- Graph Engineering vs Loop Engineering
-- 잘 동작하는 영역
-- 실패하는 영역
-- Best Practice
-- 결론
+## 2. Node
 
-## 단계별 학습 가이드
+작은 실행 단위입니다.
 
-### 1. Graph Engineering이란?
+예:
 
-**Graph Engineering이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- retrieve
+- classify
+- generate
+- validate
+- tool call
+- human review
 
-### 2. Graph = Node + Edge
+Node는 가능한 한 한 책임만 갖게 합니다.
 
-**Graph = Node + Edge**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. State
 
-### 3. 필요한 이유
+Node 사이에서 전달되는 structured data입니다.
 
-**필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    {
+      goal,
+      evidence,
+      draft,
+      errors,
+      retries
+    }
 
-### 4. Node, Edge, State
+Conversation text만 state로 사용하면 분기/복구가 어렵습니다.
 
-**Node, Edge, State**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. Edge
 
-### 5. 첫 Graph 만들기
+어떤 node 다음에 어디로 갈지 정의합니다.
 
-**첫 Graph 만들기**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Static:
 
-### 6. Conditional Edge
+    A → B
 
-**Conditional Edge**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Conditional:
 
-### 7. Cycle
+    Validate
+      ├─ pass → Final
+      └─ fail → Repair
 
-**Cycle**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. Cycle
 
-### 8. 한 번의 전체 실행
+Graph도 loop를 포함할 수 있습니다.
 
-**한 번의 전체 실행**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Generate
+      → Test
+        → Fail
+          → Fix
+          → Test
 
-### 9. Parallel Branch
+차이는 cycle 경로와 상태가 명시적이라는 점입니다.
 
-**Parallel Branch**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 6. Parallel Branch
 
-### 10. Checkpoint
+독립 작업:
 
-**Checkpoint**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Research A ─┐
+    Research B ─┼→ Merge
+    Research C ─┘
 
-### 11. Human in the Loop
+를 병렬 실행할 수 있습니다.
 
-**Human in the Loop**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+DAG scheduling으로 dependency를 명확히 합니다.
 
-### 12. Graph 내부 오류 처리
+## 7. Checkpoint
 
-**Graph 내부 오류 처리**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+각 node 뒤 state를 저장하면:
 
-### 13. Graph Engineering vs Loop Engineering
+- crash recovery
+- pause/resume
+- human approval
+- replay/debug
 
-**Graph Engineering vs Loop Engineering**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+가 가능합니다.
 
-### 14. 잘 동작하는 영역
+Long-running agent에서 매우 중요합니다.
 
-**잘 동작하는 영역**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 8. Human in the Loop
 
-### 15. 실패하는 영역
+Graph에 human node를 넣을 수 있습니다.
 
-**실패하는 영역**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Draft
+      → Human Approval
+        ├─ approve → Publish
+        └─ reject  → Revise
 
-### 16. Best Practice
+Human interaction이 exception이 아니라 first-class transition이 됩니다.
 
-**Best Practice**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 9. Error Edge
 
-### 17. 결론
+Tool error를 일반 success state와 분리합니다.
 
-**결론**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Tool
+      ├─ success → Parse
+      ├─ retryable → Retry
+      └─ fatal → Escalate
 
-## 실무 연결
+이 구조가 blind retry보다 안정적입니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+## 10. Graph vs Loop Engineering
 
-## 점검 질문
+Loop:
 
-1. Graph Engineering이란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+- dynamic
+- compact
+- open-ended exploration에 좋음
+
+Graph:
+
+- explicit flow
+- audit/recovery 쉬움
+- known business process에 강함
+
+실전에서는 graph node 내부에 bounded loop/agent를 넣을 수 있습니다.
+
+## 11. Best Practice
+
+- node를 작게
+- state schema 명시
+- edge condition deterministic하게
+- checkpoint
+- retry limit
+- observability
+- test each node and path
+
+## 핵심 정리
+
+- Graph Engineering은 AI workflow를 Node·Edge·State로 명시적으로 구조화합니다.
+- Conditional edge, cycle, parallel branch, checkpoint, HITL을 first-class로 다룹니다.
+- 복잡한 business workflow에서 free-form agent loop보다 audit/recovery가 쉽습니다.
+- Graph와 Loop는 경쟁이 아니라 조합 가능합니다.
+- 원문 본문 캐시 제한 때문에 구체 수치는 공식 outline에 없는 내용을 임의로 추가하지 않았습니다.
 
 ## 원문
 
