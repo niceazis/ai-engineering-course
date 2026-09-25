@@ -1,97 +1,192 @@
 # Agentic RAG란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/agentic-rag
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/agentic-rag  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 2026-05-01 공개 원문을 직접 확인해 Standard RAG와의 차이, agent loop, 세 building block과 ReAct-style pattern을 보존하면서 독립적으로 다시 쓴 한국어 해설입니다.
 
-## 핵심 해설
+## 1. Standard RAG의 한계
 
-Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·검증하는 Agentic RAG를 배웁니다.
+Standard RAG:
 
-## 핵심 학습 항목
+    query
+      → retrieve once
+      → top chunks
+      → LLM answer
 
-- 큰 그림
-- RAG 복습
-- AI Agent 복습
-- Standard RAG의 한계
-- Agentic RAG란?
-- Agentic RAG Loop
-- 세 가지 Building Block
-- 실제 예제
-- 대표 패턴
-- Standard RAG vs Agentic RAG
-- 사용 시점
-- 한계
-- 빠른 요약
+단순 fact lookup에는 좋지만 다음 질문에는 약합니다.
 
-## 단계별 학습 가이드
+- 여러 source를 순차 조회해야 함
+- 첫 검색 결과가 부족함
+- query rewrite가 필요
+- 검색 자체가 필요한지 먼저 판단해야 함
+- multi-hop reasoning 필요
 
-### 1. 큰 그림
+원문은 Standard RAG를 "책 한 권을 가져오는 librarian", Agentic RAG를 "필요하면 여러 서가를 다시 조사하는 researcher"로 비유합니다.
 
-**큰 그림**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 2. 정의
 
-### 2. RAG 복습
+    Agentic RAG
+      = RAG + retrieval을 제어하는 AI Agent
 
-**RAG 복습**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Agent는 매 step에서 다음을 결정합니다.
 
-### 3. AI Agent 복습
+- retrieval이 필요한가?
+- 어떤 tool/source를 사용할까?
+- query를 어떻게 바꿀까?
+- 결과가 충분한가?
+- 다시 검색할까?
+- 언제 답을 작성할까?
 
-**AI Agent 복습**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Agentic RAG Loop
 
-### 4. Standard RAG의 한계
+일반적인 loop:
 
-**Standard RAG의 한계**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    observe question/state
+      → plan
+      → choose retrieval/tool
+      → execute
+      → inspect evidence
+      → enough?
+          no → reformulate/retrieve again
+          yes → synthesize answer
 
-### 5. Agentic RAG란?
+Fixed pipeline이 아니라 condition-based loop입니다.
 
-**Agentic RAG란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. 세 Building Block
 
-### 6. Agentic RAG Loop
+원문은 세 가지로 정리합니다.
 
-**Agentic RAG Loop**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Agent — Brain
 
-### 7. 세 가지 Building Block
+LLM이 plan, tool choice, evidence evaluation을 담당합니다.
 
-**세 가지 Building Block**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Tools — Hands
 
-### 8. 실제 예제
+- vector search
+- keyword search
+- SQL
+- web
+- files/API
 
-**실제 예제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+같은 외부 source입니다.
 
-### 9. 대표 패턴
+### Memory/State — Notebook
 
-**대표 패턴**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+이전 검색 결과, unresolved subquestion, intermediate facts를 유지합니다.
 
-### 10. Standard RAG vs Agentic RAG
+## 5. Multi-Hop 예
 
-**Standard RAG vs Agentic RAG**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+질문:
 
-### 11. 사용 시점
+    "올해 매출이 가장 크게 줄어든 제품은 무엇이고,
+     그 제품 고객 불만의 가장 흔한 원인은?"
 
-**사용 시점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+필요한 step:
 
-### 12. 한계
+1. SQL에서 제품별 매출 비교
+2. 최악 제품 식별
+3. support ticket 검색
+4. 불만 theme 분석
+5. evidence 연결
+6. 답 작성
 
-**한계**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+한 번의 vector retrieval로는 자연스럽게 풀기 어렵습니다.
 
-### 13. 빠른 요약
+## 6. Query Rewriting
 
-**빠른 요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+검색 결과가 약하면 agent가:
 
-## 실무 연결
+    original query
+      → more specific query
+      → alternative keyword
+      → source-specific query
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+로 바꿀 수 있습니다.
 
-## 점검 질문
+이를 무제한 허용하면 loop/cost가 폭증할 수 있어 max step과 stop condition이 필요합니다.
 
-1. Agentic RAG란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+## 7. ReAct-Style RAG
+
+원문이 설명하는 대표 pattern:
+
+    think → act → observe → repeat
+
+실무에서는 raw chain-of-thought 노출보다:
+
+- tool choice
+- search query
+- evidence
+- state transition
+
+을 trace하는 것이 더 중요합니다.
+
+## 8. Corrective/Self-RAG 방향
+
+고급 pattern은 retrieved evidence 품질을 별도로 평가합니다.
+
+    retrieve
+      → grade relevance
+        ├─ good → answer
+        └─ poor → rewrite/retrieve
+
+즉 retrieval 자체에 verification loop를 넣습니다.
+
+## 9. Standard vs Agentic
+
+| 항목 | Standard RAG | Agentic RAG |
+| --- | --- | --- |
+| Retrieval 횟수 | 보통 1 | 필요 시 여러 번 |
+| Tool | 한 종류 중심 | 여러 source |
+| Query rewrite | 고정 | 동적 |
+| Evidence 평가 | 제한적 | 명시적 가능 |
+| Multi-hop | 약함 | 강함 |
+| Latency/cost | 낮음 | 높음 |
+| 시스템 복잡도 | 낮음 | 높음 |
+
+## 10. 언제 사용하나
+
+원문 기준과 실무를 합치면:
+
+- research
+- legal/medical multi-source investigation
+- enterprise data across SQL/vector/web
+- ambiguous complex question
+- retrieval quality가 latency보다 중요한 경우
+
+FAQ처럼 단순한 query에는 Standard RAG가 더 낫습니다.
+
+## 11. 실패 시나리오
+
+- 같은 검색 반복
+- 잘못된 source 선택
+- search result hallucinated interpretation
+- 너무 일찍 stop
+- 끝없는 loop
+- tool error propagation
+
+따라서 max steps, budget, validators, citation/evidence checks가 필요합니다.
+
+## 12. Evaluation
+
+단순 answer accuracy 외에도:
+
+- number of retrievals
+- tool success rate
+- evidence recall
+- unnecessary-tool rate
+- latency
+- cost
+- groundedness
+
+를 측정해야 합니다.
+
+## 핵심 정리
+
+- Agentic RAG는 retrieval을 고정 pipeline이 아니라 agent decision loop로 바꿉니다.
+- Agent는 retrieval 필요 여부, source, query rewrite, evidence 충분성, stop을 결정합니다.
+- 원문은 Agent/Tools/State 세 building block과 ReAct-style loop를 설명합니다.
+- Multi-hop·multi-source 문제에서 강하지만 비용과 failure mode가 크게 늘어납니다.
+- 단순 query까지 agentic하게 만들지 말고 complexity routing을 두는 것이 실용적입니다.
 
 ## 원문
 
