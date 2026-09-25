@@ -485,7 +485,7 @@ L1과 L2 손실 함수를 배웁니다.
 
 영상 보기: [Epoch, Batch, Batch Size, Iteration](https://www.youtube.com/watch?v=NFLlXE-6vno)
 
-→ [한국어 영상 요약](docs/ko/videos.md#4-epoch-batch-batch-size-iteration)
+→ [한국어 상세 영상 학습 노트](docs/ko/videos/module-02/epoch-batch-batch-size-iteration.md)
 
 ### 2.3 역전파는 어떻게 동작하는가? 수학으로 단계별 설명
 
@@ -531,7 +531,7 @@ L1과 L2 손실 함수를 배웁니다.
 
 영상 보기: [Softmax Activation Function in Machine Learning](https://www.youtube.com/watch?v=2Zx6x01WwWM)
 
-→ [한국어 영상 요약](docs/ko/videos.md#5-softmax-activation-function-in-machine-learning)
+→ [한국어 상세 영상 학습 노트](docs/ko/videos/module-02/softmax-activation-function-in-machine-learning.md)
 
 ### 2.5 신경망의 Dropout이란 무엇이며 어떻게 동작하는가?
 
@@ -638,7 +638,7 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 **모듈 2 영상 및 추가 자료:**
 
 - [Epoch, Batch, Batch Size, Iteration](https://www.youtube.com/watch?v=NFLlXE-6vno) (영상)
-   ↳ [한국어 영상 요약](docs/ko/videos.md#4-epoch-batch-batch-size-iteration)
+   ↳ [한국어 상세 영상 학습 노트](docs/ko/videos/module-02/epoch-batch-batch-size-iteration.md)
 
 ---
 
@@ -870,7 +870,7 @@ BERT와 GPT 같은 현대 LLM의 핵심인 Self Attention의 개념과 단계별
 
 영상 보기: [Softmax Activation Function in Machine Learning](https://www.youtube.com/watch?v=2Zx6x01WwWM)
 
-→ [한국어 영상 요약](docs/ko/videos.md#5-softmax-activation-function-in-machine-learning)
+→ [한국어 상세 영상 학습 노트](docs/ko/videos/module-02/softmax-activation-function-in-machine-learning.md)
 
 ### 3.10 왜 Attention을 √dₖ로 스케일링하는가?
 
@@ -984,7 +984,7 @@ Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer
 **모듈 3 영상 및 추가 자료:**
 
 - [Softmax Activation Function in Machine Learning](https://www.youtube.com/watch?v=2Zx6x01WwWM) (영상)
-   ↳ [한국어 영상 요약](docs/ko/videos.md#5-softmax-activation-function-in-machine-learning)
+   ↳ [한국어 상세 영상 학습 노트](docs/ko/videos/module-02/softmax-activation-function-in-machine-learning.md)
 - [Inside ChatGPT: What Happens After You Hit Enter](https://outcomeschool.substack.com/p/inside-chatgpt-what-happens-after) (읽기)
 - [Tokenization in Large Language Models (LLMs)](https://www.youtube.com/watch?v=sK2s9I84EVI) (영상)
    ↳ [한국어 영상 요약](docs/ko/videos.md#6-tokenization-in-large-language-models-llms)

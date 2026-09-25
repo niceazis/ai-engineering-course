@@ -1,75 +1,106 @@
-# 역전파는 어떻게 동작하는가? 수학으로 단계별 설명 — 한국어 상세 학습 노트
+# 역전파는 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/math-behind-backpropagation
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/math-behind-backpropagation  
+> 원저자: Amit Shekhar / Outcome School · 2026-04-06  
+> 원문의 계산 순서와 수치 예제를 따라 독립적으로 다시 쓴 학습 노트입니다.
 
-## 핵심 해설
+## 핵심
 
-신경망 역전파의 수학을 배웁니다.
+Backpropagation은 최종 오차가 각 parameter에 얼마나 민감한지 연쇄법칙으로 계산합니다.
 
-→ [한국어 상세 학습 노트](blogs/module-02/math-behind-backpropagation.md)
+## 원문의 초기값
 
-## 핵심 학습 항목
+```text
+x=0.5, y=1.0
+w1=0.3, b1=0.1
+w2=0.7, b2=0.2
+```
 
-- 역전파란?
-- 미적분의 Chain Rule
-- Forward Pass
-- Loss 계산
-- Backward Pass(역전파)
-- 단계별 수치 예제
-- 경사하강법을 이용한 가중치 업데이트
-- Python에서의 역전파
+## Forward Pass
 
-## 단계별 학습 가이드
+```text
+z_h = 0.3*0.5 + 0.1 = 0.25
+a_h = sigmoid(0.25) ≈ 0.5622
 
-### 1. 역전파란?
+z_o = 0.7*0.5622 + 0.2 ≈ 0.5935
+a_o = sigmoid(0.5935) ≈ 0.6442
+```
 
-**역전파란?**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문은 squared error를 사용합니다.
 
-### 2. 미적분의 Chain Rule
+```text
+L = 0.5 * (1.0 - 0.6442)^2
+  ≈ 0.0633
+```
 
-**미적분의 Chain Rule**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## Chain Rule
 
-### 3. Forward Pass
+w2에 대한 gradient:
 
-**Forward Pass**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+```text
+dL/dw2
+= dL/da_o * da_o/dz_o * dz_o/dw2
+```
 
-### 4. Loss 계산
+원문 수치:
 
-**Loss 계산**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+```text
+dL/da_o   = -0.3558
+da_o/dz_o ≈ 0.2292
+dz_o/dw2  = 0.5622
 
-### 5. Backward Pass(역전파)
+dL/dw2 ≈ -0.0459
+```
 
-**Backward Pass(역전파)**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+w1은 hidden layer를 거치므로 더 긴 경로를 사용합니다.
 
-### 6. 단계별 수치 예제
+```text
+dL/dw1
+= dL/da_o
+* da_o/dz_o
+* dz_o/da_h
+* da_h/dz_h
+* dz_h/dw1
+```
 
-**단계별 수치 예제**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+추가 항:
 
-### 7. 경사하강법을 이용한 가중치 업데이트
+```text
+dz_o/da_h = 0.7
+da_h/dz_h ≈ 0.2461
+dz_h/dw1 = 0.5
+```
 
-**경사하강법을 이용한 가중치 업데이트**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+bias도 같은 원리로 gradient를 계산하며 weight와 함께 학습됩니다.
 
-### 8. Python에서의 역전파
+## Parameter Update
 
-**Python에서의 역전파**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+gradient를 계산한 뒤 gradient descent를 적용합니다.
 
-## 실무 연결
+```text
+parameter_new
+= parameter_old
+- learning_rate * gradient
+```
 
-- 이 개념이 모델의 정확도·안정성·속도·메모리 중 어떤 요소에 영향을 주는지 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter가 있다면 변화가 결과에 미치는 영향을 확인합니다.
-- 실제 프레임워크에서 어떤 API·연산으로 구현되는지 연결해서 봅니다.
+역할을 구분하면:
 
-## 점검 질문
+```text
+Backpropagation -> gradient 계산
+Gradient Descent -> parameter update
+```
 
-1. 역전파는 어떻게 동작하는가? 수학으로 단계별 설명을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 계산 또는 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 각각 말할 수 있는가?
-5. 이 개념을 언제 선택하고 언제 다른 방법을 선택할지 설명할 수 있는가?
+원문의 Python 예제는 같은 초기값과 learning rate 0.5로 1000 epoch 반복하면서 loss를 줄이고 prediction을 1.0에 가깝게 만듭니다.
 
-## 원문
+## 이해 확인
 
-- https://outcomeschool.com/blog/math-behind-backpropagation
+1. w1의 gradient 계산 경로가 w2보다 긴 이유는 무엇인가요?
+2. activation function의 derivative가 필요한 이유는 무엇인가요?
+3. Backpropagation과 Gradient Descent의 역할은 어떻게 다른가요?
+
+## 연결 학습
+
+- 원문: https://outcomeschool.com/blog/math-behind-backpropagation
+- 이전: [Gradient Descent](math-behind-gradient-descent.md)
+- 다음: [Cross-Entropy Loss](math-behind-cross-entropy-loss.md)
+- [모듈 2](../../module-02.md)

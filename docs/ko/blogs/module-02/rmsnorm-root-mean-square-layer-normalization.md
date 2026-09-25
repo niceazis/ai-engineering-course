@@ -1,82 +1,50 @@
-# RMSNorm이란? Root Mean Square Layer Normalization 설명 — 한국어 상세 학습 노트
+# RMSNorm — 원문 기반 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/rmsnorm-root-mean-square-layer-normalization
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/rmsnorm-root-mean-square-layer-normalization  
+> Amit Shekhar / Outcome School · 2026-04-25  
+> 아래 내용은 원문의 학습 순서와 예제를 참고해 독립적으로 설명한 요약입니다.
 
-## 핵심 해설
+## 먼저 LayerNorm과 비교하기
 
-[Layer Normalization](https://outcomeschool.com/blog/batch-normalization-vs-layer-normalization)보다 빠르고 단순한 대안이며 Llama, Mistral, Gemma, Qwen, PaLM, DeepSeek 등 많은 현대 LLM에서 사용하는 RMSNorm을 배웁니다.
+LayerNorm은 한 벡터의 평균을 빼 중심을 0 근처로 옮긴 뒤, 분산을 이용해 크기도 조절합니다. 마지막에는 학습 가능한 scale과 shift를 적용합니다.
 
-→ [한국어 상세 학습 노트](blogs/module-02/batch-normalization-vs-layer-normalization.md)
+RMSNorm은 이 가운데 **평균을 빼는 과정은 생략하고 크기 조절에 집중**합니다. 그래서 계산 구조가 더 단순합니다.
 
-→ [한국어 상세 학습 노트](blogs/module-02/rmsnorm-root-mean-square-layer-normalization.md)
+## RMS가 의미하는 것
 
-## 핵심 학습 항목
+벡터 원소를 각각 제곱하고 평균한 뒤 제곱근을 취하면 RMS가 됩니다. 이 값은 벡터 전체의 전형적인 크기를 나타냅니다.
 
-- 깊은 신경망에서 normalization이 필요한 이유
-- Layer Normalization(LayerNorm) 빠른 복습
-- RMSNorm이 무엇이고 어떻게 동작하는가
-- 구체적인 수치 예제로 보는 RMSNorm의 수학
-- LayerNorm vs RMSNorm의 핵심 차이
-- 현대 LLM이 RMSNorm을 선호하는 이유
-- 코드 예제
-- Transformer에서 RMSNorm의 위치
-- 빠른 요약
+RMSNorm은 각 원소를 이 크기로 나누고 학습 가능한 scale을 곱합니다. 전체 magnitude가 지나치게 커지거나 작아지는 것을 완화하면서도 dimension별 표현력을 유지하려는 구조입니다.
 
-## 단계별 학습 가이드
+## 원문의 수치 예제
 
-### 1. 깊은 신경망에서 normalization이 필요한 이유
+원문은 `[2, 4, 4, 8]`을 사용합니다. 제곱값의 평균은 25이고 RMS는 5입니다. 따라서 RMS로 나눈 값은 `[0.4, 0.8, 0.8, 1.6]`이 됩니다.
 
-**깊은 신경망에서 normalization이 필요한 이유**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+이 예제에서 중요한 점은 평균을 먼저 빼지 않았다는 것입니다. LayerNorm과 달리 입력의 중심을 재조정하지 않고 scale만 맞춥니다.
 
-### 2. Layer Normalization(LayerNorm) 빠른 복습
+## LayerNorm과 RMSNorm 비교
 
-**Layer Normalization(LayerNorm) 빠른 복습**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- LayerNorm: 중심 이동과 scale 조정을 모두 수행
+- RMSNorm: scale 조정만 수행
+- LayerNorm: 보통 scale과 shift 두 종류의 학습 parameter 사용
+- RMSNorm: 주로 scale parameter 사용
+- RMSNorm: 평균 계산 단계를 생략해 더 단순한 연산 경로
 
-### 3. RMSNorm이 무엇이고 어떻게 동작하는가
+실제 구현에서는 0에 가까운 값에서 수치 문제를 피하기 위해 작은 epsilon을 포함합니다.
 
-**RMSNorm이 무엇이고 어떻게 동작하는가**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 현대 Transformer에서의 의미
 
-### 4. 구체적인 수치 예제로 보는 RMSNorm의 수학
+원문은 RMSNorm이 여러 현대 LLM에서 널리 채택된 이유로 단순한 계산과 안정적인 scale 관리를 강조합니다. Transformer에서는 attention이나 feed-forward block 주변 normalization 위치에서 사용되며, 정확한 위치는 architecture 설계에 따라 달라집니다.
 
-**구체적인 수치 예제로 보는 RMSNorm의 수학**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 학습 포인트
 
-### 5. LayerNorm vs RMSNorm의 핵심 차이
+1. RMSNorm이 LayerNorm에서 제거한 단계가 무엇인지 설명할 수 있어야 합니다.
+2. RMS가 단순 평균이 아니라 제곱 평균의 제곱근이라는 점을 구분해야 합니다.
+3. normalization 뒤 학습 가능한 scale이 필요한 이유를 이해해야 합니다.
 
-**LayerNorm vs RMSNorm의 핵심 차이**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 연결 학습
 
-### 6. 현대 LLM이 RMSNorm을 선호하는 이유
-
-**현대 LLM이 RMSNorm을 선호하는 이유**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-### 7. 코드 예제
-
-**코드 예제**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-### 8. Transformer에서 RMSNorm의 위치
-
-**Transformer에서 RMSNorm의 위치**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-### 9. 빠른 요약
-
-**빠른 요약**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-## 실무 연결
-
-- 이 개념이 모델의 정확도·안정성·속도·메모리 중 어떤 요소에 영향을 주는지 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter가 있다면 변화가 결과에 미치는 영향을 확인합니다.
-- 실제 프레임워크에서 어떤 API·연산으로 구현되는지 연결해서 봅니다.
-
-## 점검 질문
-
-1. RMSNorm이란? Root Mean Square Layer Normalization 설명을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 계산 또는 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 각각 말할 수 있는가?
-5. 이 개념을 언제 선택하고 언제 다른 방법을 선택할지 설명할 수 있는가?
-
-## 원문
-
-- https://outcomeschool.com/blog/rmsnorm-root-mean-square-layer-normalization
+- 원문: https://outcomeschool.com/blog/rmsnorm-root-mean-square-layer-normalization
+- 이전: [BatchNorm vs LayerNorm](batch-normalization-vs-layer-normalization.md)
+- 다음: [RNN](recurrent-neural-network.md)
+- [모듈 2](../../module-02.md)

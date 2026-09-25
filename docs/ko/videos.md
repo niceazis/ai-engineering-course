@@ -28,19 +28,16 @@ Date-Time→Hour 추출, 위치 feature 결합, bucketization, feature 제거 �
 ## 4. Epoch, Batch, Batch Size, Iteration
 원본: https://www.youtube.com/watch?v=NFLlXE-6vno
 
-- 신경망 학습에서 자주 혼동하는 **Epoch, Batch, Batch Size, Iteration**의 관계를 정리합니다.
-- Epoch는 전체 학습 데이터를 한 번 모두 사용한 상태를 의미합니다.
-- Batch는 한 번의 계산에 넣는 데이터 묶음이고, Batch Size는 그 묶음의 샘플 수입니다.
-- Iteration은 한 Batch를 이용해 forward/backward pass와 파라미터 업데이트를 한 횟수입니다.
-- 데이터가 N개이고 Batch Size가 B라면 보통 한 Epoch당 약 N/B번의 Iteration이 발생합니다.
+→ [한국어 상세 영상 학습 노트](videos/module-02/epoch-batch-batch-size-iteration.md)
+
+Epoch·Batch·Batch Size·Iteration의 정확한 관계를 수치 예제로 연결하고, batch size가 memory·gradient noise·iteration 수에 미치는 영향까지 설명합니다.
 
 ## 5. Softmax Activation Function in Machine Learning
 원본: https://www.youtube.com/watch?v=2Zx6x01WwWM
 
-- **Softmax**는 여러 클래스에 대한 raw score(logit)를 합이 1인 확률 분포로 변환합니다.
-- 다중 분류 모델의 출력층에서 각 클래스의 상대적 가능성을 표현할 때 흔히 사용됩니다.
-- 큰 logit 차이를 더 뚜렷한 확률 차이로 바꾸며, Cross-Entropy Loss와 자주 함께 사용됩니다.
-- Attention에서도 score를 가중치로 정규화할 때 같은 원리가 사용됩니다.
+→ [한국어 상세 영상 학습 노트](videos/module-02/softmax-activation-function-in-machine-learning.md)
+
+Logit을 확률 분포로 바꾸는 수식, Outcome School의 [2,3,1] 예제, Cross-Entropy와의 연결, numerical stability까지 단계별로 설명합니다.
 
 ## 6. Tokenization in Large Language Models (LLMs)
 원본: https://www.youtube.com/watch?v=sK2s9I84EVI

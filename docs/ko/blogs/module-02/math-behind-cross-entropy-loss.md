@@ -1,85 +1,132 @@
 # Cross-Entropy Loss란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/math-behind-cross-entropy-loss
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/math-behind-cross-entropy-loss  
+> 원저자: Amit Shekhar / Outcome School · 2026-04-20  
+> 원문의 probability distribution, negative log, binary/categorical CE, cat-dog-rabbit 수치 예제와 language model 연결을 따라 독립적으로 다시 쓴 학습 노트입니다.
 
-## 핵심 해설
+## 큰 그림
 
-단계별 수치 예제를 이용해 Cross-Entropy Loss의 수학을 배웁니다.
+분류 모델은 class마다 probability를 출력합니다. Cross-Entropy는 정답 class에 얼마나 높은 probability를 주었는지를 loss로 바꿉니다.
 
-→ [한국어 상세 학습 노트](blogs/module-02/math-behind-cross-entropy-loss.md)
+```text
+CE = - sum(y_i * log(p_i))
+```
 
-## 핵심 학습 항목
+one-hot label에서는 정답 class만 남아:
 
-- 큰 그림
-- Cross-Entropy란?
-- Cross-Entropy Loss 공식
-- 음의 로그를 취하는 이유
-- Binary Cross-Entropy Loss
-- Categorical Cross-Entropy Loss
-- 단계별 수치 예제
-- 언어 모델의 Cross-Entropy Loss
-- Cross-Entropy Loss의 Gradient
-- 빠른 요약
+```text
+CE = -log(p_correct)
+```
 
-## 단계별 학습 가이드
+이 됩니다.
 
-### 1. 큰 그림
+## Logit → Softmax → Loss
 
-**큰 그림**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문 예:
 
-### 2. Cross-Entropy란?
+```text
+logits z = [2, 3, 1]
+softmax  = [0.2447, 0.6652, 0.0900]
+정답     = dog
+loss     = -log(0.6652) ≈ 0.4076
+```
 
-**Cross-Entropy란?**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Softmax는 raw score를 합이 1인 probability distribution으로 바꿉니다.
 
-### 3. Cross-Entropy Loss 공식
+## 왜 negative log인가
 
-**Cross-Entropy Loss 공식**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+정답 probability가 높을수록 loss는 작아지고, 낮을수록 빠르게 커집니다.
 
-### 4. 음의 로그를 취하는 이유
+```text
+p=0.9 -> 0.105
+p=0.5 -> 0.693
+p=0.1 -> 2.303
+```
 
-**음의 로그를 취하는 이유**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+따라서 확신을 갖고 틀린 예측에 큰 penalty를 줍니다.
 
-### 5. Binary Cross-Entropy Loss
+## Binary Cross-Entropy
 
-**Binary Cross-Entropy Loss**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+```text
+BCE = -[y*log(p) + (1-y)*log(1-p)]
+```
 
-### 6. Categorical Cross-Entropy Loss
+원문 예에서 y=1, p=0.8이면:
 
-**Categorical Cross-Entropy Loss**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+```text
+BCE = -log(0.8) ≈ 0.223
+```
 
-### 7. 단계별 수치 예제
+입니다.
 
-**단계별 수치 예제**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## Categorical Cross-Entropy
 
-### 8. 언어 모델의 Cross-Entropy Loss
+예:
 
-**언어 모델의 Cross-Entropy Loss**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+```text
+y = [0,1,0,0]
+p = [0.2,0.7,0.05,0.05]
 
-### 9. Cross-Entropy Loss의 Gradient
+CE = -log(0.7) ≈ 0.357
+```
 
-**Cross-Entropy Loss의 Gradient**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 원문의 cat-dog-rabbit 수치 예제
 
-### 10. 빠른 요약
+정답은 dog:
 
-**빠른 요약**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+```text
+y = [0,1,0]
+z = [2.0,3.0,1.0]
+```
 
-## 실무 연결
+Softmax 계산:
 
-- 이 개념이 모델의 정확도·안정성·속도·메모리 중 어떤 요소에 영향을 주는지 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter가 있다면 변화가 결과에 미치는 영향을 확인합니다.
-- 실제 프레임워크에서 어떤 API·연산으로 구현되는지 연결해서 봅니다.
+```text
+exp(2.0)=7.389
+exp(3.0)=20.086
+exp(1.0)=2.718
+sum=30.193
+```
 
-## 점검 질문
+확률:
 
-1. Cross-Entropy Loss란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 계산 또는 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 각각 말할 수 있는가?
-5. 이 개념을 언제 선택하고 언제 다른 방법을 선택할지 설명할 수 있는가?
+```text
+cat≈0.2447
+dog≈0.6652
+rabbit≈0.0900
+```
 
-## 원문
+Loss는 약 0.4076입니다.
 
-- https://outcomeschool.com/blog/math-behind-cross-entropy-loss
+logits가 [1.0,5.0,0.5]이면 dog probability는 약 0.9714, loss는 약 0.0290까지 내려갑니다.
+
+반대로 [5.0,1.0,0.5]인데 정답이 dog이면 dog probability는 약 0.0178이고 loss는 약 4.029로 커집니다.
+
+## Language Model과 연결
+
+LLM도 각 위치에서 실제 다음 token에 부여한 probability로 loss를 계산합니다.
+
+```text
+loss_t = -log(p_actual_next_token)
+Total Loss = 평균(loss_t)
+```
+
+"The cat sat on the mat" 같은 문장이라면 각 위치의 실제 다음 token에 대해 같은 계산을 반복합니다.
+
+## 구현 주의
+
+PyTorch의 CrossEntropyLoss처럼 많은 구현은 raw logits를 직접 받습니다. softmax와 log를 내부에서 안정적으로 결합하므로 이미 softmax를 적용한 probability를 다시 입력하지 않는 것이 중요합니다.
+
+## 이해 확인
+
+1. 정답 class probability가 1에 가까워지면 CE는 어떻게 되나요?
+2. confident wrong prediction이 큰 loss를 받는 이유는 무엇인가요?
+3. LLM에서 token마다 CE를 계산하는 이유는 무엇인가요?
+
+## 연결 학습
+
+- 원문: https://outcomeschool.com/blog/math-behind-cross-entropy-loss
+- 이전: [Backpropagation](math-behind-backpropagation.md)
+- 다음: [Dropout](dropout-in-neural-networks.md)
+- 관련 영상: https://www.youtube.com/watch?v=2Zx6x01WwWM
+- [모듈 2](../../module-02.md)
