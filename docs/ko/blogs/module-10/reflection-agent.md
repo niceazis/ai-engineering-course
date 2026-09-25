@@ -1,72 +1,148 @@
 # Reflection Agent란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/reflection-agent
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/reflection-agent  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 Generate→Reflect→Revise loop와 ReAct 비교, failure mode를 독립적으로 설명합니다.
 
-## 핵심 해설
+## 1. Reflection의 핵심
 
-자신의 결과를 생성하고 비평한 뒤 수정하는 Reflection Agent를 배웁니다.
+Reflection Agent는 첫 결과를 바로 final로 내지 않고 **자기 결과를 비평하고 수정하는 loop**를 둡니다.
 
-## 핵심 학습 항목
+    Generate
+      → Reflect/Critique
+      → Revise
+      → optional Reflect again
+      → Final
 
-- Reflection Agent란?
-- 일반 AI Agent와의 차이
-- 구조
-- 동작 방식
-- Full Trace 예제
-- ReAct Agent와 비교
-- 흔한 실패와 해결책
-- 빠른 요약
+## 2. 왜 필요한가
 
-## 단계별 학습 가이드
+LLM의 첫 draft에는:
 
-### 1. Reflection Agent란?
+- 빠진 요구사항
+- 논리 오류
+- format 문제
+- source mismatch
+- code bug
 
-**Reflection Agent란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+가 있을 수 있습니다.
 
-### 2. 일반 AI Agent와의 차이
+Second pass에 critique라는 좁은 objective를 주면 이런 오류를 찾을 가능성이 높아집니다.
 
-**일반 AI Agent와의 차이**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. 역할 분리
 
-### 3. 구조
+같은 model을 사용해도 prompt role을 분리할 수 있습니다.
 
-**구조**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Generator
 
-### 4. 동작 방식
+    최선의 draft를 생성
 
-**동작 방식**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Critic
 
-### 5. Full Trace 예제
+    요구사항/근거/테스트 기준으로 문제점만 찾음
 
-**Full Trace 예제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Reviser
 
-### 6. ReAct Agent와 비교
+    critic feedback을 반영해 수정
 
-**ReAct Agent와 비교**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+독립 model을 사용하면 error correlation을 줄일 수 있지만 cost가 증가합니다.
 
-### 7. 흔한 실패와 해결책
+## 4. Code 예
 
-**흔한 실패와 해결책**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    draft = generate(task)
+    critique = review(draft, rubric)
+    final = revise(draft, critique)
 
-### 8. 빠른 요약
+Code task라면 review 대신 실제 test/tool을 넣는 것이 더 강합니다.
 
-**빠른 요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    code → unit tests → failures → repair
 
-## 실무 연결
+## 5. Reflection과 Verification
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+Self-critique만으로 correctness가 보장되지는 않습니다.
 
-## 점검 질문
+강한 hierarchy:
 
-1. Reflection Agent란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+1. deterministic test
+2. source/evidence check
+3. second model judge
+4. self-reflection
+
+가능하면 외부 verifier를 우선합니다.
+
+## 6. ReAct와 차이
+
+ReAct:
+
+    외부 world에서 무엇을 할지 반복
+
+Reflection:
+
+    이미 만든 결과의 품질을 반복 개선
+
+둘을 결합할 수 있습니다.
+
+    ReAct research
+      → draft
+      → reflection
+      → missing evidence 발견
+      → ReAct 추가 검색
+      → final
+
+## 7. 종료 조건
+
+Reflection을 무한 반복하면 문장이 계속 바뀌면서 오히려 품질이 나빠질 수 있습니다.
+
+종료 기준:
+
+- max revisions
+- rubric pass
+- tests pass
+- no critical issue
+- improvement score threshold
+
+## 8. Failure Mode
+
+### Echo Critique
+
+Critic이 실제 검증 없이 "좋다"고 동의.
+
+대응: concrete rubric.
+
+### New Bugs
+
+Revision이 기존 맞는 부분을 깨뜨림.
+
+대응: regression test.
+
+### Style Churn
+
+내용은 같고 표현만 계속 변경.
+
+대응: semantic stop condition.
+
+### Confirmation Bias
+
+같은 model이 자기 오류를 못 봄.
+
+대응: external tool/model.
+
+## 9. 잘 맞는 Task
+
+- code generation
+- report/proposal
+- source-grounded answer
+- complex structured output
+- high-quality writing
+
+단순 factual query에는 추가 cost가 불필요할 수 있습니다.
+
+## 핵심 정리
+
+- Reflection Agent는 Generate→Critique→Revise loop입니다.
+- 첫 draft 품질을 올리는 데 유용하지만 self-review 자체가 truth guarantee는 아닙니다.
+- Code/test/source checker 같은 external verifier와 결합하면 훨씬 강합니다.
+- max revision과 pass criteria가 필요합니다.
+- ReAct가 행동 loop라면 Reflection은 quality-improvement loop입니다.
 
 ## 원문
 
