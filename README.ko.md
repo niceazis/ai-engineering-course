@@ -2201,6 +2201,8 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 
 영상 보기: [AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization](https://www.youtube.com/watch?v=lnfWvX66FUk)
 
+→ [Agent 중심 한국어 상세 영상 학습 노트](docs/ko/videos/module-10/ai-engineering-explained-agent-overview.md)
+
 → [한국어 영상 요약](docs/ko/videos.md#1-ai-engineering-explained-llm-rag-mcp-agent-fine-tuning-quantization)
 
 ### 10.2 LLM의 Function Calling은 어떻게 동작하는가?

@@ -1,82 +1,135 @@
 # AI Agent Loop란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/ai-agent-loop
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/ai-agent-loop  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 Think-Act-Observe, parallel tool call, termination/failure를 중심으로 다시 쓴 상세 학습 노트입니다.
 
-## 핵심 해설
+## 1. Agent를 Agent답게 만드는 것
 
-Agent를 움직이는 Think-Act-Observe 사이클과 종료 조건, 흔한 실패 유형을 배웁니다.
+Agent loop는 model을 반복 호출하는 runtime control flow입니다.
 
-## 핵심 학습 항목
+    Think/Decide
+      → Act
+      → Observe
+      → Think/Decide
+      → ...
 
-- 큰 그림
-- Agent Loop란?
-- Loop가 필요한 이유
-- Think-Act-Observe
-- 단계별 흐름
-- 실제 코드
-- 한 Turn의 Parallel Tool Call
-- 종료 판단
-- 흔한 Loop 실패
-- 빠른 요약
+LLM 자체는 stateless한 request-response model일 수 있습니다. Loop가 history와 tool result를 누적해 지속적인 task 수행을 만듭니다.
 
-## 단계별 학습 가이드
+## 2. Think
 
-### 1. 큰 그림
+현재 state를 보고 결정합니다.
 
-**큰 그림**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- 목표가 끝났는가?
+- 어떤 정보가 부족한가?
+- 어떤 tool이 필요한가?
+- 여러 action을 병렬 실행할 수 있는가?
 
-### 2. Agent Loop란?
+Production에서는 raw hidden reasoning보다 action decision과 state transition을 기록하는 것이 중요합니다.
 
-**Agent Loop란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Act
 
-### 3. Loop가 필요한 이유
+LLM이 고른 tool call을 runtime이 실행합니다.
 
-**Loop가 필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    web_search
+    sql_query
+    read_file
+    send_email
 
-### 4. Think-Act-Observe
+Action에는 side effect가 있을 수 있으므로 permission boundary가 필요합니다.
 
-**Think-Act-Observe**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. Observe
 
-### 5. 단계별 흐름
+Tool result를 normalized message로 state에 넣습니다.
 
-**단계별 흐름**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+좋은 observation은:
 
-### 6. 실제 코드
+- 필요한 field만 포함
+- source/provenance
+- error 상태
+- timestamp/version
 
-**실제 코드**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+를 명확히 합니다.
 
-### 7. 한 Turn의 Parallel Tool Call
+## 5. 한 Turn의 Parallel Action
 
-**한 Turn의 Parallel Tool Call**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+서로 독립적인 두 source를 조사한다면 LLM이 한 turn에 두 tool call을 낼 수 있습니다.
 
-### 8. 종료 판단
+Runtime:
 
-**종료 판단**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Promise.all / async gather
 
-### 9. 흔한 Loop 실패
+처럼 병렬 실행하고 두 observation을 한번에 feed back할 수 있습니다.
 
-**흔한 Loop 실패**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 6. 종료 조건
 
-### 10. 빠른 요약
+Loop 종료는 최소 다음을 포함해야 합니다.
 
-**빠른 요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- goal achieved
+- LLM final answer
+- max steps
+- timeout
+- cost/token budget
+- unrecoverable tool error
+- user cancellation
 
-## 실무 연결
+Model의 "done" 판단 하나만 믿으면 runaway loop가 생길 수 있습니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+## 7. 상태 Machine으로 보기
 
-## 점검 질문
+Agent loop를 명시적 state machine으로 모델링하면 안정적입니다.
 
-1. AI Agent Loop란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+    PLAN
+      → TOOL
+      → VALIDATE
+      → PLAN
+      → FINAL
+
+각 transition에 validator를 둘 수 있습니다.
+
+## 8. 흔한 실패
+
+### Infinite Loop
+
+같은 search 반복.
+
+대응: duplicate-action detector, max steps.
+
+### Tool Thrashing
+
+서로 다른 tool을 의미 없이 오감.
+
+대응: tool policy, task state.
+
+### Context Explosion
+
+모든 observation을 raw로 계속 append.
+
+대응: compaction, structured state.
+
+### Premature Stop
+
+근거 부족인데 final answer.
+
+대응: completion checklist, verifier.
+
+## 9. Retry
+
+Tool error가 transient인지 semantic인지 구분합니다.
+
+    timeout → retry 가능
+    permission denied → retry 무의미
+    invalid argument → repair 후 retry
+
+Blind retry는 side effect를 중복시킬 수 있습니다.
+
+## 핵심 정리
+
+- Agent Loop는 LLM 결정, tool 실행, observation feedback을 반복하는 runtime입니다.
+- Think-Act-Observe가 기본 구조입니다.
+- 독립 action은 한 turn에서 병렬 실행할 수 있습니다.
+- 종료 조건은 model 판단 외에도 step/time/cost budget이 필요합니다.
+- Loop 안정성은 duplicate detection, validation, compaction, retry policy에 달려 있습니다.
 
 ## 원문
 

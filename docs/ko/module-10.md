@@ -82,6 +82,8 @@
 
 영상 보기: [AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization](https://www.youtube.com/watch?v=lnfWvX66FUk)
 
+→ [Agent 중심 한국어 상세 영상 학습 노트](videos/module-10/ai-engineering-explained-agent-overview.md)
+
 ### 10.2 LLM의 Function Calling은 어떻게 동작하는가?
 
 LLM이 외부 함수를 선택하고 인자를 만들지만 직접 함수를 실행하지는 않는 Function Calling의 핵심 구조를 배웁니다.

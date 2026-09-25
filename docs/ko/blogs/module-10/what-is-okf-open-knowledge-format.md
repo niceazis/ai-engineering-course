@@ -1,87 +1,162 @@
 # OKF(Open Knowledge Format)란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/what-is-okf-open-knowledge-format
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/what-is-okf-open-knowledge-format  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 bundle, Markdown/YAML frontmatter, type 필수 field, cross-link graph와 MCP/Skill 관계를 독립적으로 정리했습니다.
 
-## 핵심 해설
+## 1. OKF가 해결하는 문제
 
-흩어진 데이터 지식을 AI Agent와 Tool이 읽을 수 있는 평문 Markdown 폴더 형태로 정리하는 Open Knowledge Format을 배웁니다.
+Agent가 data source에 접근할 수 있어도 다음을 모를 수 있습니다.
 
-## 핵심 학습 항목
+- table의 의미
+- metric 정의
+- 어떤 column이 canonical인지
+- business term 관계
+- data owner/freshness
 
-- 지식이 흩어지는 문제
-- OKF란?
-- Open + Knowledge + Format
-- OKF Bundle 내부
-- Frontmatter와 필수 필드
-- Cross-link로 Graph 만들기
-- Plain Markdown을 쓰는 이유
-- Agent가 사용하는 방식
-- OKF, MCP, Agent Skills의 관계
-- 현재 제공되는 구성
-- 요약
+Tool access와 domain knowledge는 다릅니다.
 
-## 단계별 학습 가이드
+OKF는 이런 **data knowledge/semantics를 plain Markdown로 정리**하는 format입니다.
 
-### 1. 지식이 흩어지는 문제
+## 2. OKF의 핵심
 
-**지식이 흩어지는 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문의 요약:
 
-### 2. OKF란?
+    OKF = Open + Knowledge + Format
 
-**OKF란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+실제 row/data를 저장하는 format이 아니라:
 
-### 3. Open + Knowledge + Format
+> 데이터와 개념이 무엇을 의미하는지를 설명하는 knowledge layer.
 
-**Open + Knowledge + Format**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Bundle
 
-### 4. OKF Bundle 내부
+OKF file collection을 bundle이라고 부릅니다.
 
-**OKF Bundle 내부**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문 예:
 
-### 5. Frontmatter와 필수 필드
+    sales/
+      index.md
+      datasets/
+      tables/
+        orders.md
+        customers.md
+      metrics/
+        weekly_active_users.md
 
-**Frontmatter와 필수 필드**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+File path 자체가 concept identity 역할을 합니다.
 
-### 6. Cross-link로 Graph 만들기
+## 4. 파일 구조
 
-**Cross-link로 Graph 만들기**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+각 Markdown file:
 
-### 7. Plain Markdown을 쓰는 이유
+    ---
+    type: BigQuery Table
+    title: Orders
+    description: ...
+    ---
 
-**Plain Markdown을 쓰는 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    # Orders
+    ...
 
-### 8. Agent가 사용하는 방식
+처럼 YAML frontmatter + Markdown body로 구성됩니다.
 
-**Agent가 사용하는 방식**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문 기준 required field:
 
-### 9. OKF, MCP, Agent Skills의 관계
+    type
 
-**OKF, MCP, Agent Skills의 관계**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Optional agreed fields:
 
-### 10. 현재 제공되는 구성
+- title
+- description
+- resource
+- tags
+- timestamp
 
-**현재 제공되는 구성**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+등입니다.
 
-### 11. 요약
+## 5. 왜 Plain Markdown인가
 
-**요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- 사람이 바로 읽을 수 있음
+- Git diff/versioning
+- 특별한 DB 없이 사용 가능
+- LLM이 자연스럽게 읽음
+- editor/CI ecosystem 활용
 
-## 실무 연결
+Format이 단순해 knowledge가 특정 vendor에 묶이지 않는 것이 목적입니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+## 6. Cross-Link가 Graph를 만든다
 
-## 점검 질문
+Ordinary Markdown link:
 
-1. OKF(Open Knowledge Format)란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+    [Orders](../tables/orders.md)
+
+를 사용하면 concept 간 relationship을 표현할 수 있습니다.
+
+여러 file link가 모여 agent가 탐색할 수 있는 knowledge graph처럼 동작합니다.
+
+## 7. Agent의 사용 방식
+
+Task:
+
+    "WAU 계산 SQL 작성"
+
+Agent는:
+
+1. OKF metric definition
+2. 관련 table link
+3. column semantics
+4. source resource
+
+를 읽고 실제 query/tool을 사용합니다.
+
+단순 schema introspection보다 business meaning을 더 정확히 이해할 수 있습니다.
+
+## 8. MCP / Skills / OKF
+
+원문 한 줄 구분:
+
+    MCP    = reach
+    Skills = know-how
+    OKF    = knowledge
+
+예:
+
+- MCP: BigQuery query 실행 capability
+- OKF: orders table/metric 의미
+- Skill: weekly report 작성 procedure
+
+세 층을 조합하면 agent가 tool과 domain context를 함께 갖습니다.
+
+## 9. 장점
+
+- domain knowledge를 repository artifact로 관리
+- 사람과 AI가 같은 source 사용
+- code review 가능
+- vendor-neutral
+- cross-link navigation
+- stale knowledge를 version control에서 추적
+
+## 10. 한계
+
+OKF file이 오래되면 agent도 잘못 판단합니다.
+
+따라서:
+
+- owner
+- timestamp/version
+- CI validation
+- broken link check
+- source-of-truth sync
+
+가 필요합니다.
+
+## 핵심 정리
+
+- OKF는 actual data가 아니라 data의 의미와 관계를 Markdown으로 기록합니다.
+- Bundle은 plain folder이며 file path가 concept identity입니다.
+- YAML frontmatter에서 원문 기준 type이 유일한 필수 field입니다.
+- Markdown link가 concept graph를 만듭니다.
+- MCP=reach, Skills=know-how, OKF=knowledge라는 역할 구분이 핵심입니다.
 
 ## 원문
 

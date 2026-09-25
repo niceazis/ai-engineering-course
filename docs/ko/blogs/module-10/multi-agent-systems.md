@@ -1,82 +1,169 @@
 # Multi-Agent System이란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/multi-agent-systems
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/multi-agent-systems  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 role specialization, communication, coordination과 single-agent trade-off를 중심으로 독립적으로 설명합니다.
 
-## 핵심 해설
+## 1. 정의
 
-여러 Agent가 역할을 나눠 협업하는 시스템의 구성 원리와 trade-off를 배웁니다.
+Multi-Agent System(MAS)은 하나의 큰 agent가 모든 일을 하는 대신 **서로 다른 역할을 가진 여러 agent가 협력**해 목표를 수행하는 구조입니다.
 
-## 핵심 학습 항목
+예:
 
-- 큰 그림
-- Multi-Agent System이란?
-- 세 가지 Pillar
-- 대표 Agent Role
-- Agent Communication
-- Coordination
-- Multi-Agent vs Single Agent
-- 흔한 실수
-- 사용 시점
-- 빠른 요약
+    Manager
+      ├─ Researcher
+      ├─ Coder
+      └─ Reviewer
 
-## 단계별 학습 가이드
+## 2. 세 Pillar
 
-### 1. 큰 그림
+### Specialization
 
-**큰 그림**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+각 agent가 좁은 role/tool/context를 가짐.
 
-### 2. Multi-Agent System이란?
+### Communication
 
-**Multi-Agent System이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+결과와 요청을 message로 주고받음.
 
-### 3. 세 가지 Pillar
+### Coordination
 
-**세 가지 Pillar**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+누가 언제 무엇을 할지 orchestrator/protocol이 제어.
 
-### 4. 대표 Agent Role
+여러 model을 단순히 동시에 부른다고 MAS가 되는 것은 아닙니다.
 
-**대표 Agent Role**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. 왜 분리하나
 
-### 5. Agent Communication
+장점:
 
-**Agent Communication**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- context 분리
+- tool permission 분리
+- model specialization
+- parallel execution
+- independent review
 
-### 6. Coordination
+한 agent에 모든 tool/context를 넣을 때 생기는 confusion을 줄일 수 있습니다.
 
-**Coordination**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. 대표 Role
 
-### 7. Multi-Agent vs Single Agent
+- planner/manager
+- researcher
+- coder
+- data analyst
+- verifier/reviewer
+- domain specialist
 
-**Multi-Agent vs Single Agent**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Role은 task에 따라 설계합니다.
 
-### 8. 흔한 실수
+## 5. Communication
 
-**흔한 실수**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Agent 간 message에는 최소:
 
-### 9. 사용 시점
+    task
+    relevant state
+    expected output schema
+    source/evidence
+    status/error
 
-**사용 시점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+가 필요합니다.
 
-### 10. 빠른 요약
+Raw conversation 전체를 매번 공유하면 context cost가 폭증합니다.
 
-**빠른 요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 6. Coordination Pattern
 
-## 실무 연결
+### Centralized
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+Manager가 worker에게 task를 할당.
 
-## 점검 질문
+장점: 통제/observability.
 
-1. Multi-Agent System이란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+### Peer-to-Peer
+
+Agent끼리 직접 message.
+
+유연하지만 loop/conflict 관리 어려움.
+
+### Blackboard/Shared State
+
+공유 store를 읽고 씀.
+
+Large project에서 durable state에 유리합니다.
+
+## 7. Parallelism
+
+독립 subtask:
+
+    Research market
+    Analyze code
+    Check policy
+
+를 parallel worker에게 맡기면 wall-clock time을 줄일 수 있습니다.
+
+Dependency가 있으면 DAG로 실행 순서를 관리합니다.
+
+## 8. Consensus
+
+여러 agent가 독립 answer를 만든 뒤:
+
+- majority
+- judge
+- evidence aggregation
+
+으로 결합할 수 있습니다.
+
+그러나 같은 base model이면 error가 correlated될 수 있습니다.
+
+## 9. Single vs Multi
+
+Single agent가 더 나은 경우:
+
+- task 짧음
+- tool 수 적음
+- state 공유가 중요
+- latency/cost 민감
+
+Multi-agent가 유리:
+
+- clear specialization
+- parallel work
+- separate permissions
+- independent verification
+
+## 10. 실패 Mode
+
+- message ping-pong
+- duplicate work
+- inconsistent state
+- role overlap
+- manager bottleneck
+- cost explosion
+- no clear owner of final decision
+
+Agent 수가 많다고 capability가 자동 증가하지 않습니다.
+
+## 11. 평가
+
+Agent별:
+
+- task success
+- tool-call efficiency
+
+System:
+
+- end-to-end quality
+- latency
+- cost
+- coordination overhead
+- duplicate work rate
+
+를 따로 측정합니다.
+
+## 핵심 정리
+
+- MAS는 specialization·communication·coordination이 있는 agent team입니다.
+- Central manager, peer-to-peer, shared-state 같은 topology가 있습니다.
+- Parallelism과 permission separation이 주요 장점입니다.
+- Coordination overhead 때문에 작은 task에는 single agent가 더 낫습니다.
+- Role boundary와 structured message contract가 성패를 좌우합니다.
 
 ## 원문
 

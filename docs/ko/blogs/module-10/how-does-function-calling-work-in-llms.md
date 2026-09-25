@@ -1,82 +1,133 @@
 # LLM의 Function Calling은 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-function-calling-work-in-llms
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-function-calling-work-in-llms  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 function schema, weather 예제와 conversation loop를 독립적으로 재구성했습니다.
 
-## 핵심 해설
+## 1. Function Calling의 핵심
 
-LLM이 외부 함수를 선택하고 인자를 만들지만 직접 함수를 실행하지는 않는 Function Calling의 핵심 구조를 배웁니다.
+Function Calling은 LLM이 외부 함수를 **직접 실행하는 기능이 아니라 어떤 함수를 어떤 인자로 호출할지 구조화해서 선택하는 기능**입니다.
 
-## 핵심 학습 항목
+    user
+      → LLM
+      → {tool:"get_weather", arguments:{city:"Seoul"}}
+      → application runtime
+      → actual API/function
+      → result
+      → LLM
 
-- Function Calling이란?
-- 필요한 이유
-- 핵심: 모델이 함수를 직접 실행하지 않음
-- 단계별 동작
-- get_weather(city) 예제
-- Conversation Loop
-- Multi-Step / Parallel Function Calling
-- Structured Output·JSON Mode와의 관계
-- AI Agent의 기반
-- 빠른 요약
+## 2. Tool Schema
 
-## 단계별 학습 가이드
+Tool 정의에는 보통:
 
-### 1. Function Calling이란?
+    name
+    description
+    input schema
 
-**Function Calling이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+가 있습니다.
 
-### 2. 필요한 이유
+Description이 모호하면 model이 wrong tool을 선택할 수 있으므로 semantic contract가 중요합니다.
 
-**필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Weather 예
 
-### 3. 핵심: 모델이 함수를 직접 실행하지 않음
+User:
 
-**핵심: 모델이 함수를 직접 실행하지 않음**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    서울 오늘 날씨 알려줘
 
-### 4. 단계별 동작
+LLM은 현재 날씨를 parameter 안에서 알 수 없으므로:
 
-**단계별 동작**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    get_weather(city="Seoul")
 
-### 5. get_weather(city) 예제
+를 선택합니다.
 
-**get_weather(city) 예제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Host가 API를 실행하고:
 
-### 6. Conversation Loop
+    {"temp":25,"condition":"rain"}
 
-**Conversation Loop**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+같은 result를 tool message로 되돌립니다.
 
-### 7. Multi-Step / Parallel Function Calling
+그 뒤 LLM이 자연어 answer를 생성합니다.
 
-**Multi-Step / Parallel Function Calling**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. 전체 Loop
 
-### 8. Structured Output·JSON Mode와의 관계
+1. User message + tool schemas → LLM
+2. LLM이 text 또는 tool call 출력
+3. Tool call이면 host가 argument validate
+4. 실제 function 실행
+5. Tool result를 conversation에 append
+6. 다시 LLM call
+7. 필요하면 추가 tool call
+8. final text
 
-**Structured Output·JSON Mode와의 관계**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Function calling 자체가 agent loop의 기본 building block입니다.
 
-### 9. AI Agent의 기반
+## 5. Structured Output과 차이
 
-**AI Agent의 기반**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Structured Output/JSON mode:
 
-### 10. 빠른 요약
+    최종 response의 shape를 강제
 
-**빠른 요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Function Calling:
 
-## 실무 연결
+    외부 action을 선택하고 argument를 생성
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+둘 다 schema를 쓰지만 목적이 다릅니다.
 
-## 점검 질문
+## 6. Parallel Calls
 
-1. LLM의 Function Calling은 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+서로 독립적이면:
+
+    weather(Seoul)
+    weather(Busan)
+    weather(Jeju)
+
+같은 tool call을 한 turn에 여러 개 낼 수 있습니다.
+
+Runtime이 병렬 실행하면 latency를 줄일 수 있습니다.
+
+## 7. Multi-Step Calls
+
+Tool result에 따라 다음 tool이 달라지는 경우:
+
+    search_customer
+      → customer_id
+      → get_orders(customer_id)
+      → refund_order(order_id)
+
+각 observation 뒤 다시 model 판단이 필요합니다.
+
+## 8. Validation
+
+LLM이 schema를 따르더라도 argument의 의미가 안전한지는 별도 문제입니다.
+
+반드시 확인:
+
+- schema/type
+- permission
+- business rule
+- resource existence
+- destructive action confirmation
+- idempotency
+
+Typed JSON은 권한 검증을 대신하지 않습니다.
+
+## 9. Tool Error
+
+Runtime은 error도 observation으로 반환할 수 있습니다.
+
+    {"error":"timeout"}
+
+Agent는 retry하거나 다른 tool을 선택할 수 있습니다.
+
+Retry 횟수와 side effect 중복을 제어해야 합니다.
+
+## 핵심 정리
+
+- LLM은 function을 실행하지 않고 call intent와 arguments를 반환합니다.
+- 실제 실행·권한·validation은 application runtime 책임입니다.
+- Tool result를 다시 model에 넣어 conversation loop를 이어갑니다.
+- Parallel call과 multi-step call이 agent workflow의 기반입니다.
+- JSON/schema 준수와 실제 action safety는 별개입니다.
 
 ## 원문
 

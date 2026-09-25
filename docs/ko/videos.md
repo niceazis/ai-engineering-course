@@ -5,6 +5,8 @@
 ## 1. AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization
 원본: https://www.youtube.com/watch?v=lnfWvX66FUk
 
+→ [모듈 10 Agent 중심 상세 영상 학습 노트](videos/module-10/ai-engineering-explained-agent-overview.md)
+
 → [모듈 9 RAG 중심 상세 영상 학습 노트](videos/module-09/ai-engineering-explained-rag-overview.md)
 
 - AI 엔지니어링에서 반복해서 등장하는 여섯 핵심 개념인 **LLM, RAG, MCP, Agent, Fine-tuning, Quantization**을 한 번에 훑는 개요 영상입니다.
