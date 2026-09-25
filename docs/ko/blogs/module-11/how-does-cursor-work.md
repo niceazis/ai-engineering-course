@@ -1,92 +1,146 @@
 # Cursor는 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-cursor-work
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-cursor-work  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 codebase indexing, Tab/Chat/Agent, diff 적용과 model routing을 독립적으로 정리했습니다. 제품 동작과 privacy 설정은 버전에 따라 바뀌므로 현재 Cursor 공식 문서를 확인해야 합니다.
 
-## 핵심 해설
+## 1. Cursor의 기본 구조
 
-코드 편집기 위에 AI 기능을 통합한 Cursor가 코드베이스를 Embedding으로 Indexing하고 검색하며, Tab·Chat·Agent Mode에서 변경을 적용하는 방식을 배웁니다.
+Cursor는 code editor 위에:
 
-## 핵심 학습 항목
+- autocomplete
+- chat
+- codebase search
+- agent/tool execution
+- edit/diff application
 
-- Cursor란?
-- Code Editor + AI
-- 핵심 아이디어
-- 코드 이해 방식
-- Codebase Indexing
-- Tab Autocomplete
-- Chat
-- Agent Mode
-- Diff를 통한 변경 적용
-- 작업별 다른 Model 사용
-- 코드 Privacy
-- 전체 흐름
+을 통합합니다.
 
-## 단계별 학습 가이드
+AI가 현재 file뿐 아니라 repository context를 찾는 것이 핵심입니다.
 
-### 1. Cursor란?
+## 2. Codebase Indexing
 
-**Cursor란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+큰 repository를 전부 매 prompt에 넣을 수 없습니다.
 
-### 2. Code Editor + AI
+그래서 code를 chunk/symbol 단위로 index하고 query와 관련 있는 부분을 retrieval합니다.
 
-**Code Editor + AI**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+개념:
 
-### 3. 핵심 아이디어
+    repository
+      → parse/chunk
+      → embeddings/index
 
-**핵심 아이디어**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    question
+      → search
+      → relevant code context
+      → model
 
-### 4. 코드 이해 방식
+정확한 indexing 구현은 제품 버전에 따라 달라질 수 있습니다.
 
-**코드 이해 방식**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Tab Autocomplete
 
-### 5. Codebase Indexing
+현재:
 
-**Codebase Indexing**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- cursor 주변 code
+- nearby file
+- recent edit
 
-### 6. Tab Autocomplete
+를 보고 다음 edit/code completion을 예측합니다.
 
-**Tab Autocomplete**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Low latency가 중요하므로 chat/agent와 다른 model/serving path를 사용할 수 있습니다.
 
-### 7. Chat
+## 4. Chat
 
-**Chat**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+사용자가 codebase에 대해 질문합니다.
 
-### 8. Agent Mode
+    "이 auth flow 어디서 시작해?"
 
-**Agent Mode**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Retriever가 관련 file/symbol을 context에 넣고 model이 설명합니다.
 
-### 9. Diff를 통한 변경 적용
+좋은 answer를 위해 source/reference file을 확인하는 것이 중요합니다.
 
-**Diff를 통한 변경 적용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. Agent Mode
 
-### 10. 작업별 다른 Model 사용
+단순 설명을 넘어:
 
-**작업별 다른 Model 사용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- search
+- edit file
+- run command
+- test
+- iterate
 
-### 11. 코드 Privacy
+하는 coding-agent loop를 사용합니다.
 
-**코드 Privacy**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Claude Code와 마찬가지로 model이 action을 결정하고 editor/runtime가 실제 tool을 실행합니다.
 
-### 12. 전체 흐름
+## 6. Diff 기반 적용
 
-**전체 흐름**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Model이 entire file을 무작정 덮는 대신 targeted edit/diff를 적용하면:
 
-## 실무 연결
+- change review
+- conflict handling
+- undo
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+가 쉬워집니다.
 
-## 점검 질문
+큰 generated patch는 반드시 diff와 test로 검증합니다.
 
-1. Cursor는 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+## 7. Model Routing
+
+Task마다 요구가 다릅니다.
+
+- autocomplete → speed
+- hard refactor → reasoning quality
+- large context → context capacity
+
+제품은 여러 model을 선택/route할 수 있습니다.
+
+## 8. Privacy
+
+Codebase indexing이 local/remote 중 어디에서 처리되고 무엇이 저장되는지는 조직 보안에 매우 중요합니다.
+
+확인:
+
+- code retention
+- training use policy
+- remote indexing
+- enterprise controls
+- secret filtering
+
+현재 정책을 공식 문서에서 확인해야 합니다.
+
+## 9. Failure Mode
+
+- wrong code retrieval
+- stale index
+- partial architecture understanding
+- compile failure
+- wide unintended edit
+
+대응:
+
+    search evidence
+    small diff
+    build/test
+    git review
+
+## 10. 전체 흐름
+
+    user intent
+      → codebase retrieval
+      → model
+      → suggestion/tool calls
+      → editor applies diff
+      → test/observation
+      → iterate
+
+## 핵심 정리
+
+- Cursor의 핵심은 editor + codebase retrieval + model + edit/tool loop입니다.
+- Repository 전체를 prompt에 넣지 않고 indexing/search로 relevant context를 찾습니다.
+- Tab, Chat, Agent는 latency/권한/작업 범위가 다릅니다.
+- 실제 변경은 diff와 test로 검증해야 합니다.
+- Privacy/indexing 정책은 최신 공식 제품 문서를 기준으로 확인해야 합니다.
 
 ## 원문
 
