@@ -11,38 +11,38 @@
 **이 모듈의 레슨:**
 
 1. [파인튜닝은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-fine-tuning-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-07/how-does-fine-tuning-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-07/how-does-fine-tuning-work.md)
 2. [LoRA(Low-Rank Adaptation)란 무엇이며 LLM을 어떻게 파인튜닝하는가?](https://outcomeschool.com/blog/lora-low-rank-adaptation-of-llms)
+   ↳ [한국어 상세 학습 노트](blogs/module-07/lora-low-rank-adaptation-of-llms.md)
 
-→ [한국어 상세 학습 노트](blogs/module-07/lora-low-rank-adaptation-of-llms.md)
 3. [Prefix Tuning은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-prefix-tuning-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-07/how-does-prefix-tuning-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-07/how-does-prefix-tuning-work.md)
 4. [Knowledge Distillation은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-knowledge-distillation-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-07/how-does-knowledge-distillation-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-07/how-does-knowledge-distillation-work.md)
 5. [LLM의 Continual Learning이란? Catastrophic Forgetting 해결](https://outcomeschool.com/blog/continual-learning-in-llms)
+   ↳ [한국어 상세 학습 노트](blogs/module-07/continual-learning-in-llms.md)
 
-→ [한국어 상세 학습 노트](blogs/module-07/continual-learning-in-llms.md)
 6. [Deep RL from Human Preferences란? RLHF의 시작이 된 논문](https://outcomeschool.com/blog/decoding-deep-rl-from-human-preferences)
+   ↳ [한국어 상세 학습 노트](blogs/module-07/decoding-deep-rl-from-human-preferences.md)
 
-→ [한국어 상세 학습 노트](blogs/module-07/decoding-deep-rl-from-human-preferences.md)
 7. [InstructGPT란? GPT-3가 지시를 따르게 된 방법](https://outcomeschool.com/blog/decoding-instructgpt)
+   ↳ [한국어 상세 학습 노트](blogs/module-07/decoding-instructgpt.md)
 
-→ [한국어 상세 학습 노트](blogs/module-07/decoding-instructgpt.md)
 8. [RLHF란? 인간 피드백을 이용한 강화학습](https://outcomeschool.com/blog/reinforcement-learning-from-human-feedback-rlhf)
+   ↳ [한국어 상세 학습 노트](blogs/module-07/reinforcement-learning-from-human-feedback-rlhf.md)
 
-→ [한국어 상세 학습 노트](blogs/module-07/reinforcement-learning-from-human-feedback-rlhf.md)
 9. [Proximal Policy Optimization(PPO)이란?](https://outcomeschool.com/blog/proximal-policy-optimization-ppo)
+   ↳ [한국어 상세 학습 노트](blogs/module-07/proximal-policy-optimization-ppo.md)
 
-→ [한국어 상세 학습 노트](blogs/module-07/proximal-policy-optimization-ppo.md)
 10. [Direct Preference Optimization(DPO)이란?](https://outcomeschool.com/blog/direct-preference-optimization-dpo)
+   ↳ [한국어 상세 학습 노트](blogs/module-07/direct-preference-optimization-dpo.md)
 
-→ [한국어 상세 학습 노트](blogs/module-07/direct-preference-optimization-dpo.md)
 11. [Group Relative Policy Optimization(GRPO)이란?](https://outcomeschool.com/blog/group-relative-policy-optimization-grpo)
+   ↳ [한국어 상세 학습 노트](blogs/module-07/group-relative-policy-optimization-grpo.md)
 
-→ [한국어 상세 학습 노트](blogs/module-07/group-relative-policy-optimization-grpo.md)
 
 ---
 
@@ -63,6 +63,7 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 
 → [한국어 상세 학습 노트](blogs/module-07/how-does-fine-tuning-work.md)
 
+
 ### 7.2 LoRA란 무엇이며 LLM을 어떻게 파인튜닝하는가?
 
 대규모 언어 모델을 저비용으로 적응시키는 LoRA(Low-Rank Adaptation)를 배웁니다.
@@ -80,6 +81,7 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 시작하기: [LoRA](https://outcomeschool.com/blog/lora-low-rank-adaptation-of-llms)
 
 → [한국어 상세 학습 노트](blogs/module-07/lora-low-rank-adaptation-of-llms.md)
+
 
 ### 7.3 Prefix Tuning은 어떻게 동작하는가?
 
@@ -105,6 +107,7 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 
 → [한국어 상세 학습 노트](blogs/module-07/how-does-prefix-tuning-work.md)
 
+
 ### 7.4 Knowledge Distillation은 어떻게 동작하는가?
 
 큰 모델의 지식을 작은 모델로 전달해 모바일·엣지 장치나 저비용 환경에서도 강력한 모델을 사용할 수 있게 하는 Knowledge Distillation을 배웁니다.
@@ -124,6 +127,7 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 
 → [한국어 상세 학습 노트](blogs/module-07/how-does-knowledge-distillation-work.md)
 
+
 ### 7.5 LLM의 Continual Learning이란?
 
 새로운 지식을 계속 학습하면서 기존 지식을 잃는 Catastrophic Forgetting 문제와 이를 해결하는 Continual Learning 접근법을 배웁니다.
@@ -138,6 +142,7 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 시작하기: [Continual Learning](https://outcomeschool.com/blog/continual-learning-in-llms)
 
 → [한국어 상세 학습 노트](blogs/module-07/continual-learning-in-llms.md)
+
 
 ### 7.6 Deep RL from Human Preferences란?
 
@@ -161,6 +166,7 @@ Fine-tuning이 무엇인지, 왜 필요한지, 단계별 동작과 간단한 수
 
 → [한국어 상세 학습 노트](blogs/module-07/decoding-deep-rl-from-human-preferences.md)
 
+
 ### 7.7 InstructGPT란?
 
 GPT-3가 사람의 지시를 실제로 따르도록 만든 InstructGPT와 ChatGPT로 이어진 학습 방법을 배웁니다.
@@ -183,6 +189,7 @@ GPT-3가 사람의 지시를 실제로 따르도록 만든 InstructGPT와 ChatGP
 
 → [한국어 상세 학습 노트](blogs/module-07/decoding-instructgpt.md)
 
+
 ### 7.8 RLHF란?
 
 사람의 선호를 학습해 사전학습 LLM을 더 유용하고 정직하며 안전한 Assistant로 만드는 Reinforcement Learning from Human Feedback을 배웁니다.
@@ -204,6 +211,7 @@ GPT-3가 사람의 지시를 실제로 따르도록 만든 InstructGPT와 ChatGP
 
 → [한국어 상세 학습 노트](blogs/module-07/reinforcement-learning-from-human-feedback-rlhf.md)
 
+
 ### 7.9 Proximal Policy Optimization(PPO)이란?
 
 PPO의 동작 원리와 LLM RLHF 학습에서의 사용법을 배웁니다.
@@ -222,6 +230,7 @@ PPO의 동작 원리와 LLM RLHF 학습에서의 사용법을 배웁니다.
 시작하기: [PPO](https://outcomeschool.com/blog/proximal-policy-optimization-ppo)
 
 → [한국어 상세 학습 노트](blogs/module-07/proximal-policy-optimization-ppo.md)
+
 
 ### 7.10 Direct Preference Optimization(DPO)이란?
 
@@ -242,6 +251,7 @@ DPO의 단계별 동작과 RLHF(PPO)와의 차이를 배웁니다.
 
 → [한국어 상세 학습 노트](blogs/module-07/direct-preference-optimization-dpo.md)
 
+
 ### 7.11 Group Relative Policy Optimization(GRPO)이란?
 
 GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과 사용 시점을 배웁니다.
@@ -260,5 +270,6 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 시작하기: [GRPO](https://outcomeschool.com/blog/group-relative-policy-optimization-grpo)
 
 → [한국어 상세 학습 노트](blogs/module-07/group-relative-policy-optimization-grpo.md)
+
 
 ---

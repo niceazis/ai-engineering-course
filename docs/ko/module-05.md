@@ -9,26 +9,26 @@
 **이 모듈의 레슨:**
 
 1. [LLM 아키텍처의 진화](https://outcomeschool.com/blog/evolution-of-llm-architecture)
+   ↳ [한국어 상세 학습 노트](blogs/module-05/evolution-of-llm-architecture.md)
 
-→ [한국어 상세 학습 노트](blogs/module-05/evolution-of-llm-architecture.md)
 2. [Mixture of Experts(MoE)란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/mixture-of-experts)
+   ↳ [한국어 상세 학습 노트](blogs/module-05/mixture-of-experts.md)
 
-→ [한국어 상세 학습 노트](blogs/module-05/mixture-of-experts.md)
 3. [Grouped Query Attention(GQA)이란 무엇이며 LLM은 왜 사용하는가?](https://outcomeschool.com/blog/grouped-query-attention)
+   ↳ [한국어 상세 학습 노트](blogs/module-05/grouped-query-attention.md)
 
-→ [한국어 상세 학습 노트](blogs/module-05/grouped-query-attention.md)
 4. [Sliding Window Attention은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-sliding-window-attention-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-05/how-does-sliding-window-attention-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-05/how-does-sliding-window-attention-work.md)
 5. [Attention Sink는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-attention-sinks-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-05/how-do-attention-sinks-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-05/how-do-attention-sinks-work.md)
 6. [Flash Attention이란 무엇이며 왜 빠른가?](https://outcomeschool.com/blog/decoding-flash-attention)
+   ↳ [한국어 상세 학습 노트](blogs/module-05/decoding-flash-attention.md)
 
-→ [한국어 상세 학습 노트](blogs/module-05/decoding-flash-attention.md)
 7. [DeepSeek-V4란 무엇이며 어떻게 동작하는가?](https://outcomeschool.com/blog/decoding-deepseek-v4)
+   ↳ [한국어 상세 학습 노트](blogs/module-05/decoding-deepseek-v4.md)
 
-→ [한국어 상세 학습 노트](blogs/module-05/decoding-deepseek-v4.md)
 
 ---
 
@@ -49,6 +49,7 @@
 
 → [한국어 상세 학습 노트](blogs/module-05/evolution-of-llm-architecture.md)
 
+
 ### 5.2 Mixture of Experts(MoE)란 무엇이며 어떻게 동작하는가?
 
 Expert의 의미, Router가 Expert를 선택하는 방식, MoE가 대형 모델을 더 빠르고 저렴하게 실행하게 하는 이유를 배웁니다.
@@ -65,6 +66,7 @@ Expert의 의미, Router가 Expert를 선택하는 방식, MoE가 대형 모델�
 시작하기: [Mixture of Experts(MoE)](https://outcomeschool.com/blog/mixture-of-experts)
 
 → [한국어 상세 학습 노트](blogs/module-05/mixture-of-experts.md)
+
 
 ### 5.3 Grouped Query Attention(GQA)이란?
 
@@ -87,6 +89,7 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 
 → [한국어 상세 학습 노트](blogs/module-05/grouped-query-attention.md)
 
+
 ### 5.4 Sliding Window Attention은 어떻게 동작하는가?
 
 긴 텍스트에서 일반 Attention의 계산 비용이 커지는 문제와 Sliding Window Attention이 이를 줄이는 방식을 배웁니다.
@@ -103,6 +106,7 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 시작하기: [Sliding Window Attention](https://outcomeschool.com/blog/how-does-sliding-window-attention-work)
 
 → [한국어 상세 학습 노트](blogs/module-05/how-does-sliding-window-attention-work.md)
+
 
 ### 5.5 Attention Sink는 어떻게 동작하는가?
 
@@ -123,6 +127,7 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 
 → [한국어 상세 학습 노트](blogs/module-05/how-do-attention-sinks-work.md)
 
+
 ### 5.6 Flash Attention이란 무엇이며 왜 빠른가?
 
 표준 Attention이 느린 이유와 GPU 메모리를 효율적으로 이용하는 Flash Attention의 핵심 아이디어를 배웁니다.
@@ -141,6 +146,7 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 시작하기: [Flash Attention](https://outcomeschool.com/blog/decoding-flash-attention)
 
 → [한국어 상세 학습 노트](blogs/module-05/decoding-flash-attention.md)
+
 
 ### 5.7 DeepSeek-V4란 무엇이며 어떻게 동작하는가?
 
@@ -161,5 +167,6 @@ GQA와 Multi-Head Attention(MHA)의 차이를 배웁니다.
 시작하기: [DeepSeek-V4 아키텍처](https://outcomeschool.com/blog/decoding-deepseek-v4)
 
 → [한국어 상세 학습 노트](blogs/module-05/decoding-deepseek-v4.md)
+
 
 ---

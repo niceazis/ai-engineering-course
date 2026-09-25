@@ -9,14 +9,14 @@
 **이 모듈의 레슨:**
 
 1. [LLM Guardrail은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-llm-guardrails-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-14/how-do-llm-guardrails-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-14/how-do-llm-guardrails-work.md)
 2. [LLM의 Prompt Injection이란 무엇이며 어떻게 방어하는가?](https://outcomeschool.com/blog/prompt-injection-in-llms)
+   ↳ [한국어 상세 학습 노트](blogs/module-14/prompt-injection-in-llms.md)
 
-→ [한국어 상세 학습 노트](blogs/module-14/prompt-injection-in-llms.md)
 3. [LLM Watermarking은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-llm-watermarking-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-14/how-does-llm-watermarking-work.md)
 
-→ [한국어 상세 학습 노트](blogs/module-14/how-does-llm-watermarking-work.md)
 
 ---
 
@@ -39,6 +39,7 @@
 시작하기: [LLM Guardrail](https://outcomeschool.com/blog/how-do-llm-guardrails-work)
 
 → [한국어 상세 학습 노트](blogs/module-14/how-do-llm-guardrails-work.md)
+
 
 ### 14.2 Prompt Injection이란?
 
@@ -65,6 +66,7 @@
 
 → [한국어 상세 학습 노트](blogs/module-14/prompt-injection-in-llms.md)
 
+
 ### 14.3 LLM Watermarking은 어떻게 동작하는가?
 
 모델이 생성한 텍스트에 의미를 크게 훼손하지 않고 통계적 신호를 남겨 나중에 검출하는 Watermarking을 배웁니다.
@@ -89,5 +91,6 @@
 시작하기: [LLM Watermarking](https://outcomeschool.com/blog/how-does-llm-watermarking-work)
 
 → [한국어 상세 학습 노트](blogs/module-14/how-does-llm-watermarking-work.md)
+
 
 ---
