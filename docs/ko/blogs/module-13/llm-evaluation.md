@@ -1,92 +1,258 @@
 # LLM Evaluation이란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/llm-evaluation
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/llm-evaluation  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 2026-05-24 공개 원문을 직접 확인해 Automatic Metric, Benchmark, Human Evaluation, LLM-as-a-Judge, Task-Specific·Safety Evaluation의 순서와 예시를 보존하면서 독립적으로 다시 쓴 한국어 상세 해설입니다.
 
-## 핵심 해설
+## 1. LLM Evaluation의 목적
 
-LLM 성능을 측정하기 위한 평가 유형, 자동 지표, Benchmark, 사람 평가, LLM-as-a-Judge, Task-specific·Safety 평가를 배웁니다.
+LLM Evaluation은 모델이나 LLM 애플리케이션이 실제로 기대한 일을 얼마나 잘하는지 측정하는 과정입니다.
 
-## 핵심 학습 항목
+확인해야 할 질문:
 
-- LLM Evaluation이란?
-- 필요한 이유
-- 평가 유형
-- Automatic Metric
-- Benchmark
-- Human Evaluation
-- LLM as a Judge
-- Task-Specific Evaluation
-- Safety·Red-Teaming Evaluation
-- 주요 과제
-- Best Practice
-- 상황별 방법 선택
+- 정답인가?
+- 도움이 되는가?
+- 안전한가?
+- 이전 버전보다 나아졌는가?
+- latency/cost를 감안해 배포할 가치가 있는가?
 
-## 단계별 학습 가이드
+평가 없이 배포하면 prompt/model 변경이 좋아졌는지 나빠졌는지 알 수 없습니다.
 
-### 1. LLM Evaluation이란?
+## 2. 네 가지 핵심 평가 방법
 
-**LLM Evaluation이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문은 네 가지로 정리합니다.
 
-### 2. 필요한 이유
+1. Automatic Metrics
+2. Benchmarks
+3. Human Evaluation
+4. LLM as a Judge
 
-**필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Task-Specific Evaluation과 Safety Evaluation은 이 네 방법을 실제 use case에 맞게 조합하는 상위 설계라고 설명합니다.
 
-### 3. 평가 유형
+## 3. Automatic Metrics
 
-**평가 유형**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### BLEU
 
-### 4. Automatic Metric
+주로 번역에서 n-gram precision을 봅니다.
 
-**Automatic Metric**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+단점:
 
-### 5. Benchmark
+    reference: The cat sat on the mat
+    output:    A feline rested on the rug
 
-**Benchmark**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+의미가 비슷해도 lexical overlap이 낮아 score가 낮을 수 있습니다.
 
-### 6. Human Evaluation
+### ROUGE
 
-**Human Evaluation**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+주로 summarization에서 reference n-gram coverage를 봅니다.
 
-### 7. LLM as a Judge
+### BERTScore
 
-**LLM as a Judge**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Contextual embedding으로 semantic similarity를 평가해 paraphrase에 더 강합니다.
 
-### 8. Task-Specific Evaluation
+### METEOR
 
-**Task-Specific Evaluation**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Synonym, stemming, word order를 일부 고려합니다.
 
-### 9. Safety·Red-Teaming Evaluation
+### Perplexity
 
-**Safety·Red-Teaming Evaluation**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Next-token prediction quality를 측정합니다. 낮을수록 test data를 더 높은 확률로 예측합니다.
 
-### 10. 주요 과제
+### Exact Match
 
-**주요 과제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+정답 문자열이 정확히 같으면 1, 아니면 0.
 
-### 11. Best Practice
+Math, short factual answer처럼 objective answer가 있는 task에 좋습니다.
 
-**Best Practice**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. Benchmark
 
-### 12. 상황별 방법 선택
+원문이 분류한 대표 benchmark:
 
-**상황별 방법 선택**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### General Knowledge
 
-## 실무 연결
+- MMLU
+- MMLU-Pro
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+### Common Sense
 
-## 점검 질문
+- HellaSwag
 
-1. LLM Evaluation이란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+### Coding
+
+- HumanEval
+- SWE-bench Verified
+- LiveCodeBench
+
+### Math
+
+- GSM8K
+- MATH
+- AIME
+
+### Frontier Reasoning
+
+- GPQA-Diamond
+- Humanity's Last Exam
+
+### Instruction Following
+
+- IFEval
+
+### Tool Use
+
+- BFCL
+
+### Long Context
+
+- RULER
+
+### Truthfulness
+
+- TruthfulQA
+
+### Conversation Preference
+
+- Chatbot Arena / LMArena
+
+## 5. Benchmark를 그대로 믿으면 안 되는 이유
+
+원문은 세 가지를 강조합니다.
+
+### Saturation
+
+Top models가 ceiling에 가까워지면 구분력이 떨어집니다.
+
+### Data Contamination
+
+Training에서 test item을 이미 봤을 수 있습니다.
+
+### Qualification Bar
+
+낡은 benchmark라도 minimum capability gate로 사용할 수 있습니다.
+
+## 6. Human Evaluation
+
+원문 방식:
+
+- Likert scale 1~5
+- Pairwise comparison
+- Error annotation
+
+장점:
+
+- tone, usefulness, creativity 등 open-ended quality 판단 가능
+
+단점:
+
+- 느림
+- 비쌈
+- annotator disagreement
+
+중요한 최종 check에 적합합니다.
+
+## 7. LLM as a Judge
+
+Strong LLM에게:
+
+    input
+    candidate output
+    rubric
+
+을 주고 score/verdict를 받습니다.
+
+원문은 position bias, verbosity bias, self-preference bias를 경고합니다.
+
+따라서 human sample과 judge agreement를 검증해야 합니다.
+
+## 8. RAG Evaluation
+
+원문은 RAGAS 계열의 네 패턴을 소개합니다.
+
+### Context Precision
+
+가져온 chunk 중 실제 관련 chunk의 비율.
+
+### Context Recall
+
+필요한 evidence 중 얼마나 retrieve했는가.
+
+### Faithfulness / Groundedness
+
+최종 answer가 retrieved context에 의해 뒷받침되는가.
+
+### Answer Relevance
+
+질문에 실제로 답했는가.
+
+Retrieval과 generation을 따로 평가해야 root cause를 알 수 있습니다.
+
+## 9. Agent Evaluation
+
+원문은 agent에서 다음을 추가로 봅니다.
+
+- 올바른 tool 선택
+- 올바른 arguments
+- task completion
+- step count
+
+대표 benchmark로 τ-bench, SWE-bench Verified, GAIA, WebArena, BFCL 등을 언급합니다.
+
+## 10. Code Generation
+
+Code는 text similarity보다 **실행 가능한 verifier**가 훨씬 좋습니다.
+
+    generated code
+      → unit tests
+      → pass/fail
+
+정답이 기계적으로 검증 가능하면 LLM judge보다 deterministic checker를 우선합니다.
+
+## 11. Safety / Red Team
+
+평가 대상:
+
+- jailbreak
+- prompt injection
+- harmful request
+- privacy leak
+- bias
+
+원문은 HarmBench, AdvBench, TrustLLM을 예로 듭니다.
+
+Safety는 launch 전 1회가 아니라 production traffic에서 지속 모니터링해야 합니다.
+
+## 12. Best Practice
+
+원문 핵심:
+
+- public benchmark만 쓰지 말고 custom eval set 작성
+- automatic + judge + human 조합
+- judge를 human label로 검증
+- prompt/model 변경마다 regression eval
+- rare but important edge case 포함
+- latency/cost도 함께 측정
+
+## 13. 평가 Dataset 설계
+
+좋은 custom eval set은 평균적인 case뿐 아니라:
+
+    common cases
+    hard cases
+    known failures
+    adversarial cases
+    high-business-risk cases
+
+를 포함합니다.
+
+실제 production failure가 나오면 eval set에 추가해 재발 방지 test로 만듭니다.
+
+## 핵심 정리
+
+- LLM Evaluation은 correctness뿐 아니라 helpfulness, safety, cost, latency까지 포함합니다.
+- Automatic Metric, Benchmark, Human, LLM Judge를 task에 맞게 조합합니다.
+- RAG는 retrieval과 grounded generation을 분리 평가해야 합니다.
+- Objective verifier가 있으면 judge보다 test/rule을 우선합니다.
+- 가장 중요한 것은 public benchmark보다 실제 use case를 반영한 regression eval set입니다.
 
 ## 원문
 
