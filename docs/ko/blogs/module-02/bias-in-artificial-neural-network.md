@@ -34,3 +34,4 @@
 ## 원문
 
 - https://outcomeschool.com/blog/bias-in-artificial-neural-network
+
