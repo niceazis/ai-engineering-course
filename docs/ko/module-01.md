@@ -39,7 +39,9 @@
 
 - [Feature Engineering in Machine Learning](https://www.youtube.com/watch?v=QLlywrWuXag)
 - [One-hot Encoding in Machine Learning](https://www.youtube.com/watch?v=6AmedU5i9go)
-- 전체 영상 한국어 요약: [videos.md](videos.md)
+- [Feature Engineering 한국어 상세 영상 학습 노트](videos/module-01/feature-engineering-in-machine-learning.md)
+- [One-hot Encoding 한국어 상세 영상 학습 노트](videos/module-01/one-hot-encoding-in-machine-learning.md)
+- 전체 영상 인덱스: [videos.md](videos.md)
 
 ## 권장 학습 순서
 

@@ -313,11 +313,11 @@ flowchart TD
 
 영상 보기: [Feature Engineering in Machine Learning](https://www.youtube.com/watch?v=QLlywrWuXag)
 
-→ [한국어 영상 요약](docs/ko/videos.md#2-feature-engineering-in-machine-learning)
+→ [한국어 상세 영상 학습 노트](docs/ko/videos/module-01/feature-engineering-in-machine-learning.md)
 
 영상 보기: [One-hot Encoding in Machine Learning](https://www.youtube.com/watch?v=6AmedU5i9go)
 
-→ [한국어 영상 요약](docs/ko/videos.md#3-one-hot-encoding-in-machine-learning)
+→ [한국어 상세 영상 학습 노트](docs/ko/videos/module-01/one-hot-encoding-in-machine-learning.md)
 
 ### 1.5 정밀도 vs 재현율
 
