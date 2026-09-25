@@ -137,7 +137,7 @@ p_i=softmax(z_i/T)
 
 - (T<1): 분포가 더 뾰족
 - (T>1): 더 평평
-- (T	o0): 최대 logit 선택에 가까워짐
+- (T\to0): 최대 logit 선택에 가까워짐
 
 Attention scaling의 (sqrt{d_k})와 수학 형태는 유사하지만 목적은 다릅니다.
 
