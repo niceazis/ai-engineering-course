@@ -59,7 +59,7 @@ LSTM과 GRU는 gate를 도입해 이 문제를 완화하지만, 순차 처리라
 
 Transformer는 recurrent hidden state를 순서대로 넘기는 대신 **self-attention**으로 각 token이 다른 token을 직접 참고하게 합니다.
 
-문장에 (n)개 token이 있다면 attention score는 개념적으로 (n 	imes n) 관계를 만듭니다.
+문장에 (n)개 token이 있다면 attention score는 개념적으로 (n \times n) 관계를 만듭니다.
 
 예:
 
