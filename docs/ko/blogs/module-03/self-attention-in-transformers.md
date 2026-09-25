@@ -68,7 +68,7 @@ Query와 Key가 잘 맞을수록 그 Value를 더 많이 가져옵니다.
 
 score가 클수록 두 token 사이의 관련성이 높다고 모델이 판단한 것입니다.
 
-sequence 길이가 (n)이면 score matrix 크기는 (n 	imes n)입니다.
+sequence 길이가 (n)이면 score matrix 크기는 (n \times n)입니다.
 
 ## 6. Step 3 — Scale
 
@@ -167,7 +167,7 @@ Decoder self-attention은 causal mask를 사용해 미래 token을 차단합니�
 
 ## 13. 비용과 한계
 
-표준 self-attention의 score matrix는 (n 	imes n)입니다.
+표준 self-attention의 score matrix는 (n \times n)입니다.
 
 따라서 sequence가 2배 길어지면 attention score 원소 수는 약 4배가 됩니다.
 
@@ -184,7 +184,7 @@ Decoder self-attention은 causal mask를 사용해 미래 token을 차단합니�
 
 - Self-attention은 같은 sequence의 token끼리 중요도를 계산합니다.
 - Q는 찾는 정보, K는 매칭 기준, V는 전달 내용입니다.
-- 핵심 수식은 (	ext{softmax}(QK^T/sqrt{d_k})V)입니다.
+- 핵심 수식은 (\text{softmax}(QK^T/sqrt{d_k})V)입니다.
 - “I love AI” 예에서 각 row는 다른 token의 Value를 얼마나 섞는지 보여 줍니다.
 - Multi-head는 서로 다른 관계를 병렬로 학습하게 합니다.
 - Encoder와 Decoder의 핵심 차이 중 하나는 causal mask 여부입니다.
