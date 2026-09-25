@@ -21,74 +21,22 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Compile sync helper
-        run: python -m py_compile scripts/build_course_manifest.py
+      - name: Compile sync helpers
+        run: |
+          python -m py_compile scripts/build_course_manifest.py
+          python -m py_compile scripts/verify_ko_course.py
 
-      - name: Check upstream manifest baseline
+      - name: Check whether upstream changed
         run: |
           set +e
           python scripts/build_course_manifest.py --check docs/ko/course-manifest.json
           code=$?
           set -e
           if [ "$code" -eq 2 ]; then
-            echo 'Upstream changed since the processed baseline. This does not make the Korean content PR invalid.'
+            echo 'Upstream changed since the processed baseline. Korean content validation will still run.'
             exit 0
           fi
           exit "$code"
 
-      - name: Validate Markdown hygiene
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re
-          import sys
-          from urllib.parse import unquote
-
-          root = Path('.').resolve()
-          files = [Path('README.ko.md'), *sorted(Path('docs/ko').rglob('*.md'))]
-          zero = re.compile(r'[\u200B-\u200D\uFEFF]')
-          heading = re.compile(r'^(#{1,6})\s+', re.M)
-          link = re.compile(r'!?\[[^\]]*\]\(([^)]+)\)')
-          errors = []
-
-          for path in files:
-              text = path.read_text(encoding='utf-8')
-              if zero.search(text):
-                  errors.append(f'{path}: zero-width character')
-              if '\t' in text:
-                  errors.append(f'{path}: tab character')
-              if len(re.findall(r'^```', text, re.M)) % 2:
-                  errors.append(f'{path}: unbalanced code fence')
-
-              if path.name != 'README.ko.md':
-                  levels = [len(m.group(1)) for m in heading.finditer(text)]
-                  for a, b in zip(levels, levels[1:]):
-                      if b > a + 1:
-                          errors.append(f'{path}: heading jump H{a}->H{b}')
-                          break
-
-              link_text = re.sub(r'```.*?```', '', text, flags=re.S)
-              link_text = re.sub(r'`[^`\n]*`', '', link_text)
-              for m in link.finditer(link_text):
-                  raw = m.group(1).strip()
-                  if not raw or raw.startswith(('#', 'http://', 'https://', 'mailto:', 'tel:')):
-                      continue
-                  target = raw.split()[0].strip('<>')
-                  target = unquote(target.split('#', 1)[0])
-                  if not target:
-                      continue
-                  resolved = (path.parent / target).resolve()
-                  try:
-                      resolved.relative_to(root)
-                  except ValueError:
-                      errors.append(f'{path}: link escapes repository: {raw}')
-                      continue
-                  if not resolved.exists():
-                      errors.append(f'{path}: broken relative link: {raw}')
-
-          print(f'Markdown files checked: {len(files)}')
-          print(f'Errors: {len(errors)}')
-          for error in errors:
-              print('ERROR:', error)
-          sys.exit(1 if errors else 0)
-          PY
+      - name: Validate Korean course
+        run: python scripts/verify_ko_course.py
