@@ -1,87 +1,156 @@
 # Loop Engineering이란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/what-is-loop-engineering
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/what-is-loop-engineering  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 현재 원문 본문 캐시를 직접 열지 못했습니다. Outcome School 공식 Module 11 레슨 구조와 Agent Loop/Harness Engineering의 공개 개념을 기준으로 독립적으로 설명하며, 원문 고유 수치를 임의로 만들지 않습니다.
 
-## 핵심 해설
+## 1. Loop Engineering의 정의
 
-Agent가 작업을 완료할 때까지 반복 실행하는 Loop를 설계하고 제어하는 방법을 배웁니다.
+Loop Engineering은 agent가:
 
-## 핵심 학습 항목
+    observe → decide → act → verify → repeat
 
-- Loop Engineering이란?
-- Loop + Engineering
-- 필요한 이유
-- AI Agent의 Loop
-- 가장 단순한 Loop와 문제점
-- 설계해야 할 Loop 구성 요소
-- Prompt vs Context vs Loop Engineering
-- 흔한 실패
-- Loop Engineering 기법
-- 완전한 예제
-- 잘 동작하는 영역과 실패하는 영역
+를 수행하는 반복 구조를 **안전하고 종료 가능하며 평가 가능하게 설계하는 일**입니다.
 
-## 단계별 학습 가이드
+단순 while loop를 만드는 것이 아니라 iteration policy를 engineering합니다.
 
-### 1. Loop Engineering이란?
+## 2. 가장 단순한 Loop
 
-**Loop Engineering이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    while not done:
+        response = llm(state)
+        action = parse(response)
+        result = tool(action)
+        state += result
 
-### 2. Loop + Engineering
+이 구조만으로는:
 
-**Loop + Engineering**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- infinite loop
+- same action repetition
+- context explosion
+- cost runaway
+- false completion
 
-### 3. 필요한 이유
+문제가 생깁니다.
 
-**필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. 설계해야 할 요소
 
-### 4. AI Agent의 Loop
+### State
 
-**AI Agent의 Loop**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+현재 goal, plan, observations, open tasks를 구조화.
 
-### 5. 가장 단순한 Loop와 문제점
+### Action Space
 
-**가장 단순한 Loop와 문제점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+허용 tool과 argument schema.
 
-### 6. 설계해야 할 Loop 구성 요소
+### Completion
 
-**설계해야 할 Loop 구성 요소**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+무엇을 만족하면 done인지 명시.
 
-### 7. Prompt vs Context vs Loop Engineering
+### Budget
 
-**Prompt vs Context vs Loop Engineering**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+max steps, tokens, time, money.
 
-### 8. 흔한 실패
+### Validation
 
-**흔한 실패**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+tool result와 intermediate artifact 검증.
 
-### 9. Loop Engineering 기법
+### Recovery
 
-**Loop Engineering 기법**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+retry/fallback/replan.
 
-### 10. 완전한 예제
+## 4. Prompt/Context/Loop Engineering 차이
 
-**완전한 예제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Prompt Engineering:
 
-### 11. 잘 동작하는 영역과 실패하는 영역
+    한 call에 무엇을 말할지
 
-**잘 동작하는 영역과 실패하는 영역**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Context Engineering:
 
-## 실무 연결
+    model이 무엇을 보게 할지
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+Loop Engineering:
 
-## 점검 질문
+    **언제 model을 다시 부르고, 결과에 따라 control flow를 어떻게 바꿀지**
 
-1. Loop Engineering이란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+를 설계합니다.
+
+## 5. Completion을 Model에게만 맡기지 않는다
+
+나쁜 종료:
+
+    "됐다고 생각하면 끝내"
+
+좋은 종료:
+
+    all tests pass
+    AND required files exist
+    AND no unresolved checklist
+    AND max risk actions approved
+
+Definition of Done과 직접 연결됩니다.
+
+## 6. Duplicate Detection
+
+Agent가 동일한 search/tool call을 반복하는지 hash/signature로 기록할 수 있습니다.
+
+    action_signature
+      = tool + normalized_args
+
+같은 실패 action이 반복되면 replan/escalate합니다.
+
+## 7. Retry와 Replan
+
+Transient error:
+
+    timeout → retry
+
+Semantic error:
+
+    no result → query rewrite/replan
+
+Permission error:
+
+    escalate/user action
+
+Error 종류를 구분하지 않은 blind retry는 loop를 악화시킵니다.
+
+## 8. Context Growth
+
+모든 observation을 raw append하면 loop가 길수록 품질/비용이 나빠집니다.
+
+대응:
+
+- structured state
+- old trace compaction
+- artifact reference
+- relevant-only retrieval
+
+## 9. Human-in-the-Loop
+
+High-risk action 전:
+
+    proposed action
+      → approval
+      → execute
+
+Loop state에 WAITING_APPROVAL 같은 explicit state를 둡니다.
+
+## 10. 잘 맞는 영역
+
+- coding repair/test loop
+- research until evidence sufficient
+- data cleaning/validation
+- iterative generation with checker
+
+불명확한 subjective task는 종료 기준을 만들기 어려워 loop가 wandering하기 쉽습니다.
+
+## 핵심 정리
+
+- Loop Engineering은 반복 자체가 아니라 state·action·validation·termination·budget을 설계하는 일입니다.
+- max step만으로 충분하지 않고 완료 조건과 duplicate/recovery policy가 필요합니다.
+- Context compaction과 structured state가 long-running loop의 핵심입니다.
+- Deterministic validator를 가능한 많이 사용해야 합니다.
+- 원문 본문을 직접 확인하지 못한 부분은 Module 11 공식 outline과 일반 agent-engineering 원리로만 보완했습니다.
 
 ## 원문
 
