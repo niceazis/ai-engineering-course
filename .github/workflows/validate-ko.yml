@@ -67,7 +67,9 @@ jobs:
                           errors.append(f'{path}: heading jump H{a}->H{b}')
                           break
 
-              for m in link.finditer(text):
+              link_text = re.sub(r'```.*?```', '', text, flags=re.S)
+              link_text = re.sub(r'`[^`\n]*`', '', link_text)
+              for m in link.finditer(link_text):
                   raw = m.group(1).strip()
                   if not raw or raw.startswith(('#', 'http://', 'https://', 'mailto:', 'tel:')):
                       continue
