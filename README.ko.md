@@ -2778,7 +2778,7 @@ LLM 텍스트 생성과 Attention, KV Cache, 그리고 KV Cache를 줄이기 위
 
 영상 보기: [LLM Inference Optimization](https://www.youtube.com/watch?v=jV2sCj4lHYk)
 
-→ [한국어 영상 요약](docs/ko/videos.md#10-llm-inference-optimization)
+→ [한국어 영상 요약](docs/ko/videos/module-12/llm-inference-optimization.md)
 
 ### 12.2 Prefill vs Decode
 
@@ -2804,7 +2804,7 @@ LLM 추론의 두 단계인 Prefill과 Decode, 그리고 두 단계를 연결하
 
 영상 보기: [The First-Token Latency Problem in LLMs](https://www.youtube.com/watch?v=XD8DD4cEHu0)
 
-→ [한국어 영상 요약](docs/ko/videos.md#11-the-first-token-latency-problem-in-llms)
+→ [한국어 영상 요약](docs/ko/videos/module-12/first-token-latency-problem.md)
 
 ### 12.3 Prefill-Decode Disaggregation이란?
 
@@ -3123,9 +3123,9 @@ NVIDIA GPU에서 가능한 최고 수준의 추론 성능을 목표로 Build-tim
 **모듈 12 영상 및 추가 자료:**
 
 - [LLM Inference Optimization](https://www.youtube.com/watch?v=jV2sCj4lHYk) (영상)
-   ↳ [한국어 영상 요약](docs/ko/videos.md#10-llm-inference-optimization)
+   ↳ [한국어 영상 요약](docs/ko/videos/module-12/llm-inference-optimization.md)
 - [The First-Token Latency Problem in LLMs](https://www.youtube.com/watch?v=XD8DD4cEHu0) (영상)
-   ↳ [한국어 영상 요약](docs/ko/videos.md#11-the-first-token-latency-problem-in-llms)
+   ↳ [한국어 영상 요약](docs/ko/videos/module-12/first-token-latency-problem.md)
 - [LLM Inference Engineering (complete series)](https://github.com/amitshekhariitbhu/llm-inference-engineering) (시리즈)
 
 ---

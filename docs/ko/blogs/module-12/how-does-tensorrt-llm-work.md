@@ -1,127 +1,81 @@
 # TensorRT-LLM은 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-tensorrt-llm-work
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-tensorrt-llm-work  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 현재 Outcome School 원문 본문은 웹 캐시에서 직접 열리지 않았습니다. 공식 Module 12 outline과 NVIDIA TensorRT-LLM 공식 문서를 교차검증해 작성하며, 원문 고유 수치를 임의로 단정하지 않습니다.
 
-## 핵심 해설
+## 1. TensorRT-LLM의 목표
 
-NVIDIA GPU에서 가능한 최고 수준의 추론 성능을 목표로 Build-time 최적화와 Kernel Fusion, Quantization, Paged KV Cache 등을 적용하는 TensorRT-LLM을 배웁니다.
+NVIDIA GPU에서 LLM inference를 최대한 hardware-aware하게 최적화하는 serving/runtime stack입니다.
 
-## 핵심 학습 항목
+핵심 층:
 
-- Inference란?
-- GPU와 Kernel
-- GPU가 시간을 낭비하는 지점
-- TensorRT-LLM이란?
-- 미리 Model을 준비하는 핵심 아이디어
-- Model에서 Engine으로 Build
-- Kernel Fusion
-- Quantization
-- Custom Attention Kernel
-- Paged KV Cache
-- In-flight Batching
+- optimized kernels
+- quantization
+- KV cache management
+- batching/scheduler
+- speculative decoding
+- multi-GPU
 - CUDA Graph
-- Speculative Decoding
-- Multi-GPU
-- 실제 Serving
-- PyTorch Backend
-- 요청 하나의 전체 과정
-- TensorRT-LLM vs vLLM
-- 강점과 한계
 
-## 단계별 학습 가이드
+## 2. Build/Optimization
 
-### 1. Inference란?
+전통적으로 model definition/checkpoint를 TensorRT-LLM이 최적화 가능한 engine/runtime representation으로 준비합니다.
 
-**Inference란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+최근 backend/API는 버전에 따라 build workflow가 달라질 수 있으므로 최신 NVIDIA 문서를 기준으로 해야 합니다.
 
-### 2. GPU와 Kernel
+## 3. Kernel Fusion
 
-**GPU와 Kernel**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+여러 작은 GPU kernel을 하나의 fused kernel로 합치면 launch overhead와 intermediate HBM traffic을 줄이고 data locality를 높일 수 있습니다.
 
-### 3. GPU가 시간을 낭비하는 지점
+## 4. Quantization
 
-**GPU가 시간을 낭비하는 지점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+지원 범위는 GPU generation/model에 따라 다르지만 FP8, INT8, INT4/weight-only, newer low-precision formats를 활용할 수 있습니다.
 
-### 4. TensorRT-LLM이란?
+## 5. Custom Attention
 
-**TensorRT-LLM이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Fused MHA/FMHA 계열 kernel, paged KV cache, context/decode-specific kernel로 attention workload를 최적화합니다.
 
-### 5. 미리 Model을 준비하는 핵심 아이디어
+## 6. Paged KV Cache
 
-**미리 Model을 준비하는 핵심 아이디어**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+KV Cache를 block/page 단위로 관리해 fragmentation과 dynamic sequence allocation을 개선합니다.
 
-### 6. Model에서 Engine으로 Build
+## 7. In-Flight Batching
 
-**Model에서 Engine으로 Build**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Serving backend는 request를 decode iteration에 동적으로 추가/제거하는 in-flight batching을 지원합니다.
 
-### 7. Kernel Fusion
+NVIDIA 문서는 scheduler policy로 최대 utilization과 no-evict 성향의 선택지를 제공합니다.
 
-**Kernel Fusion**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 8. CUDA Graph
 
-### 8. Quantization
+반복되는 GPU execution graph를 capture/replay해 CPU launch overhead를 줄입니다.
 
-**Quantization**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Shape/dynamic behavior에 따라 graph cache 관리가 필요합니다.
 
-### 9. Custom Attention Kernel
+## 9. Speculative Decoding
 
-**Custom Attention Kernel**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+TensorRT-LLM ecosystem은 Medusa 등 speculative decoding mode를 지원할 수 있습니다.
 
-### 10. Paged KV Cache
+Draft/acceptance method와 model artifact가 맞아야 합니다.
 
-**Paged KV Cache**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 10. Multi-GPU
 
-### 11. In-flight Batching
+큰 model을 tensor parallel, pipeline parallel, expert parallel 등으로 여러 GPU에 분산합니다.
 
-**In-flight Batching**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Network/NVLink topology가 performance에 큰 영향을 줍니다.
 
-### 12. CUDA Graph
+## 11. vLLM과 비교 관점
 
-**CUDA Graph**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+TensorRT-LLM은 NVIDIA hardware-specific optimization 깊이가 강하고, vLLM은 broad open-source serving ecosystem과 단순한 adoption이 강점입니다.
 
-### 13. Speculative Decoding
+실제 선택은 model, GPU, batch, context, latency SLO로 benchmark해야 합니다.
 
-**Speculative Decoding**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 핵심 정리
 
-### 14. Multi-GPU
-
-**Multi-GPU**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-### 15. 실제 Serving
-
-**실제 Serving**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-### 16. PyTorch Backend
-
-**PyTorch Backend**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-### 17. 요청 하나의 전체 과정
-
-**요청 하나의 전체 과정**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-### 18. TensorRT-LLM vs vLLM
-
-**TensorRT-LLM vs vLLM**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-### 19. 강점과 한계
-
-**강점과 한계**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-## 실무 연결
-
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
-
-## 점검 질문
-
-1. TensorRT-LLM은 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+- TensorRT-LLM은 NVIDIA GPU 특화 LLM inference optimization stack입니다.
+- Kernel fusion, quantization, paged KV cache, in-flight batching, CUDA Graph, speculative decoding을 조합합니다.
+- Performance 잠재력은 높지만 hardware/version-specific tuning과 build complexity가 있습니다.
+- Outcome School 원문 본문은 직접 확인하지 못해 NVIDIA 공식 자료와 Module 12 outline으로만 보완했습니다.
 
 ## 원문
 

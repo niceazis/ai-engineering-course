@@ -1,87 +1,85 @@
 # vLLM은 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-vllm-work
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-vllm-work  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 PagedAttention, prefix memory sharing, Continuous Batching, OpenAI-compatible server의 순서를 보존하면서 독립적으로 다시 쓴 한국어 상세 해설입니다.
 
-## 핵심 해설
+## 1. vLLM의 목표
 
-PagedAttention과 Continuous Batching을 중심으로 많은 사용자에게 LLM을 효율적으로 Serving하는 vLLM을 배웁니다.
+Open model을 많은 사용자에게 높은 throughput으로 serving할 때 주요 병목은 KV Cache memory, static batching idle slot, repeated prefix processing입니다.
 
-## 핵심 학습 항목
+vLLM은 runtime/scheduler 수준에서 이를 줄입니다.
 
-- LLM Serving이란?
-- Prefill, Decode, KV Cache 복습
-- KV Cache GPU Memory 문제
-- 단순 Serving의 낭비
-- vLLM이란?
-- PagedAttention
-- Memory Sharing
-- Continuous Batching
-- OpenAI-compatible API Server
-- 장점
-- 실제 활용
+## 2. PagedAttention
 
-## 단계별 학습 가이드
+원문의 핵심:
 
-### 1. LLM Serving이란?
+    huge contiguous KV allocation
+      → fixed-size blocks allocated on demand
 
-**LLM Serving이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Block table이 request의 logical KV sequence와 physical block을 연결합니다.
 
-### 2. Prefill, Decode, KV Cache 복습
+Memory over-reservation과 fragmentation을 줄입니다.
 
-**Prefill, Decode, KV Cache 복습**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Prefix Sharing
 
-### 3. KV Cache GPU Memory 문제
+동일 system prompt/prefix가 여러 request에 반복되면 같은 KV block을 공유할 수 있습니다.
 
-**KV Cache GPU Memory 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문은 여러 request가 common instruction block을 함께 가리키고 unique suffix만 별도 저장하는 방식으로 설명합니다.
 
-### 4. 단순 Serving의 낭비
+## 4. Continuous Batching
 
-**단순 Serving의 낭비**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+매 decode step 후:
 
-### 5. vLLM이란?
+- finished request 제거
+- memory free
+- queue의 새 request 투입
 
-**vLLM이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+해 GPU slot을 계속 채웁니다.
 
-### 6. PagedAttention
+PagedAttention이 memory를 빠르게 회수하고 Continuous Batching이 compute slot을 재사용합니다.
 
-**PagedAttention**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. 두 기법의 결합
 
-### 7. Memory Sharing
+    PagedAttention
+      → GPU memory waste 감소
 
-**Memory Sharing**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Continuous Batching
+      → GPU compute idle 감소
 
-### 8. Continuous Batching
+두 자원을 동시에 높은 utilization로 유지합니다.
 
-**Continuous Batching**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 6. OpenAI-Compatible API
 
-### 9. OpenAI-compatible API Server
+vLLM은 OpenAI-compatible HTTP API server를 제공해 기존 client/tool이 base URL을 바꿔 self-hosted model을 호출할 수 있게 합니다.
 
-**OpenAI-compatible API Server**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+정확한 endpoint/model feature compatibility는 현재 vLLM release 문서를 확인해야 합니다.
 
-### 10. 장점
+## 7. Agent Workload
 
-**장점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Agent는 매 step 같은 긴 system/tool prompt를 반복하기 쉽습니다.
 
-### 11. 실제 활용
+Prefix caching/sharing과 short-request batching이 이런 workload에 특히 유용합니다.
 
-**실제 활용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 8. Production에서 추가로 볼 것
 
-## 실무 연결
+- tensor/pipeline parallel
+- prefix caching
+- speculative decoding
+- quantization
+- chunked prefill
+- scheduler policy
+- multi-node
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+기능은 release에 따라 빠르게 변합니다.
 
-## 점검 질문
+## 핵심 정리
 
-1. vLLM은 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+- vLLM은 LLM serving engine이며 핵심 개념은 PagedAttention과 Continuous Batching입니다.
+- PagedAttention은 KV memory를 block 단위로 관리하고 sharing을 가능하게 합니다.
+- Continuous Batching은 decode step마다 batch slot을 재활용합니다.
+- OpenAI-compatible API로 application migration이 쉽습니다.
+- 실제 성능은 concurrency/context/model/hardware에 맞춰 benchmark해야 합니다.
 
 ## 원문
 

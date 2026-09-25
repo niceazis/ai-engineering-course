@@ -1,82 +1,97 @@
 # GGUF는 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-gguf-work
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-gguf-work  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인해 file structure, metadata, quantized tensors, Q4_K_M 이름과 mmap 활용을 보존하면서 독립적으로 다시 쓴 한국어 상세 해설입니다.
 
-## 핵심 해설
+## 1. GGUF란?
 
-Local Inference에 필요한 Model Weight와 Metadata를 하나의 효율적인 파일 형식으로 담는 GGUF를 배웁니다.
+GGUF는 llama.cpp ecosystem에서 local inference에 필요한 model tensors, quantization, tokenizer, architecture/config metadata를 하나의 portable binary file에 담는 format입니다.
 
-## 핵심 학습 항목
+## 2. 파일 안의 구성
 
-- Model과 Weight
-- Local Inference
-- GGUF 이전의 문제
-- GGUF란?
-- GGUF 파일 내부
-- Quantization
-- Q4_K_M 같은 이름의 의미
-- Memory Mapping
-- Cross-platform과 Extensibility
-- 실제 활용
+개념적으로:
 
-## 단계별 학습 가이드
+    header
+    metadata key/value
+    tensor descriptors
+    tensor data
 
-### 1. Model과 Weight
+Runtime은 metadata를 읽어 architecture/tokenizer/context 정보와 tensor 위치를 파악합니다.
 
-**Model과 Weight**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. 왜 Local Inference에 유용한가
 
-### 2. Local Inference
+- single file 배포
+- CPU/GPU mixed inference
+- multiple quantization variants
+- memory mapping
+- cross-platform loader
 
-**Local Inference**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+에 적합합니다.
 
-### 3. GGUF 이전의 문제
+## 4. Quantized Weight
 
-**GGUF 이전의 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+GGUF는 Q4/Q5/Q8 등 quantized tensor representation을 직접 저장할 수 있습니다.
 
-### 4. GGUF란?
+따라서 다운로드한 파일 자체가 이미 특정 precision variant입니다.
 
-**GGUF란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. Q4_K_M 해석
 
-### 5. GGUF 파일 내부
+원문 설명:
 
-**GGUF 파일 내부**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    Q4_K_M
+    | | |
+    | | +-- M: size/quality variant
+    | +---- K: modern K-quant family
+    +------ 4: roughly 4 bits/weight
 
-### 6. Quantization
+원문 비교:
 
-**Quantization**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+| Variant | 대략 bit | 특성 |
+| --- | ---: | --- |
+| Q4_K_M | 약 4 | 작은 size, 좋은 균형 |
+| Q5_K_M | 약 5 | 더 큰 memory, 품질 상승 |
+| Q8_0 | 약 8 | 가장 큼, 높은 품질 |
 
-### 7. Q4_K_M 같은 이름의 의미
+원문은 일반 laptop에서 Q4_K_M을 좋은 시작점으로 설명합니다.
 
-**Q4_K_M 같은 이름의 의미**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 6. Memory Mapping
 
-### 8. Memory Mapping
+GGUF는 tensor offset이 명확해 runtime이 file을 mmap하고 필요한 page를 OS에 맡길 수 있습니다.
 
-**Memory Mapping**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+장점:
 
-### 9. Cross-platform과 Extensibility
+- startup 시 full copy 불필요
+- OS page cache 활용
+- process 간 read-only page 공유 가능
 
-**Cross-platform과 Extensibility**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 7. Metadata Extensibility
 
-### 10. 실제 활용
+새 architecture/field가 필요하면 metadata key를 추가할 수 있습니다.
 
-**실제 활용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Format version과 runtime support가 맞아야 하므로 최신 llama.cpp/loader compatibility를 확인해야 합니다.
 
-## 실무 연결
+## 8. GGUF vs Safetensors
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+GGUF:
 
-## 점검 질문
+- local inference metadata와 quantization에 강함
+- llama.cpp 계열 중심
 
-1. GGUF는 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+Safetensors:
+
+- framework-neutral safe tensor storage
+- training/fine-tuning ecosystem에서 널리 사용
+
+목적이 다릅니다.
+
+## 핵심 정리
+
+- GGUF는 model tensor와 tokenizer/config metadata를 한 file에 담는 local-inference format입니다.
+- Quantized weight를 직접 저장해 여러 Q4/Q5/Q8 variant를 배포합니다.
+- 원문 Q4_K_M은 약 4-bit K-quant medium variant로 설명됩니다.
+- mmap-friendly layout이 local startup/memory 효율에 유리합니다.
+- Format과 runtime compatibility를 함께 확인해야 합니다.
 
 ## 원문
 

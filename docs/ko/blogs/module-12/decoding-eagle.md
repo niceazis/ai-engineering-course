@@ -1,77 +1,96 @@
 # EAGLE이란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/decoding-eagle
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/decoding-eagle  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 현재 Outcome School 원문 본문은 웹 캐시에서 직접 열리지 않았습니다. 공식 Module 12 목차와 EAGLE/EAGLE-2 원 논문을 교차검증해 작성하며, 논문 수치를 Outcome School 원문 고유 수치로 단정하지 않습니다.
 
-## 핵심 해설
+## 1. Token-Level Draft의 문제
 
-Token Level이 아니라 Feature Level에서 Draft를 수행해 Speculative Decoding 성능을 높이는 EAGLE을 배웁니다.
+Separate small model이 future token을 바로 예측하면 target model의 hidden representation 차이 때문에 acceptance가 제한될 수 있습니다.
 
-## 핵심 학습 항목
+EAGLE은 관점을 바꿉니다.
 
-- EAGLE이란?
-- Speculative Decoding 복습
-- Token-level Draft의 문제
-- Feature-level Draft
-- Token을 다시 입력해 불확실성 해소
-- 작은 수치로 보는 Speedup
-- EAGLE-2와 Dynamic Draft Tree
-- 이후 발전
-- 빠른 요약
+> token 자체보다 target model의 상위 hidden feature를 autoregressive하게 예측한다.
 
-## 단계별 학습 가이드
+## 2. Feature-Level Draft
 
-### 1. EAGLE이란?
+EAGLE은 target model의 **second-to-top-layer feature**를 예측하는 lightweight drafter를 학습합니다.
 
-**EAGLE이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+그 feature를 target LM head에 넣어 token proposal을 얻습니다.
 
-### 2. Speculative Decoding 복습
+Feature space가 future dynamics를 예측하기 더 쉽다는 관찰이 핵심입니다.
 
-**Speculative Decoding 복습**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Feature Uncertainty
 
-### 3. Token-level Draft의 문제
+Feature만 예측하면 다음 token identity에서 생기는 uncertainty가 누적됩니다.
 
-**Token-level Draft의 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+EAGLE은 한 step 앞선 token sequence도 input으로 같이 제공해 uncertainty를 줄입니다.
 
-### 4. Feature-level Draft
+즉:
 
-**Feature-level Draft**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    previous features
+    + shifted token
+      → future feature
 
-### 5. Token을 다시 입력해 불확실성 해소
+## 4. Verification
 
-**Token을 다시 입력해 불확실성 해소**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Drafted token sequence는 target model이 병렬 검증합니다.
 
-### 6. 작은 수치로 보는 Speedup
+원 논문은 output distribution을 target model과 동일하게 유지하는 lossless speculative sampling을 목표로 합니다.
 
-**작은 수치로 보는 Speedup**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. 공개 EAGLE 결과
 
-### 7. EAGLE-2와 Dynamic Draft Tree
+EAGLE 원 논문은 LLaMA2-Chat 70B에서:
 
-**EAGLE-2와 Dynamic Draft Tree**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    latency speedup = 2.7× ~ 3.5×
+    throughput ≈ 2×
 
-### 8. 이후 발전
+를 보고합니다.
 
-**이후 발전**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Task/model마다 달라집니다.
 
-### 9. 빠른 요약
+## 6. EAGLE-2
 
-**빠른 요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+EAGLE 1은 static draft tree를 사용합니다.
 
-## 실무 연결
+EAGLE-2는 draft model의 confidence가 context별 acceptance rate를 잘 예측한다는 점을 이용해 **dynamic draft tree**를 만듭니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+High-confidence branch에 더 많은 draft budget을 배정합니다.
 
-## 점검 질문
+## 7. EAGLE-2 공개 결과
 
-1. EAGLE이란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+논문/ACL 공개 자료는 여러 model/task에서 EAGLE-1보다 20~40% 빠른 수준과 최대 약 5× 사례를 보고합니다.
+
+이는 특정 benchmark 결과이며 production speedup을 보장하지 않습니다.
+
+## 8. Medusa와 비교
+
+Medusa:
+
+    extra future-token heads
+
+EAGLE:
+
+    future hidden feature drafter
+
+두 방식 모두 separate full draft model의 비용을 줄이려는 speculative decoding 변형입니다.
+
+## 9. Trade-off
+
+- extra training/artifact
+- runtime integration
+- draft-tree scheduling
+- target-model-specific adaptation
+
+Acceptance가 낮은 workload에서는 이득이 줄 수 있습니다.
+
+## 핵심 정리
+
+- EAGLE은 token이 아니라 target model 상위 hidden feature를 draft합니다.
+- Shifted token input으로 feature uncertainty를 줄입니다.
+- EAGLE-2는 context-aware dynamic draft tree를 사용합니다.
+- 공개 논문은 2.7~3.5× 등 큰 speedup을 보고하지만 workload에 따라 달라집니다.
+- Outcome School 원문 본문은 직접 확인하지 못했으므로 원 논문과 공식 module outline으로만 보완했습니다.
 
 ## 원문
 

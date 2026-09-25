@@ -1,87 +1,99 @@
 # LLM Inference Optimization — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/llm-inference-optimization
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/llm-inference-optimization  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 2026-06-14 공개 원문을 직접 확인해 KV Cache, PagedAttention, FlashAttention, GQA, Speculative Decoding, Continuous Batching, Prefill/Decode의 관계를 독립적으로 정리했습니다.
 
-## 핵심 해설
+## 1. Inference Optimization의 목표
 
-LLM 텍스트 생성과 Attention, KV Cache, 그리고 KV Cache를 줄이기 위한 주요 최적화 접근을 배웁니다.
+LLM serving은 단순히 "tokens/s를 높이는 것"이 아닙니다.
 
-## 핵심 학습 항목
+주요 목표:
 
-- LLM과 텍스트 생성
-- Attention
-- KV Cache
-- KV Cache가 커지는 이유
-- KV Cache Compression
-- Quantization
-- Token Eviction
-- Head 간 Key/Value Sharing
-- Low-Rank Compression
-- 접근법 비교
-- 선택 기준
+- TTFT(Time To First Token)
+- TPOT(Time Per Output Token)
+- throughput
+- GPU memory
+- cost/request
 
-## 단계별 학습 가이드
+각 병목에 맞는 기법이 다릅니다.
 
-### 1. LLM과 텍스트 생성
+## 2. Prefill과 Decode
 
-**LLM과 텍스트 생성**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Prefill
 
-### 2. Attention
+Prompt 전체를 병렬 처리해 첫 token 직전의 KV Cache를 만듭니다.
 
-**Attention**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+주로 compute-heavy입니다.
 
-### 3. KV Cache
+### Decode
 
-**KV Cache**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+한 token씩 생성하며 과거 KV Cache를 읽습니다.
 
-### 4. KV Cache가 커지는 이유
+주로 memory-bandwidth/memory-capacity 영향을 크게 받습니다.
 
-**KV Cache가 커지는 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. KV Cache
 
-### 5. KV Cache Compression
+과거 token의 Key/Value를 저장해 매 step 재계산을 피합니다.
 
-**KV Cache Compression**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+속도는 좋아지지만:
 
-### 6. Quantization
+    memory ∝ layers × tokens × kv_heads × head_dim
 
-**Quantization**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+으로 context/batch가 커질수록 GPU memory를 많이 사용합니다.
 
-### 7. Token Eviction
+## 4. KV Memory 최적화
 
-**Token Eviction**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- GQA/MQA: K/V head 공유
+- Quantization: K/V precision 축소
+- Eviction: 중요도가 낮은/오래된 token 제거
+- Low-rank/compression: representation 압축
+- PagedAttention: allocation fragmentation 감소
 
-### 8. Head 간 Key/Value Sharing
+## 5. Compute/IO 최적화
 
-**Head 간 Key/Value Sharing**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### FlashAttention
 
-### 9. Low-Rank Compression
+N×N intermediate를 HBM에 materialize하지 않고 tiling/online softmax로 memory traffic을 줄입니다.
 
-**Low-Rank Compression**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Continuous Batching
 
-### 10. 접근법 비교
+Request가 끝나는 즉시 새로운 request를 batch slot에 넣어 GPU idle을 줄입니다.
 
-**접근법 비교**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Speculative Decoding
 
-### 11. 선택 기준
+작은 drafter가 여러 token을 제안하고 target model이 한 번에 검증해 decode step 수를 줄입니다.
 
-**선택 기준**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 6. Serving Engine
 
-## 실무 연결
+vLLM, SGLang, TensorRT-LLM 같은 engine은 여러 최적화를 하나의 scheduler/runtime으로 결합합니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+따라서 알고리즘 하나보다 workload에 맞는 engine 구성과 measurement가 중요합니다.
 
-## 점검 질문
+## 7. 어떤 지표를 우선할까
 
-1. LLM Inference Optimization을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+Interactive chat:
+
+    TTFT + TPOT
+
+Batch generation:
+
+    throughput + cost/token
+
+Long-context:
+
+    prefill latency + KV memory
+
+High concurrency:
+
+    batching + cache allocation
+
+## 핵심 정리
+
+- Prefill과 Decode는 병목이 달라 별도로 최적화해야 합니다.
+- KV Cache는 decode 속도의 핵심이지만 GPU memory의 큰 소비자입니다.
+- FlashAttention은 memory IO, Continuous Batching은 utilization, Speculative Decoding은 sequential decode step을 줄입니다.
+- 실제 성공 기준은 benchmark tokens/s가 아니라 서비스 SLO와 cost입니다.
 
 ## 원문
 
