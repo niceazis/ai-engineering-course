@@ -56,7 +56,7 @@ Multi-head에서는 head마다 별도의 (W_Q,W_K,W_V)를 가집니다.
 그 결과 8개의 64차원 출력을 얻고:
 
 [
-8	imes64=512
+8\times64=512
 ]
 
 차원으로 다시 concatenate합니다.
@@ -66,7 +66,7 @@ Multi-head에서는 head마다 별도의 (W_Q,W_K,W_V)를 가집니다.
 입력:
 
 [
-X in mathbb{R}^{n	imes512}
+X in mathbb{R}^{n\times512}
 ]
 
 각 head (i):
