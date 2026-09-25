@@ -1,67 +1,145 @@
 # Harness Engineering이란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/harness-engineering-in-ai
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/harness-engineering-in-ai  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 2026-04-02 공개 원문을 직접 확인해 harness 구성 요소, agent/evaluation harness와 best practice를 반영한 독립적인 한국어 해설입니다.
 
-## 핵심 해설
+## 1. Harness의 정의
 
-AI Agent와 평가 시스템을 안정적으로 감싸고 제어하는 Harness의 개념과 구성 요소를 배웁니다.
+AI model이 engine이라면 Harness는 model 주변의 **production control layer**입니다.
 
-## 핵심 학습 항목
+원문의 핵심:
 
-- AI에서 Harness란?
-- Harness Engineering이 필요한 이유
-- AI Harness의 구성 요소
-- AI Agent를 위한 Harness Engineering
-- 평가를 위한 Harness Engineering
-- Best Practice
-- 전체 구조 연결
+    model alone
+      + prompt/context management
+      + tools
+      + memory
+      + validation
+      + guardrails
+      + error handling
+      + evaluation
+      + monitoring
+      = usable AI system
 
-## 단계별 학습 가이드
+Model 자체는 input→output만 수행합니다. 실제 제품의 신뢰성은 주변 code가 좌우합니다.
 
-### 1. AI에서 Harness란?
+## 2. 주요 구성 요소
 
-**AI에서 Harness란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Prompt / Context Management
 
-### 2. Harness Engineering이 필요한 이유
+System instruction, examples, memory, retrieved evidence를 조립합니다.
 
-**Harness Engineering이 필요한 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Tool Orchestration
 
-### 3. AI Harness의 구성 요소
+어떤 tool이 model에 보이고, call을 실제로 어떻게 실행/검증할지 관리합니다.
 
-**AI Harness의 구성 요소**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Memory Management
 
-### 4. AI Agent를 위한 Harness Engineering
+무엇을 유지/압축/삭제할지 결정합니다.
 
-**AI Agent를 위한 Harness Engineering**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Input / Output Processing
 
-### 5. 평가를 위한 Harness Engineering
+Schema parsing, formatting, validation, filtering.
 
-**평가를 위한 Harness Engineering**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Error Handling
 
-### 6. Best Practice
+API/tool failure, malformed output, timeout에 retry/fallback.
 
-**Best Practice**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Guardrails
 
-### 7. 전체 구조 연결
+권한, safety, privacy, destructive action control.
 
-**전체 구조 연결**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Agent Harness
 
-## 실무 연결
+Agent에서는 loop 전체가 harness 책임입니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+    user goal
+      → build context
+      → model
+      → tool call?
+        yes → harness executes
+             → observation
+             → model again
+        no  → final
 
-## 점검 질문
+중요한 구분:
 
-1. Harness Engineering이란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+> model은 tool 사용을 결정하지만 실제 action을 실행하는 것은 harness입니다.
+
+## 4. 원문의 Weather+Email 예
+
+Goal:
+
+    Delhi 날씨를 찾아 email로 보내라
+
+Flow:
+
+1. model이 weather tool 선택
+2. harness가 실행 → 32°C Sunny
+3. result를 model에 전달
+4. model이 email tool 선택
+5. harness가 실제 send
+6. final result
+
+Permission/side-effect 제어는 harness에 있습니다.
+
+## 5. Evaluation Harness
+
+Model 변경을 수동 감으로 평가하지 않고 동일 dataset/test를 반복 실행합니다.
+
+    dataset
+      → model/system
+      → outputs
+      → rule/judge
+      → metrics
+
+Agent는 final answer뿐 아니라:
+
+- plan
+- tool calls
+- trajectory
+- cost/latency
+
+를 평가해야 합니다.
+
+## 6. 왜 Model Benchmark만 부족한가
+
+같은 model이라도:
+
+- tool description
+- retrieval
+- memory
+- retry
+- context order
+
+가 다르면 실제 task success가 크게 달라집니다.
+
+따라서 system-level eval이 필요합니다.
+
+## 7. Best Practice
+
+원문 핵심:
+
+- modular harness
+- 모든 input/output/tool/error logging
+- guardrail from day one
+- reliable tools + fallback
+- harness 자체도 test
+- production latency/error/cost/quality monitoring
+
+## 8. Harness와 Agent Skill
+
+긴 procedure를 항상 system prompt에 넣지 않고 Skill로 분리해 필요한 때만 load할 수 있습니다.
+
+Harness가 skill routing/loading을 담당합니다.
+
+## 핵심 정리
+
+- Harness는 model 주변의 control/runtime layer입니다.
+- Prompt, tools, memory, errors, validation, guardrails, evaluation을 관리합니다.
+- Agent에서 model은 결정하고 harness가 실제 action과 loop를 실행합니다.
+- 좋은 model + 나쁜 harness는 나쁜 product가 될 수 있습니다.
+- Production AI는 model eval이 아니라 harness 포함 end-to-end system eval이 필요합니다.
 
 ## 원문
 
