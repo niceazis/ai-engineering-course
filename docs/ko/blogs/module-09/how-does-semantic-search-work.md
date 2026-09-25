@@ -1,82 +1,132 @@
 # Semantic Search는 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-semantic-search-work
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-semantic-search-work  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: Outcome School 원문을 직접 확인하고, 의미 기반 검색의 전체 pipeline을 독립적으로 다시 설명한 학습 노트입니다.
 
-## 핵심 해설
+## 1. Keyword Search의 한계
 
-키워드가 아니라 의미를 기준으로 검색하는 Semantic Search의 전체 흐름을 배웁니다.
+Keyword search는 exact word overlap에 강합니다.
 
-## 핵심 학습 항목
+하지만:
 
-- Keyword Search란?
-- Keyword Search가 실패하는 경우
-- Semantic Search란?
-- Embedding이란?
-- 비슷한 의미가 가까운 벡터로 표현되는 방식
-- Cosine Similarity
-- Vector Database
-- 전체 Semantic Search 흐름
-- 대규모 검색을 위한 ANN
-- 실제 활용
+    "비밀번호를 잊었어요"
+    "로그인 자격 증명을 재설정하려면?"
 
-## 단계별 학습 가이드
+처럼 의미는 같고 단어는 다른 문장을 놓칠 수 있습니다.
 
-### 1. Keyword Search란?
+또 "bank"처럼 같은 단어가 서로 다른 의미를 가질 때 keyword match만으로는 문맥 구분이 어렵습니다.
 
-**Keyword Search란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 2. Semantic Search
 
-### 2. Keyword Search가 실패하는 경우
+Semantic Search는 query와 document를 embedding으로 바꾸고 **vector similarity**로 검색합니다.
 
-**Keyword Search가 실패하는 경우**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    query text
+      → query embedding
+      → vector search
+      → semantically close documents
 
-### 3. Semantic Search란?
+핵심은 문자열 일치가 아니라 representation 공간의 거리입니다.
 
-**Semantic Search란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. Indexing Phase
 
-### 4. Embedding이란?
+1. 문서 수집
+2. chunking
+3. 각 chunk embedding
+4. vector DB 저장
+5. source/metadata 저장
 
-**Embedding이란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+이 단계는 문서가 바뀔 때 다시 수행합니다.
 
-### 5. 비슷한 의미가 가까운 벡터로 표현되는 방식
+## 4. Query Phase
 
-**비슷한 의미가 가까운 벡터로 표현되는 방식**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+1. user query embedding
+2. 같은 embedding space에서 ANN search
+3. top-k 결과
+4. 필요하면 metadata filter/reranker
+5. 사용자에게 결과 또는 RAG context로 전달
 
-### 6. Cosine Similarity
+## 5. Cosine Similarity
 
-**Cosine Similarity**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    cos(q,d)
+      = q·d / (||q|| ||d||)
 
-### 7. Vector Database
+Normalized embedding에서는 dot product와 cosine ranking이 같아질 수 있습니다.
 
-**Vector Database**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Metric은 embedding model 문서를 따라야 합니다.
 
-### 8. 전체 Semantic Search 흐름
+## 6. Why Embeddings Work
 
-**전체 Semantic Search 흐름**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Embedding model은 의미가 비슷한 sample을 가까이 두도록 학습됩니다.
 
-### 9. 대규모 검색을 위한 ANN
+따라서 paraphrase나 synonym은 keyword overlap이 낮아도 가까운 vector가 될 수 있습니다.
 
-**대규모 검색을 위한 ANN**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+그러나 embedding은 완벽한 의미 이해가 아닙니다. Domain, language, length에 따라 품질이 달라집니다.
 
-### 10. 실제 활용
+## 7. 대규모 Search
 
-**실제 활용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+수백만 vector를 모두 brute-force로 비교하면 느립니다.
 
-## 실무 연결
+그래서 HNSW, IVF 등 ANN index를 사용합니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+Semantic Search 품질은:
 
-## 점검 질문
+    embedding quality
+      × chunk quality
+      × ANN recall
+      × metadata/filter
+      × reranker
 
-1. Semantic Search는 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+의 결합 결과입니다.
+
+## 8. Search와 RAG의 차이
+
+Semantic Search:
+
+    query → relevant documents
+
+RAG:
+
+    query → relevant documents
+          → LLM
+          → generated answer
+
+즉 Semantic Search는 RAG의 retrieval component가 될 수 있습니다.
+
+## 9. Failure Cases
+
+- 숫자/ID/제품코드 exact match
+- 매우 희귀 전문용어
+- 최신 entity
+- negation/constraint
+- 긴 문서에서 chunk boundary 문제
+
+이 경우 keyword search와 결합하는 Hybrid Search가 유리합니다.
+
+## 10. Evaluation
+
+Offline:
+
+- Recall@k
+- MRR
+- nDCG
+- labeled query-document pairs
+
+Online:
+
+- click/acceptance
+- RAG answer correctness
+- latency
+
+Embedding cosine 값 자체보다 실제 task metric을 봐야 합니다.
+
+## 핵심 정리
+
+- Semantic Search는 query/document embedding의 의미적 가까움을 이용합니다.
+- Indexing과 query 두 단계로 나뉩니다.
+- Vector DB와 ANN이 대규모 검색을 담당합니다.
+- Keyword exact match가 강한 경우가 있어 Hybrid Search가 실용적입니다.
+- RAG 품질을 높이려면 retrieval 자체를 독립적으로 평가해야 합니다.
 
 ## 원문
 
