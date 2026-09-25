@@ -1,97 +1,83 @@
 # Prefill-Decode Disaggregation이란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/prefill-decode-disaggregation
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/prefill-decode-disaggregation  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 현재 원문 본문 캐시를 직접 열지 못했습니다. 공식 Module 12 outline과 공개 serving architecture를 기준으로 독립적으로 설명하며 원문 고유 수치는 단정하지 않습니다.
 
-## 핵심 해설
+## 1. 문제
 
-Prompt를 읽는 Prefill과 답을 생성하는 Decode를 별도 Machine/GPU로 분리해 각각의 하드웨어 특성에 맞게 최적화하는 방식을 배웁니다.
+같은 GPU에서:
 
-## 핵심 학습 항목
+    Prefill workload
+    + Decode workload
 
-- LLM 요청 처리 과정
-- KV Cache란?
-- Prefill은 Compute-heavy, Decode는 Memory-heavy
-- 같은 GPU에서 함께 실행할 때의 문제
-- TTFT vs TPOT
-- 단순 접근의 한계
-- Prefill-Decode Disaggregation
-- 동작 방식
-- 요청 하나의 흐름
-- 장점
-- 단점
-- 적합한 환경과 과도한 환경
-- Co-located vs Disaggregated Serving
+를 함께 돌리면 서로 다른 특성 때문에 interference가 생깁니다.
 
-## 단계별 학습 가이드
+Prefill은 compute-heavy, Decode는 memory/latency-sensitive입니다.
 
-### 1. LLM 요청 처리 과정
+## 2. Disaggregation
 
-**LLM 요청 처리 과정**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+두 phase를 별도 worker pool로 분리합니다.
 
-### 2. KV Cache란?
+    request
+      → Prefill GPU pool
+      → KV Cache transfer
+      → Decode GPU pool
+      → streaming tokens
 
-**KV Cache란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+각 pool을 서로 다른 hardware/scheduler 목표로 최적화할 수 있습니다.
 
-### 3. Prefill은 Compute-heavy, Decode는 Memory-heavy
+## 3. 장점
 
-**Prefill은 Compute-heavy, Decode는 Memory-heavy**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Resource Specialization
 
-### 4. 같은 GPU에서 함께 실행할 때의 문제
+Prefill GPU는 batch/compute utilization, Decode GPU는 low-latency memory bandwidth에 최적화.
 
-**같은 GPU에서 함께 실행할 때의 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Independent Scaling
 
-### 5. TTFT vs TPOT
+긴 prompt traffic이 늘면 Prefill pool만 확장할 수 있습니다.
 
-**TTFT vs TPOT**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Interference 감소
 
-### 6. 단순 접근의 한계
+큰 prefill job이 interactive decode token을 지연시키는 문제를 완화합니다.
 
-**단순 접근의 한계**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. 핵심 비용: KV Transfer
 
-### 7. Prefill-Decode Disaggregation
+Prefill 결과의 KV Cache를 Decode worker로 옮겨야 합니다.
 
-**Prefill-Decode Disaggregation**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Context가 길수록 transfer size가 커집니다.
 
-### 8. 동작 방식
+따라서:
 
-**동작 방식**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    compute saved
+      ↔ network transfer / orchestration cost
 
-### 9. 요청 하나의 흐름
+trade-off가 있습니다.
 
-**요청 하나의 흐름**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. Co-located가 나은 경우
 
-### 10. 장점
+- traffic 작음
+- context 짧음
+- single-node deployment
+- low complexity priority
 
-**장점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Disaggregation은 scale이 충분히 클 때 의미가 큽니다.
 
-### 11. 단점
+## 6. Metrics
 
-**단점**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- TTFT
+- TPOT jitter
+- KV transfer latency
+- network bandwidth
+- queue utilization
+- GPU utilization
 
-### 12. 적합한 환경과 과도한 환경
+## 핵심 정리
 
-**적합한 환경과 과도한 환경**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-### 13. Co-located vs Disaggregated Serving
-
-**Co-located vs Disaggregated Serving**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
-
-## 실무 연결
-
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
-
-## 점검 질문
-
-1. Prefill-Decode Disaggregation이란?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+- Prefill/Decode는 병목이 달라 worker pool을 분리할 수 있습니다.
+- Disaggregation은 독립 scaling과 interference 감소가 장점입니다.
+- 대가로 KV Cache 전송과 scheduler/network 복잡도가 생깁니다.
+- 작은 deployment에는 과도할 수 있습니다.
 
 ## 원문
 
