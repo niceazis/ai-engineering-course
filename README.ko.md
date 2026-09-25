@@ -1098,12 +1098,12 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 
 영상 보기: [Why is the context window limited in LLMs?](https://www.youtube.com/watch?v=CGIhxIaOg3M)
 
-→ [한국어 영상 요약](docs/ko/videos.md#8-why-is-the-context-window-limited-in-llms)
+→ [한국어 영상 요약](docs/ko/videos/module-04/why-context-window-limited-in-llms.md)
 
 **모듈 4 영상 및 추가 자료:**
 
 - [Why is the context window limited in LLMs?](https://www.youtube.com/watch?v=CGIhxIaOg3M) (영상)
-   ↳ [한국어 영상 요약](docs/ko/videos.md#8-why-is-the-context-window-limited-in-llms)
+   ↳ [한국어 영상 요약](docs/ko/videos/module-04/why-context-window-limited-in-llms.md)
 
 ---
 
