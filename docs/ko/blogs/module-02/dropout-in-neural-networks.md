@@ -1,85 +1,130 @@
-# 신경망의 Dropout이란 무엇이며 어떻게 동작하는가? — 한국어 상세 학습 노트
+# 신경망의 Dropout이란? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/dropout-in-neural-networks
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/dropout-in-neural-networks  
+> 원저자: Amit Shekhar / Outcome School · 2026-06-05  
+> 원문의 overfitting 비유, dropout rate, 4-neuron 수치 예제, inverted dropout, training/inference 차이를 따라 독립적으로 다시 쓴 학습 노트입니다.
 
-## 핵심 해설
+## 핵심
 
-신경망의 Dropout이 무엇인지, 어떤 문제를 해결하는지, 간단한 예제로 단계별 동작 방식을 이해하고 어디에 사용되는지 살펴봅니다.
+Dropout은 training 중 일부 neuron을 무작위로 꺼서 특정 neuron이나 경로에 지나치게 의존하는 것을 줄이는 regularization 기법입니다.
 
-→ [한국어 상세 학습 노트](blogs/module-02/dropout-in-neural-networks.md)
+```text
+training: 일부 neuron을 random drop
+inference: 모든 neuron 사용
+```
 
-## 핵심 학습 항목
+## 원문의 Overfitting 비유
 
-- Dropout이란?
-- 과적합 문제
-- Dropout이 필요한 이유
-- Dropout의 동작 방식
-- 단계별 예제
-- 학습 시점 vs 테스트 시점의 Dropout
-- 코드에서의 Dropout
-- Dropout 변형
-- Dropout의 장점
-- Dropout의 사용처
+한 학생이 한 문제집만 반복해서 외워 연습 문제에서는 100점을 받지만, 실제 시험에서 조금 다른 문제가 나오면 풀지 못하는 상황을 생각합니다.
 
-## 단계별 학습 가이드
+신경망도 training data를 지나치게 외우면:
 
-### 1. Dropout이란?
+```text
+training 성능은 매우 높음
+unseen data 성능은 낮음
+```
 
-**Dropout이란?**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+이 될 수 있습니다.
 
-### 2. 과적합 문제
+## 왜 neuron을 일부러 끄나
 
-**과적합 문제**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+일부 neuron이 너무 강해지면 network가 그 neuron들에 의존할 수 있습니다.
 
-### 3. Dropout이 필요한 이유
+Dropout은 매 step마다 다른 neuron 조합을 활성화하므로 각 neuron이 더 독립적으로 유용한 representation을 학습하도록 압력을 줍니다.
 
-**Dropout이 필요한 이유**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## Dropout Rate
 
-### 4. Dropout의 동작 방식
+`p`는 neuron이 꺼질 확률입니다.
 
-**Dropout의 동작 방식**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+```text
+p=0.5 -> 각 neuron이 50% 확률로 drop
+p=0.2 -> 각 neuron이 20% 확률로 drop
+```
 
-### 5. 단계별 예제
+매 training step에서 새로운 random mask가 적용됩니다.
 
-**단계별 예제**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 원문의 4-neuron 예제
 
-### 6. 학습 시점 vs 테스트 시점의 Dropout
+원래 layer output:
 
-**학습 시점 vs 테스트 시점의 Dropout**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+```text
+[2.0, 4.0, 6.0, 8.0]
+```
 
-### 7. 코드에서의 Dropout
+`p=0.5`이고 예를 들어 두 번째와 네 번째 neuron이 drop되면:
 
-**코드에서의 Dropout**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+```text
+[2.0, 0.0, 6.0, 0.0]
+```
 
-### 8. Dropout 변형
+이 됩니다.
 
-**Dropout 변형**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+그대로 두면 평균 activation이 작아지므로 현대 구현은 보통 **inverted dropout**을 사용합니다.
 
-### 9. Dropout의 장점
+keep probability가 0.5이므로 살아남은 activation을 `1/0.5=2`배 합니다.
 
-**Dropout의 장점**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+```text
+[4.0, 0.0, 12.0, 0.0]
+```
 
-### 10. Dropout의 사용처
+이렇게 training 단계에서 scale을 맞춰 두면 inference에서 별도 보정이 필요 없습니다.
 
-**Dropout의 사용처**가 무엇인지 정의하고, 왜 필요한지, 입력과 출력이 무엇인지, 전체 학습·추론 흐름에서 어느 위치에 있는지를 연결해서 이해합니다. 가능하면 작은 수치 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## Training vs Inference
 
-## 실무 연결
+### Training
 
-- 이 개념이 모델의 정확도·안정성·속도·메모리 중 어떤 요소에 영향을 주는지 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter가 있다면 변화가 결과에 미치는 영향을 확인합니다.
-- 실제 프레임워크에서 어떤 API·연산으로 구현되는지 연결해서 봅니다.
+- random mask 사용
+- 일부 neuron 비활성
+- surviving activation scaling
+- step마다 다른 sub-network처럼 동작
 
-## 점검 질문
+### Inference
 
-1. 신경망의 Dropout이란 무엇이며 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 계산 또는 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 각각 말할 수 있는가?
-5. 이 개념을 언제 선택하고 언제 다른 방법을 선택할지 설명할 수 있는가?
+- dropout 비활성
+- 모든 neuron 사용
+- randomness 없음
+- inverted dropout 덕분에 추가 scale 조정 없음
 
-## 원문
+## PyTorch 예제
 
-- https://outcomeschool.com/blog/dropout-in-neural-networks
+원문은 다음 구조를 보여줍니다.
+
+```python
+model = nn.Sequential(
+    nn.Linear(784, 256),
+    nn.ReLU(),
+    nn.Dropout(p=0.5),
+    nn.Linear(256, 10)
+)
+```
+
+실제 사용에서는 `model.train()`과 `model.eval()` 상태가 dropout 동작을 바꾸므로 중요합니다.
+
+## 너무 큰 p의 위험
+
+dropout도 많을수록 좋은 것이 아닙니다.
+
+```text
+p 너무 작음 -> regularization 효과 약함
+p 적절함   -> generalization 개선 가능
+p 너무 큼   -> 정보 손실이 커져 underfitting 가능
+```
+
+## 변형
+
+architecture에 따라 activation dropout, spatial dropout, recurrent dropout, attention dropout 등 서로 다른 위치와 형태로 적용될 수 있습니다.
+
+따라서 모든 network에 같은 `p=0.5`를 기계적으로 적용하는 것은 적절하지 않습니다.
+
+## 이해 확인
+
+1. dropout이 inference에서 꺼지는 이유는 무엇인가요?
+2. inverted dropout이 surviving activation을 키우는 이유는 무엇인가요?
+3. p가 지나치게 크면 왜 underfitting이 생길 수 있나요?
+
+## 연결 학습
+
+- 원문: https://outcomeschool.com/blog/dropout-in-neural-networks
+- 이전: [Cross-Entropy Loss](math-behind-cross-entropy-loss.md)
+- 다음: [BatchNorm vs LayerNorm](batch-normalization-vs-layer-normalization.md)
+- [모듈 2](../../module-02.md)

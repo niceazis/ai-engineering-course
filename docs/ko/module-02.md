@@ -86,6 +86,8 @@
 
 영상 보기: [Epoch, Batch, Batch Size, Iteration](https://www.youtube.com/watch?v=NFLlXE-6vno)
 
+→ [한국어 상세 영상 학습 노트](videos/module-02/epoch-batch-batch-size-iteration.md)
+
 ### 2.3 역전파는 어떻게 동작하는가? 수학으로 단계별 설명
 
 신경망 역전파의 수학을 배웁니다.
@@ -129,6 +131,8 @@
 
 
 영상 보기: [Softmax Activation Function in Machine Learning](https://www.youtube.com/watch?v=2Zx6x01WwWM)
+
+→ [한국어 상세 영상 학습 노트](videos/module-02/softmax-activation-function-in-machine-learning.md)
 
 ### 2.5 신경망의 Dropout이란 무엇이며 어떻게 동작하는가?
 
@@ -174,7 +178,7 @@ Batch Normalization과 Layer Normalization을 배우고, 둘의 차이와 각각
 
 [Layer Normalization](https://outcomeschool.com/blog/batch-normalization-vs-layer-normalization)보다 빠르고 단순한 대안이며 Llama, Mistral, Gemma, Qwen, PaLM, DeepSeek 등 많은 현대 LLM에서 사용하는 RMSNorm을 배웁니다.
 
-→ [한국어 상세 학습 노트](blogs/module-02/batch-normalization-vs-layer-normalization.md)
+→ [한국어 상세 학습 노트](blogs/module-02/rmsnorm-root-mean-square-layer-normalization.md)
 
 
 다음 내용을 다룹니다.
@@ -235,5 +239,8 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 **모듈 2 영상 및 추가 자료:**
 
 - [Epoch, Batch, Batch Size, Iteration](https://www.youtube.com/watch?v=NFLlXE-6vno) (영상)
+  ↳ [한국어 상세 영상 학습 노트](videos/module-02/epoch-batch-batch-size-iteration.md)
+- [Softmax Activation Function in Machine Learning](https://www.youtube.com/watch?v=2Zx6x01WwWM) (영상)
+  ↳ [한국어 상세 영상 학습 노트](videos/module-02/softmax-activation-function-in-machine-learning.md)
 
 ---
