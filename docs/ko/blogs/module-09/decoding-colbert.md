@@ -1,112 +1,160 @@
 # ColBERT란? Late Interaction Retrieval — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/decoding-colbert
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/decoding-colbert  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 현재 Outcome School 원문 본문 캐시를 직접 열지 못했습니다. 공식 Module 9 레슨 구조와 ColBERT 논문의 공개 핵심 알고리즘을 교차검증해 작성하며, 원문 고유 수치는 확인되지 않은 것으로 취급합니다.
 
-## 핵심 해설
+## 1. Retrieval의 두 극단
 
-느린 BERT Reranker의 세밀한 단어 단위 매칭을 유지하면서 수백만 Passage를 검색할 수 있게 하는 ColBERT의 Late Interaction 아이디어를 배웁니다.
+### Bi-Encoder
 
-## 핵심 학습 항목
+Query와 document를 각각 하나의 vector로 압축합니다.
 
-- ColBERT 논문
-- 필요한 기초 개념
-- 큰 그림
-- 기존 두 극단적 접근
-- Late Interaction
-- Query와 Document Encoding
-- MaxSim
-- 평균 대신 Max를 쓰는 이유
-- Document Ranking
-- Positive/Negative를 이용한 학습
-- 작은 수치로 보는 Loss
-- 대규모 빠른 검색
-- 더 큰 Index 비용
-- 결과
-- 이후 발전
-- 빠른 요약
+    q → one vector
+    d → one vector
+    score = q·d
 
-## 단계별 학습 가이드
+매우 빠르지만 token-level 세부 matching이 하나의 vector에 압축됩니다.
 
-### 1. ColBERT 논문
+### Cross-Encoder
 
-**ColBERT 논문**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    [query + document]
+      → Transformer
+      → relevance score
 
-### 2. 필요한 기초 개념
+Token끼리 직접 상호작용해 정확하지만 모든 query-document pair를 다시 계산해야 해 대규모 corpus 검색에는 비쌉니다.
 
-**필요한 기초 개념**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+ColBERT는 둘 사이를 노립니다.
 
-### 3. 큰 그림
+## 2. Late Interaction
 
-**큰 그림**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+ColBERT는 query와 document를 **token-level embedding sequence**로 따로 encoding해 document side를 미리 저장합니다.
 
-### 4. 기존 두 극단적 접근
+    Q = [q1, q2, ... qm]
+    D = [d1, d2, ... dn]
 
-**기존 두 극단적 접근**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Query가 들어온 뒤에만 token 간 similarity를 계산합니다.
 
-### 5. Late Interaction
+"Interaction을 늦게 한다"는 의미가 Late Interaction입니다.
 
-**Late Interaction**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 3. MaxSim
 
-### 6. Query와 Document Encoding
+각 query token q_i에 대해 document token 중 가장 비슷한 하나를 찾습니다.
 
-**Query와 Document Encoding**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    MaxSim(q_i, D)
+      = max_j q_i · d_j
 
-### 7. MaxSim
+Document score:
 
-**MaxSim**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    score(Q,D)
+      = Σ_i max_j(q_i · d_j)
 
-### 8. 평균 대신 Max를 쓰는 이유
+즉 query의 각 중요한 token이 document 어디에서 가장 잘 match되는지를 따로 봅니다.
 
-**평균 대신 Max를 쓰는 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 4. 왜 Average가 아니라 Max인가
 
-### 9. Document Ranking
+Query token "database"가 document 전체와 평균 similarity를 내면 대부분 무관한 token 때문에 signal이 희석됩니다.
 
-**Document Ranking**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+MaxSim은:
 
-### 10. Positive/Negative를 이용한 학습
+    "database"
+      → document의 "database"나 강하게 관련된 token
 
-**Positive/Negative를 이용한 학습**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+만 잡아냅니다.
 
-### 11. 작은 수치로 보는 Loss
+그 뒤 query token별 best match를 합칩니다.
 
-**작은 수치로 보는 Loss**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. 예시
 
-### 12. 대규모 빠른 검색
+Query:
 
-**대규모 빠른 검색**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    "neural search"
 
-### 13. 더 큰 Index 비용
+Document A:
 
-**더 큰 Index 비용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    "semantic neural retrieval systems"
 
-### 14. 결과
+Document B:
 
-**결과**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    "database backup policy"
 
-### 15. 이후 발전
+Query token "neural"은 A의 "neural"과 큰 score, "search"는 "retrieval"과 높은 semantic score를 가질 수 있습니다.
 
-**이후 발전**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+A의 MaxSim 합이 B보다 높아집니다.
 
-### 16. 빠른 요약
+## 6. Indexing
 
-**빠른 요약**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Document를 매 query마다 BERT에 넣지 않습니다.
 
-## 실무 연결
+Offline:
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+    documents
+      → encoder
+      → token embeddings
+      → compressed/indexed storage
 
-## 점검 질문
+Online:
 
-1. ColBERT란? Late Interaction Retrieval을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+    query
+      → query token embeddings
+      → candidate token search
+      → MaxSim ranking
+
+이 precomputation이 scale의 핵심입니다.
+
+## 7. Storage Trade-off
+
+Single-vector retriever는 document당 vector 하나를 저장합니다.
+
+ColBERT는 많은 token vector를 저장하므로 index가 훨씬 큽니다.
+
+따라서:
+
+    retrieval quality ↑
+    ↔ index/storage cost ↑
+
+의 trade-off가 있습니다.
+
+후속 ColBERT 계열은 compression과 indexing을 개선해 이 문제를 줄였습니다.
+
+## 8. Training
+
+Positive document는 score를 높이고 negative document는 낮추도록 학습합니다.
+
+단순 pairwise loss 예:
+
+    L = -log
+        exp(s_pos)
+        / [exp(s_pos)+exp(s_neg)]
+
+Hard negative mining이 retrieval model 품질에 중요합니다.
+
+## 9. Reranker인가 Retriever인가
+
+ColBERT는 두 방식 모두에 활용될 수 있습니다.
+
+- 큰 corpus에 자체 index를 구성해 first-stage retrieval
+- BM25/vector 후보를 late-interaction으로 rerank
+
+어느 위치에 쓰는지는 latency/storage budget에 따라 다릅니다.
+
+## 10. Bi-Encoder / ColBERT / Cross-Encoder
+
+| 항목 | Bi-Encoder | ColBERT | Cross-Encoder |
+| --- | --- | --- | --- |
+| Document 표현 | 1 vector | token vectors | query마다 재계산 |
+| Interaction | vector-level | late token-level | full early interaction |
+| 속도 | 가장 빠름 | 중간 | 가장 느림 |
+| Index size | 작음 | 큼 | 사전 index 없음 |
+| 정밀도 | 중간 | 높음 | 매우 높음 |
+
+## 핵심 정리
+
+- ColBERT는 query/document를 따로 encode하면서 token-level matching을 query 시점까지 늦춥니다.
+- 핵심 scoring은 query token마다 document token의 최대 similarity를 찾는 MaxSim입니다.
+- Cross-encoder의 세밀함과 bi-encoder의 precomputation 장점을 절충합니다.
+- 대가로 document당 여러 token vector를 저장해 index가 큽니다.
+- 원문 본문을 직접 확인하지 못한 부분은 ColBERT 공개 논문 수준의 설명으로만 보완했습니다.
 
 ## 원문
 

@@ -1,112 +1,187 @@
 # Vector Database는 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-a-vector-database-work
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-a-vector-database-work  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 원문을 직접 확인해 embedding·similarity metric·ANN·HNSW/IVF/PQ와 수치 예제를 반영한 독립적인 한국어 학습 노트입니다.
 
-## 핵심 해설
+## 1. Vector Database가 필요한 이유
 
-현대 AI 검색, 추천, 자체 문서 기반 질의응답의 핵심 구성 요소인 Vector Database를 배웁니다.
+일반 DB는 ID, 날짜, 문자열 같은 정확한 조건 검색에 강합니다. 하지만 “이 문장과 의미가 비슷한 문서”를 찾으려면 텍스트를 embedding vector로 바꾸고 가까운 vector를 검색해야 합니다.
 
-## 핵심 학습 항목
+Vector DB는 보통 다음을 함께 저장합니다.
 
-- Vector Database란?
-- Embedding 복습
-- 일반 DB의 한계
-- Vector Database가 저장하는 것
-- Similarity 측정
-- Cosine Similarity
-- Dot Product
-- Euclidean Distance
-- Nearest Neighbor 문제
-- Brute Force가 느린 이유
-- ANN과 Indexing
-- HNSW
-- IVF
-- PQ
-- 작은 코드 예제
-- 실제 활용
+    id
+    vector
+    original text / object
+    metadata
 
-## 단계별 학습 가이드
+검색은 query를 같은 embedding model로 vector화한 뒤 가장 가까운 항목을 찾는 흐름입니다.
 
-### 1. Vector Database란?
+## 2. Embedding 복습
 
-**Vector Database란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문 예처럼 의미가 가까운 단어는 vector 공간에서도 가까운 위치를 가질 수 있습니다.
 
-### 2. Embedding 복습
+    "king"   → [0.91, 0.12, 0.55]
+    "queen"  → [0.89, 0.15, 0.58]
+    "banana" → [0.10, 0.95, 0.03]
 
-**Embedding 복습**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+실제 embedding은 수백~수천 차원이며, 서로 다른 embedding model의 vector를 직접 섞어 비교하면 안 됩니다.
 
-### 3. 일반 DB의 한계
+## 3. Similarity Metric
 
-**일반 DB의 한계**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+### Cosine Similarity
 
-### 4. Vector Database가 저장하는 것
+    cos(A,B) = (A·B) / (||A|| ||B||)
 
-**Vector Database가 저장하는 것**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+원문의 A=[2,3], B=[4,6] 예에서는 두 vector가 같은 방향이라 cosine similarity가 약 1입니다.
 
-### 5. Similarity 측정
+### Dot Product
 
-**Similarity 측정**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    A·B = Σ A_i B_i
 
-### 6. Cosine Similarity
+A=[1,2,3], B=[4,5,6]이면:
 
-**Cosine Similarity**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    1×4 + 2×5 + 3×6 = 32
 
-### 7. Dot Product
+### Euclidean Distance
 
-**Dot Product**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    d(A,B) = sqrt(Σ(A_i-B_i)^2)
 
-### 8. Euclidean Distance
+A=[1,2], B=[4,6]이면 distance=5입니다.
 
-**Euclidean Distance**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Embedding model이 어떤 metric을 전제로 학습됐는지 확인해야 합니다.
 
-### 9. Nearest Neighbor 문제
+## 4. Brute-Force Search
 
-**Nearest Neighbor 문제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+가장 정확한 방식은 query vector와 모든 stored vector를 비교하는 것입니다.
 
-### 10. Brute Force가 느린 이유
+    1 query
+      × N vectors
+      × d dimensions
 
-**Brute Force가 느린 이유**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+N이 수백만~수십억이면 latency가 커집니다.
 
-### 11. ANN과 Indexing
+그래서 production에서는 Approximate Nearest Neighbor(ANN) index를 주로 사용합니다.
 
-**ANN과 Indexing**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. ANN의 Trade-off
 
-### 12. HNSW
+ANN은 모든 vector를 완전 탐색하지 않고 **가까울 가능성이 높은 후보만 탐색**합니다.
 
-**HNSW**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Trade-off:
 
-### 13. IVF
+    speed ↑
+    memory/index cost ↑
+    recall은 exact search보다 약간 낮을 수 있음
 
-**IVF**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+따라서 latency와 recall@k를 함께 측정합니다.
 
-### 14. PQ
+## 6. HNSW
 
-**PQ**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+HNSW는 vector를 multi-layer graph로 연결합니다.
 
-### 15. 작은 코드 예제
+검색:
 
-**작은 코드 예제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+1. 상위 sparse layer에서 큰 폭으로 이동
+2. query와 가까운 node 방향으로 탐색
+3. 아래 layer로 내려감
+4. 가장 촘촘한 layer에서 local search
 
-### 16. 실제 활용
+장점:
 
-**실제 활용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+- 높은 recall
+- 빠른 query
 
-## 실무 연결
+단점:
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+- index memory 큼
+- build/update 비용 존재
 
-## 점검 질문
+## 7. IVF
 
-1. Vector Database는 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+IVF(Inverted File Index)는 vector 공간을 여러 cluster로 나눕니다.
+
+    vectors
+      → centroids
+      → inverted lists
+
+Query는 가장 가까운 몇 개 centroid만 선택하고 그 cluster 안에서 검색합니다.
+
+조절값:
+
+- cluster 수
+- nprobe: query 시 몇 cluster를 볼지
+
+nprobe가 커지면 recall은 높아지고 latency도 증가합니다.
+
+## 8. Product Quantization(PQ)
+
+PQ는 vector를 여러 subvector로 나누고 각 부분을 작은 codebook index로 압축합니다.
+
+목적:
+
+- memory 감소
+- distance calculation 가속
+
+대규모 billion-scale index에서 IVF+PQ 조합이 자주 사용됩니다.
+
+정확도 손실이 있으므로 compression ratio와 recall을 함께 평가합니다.
+
+## 9. Metadata Filtering
+
+실전 검색은 vector similarity만 쓰지 않습니다.
+
+예:
+
+    tenant_id = 42
+    language = "ko"
+    created_at >= ...
+    document_type = "policy"
+
+원문이 구분하는 두 방식:
+
+### Pre-filter
+
+metadata 조건으로 후보를 먼저 줄인 뒤 vector search.
+
+### Post-filter
+
+vector top-k를 먼저 찾고 metadata로 제거.
+
+필터가 강하면 post-filter는 필요한 결과 수를 못 채울 수 있어 pre-filter가 유리한 경우가 많습니다.
+
+## 10. RAG에서의 위치
+
+    documents
+      → chunking
+      → embedding
+      → vector DB
+
+    user query
+      → embedding
+      → ANN search
+      → top-k chunks
+      → LLM context
+
+Vector DB는 답을 생성하지 않습니다. **관련 evidence 후보를 빠르게 찾는 retrieval layer**입니다.
+
+## 11. Production 지표
+
+- recall@k
+- precision@k
+- query p50/p95 latency
+- index build time
+- RAM/SSD footprint
+- update/delete latency
+- metadata-filter performance
+- cost per million vectors
+
+## 핵심 정리
+
+- Vector DB는 embedding vector와 원문/metadata를 저장하고 similarity search를 제공합니다.
+- Cosine, dot product, Euclidean distance가 대표 metric입니다.
+- Exact brute force는 정확하지만 대규모에서 느리므로 ANN을 사용합니다.
+- HNSW는 graph, IVF는 clustering, PQ는 compression 접근입니다.
+- RAG에서는 retrieval 후보를 만드는 역할이며 최종 품질은 chunking·embedding·reranking까지 함께 좌우합니다.
 
 ## 원문
 

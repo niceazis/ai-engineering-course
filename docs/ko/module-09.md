@@ -303,6 +303,8 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 
 영상 보기: [Agentic RAG Explained](https://www.youtube.com/watch?v=6nSegpuWJVw)
 
+→ [한국어 상세 영상 학습 노트](videos/module-09/agentic-rag-explained.md)
+
 ### 9.12 GraphRAG란?
 
 [Vector Search](https://outcomeschool.com/blog/how-does-a-vector-database-work)와 Knowledge Graph를 결합해 검색 품질을 높이는 GraphRAG를 배웁니다.
@@ -350,6 +352,8 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
 **모듈 9 영상 및 추가 자료:**
 
 - [AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization](https://www.youtube.com/watch?v=lnfWvX66FUk) (영상)
+  ↳ [한국어 상세 영상 학습 노트](videos/module-09/ai-engineering-explained-rag-overview.md)
 - [Agentic RAG Explained](https://www.youtube.com/watch?v=6nSegpuWJVw) (영상)
+  ↳ [한국어 상세 영상 학습 노트](videos/module-09/agentic-rag-explained.md)
 
 ---

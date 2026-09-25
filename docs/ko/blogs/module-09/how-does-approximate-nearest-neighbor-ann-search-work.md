@@ -1,97 +1,164 @@
 # Approximate Nearest Neighbor(ANN) 검색은 어떻게 동작하는가? — 한국어 상세 학습 노트
 
-> 원문: https://outcomeschool.com/blog/how-does-approximate-nearest-neighbor-ann-search-work
-> 원저자: Amit Shekhar / Outcome School
-> 문서 성격: **원문 전체 번역본이 아닌 독립적인 한국어 상세 해설·학습 노트**
+> 원문: https://outcomeschool.com/blog/how-does-approximate-nearest-neighbor-ann-search-work  
+> 원저자: Amit Shekhar / Outcome School  
+> 문서 성격: 현재 원문 본문 캐시를 직접 열지 못했습니다. Outcome School 공식 Module 9 레슨 구조와 ANN의 공개 표준 알고리즘을 교차검증해 작성하며, 원문에서 확인하지 못한 수치를 원문 내용이라고 단정하지 않습니다.
 
-## 핵심 해설
+## 1. Nearest Neighbor 문제
 
-거대한 데이터 집합에서 “비슷한 것”을 매우 빠르게 찾는 ANN 검색을 배웁니다.
+Query vector q와 데이터 vector x_i 사이 distance/similarity를 계산해 가장 가까운 k개를 찾습니다.
 
-## 핵심 학습 항목
+Exact search:
 
-- Nearest Neighbor Search란?
-- 데이터를 Vector로 바꾸는 방법
-- “가까움”을 측정하는 방법
-- 단순한 방식과 한계
-- ANN Search란?
-- 속도 vs 정확도 trade-off
-- Tree(KD-Tree)
-- Hashing(LSH)
-- Clustering(IVF)
-- Graph(HNSW)
-- 간단한 코드 예제
-- 실제 활용
-- 적절한 방법 선택
+    for every x_i:
+        score(q, x_i)
 
-## 단계별 학습 가이드
+Dataset이 작을 때는 단순하고 정확합니다.
 
-### 1. Nearest Neighbor Search란?
+문제는 vector가 수백만~수십억 개일 때입니다.
 
-**Nearest Neighbor Search란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 2. ANN의 목표
 
-### 2. 데이터를 Vector로 바꾸는 방법
+Approximate Nearest Neighbor는 exact top-k를 100% 보장하는 대신 훨씬 적은 후보만 검사합니다.
 
-**데이터를 Vector로 바꾸는 방법**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+핵심 목표:
 
-### 3. “가까움”을 측정하는 방법
+    높은 recall
+    + 낮은 latency
+    + 감당 가능한 memory
 
-**“가까움”을 측정하는 방법**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+ANN 설계는 항상 속도/정확도/메모리의 trade-off입니다.
 
-### 4. 단순한 방식과 한계
+## 3. KD-Tree
 
-**단순한 방식과 한계**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+공간을 축별로 반복 분할하는 tree입니다.
 
-### 5. ANN Search란?
+낮은 차원에서는 효과적이지만 dimension이 커지면 pruning 효과가 급격히 떨어집니다. 이를 흔히 curse of dimensionality와 연결합니다.
 
-**ANN Search란?**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+현대 text embedding처럼 수백 차원에서는 KD-tree가 일반적으로 주력 선택이 아닙니다.
 
-### 6. 속도 vs 정확도 trade-off
+## 4. Locality-Sensitive Hashing(LSH)
 
-**속도 vs 정확도 trade-off**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+비슷한 vector가 같은 bucket에 들어갈 확률이 높도록 hash function을 설계합니다.
 
-### 7. Tree(KD-Tree)
+검색:
 
-**Tree(KD-Tree)**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+    query
+      → hash buckets
+      → nearby candidate bucket
+      → exact score among candidates
 
-### 8. Hashing(LSH)
+장점은 이론적 성질이 명확하다는 점이고, 단점은 실전 high-recall tuning에서 많은 table/memory가 필요할 수 있다는 점입니다.
 
-**Hashing(LSH)**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+## 5. IVF
 
-### 9. Clustering(IVF)
+Dataset을 coarse cluster로 나눕니다.
 
-**Clustering(IVF)**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Training:
 
-### 10. Graph(HNSW)
+    vectors → k-means centroids
 
-**Graph(HNSW)**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Index:
 
-### 11. 간단한 코드 예제
+    each vector → nearest centroid list
 
-**간단한 코드 예제**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Query:
 
-### 12. 실제 활용
+1. query와 centroid 비교
+2. 가까운 nprobe cluster 선택
+3. 그 안의 vector만 검색
 
-**실제 활용**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+nprobe가 ANN quality/latency를 직접 조절합니다.
 
-### 13. 적절한 방법 선택
+## 6. HNSW
 
-**적절한 방법 선택**의 정의, 필요한 이유, 입력과 출력, 전체 시스템에서의 위치를 연결해서 이해합니다. 작은 예제나 코드 흐름으로 직접 확인하고, 비슷한 대안과의 차이 및 trade-off까지 설명할 수 있어야 합니다.
+Hierarchical Navigable Small World graph는 vector를 neighbor graph로 연결합니다.
 
-## 실무 연결
+검색은 높은 layer에서 시작해 greedy하게 query에 가까운 node로 이동한 뒤 아래 layer로 내려갑니다.
 
-- 정확도·안정성·속도·메모리에 미치는 영향을 확인합니다.
-- training과 inference에서 동작이 달라지는지 구분합니다.
-- 관련 hyperparameter와 실패 조건을 함께 확인합니다.
-- 실제 프레임워크 구현과 연결해서 봅니다.
+대표 tuning:
 
-## 점검 질문
+- M: node당 edge 수
+- efConstruction: build 품질/비용
+- efSearch: query recall/latency
 
-1. Approximate Nearest Neighbor(ANN) 검색은 어떻게 동작하는가?을 한 문장으로 설명할 수 있는가?
-2. 왜 필요한지 설명할 수 있는가?
-3. 핵심 데이터 흐름을 순서대로 설명할 수 있는가?
-4. 대표 장점과 한계를 말할 수 있는가?
-5. 언제 이 방법을 선택할지 설명할 수 있는가?
+efSearch를 높이면 일반적으로 recall은 좋아지고 latency도 증가합니다.
+
+## 7. 왜 Graph Search가 빠른가
+
+좋은 graph에는 local edge뿐 아니라 먼 지역으로 건너가는 shortcut edge가 있습니다.
+
+따라서 모든 point를 보지 않고:
+
+    coarse jump
+      → closer region
+      → local refinement
+
+으로 탐색할 수 있습니다.
+
+## 8. Quantization과 조합
+
+ANN candidate generation에 PQ/SQ 같은 compression을 결합할 수 있습니다.
+
+예:
+
+    IVF → compressed candidates
+        → top 100
+        → original vector exact rerank
+        → top 10
+
+두 단계로 speed와 quality를 균형 잡습니다.
+
+## 9. Recall 측정
+
+ANN 평가에서 “accuracy” 대신 recall@k를 많이 봅니다.
+
+    recall@10
+      = ANN top-10 안에
+        exact top-10이 얼마나 포함됐는가
+
+Latency만 낮추고 recall이 크게 떨어지면 검색 품질이 나쁩니다.
+
+## 10. Index 선택
+
+### HNSW가 잘 맞는 경우
+
+- high recall
+- RAM 여유
+- low-latency online query
+
+### IVF/PQ가 잘 맞는 경우
+
+- 매우 큰 dataset
+- memory 절감 중요
+- batch/offline build 가능
+
+### Flat exact search
+
+- dataset 작음
+- GPU brute-force가 충분히 빠름
+- 100% exact가 필요
+
+## 11. Filtering과 ANN
+
+Metadata filter가 매우 강하면 ANN index가 선택한 후보가 filter에서 제거될 수 있습니다.
+
+따라서 vector DB는:
+
+- filtered HNSW
+- partition
+- pre-filter
+- dynamic candidate expansion
+
+같은 전략을 사용합니다.
+
+## 핵심 정리
+
+- ANN은 exact top-k 보장을 일부 포기해 대규모 vector search를 빠르게 만듭니다.
+- KD-tree, LSH, IVF, HNSW가 대표 접근입니다.
+- 현대 embedding search에서는 HNSW와 IVF/PQ가 특히 많이 쓰입니다.
+- 성능은 latency 하나가 아니라 recall@k, memory, build/update cost를 함께 봐야 합니다.
+- 원문 본문을 직접 확인하지 못한 부분은 공개 ANN 지식으로 보완했으며 원문 고유 예제로 표시하지 않았습니다.
 
 ## 원문
 

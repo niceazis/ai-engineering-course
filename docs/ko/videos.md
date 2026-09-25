@@ -5,6 +5,8 @@
 ## 1. AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization
 원본: https://www.youtube.com/watch?v=lnfWvX66FUk
 
+→ [모듈 9 RAG 중심 상세 영상 학습 노트](videos/module-09/ai-engineering-explained-rag-overview.md)
+
 - AI 엔지니어링에서 반복해서 등장하는 여섯 핵심 개념인 **LLM, RAG, MCP, Agent, Fine-tuning, Quantization**을 한 번에 훑는 개요 영상입니다.
 - LLM은 언어 이해·생성을 담당하는 기반 모델, RAG는 외부 지식을 검색해 답변에 결합하는 패턴, MCP는 AI 애플리케이션과 도구·데이터를 연결하는 표준 인터페이스로 설명할 수 있습니다.
 - Agent는 모델이 단순 응답을 넘어 도구를 사용하고 반복적으로 목표를 수행하게 하는 구조입니다.
@@ -73,6 +75,8 @@ Logit을 확률 분포로 바꾸는 수식, Outcome School의 [2,3,1] 예제, Cr
 
 ## 9. Agentic RAG Explained
 원본: https://www.youtube.com/watch?v=6nSegpuWJVw
+
+→ [한국어 상세 영상 학습 노트](videos/module-09/agentic-rag-explained.md)
 
 - 일반 RAG가 정해진 검색 파이프라인을 한 번 실행한다면 **Agentic RAG**는 Agent가 검색 자체를 판단하고 반복합니다.
 - Agent는 질문을 분석하고, 어떤 검색을 할지 결정하고, 결과가 부족하면 Query를 수정하거나 다른 Source를 찾을 수 있습니다.
