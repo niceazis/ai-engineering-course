@@ -141,6 +141,11 @@
           "type": "video",
           "title": "Softmax Activation Function in Machine Learning",
           "url": "https://www.youtube.com/watch?v=2Zx6x01WwWM"
+        },
+        {
+          "type": "external",
+          "title": "AI and Machine Learning",
+          "url": "https://outcomeschool.com/program/ai-and-machine-learning"
         }
       ]
     },
@@ -278,6 +283,11 @@
           "type": "video",
           "title": "Why is the context window limited in LLMs?",
           "url": "https://www.youtube.com/watch?v=CGIhxIaOg3M"
+        },
+        {
+          "type": "external",
+          "title": "AI and Machine Learning",
+          "url": "https://outcomeschool.com/program/ai-and-machine-learning"
         }
       ]
     },
@@ -411,6 +421,11 @@
           "type": "blog",
           "title": "What is Group Relative Policy Optimization (GRPO) and How Does It Work?",
           "url": "https://outcomeschool.com/blog/group-relative-policy-optimization-grpo"
+        },
+        {
+          "type": "external",
+          "title": "AI and Machine Learning",
+          "url": "https://outcomeschool.com/program/ai-and-machine-learning"
         }
       ]
     },
@@ -523,6 +538,11 @@
           "type": "video",
           "title": "AI Engineering Explained: LLM, RAG, MCP, Agent, Fine-Tuning, Quantization",
           "url": "https://www.youtube.com/watch?v=lnfWvX66FUk"
+        },
+        {
+          "type": "external",
+          "title": "AI and Machine Learning",
+          "url": "https://outcomeschool.com/program/ai-and-machine-learning"
         }
       ]
     },
@@ -660,6 +680,11 @@
           "type": "blog",
           "title": "How does Cursor work?",
           "url": "https://outcomeschool.com/blog/how-does-cursor-work"
+        },
+        {
+          "type": "external",
+          "title": "AI and Machine Learning",
+          "url": "https://outcomeschool.com/program/ai-and-machine-learning"
         }
       ]
     },
@@ -766,6 +791,11 @@
           "type": "external",
           "title": "LLM Inference Engineering (complete series)",
           "url": "https://github.com/amitshekhariitbhu/llm-inference-engineering"
+        },
+        {
+          "type": "external",
+          "title": "AI and Machine Learning",
+          "url": "https://outcomeschool.com/program/ai-and-machine-learning"
         }
       ]
     },
@@ -792,6 +822,11 @@
           "type": "blog",
           "title": "What is AI Agent Observability? Traces, Spans, and Metrics Explained",
           "url": "https://outcomeschool.com/blog/ai-agent-observability"
+        },
+        {
+          "type": "external",
+          "title": "AI and Machine Learning",
+          "url": "https://outcomeschool.com/program/ai-and-machine-learning"
         }
       ]
     },
@@ -905,6 +940,11 @@
           "type": "blog",
           "title": "How do Voice And Video Call Work?",
           "url": "https://outcomeschool.com/blog/voice-and-video-call"
+        },
+        {
+          "type": "external",
+          "title": "AI and Machine Learning",
+          "url": "https://outcomeschool.com/program/ai-and-machine-learning"
         }
       ]
     },
