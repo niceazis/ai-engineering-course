@@ -44,7 +44,9 @@
 
 ## Outcome School에서 가르치는 과정
 
-- [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)
+이 AI 엔지니어링 코스는 완전히 무료로 읽을 수 있습니다. 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School에서 제가 진행하는 **유료** 라이브 프로그램도 있습니다.
+
+- [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning) (라이브 클래스)
 
 ---
 
@@ -640,6 +642,8 @@ PyTorch의 동작 원리를 배웁니다. Tensor가 무엇인지, computation gr
 - [Epoch, Batch, Batch Size, Iteration](https://www.youtube.com/watch?v=NFLlXE-6vno) (영상)
    ↳ [한국어 상세 영상 학습 노트](docs/ko/videos/module-02/epoch-batch-batch-size-iteration.md)
 
+> **참고:** 이제 머신러닝과 딥러닝의 기초를 학습했습니다. 이 코스는 무료입니다. 이 기초를 라이브 수업으로 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School의 **유료** 라이브 프로그램 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)을 참고하세요.
+
 ---
 
 ## 모듈 3: 생성형 AI와 트랜스포머 아키텍처
@@ -1104,6 +1108,8 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 
 - [Why is the context window limited in LLMs?](https://www.youtube.com/watch?v=CGIhxIaOg3M) (영상)
    ↳ [한국어 영상 요약](docs/ko/videos/module-04/why-context-window-limited-in-llms.md)
+
+> **참고:** 이제 LLM이 내부에서 텍스트를 생성하는 방식을 학습했습니다. 이 주제들을 라이브 수업으로 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School의 **유료** 라이브 프로그램 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)을 참고하세요.
 
 ---
 
@@ -1664,6 +1670,8 @@ GRPO가 왜 필요한지, PPO와 어떤 차이가 있는지, 단계별 동작과
 → [한국어 상세 학습 노트](docs/ko/blogs/module-07/group-relative-policy-optimization-grpo.md)
 
 
+> **참고:** 이제 LLM을 학습하고, 파인튜닝하고, 정렬하는 방식을 학습했습니다. 이를 라이브 수업으로 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School의 **유료** 라이브 프로그램 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)을 참고하세요.
+
 ---
 
 ## 모듈 8: 프롬프트 엔지니어링과 컨텍스트 엔지니어링
@@ -2132,6 +2140,8 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
    ↳ [한국어 영상 요약](docs/ko/videos.md#1-ai-engineering-explained-llm-rag-mcp-agent-fine-tuning-quantization)
 - [Agentic RAG Explained](https://www.youtube.com/watch?v=6nSegpuWJVw) (영상)
    ↳ [한국어 영상 요약](docs/ko/videos/module-09/agentic-rag-explained.md)
+
+> **참고:** 이제 RAG 시스템을 구축하는 방법을 학습했습니다. 이를 직접 만들어 보며 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School의 **유료** 라이브 프로그램 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)을 참고하세요.
 
 ---
 
@@ -2706,6 +2716,8 @@ State, Node, Edge로 Agent Workflow를 Graph로 구성하는 LangGraph를 배웁
 → [한국어 상세 학습 노트](docs/ko/blogs/module-11/how-does-cursor-work.md)
 
 
+> **참고:** 이제 AI 에이전트의 동작 방식과 구축 방법을 학습했습니다. 이를 라이브 수업으로 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School의 **유료** 라이브 프로그램 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)을 참고하세요.
+
 ---
 
 ## 모듈 12: LLM 추론 엔지니어링
@@ -3128,6 +3140,8 @@ NVIDIA GPU에서 가능한 최고 수준의 추론 성능을 목표로 Build-tim
    ↳ [한국어 영상 요약](docs/ko/videos/module-12/first-token-latency-problem.md)
 - [LLM Inference Engineering (complete series)](https://github.com/amitshekhariitbhu/llm-inference-engineering) (시리즈)
 
+> **참고:** 이제 프로덕션에서 LLM 추론을 빠르고 비용 효율적으로 만드는 방법을 학습했습니다. LLM 추론 엔지니어링을 라이브 수업으로 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School의 **유료** 라이브 프로그램 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)을 참고하세요.
+
 ---
 
 ## 모듈 13: 평가와 관측성
@@ -3239,6 +3253,8 @@ Agent의 내부 동작을 Trace와 Span으로 기록하고, 프로덕션에서 �
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-13/ai-agent-observability.md)
 
+
+> **참고:** 이제 프로덕션에서 LLM과 AI 에이전트를 평가하고 관측하는 방법을 학습했습니다. 이를 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School의 **유료** 라이브 프로그램 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)을 참고하세요.
 
 ---
 
@@ -3711,6 +3727,8 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/voice-and-video-call.md)
 
 
+> **참고:** 이제 완전한 AI 시스템을 설계하고 배포하는 방법을 학습했습니다. 이를 라이브 수업으로 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School의 **유료** 라이브 프로그램 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)을 참고하세요.
+
 ---
 
 ## 모듈 17: AI의 프런티어 아이디어
@@ -3804,7 +3822,7 @@ AI가 자신의 능력을 개선하고, 개선된 버전이 다시 자신을 개
 
 - [AI Engineering Interview Questions and Answers](https://github.com/amitshekhariitbhu/ai-engineering-interview-questions)
 
-더 깊게 배우려면 Outcome School의 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning) 프로그램을 참고하세요.
+이 코스는 무료입니다. 이 모든 내용을 라이브 수업으로 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School의 **유료** 라이브 프로그램 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)을 참고하세요.
 
 ---
 
@@ -3961,6 +3979,8 @@ AI가 자신의 능력을 개선하고, 개선된 버전이 다시 자신을 개
 
 네. 완전히 무료입니다. 모든 레슨은 무료 블로그이며 회원가입이나 유료벽이 없습니다.
 
+라이브 수업과 가이드를 통해 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School의 **유료** 라이브 프로그램 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)도 있습니다.
+
 ### 머신러닝 배경지식이 필요한가요?
 
 아닙니다. 머신러닝의 가장 기초부터 시작합니다. 기본적인 프로그래밍 지식, 가능하면 Python, 그리고 고등학교 수준의 수학이면 충분합니다.
@@ -4005,7 +4025,7 @@ Transformer, Attention, Tokenization 같은 LLM 내부 동작, Prompting·Contex
 
 이 AI 엔지니어링 코스가 도움이 되었다면 Star ⭐를 누르고 AI 엔지니어링을 배우고 싶은 친구·동료에게 공유해 주세요.
 
-더 깊게 배우려면 Outcome School의 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning) 프로그램을 참고하세요.
+이 코스는 무료입니다. 이 모든 내용을 라이브 수업으로 더 실무적이고 깊이 있게 배우고 싶다면 Outcome School의 **유료** 라이브 프로그램 [AI and Machine Learning](https://outcomeschool.com/program/ai-and-machine-learning)을 참고하세요.
 
 ## 라이선스
 
