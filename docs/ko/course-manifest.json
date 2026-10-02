@@ -2,9 +2,9 @@
   "schema_version": 1,
   "source_repository": "amitshekhariitbhu/ai-engineering-course",
   "source_branch": "main",
-  "source_commit": "7d4c877683029b038c839d8a45cc1de022b88745",
-  "source_commit_date": "2026-09-23T08:26:55Z",
-  "generated_on": "2026-09-25",
+  "source_commit": "6c65affcec4231cc96785b2e9def2b3abe0e4342",
+  "source_commit_date": "2026-09-29T04:39:10Z",
+  "generated_on": "2026-10-02",
   "modules": [
     {
       "number": 0,
@@ -860,6 +860,11 @@
           "type": "blog",
           "title": "How does a GPU work for Deep Learning?",
           "url": "https://outcomeschool.com/blog/how-does-a-gpu-work-for-deep-learning"
+        },
+        {
+          "type": "blog",
+          "title": "How do CUDA Kernels work?",
+          "url": "https://outcomeschool.com/blog/how-do-cuda-kernels-work"
         },
         {
           "type": "blog",
