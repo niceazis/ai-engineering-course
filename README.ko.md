@@ -89,7 +89,7 @@
 
 ## 이 AI 엔지니어링 코스 소개
 
-**이 AI 엔지니어링 코스는 AI 엔지니어링을 처음부터 배울 수 있도록 구성한 무료 단계별 커리큘럼입니다. 18개 모듈과 146개 이상의 심층 레슨으로 구성되며, 각 레슨은 하나의 개념을 쉬운 말과 예시, 다이어그램, 필요한 경우 수학을 이용해 상세히 설명하는 블로그 글입니다.**
+**이 AI 엔지니어링 코스는 AI 엔지니어링을 처음부터 배울 수 있도록 구성한 무료 단계별 커리큘럼입니다. 18개 모듈과 147개 이상의 심층 레슨으로 구성되며, 각 레슨은 하나의 개념을 쉬운 말과 예시, 다이어그램, 필요한 경우 수학을 이용해 상세히 설명하는 블로그 글입니다.**
 
 쉽게 말해, 제가 AI 엔지니어링을 처음 공부할 때 있었으면 좋았을 과정입니다. 머신러닝의 기초에서 시작해 트랜스포머의 내부 동작, LLM의 텍스트 생성 방식, LLM 파인튜닝과 정렬, RAG 시스템과 AI 에이전트 구축, 프로덕션에서 LLM을 빠르고 저렴하게 서빙하는 방법, 평가와 보안, 마지막으로 완전한 AI 시스템을 처음부터 끝까지 설계하는 방법으로 점차 확장합니다.
 
@@ -140,7 +140,7 @@ AI 엔지니어가 항상 모델을 처음부터 학습시키는 것은 아닙�
 - **평가와 관측성:** LLM 평가, LLM-as-a-Judge, AI 에이전트 평가, 에이전트 관측성
 - **AI 안전과 보안:** guardrail, prompt injection, watermarking
 - **멀티모달 AI와 생성 모델:** Vision Transformer, 이미지 임베딩, diffusion model, GAN, VAE
-- **AI 인프라와 시스템 설계:** GPU, TPU, LPU, 클라우드 vs 온디바이스 배포, LLM 라우팅, 실시간 음성 AI 에이전트 설계
+- **AI 인프라와 시스템 설계:** GPU, CUDA Kernel, TPU, LPU, 클라우드 vs 온디바이스 배포, LLM 라우팅, 실시간 음성 AI 에이전트 설계
 - **AI 프런티어:** JEPA, world model, recursive self-improvement
 - **AI 엔지니어링 면접 준비**
 
@@ -184,7 +184,7 @@ AI나 머신러닝에 대한 사전 배경지식은 필요하지 않습니다.
 | 13 | [평가와 관측성](#모듈-13-평가와-관측성) | 4 |
 | 14 | [AI 안전과 보안](#모듈-14-ai-안전과-보안) | 3 |
 | 15 | [멀티모달 AI와 생성 모델](#모듈-15-멀티모달-ai와-생성-모델) | 6 |
-| 16 | [AI 인프라, 배포, 시스템 설계](#모듈-16-ai-인프라-배포-시스템-설계) | 10 |
+| 16 | [AI 인프라, 배포, 시스템 설계](#모듈-16-ai-인프라-배포-시스템-설계) | 11 |
 | 17 | [AI 프런티어 아이디어](#모듈-17-ai의-프런티어-아이디어) | 3 |
 | 18 | [AI 엔지니어링 면접 준비](#모듈-18-ai-엔지니어링-면접-준비) | 1 |
 
@@ -3506,23 +3506,25 @@ Generator와 Discriminator가 경쟁하며 새로운 이미지를 생성하는 G
 
 1. [딥러닝에서 GPU는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-a-gpu-work-for-deep-learning)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-gpu-work-for-deep-learning.md)
-2. [Google TPU는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-a-google-tpu-work)
+2. [CUDA Kernel은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-cuda-kernels-work)
+   ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-do-cuda-kernels-work.md)
+3. [Google TPU는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-a-google-tpu-work)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-google-tpu-work.md)
-3. [LPU는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-an-lpu-work)
+4. [LPU는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-an-lpu-work)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-an-lpu-work.md)
-4. [Cloud vs On-device Model Deployment](https://outcomeschool.com/blog/cloud-vs-on-device-model-deployment)
+5. [Cloud vs On-device Model Deployment](https://outcomeschool.com/blog/cloud-vs-on-device-model-deployment)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/cloud-vs-on-device-model-deployment.md)
-5. [Android TensorFlow Lite 머신러닝 예제](https://outcomeschool.com/blog/android-tensorflow-lite-machine-learning-example)
+6. [Android TensorFlow Lite 머신러닝 예제](https://outcomeschool.com/blog/android-tensorflow-lite-machine-learning-example)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/android-tensorflow-lite-machine-learning-example.md)
-6. [LLM Routing이란?](https://outcomeschool.com/blog/llm-routing)
+7. [LLM Routing이란?](https://outcomeschool.com/blog/llm-routing)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/llm-routing.md)
-7. [실시간 Voice AI Agent 설계](https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent)
+8. [실시간 Voice AI Agent 설계](https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/design-a-real-time-voice-ai-agent.md)
-8. [System Design이란?](https://outcomeschool.com/blog/system-design)
+9. [System Design이란?](https://outcomeschool.com/blog/system-design)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/system-design.md)
-9. [HTTP Request vs Long-Polling vs WebSocket vs SSE](https://outcomeschool.com/blog/http-request-long-polling-websocket-sse)
+10. [HTTP Request vs Long-Polling vs WebSocket vs SSE](https://outcomeschool.com/blog/http-request-long-polling-websocket-sse)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/http-request-long-polling-websocket-sse.md)
-10. [Voice/Video Call은 어떻게 동작하는가?](https://outcomeschool.com/blog/voice-and-video-call)
+11. [Voice/Video Call은 어떻게 동작하는가?](https://outcomeschool.com/blog/voice-and-video-call)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/voice-and-video-call.md)
 
 ---
@@ -3550,7 +3552,31 @@ GPU가 대규모 병렬 연산과 높은 메모리 대역폭을 이용해 딥러
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-gpu-work-for-deep-learning.md)
 
 
-### 16.2 Google TPU는 어떻게 동작하는가?
+### 16.2 CUDA Kernel은 어떻게 동작하는가?
+
+GPU에서 같은 kernel 함수를 수많은 thread가 병렬로 실행하는 CUDA programming model을 배웁니다.
+
+- GPU가 대규모 병렬 연산에 적합한 이유
+- CUDA와 CUDA Kernel
+- Thread, Block, Grid
+- Host와 Device
+- 1,000,000개 원소 Vector Addition 예제
+- Block 수와 전체 Thread 수 계산
+- `blockIdx`, `blockDim`, `threadIdx`로 Global Index 계산
+- SM과 32-thread Warp
+- Warp Divergence
+- Global Memory, Shared Memory, Register
+- Shared Memory를 이용한 Data Reuse
+- AI에서 CUDA Kernel이 중요한 이유
+- CUDA Kernel이 잘 맞는 경우와 잘 맞지 않는 경우
+- CPU vs GPU
+
+시작하기: [CUDA Kernel](https://outcomeschool.com/blog/how-do-cuda-kernels-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-do-cuda-kernels-work.md)
+
+
+### 16.3 Google TPU는 어떻게 동작하는가?
 
 Google이 머신러닝을 위해 설계한 TPU와 Systolic Array 구조를 배웁니다.
 
@@ -3570,7 +3596,7 @@ Google이 머신러닝을 위해 설계한 TPU와 Systolic Array 구조를 배�
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-a-google-tpu-work.md)
 
 
-### 16.3 LPU는 어떻게 동작하는가?
+### 16.4 LPU는 어떻게 동작하는가?
 
 학습이 끝난 LLM을 매우 빠르게 추론하도록 설계된 LPU의 구조와 Memory Bottleneck 해결 방식을 배웁니다.
 
@@ -3595,7 +3621,7 @@ Google이 머신러닝을 위해 설계한 TPU와 Systolic Array 구조를 배�
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/how-does-an-lpu-work.md)
 
 
-### 16.4 Cloud vs On-device Model Deployment
+### 16.5 Cloud vs On-device Model Deployment
 
 AI 모델을 Cloud에서 실행하는 방식과 사용자 Device에서 직접 실행하는 방식을 비교합니다.
 
@@ -3621,7 +3647,7 @@ AI 모델을 Cloud에서 실행하는 방식과 사용자 Device에서 직접 �
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/cloud-vs-on-device-model-deployment.md)
 
 
-### 16.5 Android TensorFlow Lite 머신러닝 예제
+### 16.6 Android TensorFlow Lite 머신러닝 예제
 
 Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 예제를 살펴봅니다.
 
@@ -3630,7 +3656,7 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/android-tensorflow-lite-machine-learning-example.md)
 
 
-### 16.6 LLM Routing이란?
+### 16.7 LLM Routing이란?
 
 비용, Latency, 품질을 고려해 각 사용자 Query를 적절한 LLM으로 보내는 Routing 전략을 배웁니다.
 
@@ -3650,7 +3676,7 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/llm-routing.md)
 
 
-### 16.7 실시간 Voice AI Agent 설계
+### 16.8 실시간 Voice AI Agent 설계
 
 사람의 음성을 듣고 이해하고, 필요한 Tool을 호출하고, 자연스러운 음성으로 수백 ms 수준에서 응답하는 실시간 Voice AI Agent를 설계합니다.
 
@@ -3687,7 +3713,7 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 
 **AI System Design 보조 레슨:**
 
-### 16.8 System Design이란?
+### 16.9 System Design이란?
 
 - System Design이란?
 - 왜 필요한가?
@@ -3698,7 +3724,7 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/system-design.md)
 
 
-### 16.9 HTTP Request vs Long-Polling vs WebSocket vs SSE
+### 16.10 HTTP Request vs Long-Polling vs WebSocket vs SSE
 
 서버와 클라이언트가 데이터를 주고받는 주요 방식들을 비교합니다.
 
@@ -3713,7 +3739,7 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/http-request-long-polling-websocket-sse.md)
 
 
-### 16.10 Voice/Video Call은 어떻게 동작하는가?
+### 16.11 Voice/Video Call은 어떻게 동작하는가?
 
 음성·영상 통화의 High-level 구조를 배웁니다.
 
