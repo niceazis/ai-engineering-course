@@ -2,9 +2,9 @@
   "schema_version": 1,
   "source_repository": "amitshekhariitbhu/ai-engineering-course",
   "source_branch": "main",
-  "source_commit": "6c65affcec4231cc96785b2e9def2b3abe0e4342",
-  "source_commit_date": "2026-09-29T04:39:10Z",
-  "generated_on": "2026-10-02",
+  "source_commit": "7b9b4bcf51a7c5ab3441532294f548241c516f01",
+  "source_commit_date": "2026-10-03T19:36:15Z",
+  "generated_on": "2026-10-04",
   "modules": [
     {
       "number": 0,
@@ -160,6 +160,11 @@
         },
         {
           "type": "blog",
+          "title": "Tokenization in LLMs",
+          "url": "https://outcomeschool.com/blog/tokenization-in-llms"
+        },
+        {
+          "type": "blog",
           "title": "What is Byte Pair Encoding (BPE) in LLMs?",
           "url": "https://outcomeschool.com/blog/bpe-in-llms"
         },
@@ -263,6 +268,11 @@
           "type": "blog",
           "title": "How do Top-k and Top-p Sampling work?",
           "url": "https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work"
+        },
+        {
+          "type": "blog",
+          "title": "Stop Tokens in LLMs",
+          "url": "https://outcomeschool.com/blog/stop-tokens-in-llms"
         },
         {
           "type": "blog",
