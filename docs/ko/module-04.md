@@ -4,7 +4,7 @@
 
 ## 모듈 4: LLM이 텍스트를 생성하는 방식
 
-이 모듈에서는 LLM이 다음 토큰을 선택하는 방식, 창의성을 조절하는 방법, 출력이 토큰 단위로 사용자에게 전달되는 과정, 그리고 컨텍스트 윈도우가 실패하는 지점을 배웁니다.
+이 모듈에서는 LLM이 다음 토큰을 선택하는 방식, 창의성을 조절하는 방법, 언제 생성을 멈춰야 하는지, 출력이 토큰 단위로 사용자에게 전달되는 과정, 그리고 컨텍스트 윈도우가 실패하는 지점을 배웁니다.
 
 모듈을 마치면 프롬프트 입력부터 최종 응답까지 무슨 일이 일어나는지, 어떤 설정이 출력에 영향을 주는지 이해할 수 있습니다.
 
@@ -16,12 +16,14 @@
 2. [Top-k와 Top-p Sampling은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work)
    ↳ [한국어 상세 학습 노트](blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
 
-3. [Token Streaming은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-token-streaming-work)
+3. [LLM의 Stop Tokens](https://outcomeschool.com/blog/stop-tokens-in-llms)
+   ↳ [한국어 상세 학습 노트](blogs/module-04/stop-tokens-in-llms.md)
+
+4. [Token Streaming은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-token-streaming-work)
    ↳ [한국어 상세 학습 노트](blogs/module-04/how-does-token-streaming-work.md)
 
-4. [LLM의 Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
+5. [LLM의 Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
    ↳ [한국어 상세 학습 노트](blogs/module-04/lost-in-the-middle-problem-in-llms.md)
-
 
 ---
 
@@ -67,7 +69,26 @@ LLM이 다음 토큰을 선택할 때 사용하는 대표적인 두 샘플링 �
 → [한국어 상세 학습 노트](blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
 
 
-### 4.3 Token Streaming은 어떻게 동작하는가?
+### 4.3 LLM의 Stop Tokens
+
+LLM이 언제 생성을 멈추는지, EOS/Stop Token과 외부 Stop Sequence가 어떻게 다른지, 모델이 종료 token을 학습하는 방식과 최대 길이 같은 안전장치를 함께 배웁니다.
+
+- Token이란?
+- LLM은 텍스트를 어떻게 생성하는가?
+- 왜 LLM에는 종료 신호가 필요한가?
+- Stop Token이란?
+- 모델은 Stop Token을 어떻게 배우는가?
+- Stop Token vs Stop Sequence
+- 모델이 Stop Token을 만들지 않으면?
+- Chat Model의 Stop Token
+- 흔한 실수
+
+시작하기: [LLM의 Stop Tokens](https://outcomeschool.com/blog/stop-tokens-in-llms)
+
+→ [한국어 상세 학습 노트](blogs/module-04/stop-tokens-in-llms.md)
+
+
+### 4.4 Token Streaming은 어떻게 동작하는가?
 
 Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신하는지, ChatGPT와 Claude 같은 실제 시스템에서 어떻게 사용되는지 배웁니다.
 
@@ -87,7 +108,7 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 → [한국어 상세 학습 노트](blogs/module-04/how-does-token-streaming-work.md)
 
 
-### 4.4 LLM의 Lost in the Middle 문제와 해결 방법
+### 4.5 LLM의 Lost in the Middle 문제와 해결 방법
 
 긴 입력에서 모델이 시작과 끝은 잘 활용하지만 중간 정보를 놓치는 Lost in the Middle 문제를 배웁니다.
 
