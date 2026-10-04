@@ -89,7 +89,7 @@
 
 ## 이 AI 엔지니어링 코스 소개
 
-**이 AI 엔지니어링 코스는 AI 엔지니어링을 처음부터 배울 수 있도록 구성한 무료 단계별 커리큘럼입니다. 18개 모듈과 148개 이상의 심층 레슨으로 구성되며, 각 레슨은 하나의 개념을 쉬운 말과 예시, 다이어그램, 필요한 경우 수학을 이용해 상세히 설명하는 블로그 글입니다.**
+**이 AI 엔지니어링 코스는 AI 엔지니어링을 처음부터 배울 수 있도록 구성한 무료 단계별 커리큘럼입니다. 18개 모듈과 149개 이상의 심층 레슨으로 구성되며, 각 레슨은 하나의 개념을 쉬운 말과 예시, 다이어그램, 필요한 경우 수학을 이용해 상세히 설명하는 블로그 글입니다.**
 
 쉽게 말해, 제가 AI 엔지니어링을 처음 공부할 때 있었으면 좋았을 과정입니다. 머신러닝의 기초에서 시작해 트랜스포머의 내부 동작, LLM의 텍스트 생성 방식, LLM 파인튜닝과 정렬, RAG 시스템과 AI 에이전트 구축, 프로덕션에서 LLM을 빠르고 저렴하게 서빙하는 방법, 평가와 보안, 마지막으로 완전한 AI 시스템을 처음부터 끝까지 설계하는 방법으로 점차 확장합니다.
 
@@ -172,7 +172,7 @@ AI나 머신러닝에 대한 사전 배경지식은 필요하지 않습니다.
 | 1 | [머신러닝 기초](#모듈-1-머신러닝-기초) | 9 |
 | 2 | [딥러닝과 신경망](#모듈-2-딥러닝과-신경망) | 10 |
 | 3 | [생성형 AI와 트랜스포머 아키텍처](#모듈-3-생성형-ai와-트랜스포머-아키텍처) | 16 |
-| 4 | [LLM이 텍스트를 생성하는 방식](#모듈-4-llm이-텍스트를-생성하는-방식) | 4 |
+| 4 | [LLM이 텍스트를 생성하는 방식](#모듈-4-llm이-텍스트를-생성하는-방식) | 5 |
 | 5 | [현대 LLM 아키텍처](#모듈-5-현대-llm-아키텍처) | 7 |
 | 6 | [언어 모델의 종류](#모듈-6-언어-모델의-종류) | 5 |
 | 7 | [학습, 파인튜닝, 정렬](#모듈-7-학습-파인튜닝-정렬) | 11 |
@@ -1026,7 +1026,7 @@ Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer
 
 > [모듈 4 한국어 학습 요약](docs/ko/module-04.md)
 
-이 모듈에서는 LLM이 다음 토큰을 선택하는 방식, 창의성을 조절하는 방법, 출력이 토큰 단위로 사용자에게 전달되는 과정, 그리고 컨텍스트 윈도우가 실패하는 지점을 배웁니다.
+이 모듈에서는 LLM이 다음 토큰을 선택하는 방식, 창의성을 조절하는 방법, 언제 생성을 멈춰야 하는지, 출력이 토큰 단위로 사용자에게 전달되는 과정, 그리고 컨텍스트 윈도우가 실패하는 지점을 배웁니다.
 
 모듈을 마치면 프롬프트 입력부터 최종 응답까지 무슨 일이 일어나는지, 어떤 설정이 출력에 영향을 주는지 이해할 수 있습니다.
 
@@ -1036,9 +1036,11 @@ Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-temperature-control-llm-output.md)
 2. [Top-k와 Top-p Sampling은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
-3. [Token Streaming은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-token-streaming-work)
+3. [LLM의 Stop Tokens](https://outcomeschool.com/blog/stop-tokens-in-llms)
+   ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/stop-tokens-in-llms.md)
+4. [Token Streaming은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-token-streaming-work)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-token-streaming-work.md)
-4. [LLM의 Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
+5. [LLM의 Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/lost-in-the-middle-problem-in-llms.md)
 
 ---
@@ -1085,7 +1087,26 @@ LLM이 다음 토큰을 선택할 때 사용하는 대표적인 두 샘플링 �
 → [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-do-top-k-and-top-p-sampling-work.md)
 
 
-### 4.3 Token Streaming은 어떻게 동작하는가?
+### 4.3 LLM의 Stop Tokens
+
+LLM이 언제 생성을 멈추는지, EOS/Stop Token과 외부 Stop Sequence가 어떻게 다른지, 모델이 종료 token을 학습하는 방식과 최대 길이 같은 안전장치를 함께 배웁니다.
+
+- Token이란?
+- LLM은 텍스트를 어떻게 생성하는가?
+- 왜 LLM에는 종료 신호가 필요한가?
+- Stop Token이란?
+- 모델은 Stop Token을 어떻게 배우는가?
+- Stop Token vs Stop Sequence
+- 모델이 Stop Token을 만들지 않으면?
+- Chat Model의 Stop Token
+- 흔한 실수
+
+시작하기: [LLM의 Stop Tokens](https://outcomeschool.com/blog/stop-tokens-in-llms)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/stop-tokens-in-llms.md)
+
+
+### 4.4 Token Streaming은 어떻게 동작하는가?
 
 Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신하는지, ChatGPT와 Claude 같은 실제 시스템에서 어떻게 사용되는지 배웁니다.
 
@@ -1105,7 +1126,7 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 → [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-token-streaming-work.md)
 
 
-### 4.4 LLM의 Lost in the Middle 문제와 해결 방법
+### 4.5 LLM의 Lost in the Middle 문제와 해결 방법
 
 긴 입력에서 모델이 시작과 끝은 잘 활용하지만 중간 정보를 놓치는 Lost in the Middle 문제를 배웁니다.
 
