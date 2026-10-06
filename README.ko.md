@@ -136,7 +136,7 @@ AI 엔지니어가 항상 모델을 처음부터 학습시키는 것은 아닙�
 - **RAG와 벡터 검색:** 벡터 DB, ANN 검색, semantic search, hybrid search, reranker, ColBERT, chunking, HyDE, 캐싱, Agentic RAG, GraphRAG, Vectorless RAG
 - **AI 에이전트:** function calling, agent loop, ReAct, Plan-and-Execute, Reflection, 메모리, MCP, Agent Skills, 멀티 에이전트, SubAgent, orchestration, computer-use agent
 - **에이전틱 엔지니어링:** harness engineering, loop engineering, graph engineering, LangChain, LangGraph, Claude Code, Cursor
-- **LLM 추론 엔지니어링:** prefill/decode, KV cache, paged attention, continuous batching, speculative decoding, Medusa, EAGLE, 양자화, GGUF, llama.cpp, vLLM, SGLang, TensorRT-LLM
+- **LLM 추론 엔지니어링:** prefill/decode, KV cache, paged attention, continuous batching, speculative decoding, Medusa, EAGLE, 양자화, GGUF, llama.cpp, Ollama, vLLM, SGLang, TensorRT-LLM
 - **평가와 관측성:** LLM 평가, LLM-as-a-Judge, AI 에이전트 평가, 에이전트 관측성
 - **AI 안전과 보안:** guardrail, prompt injection, watermarking
 - **멀티모달 AI와 생성 모델:** Vision Transformer, 이미지 임베딩, diffusion model, GAN, VAE
@@ -180,7 +180,7 @@ AI나 머신러닝에 대한 사전 배경지식은 필요하지 않습니다.
 | 9 | [벡터 검색과 RAG](#모듈-9-벡터-검색과-검색-증강-생성rag) | 13 |
 | 10 | [AI 에이전트와 에이전틱 시스템](#모듈-10-ai-에이전트와-에이전틱-시스템) | 16 |
 | 11 | [에이전틱 엔지니어링과 프레임워크](#모듈-11-에이전틱-엔지니어링과-에이전트-프레임워크) | 8 |
-| 12 | [LLM 추론 엔지니어링](#모듈-12-llm-추론-엔지니어링) | 17 |
+| 12 | [LLM 추론 엔지니어링](#모듈-12-llm-추론-엔지니어링) | 18 |
 | 13 | [평가와 관측성](#모듈-13-평가와-관측성) | 4 |
 | 14 | [AI 안전과 보안](#모듈-14-ai-안전과-보안) | 3 |
 | 15 | [멀티모달 AI와 생성 모델](#모듈-15-멀티모달-ai와-생성-모델) | 6 |
@@ -2803,11 +2803,13 @@ State, Node, Edge로 Agent Workflow를 Graph로 구성하는 LangGraph를 배웁
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-gguf-work.md)
 14. [llama.cpp는 일반 하드웨어에서 LLM을 어떻게 실행하는가?](https://outcomeschool.com/blog/how-does-llama-cpp-run-llms-on-everyday-hardware)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-llama-cpp-run-llms-on-everyday-hardware.md)
-15. [vLLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-vllm-work)
+15. [Ollama는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-ollama-work)
+   ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-ollama-work.md)
+16. [vLLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-vllm-work)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-vllm-work.md)
-16. [SGLang은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-sglang-work)
+17. [SGLang은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-sglang-work)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-sglang-work.md)
-17. [TensorRT-LLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-tensorrt-llm-work)
+18. [TensorRT-LLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-tensorrt-llm-work)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-tensorrt-llm-work.md)
 
 ---
@@ -3105,7 +3107,28 @@ Quantization, GGUF, Memory Mapping, CPU/GPU 분할을 이용해 일반 PC에서 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-llama-cpp-run-llms-on-everyday-hardware.md)
 
 
-### 12.15 vLLM은 어떻게 동작하는가?
+### 12.15 Ollama는 어떻게 동작하는가?
+
+로컬에서 LLM을 실행할 때 Ollama가 모델 다운로드·관리, Quantization/GGUF 기반 로컬 추론, Client-Server 구조, CPU/GPU 실행과 API 사용을 어떻게 연결하는지 배웁니다.
+
+- 로컬에서 LLM을 실행한다는 의미
+- Ollama란?
+- 모델이 너무 큰 문제
+- Quantization과 GGUF
+- Client-Server Architecture
+- 모델 실행 단계
+- 모델 다운로드와 저장
+- CPU/GPU 실행
+- Modelfile
+- API를 통한 Code 사용
+- 잘 맞는 환경과 한계
+
+시작하기: [Ollama](https://outcomeschool.com/blog/how-does-ollama-work)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-ollama-work.md)
+
+
+### 12.16 vLLM은 어떻게 동작하는가?
 
 PagedAttention과 Continuous Batching을 중심으로 많은 사용자에게 LLM을 효율적으로 Serving하는 vLLM을 배웁니다.
 
@@ -3126,7 +3149,7 @@ PagedAttention과 Continuous Batching을 중심으로 많은 사용자에게 LLM
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-vllm-work.md)
 
 
-### 12.16 SGLang은 어떻게 동작하는가?
+### 12.17 SGLang은 어떻게 동작하는가?
 
 RadixAttention을 이용한 Prefix Reuse와 Runtime 최적화로 LLM Serving 성능을 높이는 SGLang을 배웁니다.
 
@@ -3148,7 +3171,7 @@ RadixAttention을 이용한 Prefix Reuse와 Runtime 최적화로 LLM Serving 성
 → [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-sglang-work.md)
 
 
-### 12.17 TensorRT-LLM은 어떻게 동작하는가?
+### 12.18 TensorRT-LLM은 어떻게 동작하는가?
 
 NVIDIA GPU에서 가능한 최고 수준의 추론 성능을 목표로 Build-time 최적화와 Kernel Fusion, Quantization, Paged KV Cache 등을 적용하는 TensorRT-LLM을 배웁니다.
 
@@ -4011,6 +4034,8 @@ AI가 자신의 능력을 개선하고, 개선된 버전이 다시 자신을 개
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-model-quantization-work.md)
 - **[GGUF](https://outcomeschool.com/blog/how-does-gguf-work):** Local Inference에 필요한 Model 정보와 Weight를 하나의 Self-contained File로 저장하는 형식입니다.
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-gguf-work.md)
+- **[Ollama](https://outcomeschool.com/blog/how-does-ollama-work):** Open Model을 자신의 컴퓨터에 다운로드하고 실행·관리하기 쉽게 해 주는 오픈소스 도구입니다.
+   ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-ollama-work.md)
 - **[vLLM](https://outcomeschool.com/blog/how-does-vllm-work):** KV Cache Memory를 효율적으로 관리해 높은 Throughput으로 LLM을 Serving하는 Engine입니다.
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-12/how-does-vllm-work.md)
 - **[LLM Evaluation](https://outcomeschool.com/blog/llm-evaluation):** 기대한 Task에서 LLM이 얼마나 잘 수행하는지 측정하는 과정입니다.
@@ -4078,7 +4103,7 @@ Transformer, Attention, Tokenization 같은 LLM 내부 동작, Prompting·Contex
 
 ### LLM Inference Optimization을 다루나요?
 
-네. 모듈 12에서 Prefill vs Decode, Prefill-Decode Disaggregation, KV Cache, Compression, Paged Attention, Continuous Batching, Speculative Decoding, Medusa, EAGLE, Quantization, GGUF, llama.cpp, vLLM, SGLang, TensorRT-LLM을 다룹니다.
+네. 모듈 12에서 Prefill vs Decode, Prefill-Decode Disaggregation, KV Cache, Compression, Paged Attention, Continuous Batching, Speculative Decoding, Medusa, EAGLE, Quantization, GGUF, llama.cpp, Ollama, vLLM, SGLang, TensorRT-LLM을 다룹니다.
 
 ### AI Engineer 면접 준비에 도움이 되나요?
 
