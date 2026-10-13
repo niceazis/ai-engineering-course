@@ -4152,3 +4152,11 @@ Transformer, Attention, Tokenization 같은 LLM 내부 동작, Prompting·Contex
 - [Module 10: Browser Agents](docs/ko/blogs/module-10/how-do-browser-agents-work.md)
 
 > 신규 노트는 원문 전체를 직접 검증하지 못해 독립 해설로 작성했습니다. 원문 내용과의 대조가 필요합니다.
+
+### Upstream 신규 레슨 원문 링크
+
+- [How does Tree of Thoughts work?](https://outcomeschool.com/blog/how-does-tree-of-thoughts-work) — [한국어 노트](docs/ko/blogs/module-08/how-does-tree-of-thoughts-work.md)
+- [How does Contextual Retrieval work?](https://outcomeschool.com/blog/how-does-contextual-retrieval-work) — [한국어 노트](docs/ko/blogs/module-09/how-does-contextual-retrieval-work.md)
+- [How do Query Rewriting and Multi-Query Retrieval work?](https://outcomeschool.com/blog/how-do-query-rewriting-and-multi-query-retrieval-work) — [한국어 노트](docs/ko/blogs/module-09/how-do-query-rewriting-and-multi-query-retrieval-work.md)
+- [How does ChatGPT remember you?](https://outcomeschool.com/blog/how-does-chatgpt-remember-you) — [한국어 노트](docs/ko/blogs/module-10/how-does-chatgpt-remember-you.md)
+- [How do Browser Agents work?](https://outcomeschool.com/blog/how-do-browser-agents-work) — [한국어 노트](docs/ko/blogs/module-10/how-do-browser-agents-work.md)
