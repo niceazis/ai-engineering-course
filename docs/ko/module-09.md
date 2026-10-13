@@ -357,3 +357,12 @@ Standard RAG가 부족한 이유와 Agent가 검색 과정을 계획·반복·�
   ↳ [한국어 상세 영상 학습 노트](videos/module-09/agentic-rag-explained.md)
 
 ---
+
+## 최신 upstream 신규 레슨 (09)
+
+- [Contextual Retrieval](https://outcomeschool.com/blog/how-does-contextual-retrieval-work)
+  ↳ [한국어 학습 노트](blogs/module-09/how-does-contextual-retrieval-work.md)
+- [Query Rewriting 및 Multi-Query Retrieval](https://outcomeschool.com/blog/how-do-query-rewriting-and-multi-query-retrieval-work)
+  ↳ [한국어 학습 노트](blogs/module-09/how-do-query-rewriting-and-multi-query-retrieval-work.md)
+
+> 원문 직접 검증 제한은 각 학습 노트에 명시했습니다.

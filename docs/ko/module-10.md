@@ -393,3 +393,12 @@ Agent가 필요한 지침·지식·코드를 필요할 때만 불러오는 Skill
 
 
 ---
+
+## 최신 upstream 신규 레슨 (10)
+
+- [ChatGPT Memory](https://outcomeschool.com/blog/how-does-chatgpt-remember-you)
+  ↳ [한국어 학습 노트](blogs/module-10/how-does-chatgpt-remember-you.md)
+- [Browser Agents](https://outcomeschool.com/blog/how-do-browser-agents-work)
+  ↳ [한국어 학습 노트](blogs/module-10/how-do-browser-agents-work.md)
+
+> 원문 직접 검증 제한은 각 학습 노트에 명시했습니다.
