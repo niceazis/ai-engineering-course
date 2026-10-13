@@ -52,13 +52,16 @@
 14. [llama.cpp는 일반 하드웨어에서 LLM을 어떻게 실행하는가?](https://outcomeschool.com/blog/how-does-llama-cpp-run-llms-on-everyday-hardware)
    ↳ [한국어 상세 학습 노트](blogs/module-12/how-does-llama-cpp-run-llms-on-everyday-hardware.md)
 
-15. [vLLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-vllm-work)
+15. [Ollama는 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-ollama-work)
+   ↳ [한국어 상세 학습 노트](blogs/module-12/how-does-ollama-work.md)
+
+16. [vLLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-vllm-work)
    ↳ [한국어 상세 학습 노트](blogs/module-12/how-does-vllm-work.md)
 
-16. [SGLang은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-sglang-work)
+17. [SGLang은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-sglang-work)
    ↳ [한국어 상세 학습 노트](blogs/module-12/how-does-sglang-work.md)
 
-17. [TensorRT-LLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-tensorrt-llm-work)
+18. [TensorRT-LLM은 어떻게 동작하는가?](https://outcomeschool.com/blog/how-does-tensorrt-llm-work)
    ↳ [한국어 상세 학습 노트](blogs/module-12/how-does-tensorrt-llm-work.md)
 
 
@@ -353,7 +356,28 @@ Quantization, GGUF, Memory Mapping, CPU/GPU 분할을 이용해 일반 PC에서 
 → [한국어 상세 학습 노트](blogs/module-12/how-does-llama-cpp-run-llms-on-everyday-hardware.md)
 
 
-### 12.15 vLLM은 어떻게 동작하는가?
+### 12.15 Ollama는 어떻게 동작하는가?
+
+로컬에서 LLM을 실행할 때 Ollama가 모델 다운로드·관리, Quantization/GGUF 기반 로컬 추론, Client-Server 구조, CPU/GPU 실행과 API 사용을 어떻게 연결하는지 배웁니다.
+
+- 로컬에서 LLM을 실행한다는 의미
+- Ollama란?
+- 모델이 너무 큰 문제
+- Quantization과 GGUF
+- Client-Server Architecture
+- 모델 실행 단계
+- 모델 다운로드와 저장
+- CPU/GPU 실행
+- Modelfile
+- API를 통한 Code 사용
+- 잘 맞는 환경과 한계
+
+시작하기: [Ollama](https://outcomeschool.com/blog/how-does-ollama-work)
+
+→ [한국어 상세 학습 노트](blogs/module-12/how-does-ollama-work.md)
+
+
+### 12.16 vLLM은 어떻게 동작하는가?
 
 PagedAttention과 Continuous Batching을 중심으로 많은 사용자에게 LLM을 효율적으로 Serving하는 vLLM을 배웁니다.
 
@@ -374,7 +398,7 @@ PagedAttention과 Continuous Batching을 중심으로 많은 사용자에게 LLM
 → [한국어 상세 학습 노트](blogs/module-12/how-does-vllm-work.md)
 
 
-### 12.16 SGLang은 어떻게 동작하는가?
+### 12.17 SGLang은 어떻게 동작하는가?
 
 RadixAttention을 이용한 Prefix Reuse와 Runtime 최적화로 LLM Serving 성능을 높이는 SGLang을 배웁니다.
 
@@ -396,7 +420,7 @@ RadixAttention을 이용한 Prefix Reuse와 Runtime 최적화로 LLM Serving 성
 → [한국어 상세 학습 노트](blogs/module-12/how-does-sglang-work.md)
 
 
-### 12.17 TensorRT-LLM은 어떻게 동작하는가?
+### 12.18 TensorRT-LLM은 어떻게 동작하는가?
 
 NVIDIA GPU에서 가능한 최고 수준의 추론 성능을 목표로 Build-time 최적화와 Kernel Fusion, Quantization, Paged KV Cache 등을 적용하는 TensorRT-LLM을 배웁니다.
 
