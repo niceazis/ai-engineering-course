@@ -2,8 +2,8 @@
   "schema_version": 1,
   "source_repository": "amitshekhariitbhu/ai-engineering-course",
   "source_branch": "main",
-  "last_processed_commit": "7b9b4bcf51a7c5ab3441532294f548241c516f01",
-  "last_processed_on": "2026-10-04",
+  "last_processed_commit": "b289a2e57d58e1f837875f3b03e5e6c84e3995eb",
+  "last_processed_on": "2026-10-14",
   "manifest_path": "docs/ko/course-manifest.json",
   "policy": "Update this commit only after all Korean notes and indexes for the detected upstream change have passed validation and merged to main."
 }
