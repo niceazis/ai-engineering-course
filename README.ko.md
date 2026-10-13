@@ -4142,3 +4142,13 @@ Transformer, Attention, Tokenization 같은 LLM 내부 동작, Prompting·Contex
    See the License for the specific language governing permissions and
    limitations under the License.
 ```
+
+## 신규 upstream 학습 노트 (2026-10)
+
+- [Module 8: Tree of Thoughts](docs/ko/blogs/module-08/how-does-tree-of-thoughts-work.md)
+- [Module 9: Contextual Retrieval](docs/ko/blogs/module-09/how-does-contextual-retrieval-work.md)
+- [Module 9: Query Rewriting / Multi-Query Retrieval](docs/ko/blogs/module-09/how-do-query-rewriting-and-multi-query-retrieval-work.md)
+- [Module 10: ChatGPT Memory](docs/ko/blogs/module-10/how-does-chatgpt-remember-you.md)
+- [Module 10: Browser Agents](docs/ko/blogs/module-10/how-do-browser-agents-work.md)
+
+> 신규 노트는 원문 전체를 직접 검증하지 못해 독립 해설로 작성했습니다. 원문 내용과의 대조가 필요합니다.
