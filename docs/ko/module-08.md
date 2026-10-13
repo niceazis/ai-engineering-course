@@ -127,3 +127,10 @@
 
 
 ---
+
+## 최신 upstream 신규 레슨 (08)
+
+- [Tree of Thoughts](https://outcomeschool.com/blog/how-does-tree-of-thoughts-work)
+  ↳ [한국어 학습 노트](blogs/module-08/how-does-tree-of-thoughts-work.md)
+
+> 원문 직접 검증 제한은 각 학습 노트에 명시했습니다.
