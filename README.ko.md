@@ -128,7 +128,7 @@ AI 엔지니어가 항상 모델을 처음부터 학습시키는 것은 아닙�
 - **머신러닝 기초:** 지도·비지도·강화학습, 손실 함수, 정규화, 정밀도와 재현율
 - **딥러닝:** 경사하강법, 역전파, 크로스엔트로피, 드롭아웃, 정규화, RNN, PyTorch, TensorFlow
 - **트랜스포머 아키텍처:** 토큰화, BPE, 임베딩, 셀프 어텐션, Q·K·V 수학, 멀티헤드 어텐션, 인과 마스킹, RoPE, 피드포워드 네트워크
-- **LLM의 텍스트 생성:** temperature, top-k/top-p 샘플링, 토큰 스트리밍, lost-in-the-middle 문제
+- **LLM의 텍스트 생성:** temperature, top-k/top-p 샘플링, 토큰 스트리밍, lost-in-the-middle 문제, 환각의 토큰 수준 원인
 - **현대 LLM 아키텍처:** MoE, GQA, 슬라이딩 윈도 어텐션, attention sink, Flash Attention, DeepSeek-V4
 - **언어 모델 종류:** SLM, Large Reasoning Model, Recursive Language Model, Diffusion Language Model, System One Model
 - **파인튜닝과 정렬:** 파인튜닝, LoRA, prefix tuning, 지식 증류, continual learning, RLHF, InstructGPT, PPO, DPO, GRPO
@@ -172,7 +172,7 @@ AI나 머신러닝에 대한 사전 배경지식은 필요하지 않습니다.
 | 1 | [머신러닝 기초](#모듈-1-머신러닝-기초) | 9 |
 | 2 | [딥러닝과 신경망](#모듈-2-딥러닝과-신경망) | 10 |
 | 3 | [생성형 AI와 트랜스포머 아키텍처](#모듈-3-생성형-ai와-트랜스포머-아키텍처) | 16 |
-| 4 | [LLM이 텍스트를 생성하는 방식](#모듈-4-llm이-텍스트를-생성하는-방식) | 5 |
+| 4 | [LLM이 텍스트를 생성하는 방식](#모듈-4-llm이-텍스트를-생성하는-방식) | 6 |
 | 5 | [현대 LLM 아키텍처](#모듈-5-현대-llm-아키텍처) | 7 |
 | 6 | [언어 모델의 종류](#모듈-6-언어-모델의-종류) | 5 |
 | 7 | [학습, 파인튜닝, 정렬](#모듈-7-학습-파인튜닝-정렬) | 11 |
@@ -1042,6 +1042,8 @@ Transformer 내부의 Feed-Forward Network(FFN)가 무엇인지, 각 Transformer
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/how-does-token-streaming-work.md)
 5. [LLM의 Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/lost-in-the-middle-problem-in-llms.md)
+6. [LLM은 왜 환각하는가? — 토큰 수준 설명](https://outcomeschool.com/blog/why-do-llms-hallucinate-the-token-level-explanation)
+   ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-04/why-do-llms-hallucinate-the-token-level-explanation.md)
 
 ---
 
@@ -1143,6 +1145,21 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 시작하기: [Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
 
 → [한국어 상세 학습 노트](docs/ko/blogs/module-04/lost-in-the-middle-problem-in-llms.md)
+
+
+### 4.6 LLM은 왜 환각하는가? — 토큰 수준 설명
+
+이 글에서는 LLM이 매번 다음 토큰을 선택하는 과정에서 왜 근거 없는 이름·연도·숫자를 그럴듯하게 출력하는지 학습합니다. 원문의 sharp/flat 확률표, 3,827의 소수 판정, 가상 논문 인용, 여섯 가지 원인과 완화책을 상세 노트에서 확인할 수 있습니다.
+
+- 환각 정의, 토큰 분절, 다음 토큰 생성 루프
+- 쉬운 토큰과 사실 토큰, sharp vs flat 분포
+- 확률 샘플링 Python 실습
+- 환각의 여섯 원인과 여섯 대응책
+- 출처 검증·불확실성 표시·RAG와 사실 확인
+
+시작하기: [Why Do LLMs Hallucinate? The Token-Level Explanation](https://outcomeschool.com/blog/why-do-llms-hallucinate-the-token-level-explanation)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-04/why-do-llms-hallucinate-the-token-level-explanation.md)
 
 
 영상 보기: [Why is the context window limited in LLMs?](https://www.youtube.com/watch?v=CGIhxIaOg3M)
