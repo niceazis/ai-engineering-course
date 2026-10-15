@@ -2,9 +2,9 @@
   "schema_version": 1,
   "source_repository": "amitshekhariitbhu/ai-engineering-course",
   "source_branch": "main",
-  "source_commit": "b289a2e57d58e1f837875f3b03e5e6c84e3995eb",
-  "source_commit_date": "2026-10-12T02:35:23Z",
-  "generated_on": "2026-10-14",
+  "source_commit": "1065a32117a12578d8752a8ae216a2e8d9c26989",
+  "source_commit_date": "2026-10-14T03:24:40Z",
+  "generated_on": "2026-10-15",
   "modules": [
     {
       "number": 0,
@@ -283,6 +283,11 @@
           "type": "blog",
           "title": "What is the Lost in the Middle Problem in LLMs and How to Fix It?",
           "url": "https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms"
+        },
+        {
+          "type": "blog",
+          "title": "Why Do LLMs Hallucinate? The Token-Level Explanation",
+          "url": "https://outcomeschool.com/blog/why-do-llms-hallucinate-the-token-level-explanation"
         },
         {
           "type": "video",
