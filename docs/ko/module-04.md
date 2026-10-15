@@ -25,6 +25,9 @@
 5. [LLM의 Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
    ↳ [한국어 상세 학습 노트](blogs/module-04/lost-in-the-middle-problem-in-llms.md)
 
+6. [LLM은 왜 환각하는가? — 토큰 수준 설명](https://outcomeschool.com/blog/why-do-llms-hallucinate-the-token-level-explanation)
+   ↳ [한국어 상세 학습 노트](blogs/module-04/why-do-llms-hallucinate-the-token-level-explanation.md)
+
 ---
 
 ### 4.1 Temperature는 LLM 출력을 어떻게 제어하는가?
@@ -125,6 +128,21 @@ Token Streaming이 왜 필요한지, 서버와 브라우저가 어떻게 통신�
 시작하기: [Lost in the Middle 문제와 해결 방법](https://outcomeschool.com/blog/lost-in-the-middle-problem-in-llms)
 
 → [한국어 상세 학습 노트](blogs/module-04/lost-in-the-middle-problem-in-llms.md)
+
+
+### 4.6 LLM은 왜 환각하는가? — 토큰 수준 설명
+
+LLM이 다음 토큰을 선택하는 방식이 왜 검증되지 않은 연도·이름·숫자의 출력으로 이어지는지 살펴봅니다.
+
+- 토큰과 다음 토큰 확률, 쉬운 토큰과 사실 토큰
+- Sharp Guess와 Flat Guess의 확률표
+- Python 샘플링과 여섯 가지 환각 원인
+- 인수분해(3,827 = 43 × 89)·허위 논문 인용 사례
+- 근거 제공, 보류, 외부 검증, 낮은 Temperature 등의 완화책
+
+시작하기: [Why Do LLMs Hallucinate? The Token-Level Explanation](https://outcomeschool.com/blog/why-do-llms-hallucinate-the-token-level-explanation)
+
+→ [한국어 상세 학습 노트](blogs/module-04/why-do-llms-hallucinate-the-token-level-explanation.md)
 
 
 영상 보기: [Why is the context window limited in LLMs?](https://www.youtube.com/watch?v=CGIhxIaOg3M)
