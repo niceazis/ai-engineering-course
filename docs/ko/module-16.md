@@ -32,13 +32,19 @@
 8. [실시간 Voice AI Agent 설계](https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent)
    ↳ [한국어 상세 학습 노트](blogs/module-16/design-a-real-time-voice-ai-agent.md)
 
-9. [System Design이란?](https://outcomeschool.com/blog/system-design)
+9. [음성 AI 에이전트의 턴테이킹이란?](https://outcomeschool.com/blog/what-is-turn-taking-in-a-voice-ai-agent)
+   ↳ [한국어 상세 학습 노트](blogs/module-16/what-is-turn-taking-in-a-voice-ai-agent.md)
+
+10. [음성 AI 에이전트의 Barge-in이란?](https://outcomeschool.com/blog/what-is-barge-in-in-a-voice-ai-agent)
+   ↳ [한국어 상세 학습 노트](blogs/module-16/what-is-barge-in-in-a-voice-ai-agent.md)
+
+11. [System Design이란?](https://outcomeschool.com/blog/system-design)
    ↳ [한국어 상세 학습 노트](blogs/module-16/system-design.md)
 
-10. [HTTP Request vs Long-Polling vs WebSocket vs SSE](https://outcomeschool.com/blog/http-request-long-polling-websocket-sse)
+12. [HTTP Request vs Long-Polling vs WebSocket vs SSE](https://outcomeschool.com/blog/http-request-long-polling-websocket-sse)
    ↳ [한국어 상세 학습 노트](blogs/module-16/http-request-long-polling-websocket-sse.md)
 
-11. [Voice/Video Call은 어떻게 동작하는가?](https://outcomeschool.com/blog/voice-and-video-call)
+13. [Voice/Video Call은 어떻게 동작하는가?](https://outcomeschool.com/blog/voice-and-video-call)
    ↳ [한국어 상세 학습 노트](blogs/module-16/voice-and-video-call.md)
 
 
@@ -226,9 +232,27 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 → [한국어 상세 학습 노트](blogs/module-16/design-a-real-time-voice-ai-agent.md)
 
 
+### 16.9 음성 AI 에이전트의 턴테이킹이란?
+
+VAD와 의미 기반 발화 완료 검출을 비교하고, 침묵 임계값·억양·대화 문맥·맞장구를 활용해 답변 시점을 결정하는 법을 학습합니다.
+
+원문: [What is turn-taking in a voice AI agent?](https://outcomeschool.com/blog/what-is-turn-taking-in-a-voice-ai-agent)
+
+→ [한국어 상세 학습 노트](blogs/module-16/what-is-turn-taking-in-a-voice-ai-agent.md)
+
+
+### 16.10 음성 AI 에이전트의 Barge-in이란?
+
+에이전트가 말하는 동안의 실제 중단 요청과 소음을 구분하고, 에코 제거·TTS 재생 큐 취소·이력 정합화·중단 지연을 검증하는 방법을 학습합니다.
+
+원문: [What is barge-in in a voice AI agent?](https://outcomeschool.com/blog/what-is-barge-in-in-a-voice-ai-agent)
+
+→ [한국어 상세 학습 노트](blogs/module-16/what-is-barge-in-in-a-voice-ai-agent.md) (원문 직접 열람 한계 명시)
+
+
 **AI System Design 보조 레슨:**
 
-### 16.9 System Design이란?
+### 16.11 System Design이란?
 
 - System Design이란?
 - 왜 필요한가?
@@ -239,7 +263,7 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 → [한국어 상세 학습 노트](blogs/module-16/system-design.md)
 
 
-### 16.10 HTTP Request vs Long-Polling vs WebSocket vs SSE
+### 16.12 HTTP Request vs Long-Polling vs WebSocket vs SSE
 
 서버와 클라이언트가 데이터를 주고받는 주요 방식들을 비교합니다.
 
@@ -254,7 +278,7 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 → [한국어 상세 학습 노트](blogs/module-16/http-request-long-polling-websocket-sse.md)
 
 
-### 16.11 Voice/Video Call은 어떻게 동작하는가?
+### 16.13 Voice/Video Call은 어떻게 동작하는가?
 
 음성·영상 통화의 High-level 구조를 배웁니다.
 
