@@ -140,7 +140,7 @@ AI 엔지니어가 항상 모델을 처음부터 학습시키는 것은 아닙�
 - **평가와 관측성:** LLM 평가, LLM-as-a-Judge, AI 에이전트 평가, 에이전트 관측성
 - **AI 안전과 보안:** guardrail, prompt injection, watermarking
 - **멀티모달 AI와 생성 모델:** Vision Transformer, 이미지 임베딩, diffusion model, GAN, VAE
-- **AI 인프라와 시스템 설계:** GPU, CUDA Kernel, TPU, LPU, 클라우드 vs 온디바이스 배포, LLM 라우팅, 실시간 음성 AI 에이전트 설계
+- **AI 인프라와 시스템 설계:** GPU, CUDA Kernel, TPU, LPU, 클라우드 vs 온디바이스 배포, LLM 라우팅, 실시간 음성 AI 에이전트 설계, 턴테이킹, Barge-in과 인터럽트 처리
 - **AI 프런티어:** JEPA, world model, recursive self-improvement
 - **AI 엔지니어링 면접 준비**
 
@@ -184,7 +184,7 @@ AI나 머신러닝에 대한 사전 배경지식은 필요하지 않습니다.
 | 13 | [평가와 관측성](#모듈-13-평가와-관측성) | 4 |
 | 14 | [AI 안전과 보안](#모듈-14-ai-안전과-보안) | 3 |
 | 15 | [멀티모달 AI와 생성 모델](#모듈-15-멀티모달-ai와-생성-모델) | 6 |
-| 16 | [AI 인프라, 배포, 시스템 설계](#모듈-16-ai-인프라-배포-시스템-설계) | 11 |
+| 16 | [AI 인프라, 배포, 시스템 설계](#모듈-16-ai-인프라-배포-시스템-설계) | 13 |
 | 17 | [AI 프런티어 아이디어](#모듈-17-ai의-프런티어-아이디어) | 3 |
 | 18 | [AI 엔지니어링 면접 준비](#모듈-18-ai-엔지니어링-면접-준비) | 1 |
 
@@ -3605,11 +3605,15 @@ Generator와 Discriminator가 경쟁하며 새로운 이미지를 생성하는 G
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/llm-routing.md)
 8. [실시간 Voice AI Agent 설계](https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/design-a-real-time-voice-ai-agent.md)
-9. [System Design이란?](https://outcomeschool.com/blog/system-design)
+9. [음성 AI 에이전트의 턴테이킹](https://outcomeschool.com/blog/what-is-turn-taking-in-a-voice-ai-agent)
+   ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/what-is-turn-taking-in-a-voice-ai-agent.md)
+10. [음성 AI 에이전트의 Barge-in](https://outcomeschool.com/blog/what-is-barge-in-in-a-voice-ai-agent)
+   ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/what-is-barge-in-in-a-voice-ai-agent.md)
+11. [System Design이란?](https://outcomeschool.com/blog/system-design)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/system-design.md)
-10. [HTTP Request vs Long-Polling vs WebSocket vs SSE](https://outcomeschool.com/blog/http-request-long-polling-websocket-sse)
+12. [HTTP Request vs Long-Polling vs WebSocket vs SSE](https://outcomeschool.com/blog/http-request-long-polling-websocket-sse)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/http-request-long-polling-websocket-sse.md)
-11. [Voice/Video Call은 어떻게 동작하는가?](https://outcomeschool.com/blog/voice-and-video-call)
+13. [Voice/Video Call은 어떻게 동작하는가?](https://outcomeschool.com/blog/voice-and-video-call)
    ↳ [한국어 상세 학습 노트](docs/ko/blogs/module-16/voice-and-video-call.md)
 
 ---
@@ -3796,9 +3800,27 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/design-a-real-time-voice-ai-agent.md)
 
 
+### 16.9 음성 AI 에이전트의 턴테이킹이란?
+
+VAD가 무음을 감지하는 것과 문장의 의미를 이해하는 것은 다릅니다. 고정된 무음 타임아웃과 의미 기반 턴 검출을 비교하고 끼어들기 및 맞장구를 처리합니다.
+
+원문: [What is turn-taking in a voice AI agent?](https://outcomeschool.com/blog/what-is-turn-taking-in-a-voice-ai-agent)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/what-is-turn-taking-in-a-voice-ai-agent.md)
+
+
+### 16.10 음성 AI 에이전트의 Barge-in이란?
+
+에이전트가 말하는 동안 사용자의 진짜 중단 요청과 소음을 구분합니다. AEC, TTS 재생 취소, 대화 이력 정합성, 중단 지연의 검증 기준을 다룹니다.
+
+원문: [What is barge-in in a voice AI agent?](https://outcomeschool.com/blog/what-is-barge-in-in-a-voice-ai-agent)
+
+→ [한국어 상세 학습 노트](docs/ko/blogs/module-16/what-is-barge-in-in-a-voice-ai-agent.md) (원문 직접 열람 한계 별도 명시)
+
+
 **AI System Design 보조 레슨:**
 
-### 16.9 System Design이란?
+### 16.11 System Design이란?
 
 - System Design이란?
 - 왜 필요한가?
@@ -3809,7 +3831,7 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/system-design.md)
 
 
-### 16.10 HTTP Request vs Long-Polling vs WebSocket vs SSE
+### 16.12 HTTP Request vs Long-Polling vs WebSocket vs SSE
 
 서버와 클라이언트가 데이터를 주고받는 주요 방식들을 비교합니다.
 
@@ -3824,7 +3846,7 @@ Android에서 TensorFlow Lite를 이용해 머신러닝 모델을 실행하는 �
 → [한국어 상세 학습 노트](docs/ko/blogs/module-16/http-request-long-polling-websocket-sse.md)
 
 
-### 16.11 Voice/Video Call은 어떻게 동작하는가?
+### 16.13 Voice/Video Call은 어떻게 동작하는가?
 
 음성·영상 통화의 High-level 구조를 배웁니다.
 
