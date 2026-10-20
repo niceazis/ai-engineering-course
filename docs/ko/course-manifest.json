@@ -2,9 +2,9 @@
   "schema_version": 1,
   "source_repository": "amitshekhariitbhu/ai-engineering-course",
   "source_branch": "main",
-  "source_commit": "1065a32117a12578d8752a8ae216a2e8d9c26989",
-  "source_commit_date": "2026-10-14T03:24:40Z",
-  "generated_on": "2026-10-15",
+  "source_commit": "767dccff859063a33bad83b3b864372dd9628329",
+  "source_commit_date": "2026-10-19T17:58:23Z",
+  "generated_on": "2026-10-20",
   "modules": [
     {
       "number": 0,
@@ -940,6 +940,16 @@
           "type": "blog",
           "title": "Design a Real-Time Voice AI Agent",
           "url": "https://outcomeschool.com/blog/design-a-real-time-voice-ai-agent"
+        },
+        {
+          "type": "blog",
+          "title": "What is turn-taking in a voice AI agent?",
+          "url": "https://outcomeschool.com/blog/what-is-turn-taking-in-a-voice-ai-agent"
+        },
+        {
+          "type": "blog",
+          "title": "What is barge-in in a voice AI agent?",
+          "url": "https://outcomeschool.com/blog/what-is-barge-in-in-a-voice-ai-agent"
         },
         {
           "type": "blog",
